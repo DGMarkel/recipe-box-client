@@ -35,21 +35,21 @@ export default class RegisterForm extends Component {
             type="text"
             name="username"
             placeholder="username"
-            value={this.state.name}
+            value={this.state.username}
             onChange={this.handleChange}
           />
           <input
             type="email"
             name="email"
             placeholder="email"
-            value={this.state.name}
+            value={this.state.email}
             onChange={this.handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="password"
-            value={this.state.name}
+            value={this.state.password}
             onChange={this.handleChange}
           />
           <input type="submit" value="Register!"/>
