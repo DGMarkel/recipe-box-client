@@ -15,7 +15,7 @@ export default class DashBoard extends Component {
     this.getUserMonsters()
   }
 
-  getUserMonsters = () => {
+  getUserMonsters() {
     fetch('/profile', {
       method: 'GET',
       headers: {
@@ -31,9 +31,28 @@ export default class DashBoard extends Component {
     }).catch( err => console.log(err))
   }
 
+  addMonster(event, data) {
+    fetch('/monsters', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      },
+      body: JSON.stringify({
+        monster: data
+      })
+    }).then( res => res.json())
+    .then( res => {
+      console.log(res);
+      this.getUserMonsters();
+    }).catch( err => console.log(err))
+  }
+
   render() {
     return (
       <div>
+      <AddMonsterForm addMonster={this.addMonster} />
       { (this.state.monstersLoaded)
         ? this.state.myMonsters.map( monster => {
           return <h1 key={monster.id}>{monster.name}</h1>
