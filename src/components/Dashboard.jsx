@@ -12,6 +12,10 @@ export default class DashBoard extends Component {
   }
 
   componentDidMount() {
+    this.getUserMonsters()
+  }
+
+  getUserMonsters = () => {
     fetch('/profile', {
       method: 'GET',
       headers: {
