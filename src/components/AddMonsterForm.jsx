@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Auth from '../Auth.js'
 
-export default class addMonsterForm extends Component {
+export default class AddMonsterForm extends Component {
   constructor() {
     super();
     this.state = {
