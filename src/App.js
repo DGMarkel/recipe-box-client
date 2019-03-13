@@ -63,6 +63,12 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+        <div className="nav">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/dash">Dashboard</Link>
+          <Link to="/monsters">Monsters</Link>
+        </div>
         <Route
           exact path="/monsters"
           render={()=><MonsterList />}
