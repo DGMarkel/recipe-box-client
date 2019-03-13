@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
   render() {
     return (
       <div className="form">
-        <form onSubmit={ this.props.handleLoginSubmit }>
+        <form onSubmit={ (e) => this.props.handleLoginSubmit(e, this.state) }>
           <input
             type="text"
             name="username"
