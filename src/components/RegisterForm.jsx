@@ -33,13 +33,6 @@ export default class RegisterForm extends Component {
           />
           <input
             type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
             name="username"
             placeholder="username"
             value={this.state.username}

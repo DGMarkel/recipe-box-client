@@ -16,6 +16,7 @@ class App extends Component {
 
   handleRegisterSubmit(e, data) {
     e.preventDefault();
+    console.log(data)
   }
 
   render() {
