@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Auth from '../Auth.js'
 
 export default class AddMonsterForm extends Component {
   constructor() {
@@ -22,7 +21,7 @@ export default class AddMonsterForm extends Component {
   render() {
     return(
       <div className="form">
-        <form onSubmit={(e) => this.props.addMonster(e, data)}>
+        <form onSubmit={(e) => this.props.addMonster(e, this.state)}>
           <input
             type="text"
             name="name"

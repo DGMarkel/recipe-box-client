@@ -31,7 +31,7 @@ export default class DashBoard extends Component {
     }).catch( err => console.log(err))
   }
 
-  addMonster(event, data) {
+  addMonster(e, data) {
     fetch('/monsters', {
       method: 'POST',
       headers: {
