@@ -51,6 +51,7 @@ class App extends Component {
       Auth.authenticateToken(res.token);
       this.setState({
         auth: Auth.isUserAuthenticated()
+      })
     }).catch(err => {
       console.log(err);
     })
