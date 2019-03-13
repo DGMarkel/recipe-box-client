@@ -5,13 +5,15 @@ import Auth from './modules/Auth'
 import MonsterList from './components/MonsterList'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
+import DashBoard from './components/DashBoard'
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      auth: Auth.isUserAuthenticated()
+      auth: Auth.isUserAuthenticated(),
+      shouldGoToDash: false
     };
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
@@ -31,7 +33,7 @@ class App extends Component {
     .then(res => {
       Auth.authenticateToken(res.token);
       this.setState({
-        auth: Auth.isUserAuthenticated()
+        auth: Auth.isUserAuthenticated(),
       });
     }).catch(err => {
       console.log(err);
@@ -50,7 +52,8 @@ class App extends Component {
     .then(res => {
       Auth.authenticateToken(res.token);
       this.setState({
-        auth: Auth.isUserAuthenticated()
+        auth: Auth.isUserAuthenticated(),
+        shouldGoToDash: true
       })
     }).catch(err => {
       console.log(err);
@@ -67,15 +70,26 @@ class App extends Component {
         />
         <Route
           exact path="/register"
-          render={()=><RegisterForm
-              handleRegisterSubmit={this.handleRegisterSubmit}
-            />}
+          render={()=>
+            (this.state.auth) ?
+              <Redirect to="/dash" /> :
+              <RegisterForm handleRegisterSubmit={this.handleRegisterSubmit}/>
+          }
         />
         <Route
           exact path="/login"
-          render={()=><LoginForm
-              handleLoginSubmit={this.handleLoginSubmit}
-            />}
+          render = {
+            () =>
+              (this.state.auth) ?
+                <Redirect to="/dash" /> :
+                <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
+          }
+        />
+        <Route
+          exact path="/dash"
+          render = {
+            () => <Dashboard />
+          }
         />
       </div>
       </Router>
