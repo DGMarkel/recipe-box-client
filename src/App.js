@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom'
 import Auth from './modules/Auth'
 import MonsterList from './components/MonsterList'
