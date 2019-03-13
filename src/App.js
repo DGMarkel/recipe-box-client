@@ -14,11 +14,8 @@ class App extends Component {
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
   }
 
-
-
-  handleRegisterSubmit(e) {
+  handleRegisterSubmit(e, data) {
     e.preventDefault();
-
   }
 
   render() {
