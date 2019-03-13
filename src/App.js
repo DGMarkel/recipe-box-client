@@ -13,7 +13,6 @@ class App extends Component {
     super();
     this.state = {
       auth: Auth.isUserAuthenticated(),
-      shouldGoToDash: false
     };
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
