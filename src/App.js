@@ -16,7 +16,23 @@ class App extends Component {
 
   handleRegisterSubmit(e, data) {
     e.preventDefault();
-    console.log(data)
+    fetch('/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        user: data
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(res => {
+      Auth.authenticateToken(res.token);
+      this.setState({
+        auth: Auth.isUserAuthenticated()
+      });
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   render() {
