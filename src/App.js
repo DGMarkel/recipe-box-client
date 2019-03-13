@@ -88,7 +88,7 @@ class App extends Component {
         <Route
           exact path="/dash"
           render = {
-            () => <Dashboard />
+            () => <DashBoard />
           }
         />
       </div>
