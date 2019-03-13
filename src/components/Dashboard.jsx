@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Auth from '../modules/Auth'
+import AddMonsterForm from './AddMonsterForm'
 
 export default class DashBoard extends Component {
   constructor() {

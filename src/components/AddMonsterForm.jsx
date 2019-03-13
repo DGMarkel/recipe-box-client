@@ -21,7 +21,24 @@ export default class addMonsterForm extends Component {
 
   render() {
     return(
-      <div>
+      <div className="form">
+        <form onSubmit={(e) => this.props.addMonster(e, data)}>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="description"
+            placeholder="description"
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Add a Monster!" />
+        </form>
       </div>
     )
   }
