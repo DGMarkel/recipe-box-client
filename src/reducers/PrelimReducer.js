@@ -16,4 +16,6 @@ export default function prelimReducer(state={
     name: '',
     description: ''
   }
-})
+}, action) {
+  
+}
