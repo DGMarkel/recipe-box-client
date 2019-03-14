@@ -12,7 +12,7 @@ export function fetchUser() {
         .then(res => res.json())
         .then(res => {
           Auth.authenticateToken(res.token)
-          dispatch({ type: 'LOADED_USER', payload: resJSON })
+          dispatch({ type: 'LOADED_USER', payload: res })
         }).catch(err => console.log(err))
     }
 }

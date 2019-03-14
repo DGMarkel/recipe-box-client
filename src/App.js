@@ -8,7 +8,7 @@ import LoginForm from './components/LoginForm'
 import DashBoard from './components/DashBoard'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/MonsterActions'
+import * as actions from './actions/UserActions'
 
 
 class App extends Component {
@@ -18,7 +18,6 @@ class App extends Component {
       auth: Auth.isUserAuthenticated(),
     };
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -38,26 +37,6 @@ class App extends Component {
       this.setState({
         auth: Auth.isUserAuthenticated(),
       });
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
-  handleLoginSubmit(e, data) {
-    e.preventDefault();
-    fetch('/login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
-    .then(res => {
-      Auth.authenticateToken(res.token);
-      this.setState({
-        auth: Auth.isUserAuthenticated(),
-        shouldGoToDash: true
-      })
     }).catch(err => {
       console.log(err);
     })
@@ -122,4 +101,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUser: bindActionCreators(actions.fetchUser, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(App)
