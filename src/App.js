@@ -6,6 +6,9 @@ import MonsterList from './components/MonsterList'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import DashBoard from './components/DashBoard'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/MonsterActions'
 
 
 class App extends Component {
