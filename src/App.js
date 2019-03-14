@@ -18,6 +18,7 @@ class App extends Component {
       auth: Auth.isUserAuthenticated(),
     };
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -37,6 +38,26 @@ class App extends Component {
       this.setState({
         auth: Auth.isUserAuthenticated(),
       });
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  handleLoginSubmit(e, data) {
+    e.preventDefault();
+    fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(res => {
+      Auth.authenticateToken(res.token);
+      this.setState({
+        auth: Auth.isUserAuthenticated(),
+        shouldGoToDash: true
+      })
     }).catch(err => {
       console.log(err);
     })
@@ -105,6 +126,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: bindActionCreators(actions.fetchUser, dispatch),
   };
+}
+
+const mapStateToProps = state => {
+  return {
+    monstersList: state.user.monsters.list,
+    monstersLoaded: state.user.monsters.listLoaded
+  }
 }
 
 export default connect(null, mapDispatchToProps)(App)
