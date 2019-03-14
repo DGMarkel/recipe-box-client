@@ -107,7 +107,7 @@ class App extends Component {
             () =>
               (this.state.auth) ?
                 <Redirect to="/dash" /> :
-                <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
+                <LoginForm handleLoginSubmit={this.props.loginUser} />
           }
         />
         <Route
@@ -124,15 +124,8 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: bindActionCreators(actions.fetchUser, dispatch),
+    loginUser: bindActionCreators(actions.loginUser, dispatch),
   };
-}
-
-const mapStateToProps = state => {
-  return {
-    monstersList: state.user.monsters.list,
-    monstersLoaded: state.user.monsters.listLoaded
-  }
 }
 
 export default connect(null, mapDispatchToProps)(App)
