@@ -1,44 +1,38 @@
 import React, { Component } from 'react'
+import * as actions from '../actions/MonsterActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
-export default class MonsterList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      monsterList: null,
-      monsterListLoaded: false
-    }
-  }
+class MonsterList extends Component {
 
   componentDidMount() {
-    fetch('/monsters')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          monsterList: res.monsters,
-          monsterListLoaded: true
-        })
-      }).catch(err => console.log(err))
-  }
-
-  renderMonsters = () => {
-    return this.state.monsterList.map(monster => {
-      return (
-        <div className="monster" key={monster.id}>
-          <h2>{monster.name}</h2>
-          <p>{monster.description}</p>
-        </div>
-      )
-    })
+    this.props.fetchMonsters()
   }
 
   render() {
     return (
-      <div className="monster-list">
-        { (this.state.monsterListLoaded) ?
-            this.renderMonsters() :
-            <p>Loading...</p>
-        }
+      <div>
+        {(this.props.monstersLoaded)
+          ? this.props.monstersList.map( monster => {
+            return <h1>{monster.name}</h1>
+          })
+          : <p>Loading</p>}
       </div>
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMonsters: bindActionCreators(actions.fetchMonsters, dispatch),
+  };
+}
+
+const mapStateToProps = state => {
+  return {
+    monstersList: state.user.monsters.list,
+    monstersLoaded: state.user.monsters.listLoaded
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MonsterList)

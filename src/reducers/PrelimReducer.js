@@ -1,5 +1,4 @@
 import Auth from '../modules/Auth'
-import React from 'react'
 
 export default function prelimReducer(state={
   user: {
@@ -22,13 +21,17 @@ export default function prelimReducer(state={
   switch(action.type) {
 
     case 'LOADING_MONSTERS':
-      return <p>Loading...</p>
+      return state
 
     case 'LOADED_MONSTERS':
       return {
-        ...state, monsters: {
-          list: action.payload.monsters,
-          listLoaded: true
+        ...state,
+            user: {
+              ...state.user,
+              monsters: {
+                list: action.payload.monsters,
+                listLoaded: true
+              }
         }
       }
 
