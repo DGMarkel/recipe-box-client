@@ -1,5 +1,3 @@
-import Auth from '../modules/Auth'
-
 export default function prelimReducer(state={
   user: {
     username: '',
@@ -31,10 +29,11 @@ export default function prelimReducer(state={
       case 'LOAD_USER_DATA':
         if (action.payload) {
           return {
+            ...state,
               user: {
-                username: action.payload.username,
-                email: action.payload.email,
-                name: action.payload.name,
+                username: action.payload.user.username,
+                email: action.payload.user.email,
+                name: action.payload.user.name,
                 monsters: {
                   list: action.payload.monsters
                 }

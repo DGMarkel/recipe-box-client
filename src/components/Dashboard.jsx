@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Auth from '../modules/Auth'
 import AddMonsterForm from './AddMonsterForm'
+import { connect } from 'react-redux'
 
-export default class DashBoard extends Component {
+class DashBoard extends Component {
   constructor() {
     super();
     this.state={
@@ -50,6 +51,7 @@ export default class DashBoard extends Component {
   }
 
   render() {
+    console.log(this.props.user)
     return (
       <div>
       <AddMonsterForm addMonster={this.addMonster} />
@@ -63,3 +65,11 @@ export default class DashBoard extends Component {
     )
   }
 }
+
+const mapDispatchToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapDispatchToProps)(DashBoard)
