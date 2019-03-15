@@ -39,7 +39,7 @@ export default function prelimReducer(state={
         return state
 
       case 'LOADED_USER':
-        console.log(action.payload)
+        console.log(state.user)
         return {
           ...state,
               user: {

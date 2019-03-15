@@ -11,17 +11,31 @@ import { bindActionCreators } from 'redux';
 import * as actions from './actions/UserActions'
 
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
       auth: Auth.isUserAuthenticated(),
     };
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleRegisterSubmit(e, data) {
+  handleLoginSubmit = (e, data) => {
+    e.preventDefault();
+    return fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      })
+      .then(res => res.json())
+      .then(res => {
+        Auth.authenticateToken(res.token)
+        }).catch(err => console.log(err))
+  }
+
+
+  handleRegisterSubmit = (e, data) => {
     e.preventDefault();
     fetch('/users', {
       method: 'POST',
@@ -100,11 +114,3 @@ class App extends Component {
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginUser: bindActionCreators(actions.loginUser, dispatch),
-  };
-}
-
-export default connect(null, mapDispatchToProps)(App)
