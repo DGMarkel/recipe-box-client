@@ -11,7 +11,8 @@ export function fetchUserData() {
       }
     }).then( res => res.json())
     .then( resJSON => {
-      dispatch({ type: 'LOAD_USER_DATA', payload: resJSON })
+      const userData = {...resJSON.user, monsters: {...resJSON.monsters}}
+      dispatch({ type: 'LOAD_USER_DATA', payload: userData })
     }).catch( err => console.log(err))
   }
 }

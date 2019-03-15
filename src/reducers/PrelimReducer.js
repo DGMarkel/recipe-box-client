@@ -41,6 +41,7 @@ export default function prelimReducer(state={
       case 'LOAD_USER_DATA':
         console.log(action.payload)
 
+
     default:
       return state
   }
