@@ -17,6 +17,8 @@ export default class App extends Component {
     this.state = {
       auth: Auth.isUserAuthenticated(),
     };
+    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLoginSubmit = (e, data) => {
@@ -31,11 +33,14 @@ export default class App extends Component {
       .then(res => res.json())
       .then(res => {
         Auth.authenticateToken(res.token)
+        this.setState({
+          auth: Auth.isUserAuthenticated()
+        })
         }).catch(err => console.log(err))
   }
 
 
-  handleRegisterSubmit = (e, data) => {
+  handleRegisterSubmit(e, data) {
     e.preventDefault();
     fetch('/users', {
       method: 'POST',
@@ -98,9 +103,9 @@ export default class App extends Component {
           exact path="/login"
           render = {
             () =>
-              (this.state.auth) ?
+              (Auth.isUserAuthenticated()) ?
                 <Redirect to="/dash" /> :
-                <LoginForm handleLoginSubmit={this.props.loginUser} />
+                <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
           }
         />
         <Route
