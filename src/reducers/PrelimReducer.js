@@ -35,21 +35,11 @@ export default function prelimReducer(state={
         }
       }
 
-      case 'LOADING_USER':
-        return state
+      case 'LOADING_USER_DATA':
+        console.log('Loading')
 
-      case 'LOADED_USER':
-        console.log(state.user)
-        return {
-          ...state,
-              user: {
-                ...state.user,
-                monsters: {
-                  list: action.payload.monsters,
-                  listLoaded: true
-                }
-          }
-        }
+      case 'LOAD_USER_DATA':
+        console.log(action.payload)
 
     default:
       return state

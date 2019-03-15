@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from './actions/UserActions'
 
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -119,3 +119,11 @@ export default class App extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)
