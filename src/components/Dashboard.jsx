@@ -4,33 +4,6 @@ import AddMonsterForm from './AddMonsterForm'
 import { connect } from 'react-redux'
 
 class DashBoard extends Component {
-  constructor() {
-    super();
-    this.state={
-      myMonsters: null,
-      monstersLoaded: false
-    }
-  }
-
-  componentDidMount() {
-    this.getUserMonsters()
-  }
-
-  getUserMonsters() {
-    fetch('/profile', {
-      method: 'GET',
-      headers: {
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then( res => res.json())
-    .then( res => {
-      this.setState({
-        myMonsters: res.monsters,
-        monstersLoaded: true,
-      })
-    }).catch( err => console.log(err))
-  }
 
   addMonster(e, data) {
     fetch('/monsters', {
@@ -55,12 +28,18 @@ class DashBoard extends Component {
     return (
       <div>
       <AddMonsterForm addMonster={this.addMonster} />
-      { (this.state.monstersLoaded)
-        ? this.state.myMonsters.map( monster => {
-          return <h1 key={monster.id}>{monster.name}</h1>
-        })
-        : <p>Loading...</p>
-      }
+
+      {  (this.props.monsters.list)
+            ? this.props.monsters.list.map( monster => {
+                return (
+                  <div className="monster" key={monster.id}>
+                    <h1>{monster.name}</h1>
+                    <p>{monster.description}</p>
+                  </div>
+                )
+              })
+            : <p>Loading...</p>
+    }
       </div>
     )
   }
@@ -68,7 +47,8 @@ class DashBoard extends Component {
 
 const mapDispatchToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    monsters: state.user.monsters
   }
 }
 
