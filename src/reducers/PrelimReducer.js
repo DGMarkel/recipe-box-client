@@ -15,21 +15,6 @@ export default function prelimReducer(state={
 
   switch(action.type) {
 
-    case 'LOADING_MONSTERS':
-      return state
-
-    case 'LOADED_MONSTERS':
-      return {
-        ...state,
-            user: {
-              ...state.user,
-              monsters: {
-                list: action.payload.monsters,
-                listLoaded: true
-              }
-        }
-      }
-
       case 'REGISTER_USER':
         return {
           ...state,
