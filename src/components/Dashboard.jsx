@@ -3,8 +3,6 @@ import AddMonsterForm from './AddMonsterForm'
 import * as actions from '../actions/MonsterActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
-import Auth from '../modules/Auth'
-
 class DashBoard extends Component {
 
   constructor(props) {
@@ -26,12 +24,10 @@ class DashBoard extends Component {
       }).catch(err => console.log(err))
   }
 
-
   render() {
     return (
       <div>
       <AddMonsterForm addMonster={this.props.addMonster} />
-
       {  (this.state.loaded)
             ? this.state.myMonsters.monsters.map( monster => {
                 if (monster.user_id === this.props.user.id) {
@@ -51,7 +47,7 @@ class DashBoard extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    user: state.user
   }
 }
 
