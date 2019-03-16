@@ -15,7 +15,7 @@ export function addMonster(e, data) {
       })
     }).then( res => res.json())
     .then( res => {
-      console.log("added")
+      dispatch({type: 'ADD_USER_MONSTER', payload: res.monster})
     }).catch( err => console.log(err))
   }
 }

@@ -6,9 +6,7 @@ export default function prelimReducer(state={
     username: '',
     email: '',
     name: '',
-    monsters: {
-      list: null,
-    },
+    monsters: [],
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
   }
@@ -53,9 +51,7 @@ export default function prelimReducer(state={
                 username: action.payload.user.username,
                 email: action.payload.user.email,
                 name: action.payload.user.name,
-                monsters: {
-                  list: action.payload.monsters
-                }
+                monsters: action.payload.monsters
               }
           }
         }else {
@@ -67,13 +63,9 @@ export default function prelimReducer(state={
           ...state,
             user: {
               ...state.user,
-                monsters: {
-                  ...state.user.monsters,
-                  list: action.payload
-                }
-              }
+              monsters: [...state.user.monsters.concat(action.payload)]
             }
-
+          }
 
 
     default:

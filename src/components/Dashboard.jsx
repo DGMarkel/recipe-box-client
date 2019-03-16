@@ -14,34 +14,28 @@ class DashBoard extends Component {
     }
   }
 
-  componentDidMount() {
+  fetchMonsters = () => {
+    console.log("hi")
     fetch('/monsters')
       .then(res => res.json())
       .then(resJSON => {
         this.setState({
-          myMonsters: resJSON,
-          loaded: true
+          monsters: resJSON.monsters,
+          monstersLoaded: true
         })
       }).catch(err => console.log(err))
   }
 
   render() {
+      console.log(this.props.monsters)
     return (
+
       <div>
       <AddMonsterForm addMonster={this.props.addMonster} />
-      <MyMonstersList />
-      {  (this.state.loaded)
-            ? this.state.myMonsters.monsters.map( monster => {
-                if (monster.user_id === this.props.user.id) {
-                  return (
-                    <div className="monster" key={monster.id}>
-                      <h1>{monster.name}</h1>
-                      <p>{monster.description}</p>
-                    </div>
-                  )}
-              })
-            : <p>Loading...</p>
-    }
+      { (this.props.monsters) ?
+        this.props.monsters.map( monster => <h1>{monster.name}</h1> )
+        : <p>Loading...</p>
+      }
       </div>
     )
   }
@@ -49,7 +43,7 @@ class DashBoard extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    monsters: state.user.monsters
   }
 }
 
