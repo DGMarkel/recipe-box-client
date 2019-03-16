@@ -27,7 +27,6 @@ class DashBoard extends Component {
   }
 
   render() {
-      console.log(this.props.monsters)
     return (
 
       <div>
