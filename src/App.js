@@ -54,6 +54,7 @@ class App extends Component {
   }
 
   render() {
+          console.log(this.props.auth)
     return (
       <Router>
       <div className="App">
@@ -108,7 +109,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    auth: state.user.auth,
+    auth: state.user.auth
   }
 }
 

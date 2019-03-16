@@ -41,7 +41,6 @@ export default function prelimReducer(state={
 
       case 'LOGOUT_USER':
         return {
-          ...state,
             user: {
               ...state.user,
               auth: Auth.isUserAuthenticated()
