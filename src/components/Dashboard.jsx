@@ -5,22 +5,6 @@ import { connect } from 'react-redux'
 
 class DashBoard extends Component {
 
-  addMonster = (e, data) => {
-    fetch('/monsters', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      },
-      body: JSON.stringify({
-        monster: data
-      })
-    }).then( res => res.json())
-    .then( res => {
-    }).catch( err => console.log(err))
-  }
-
   render() {
     return (
       <div>
