@@ -31,11 +31,8 @@ class DashBoard extends Component {
     return (
 
       <div>
-      <AddMonsterForm addMonster={this.props.addMonster} />
-      { (this.props.monsters) ?
-        this.props.monsters.map( monster => <h1>{monster.name}</h1> )
-        : <p>Loading...</p>
-      }
+        <AddMonsterForm addMonster={this.props.addMonster} />
+        <MyMonstersList myMonsters={this.props.monsters}/>
       </div>
     )
   }
