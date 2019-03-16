@@ -54,7 +54,6 @@ class App extends Component {
   }
 
   render() {
-          console.log(this.props.auth)
     return (
       <Router>
       <div className="App">
@@ -63,7 +62,7 @@ class App extends Component {
           <Link to="/register">Register</Link>
           <Link to="/dash">Dashboard</Link>
           <Link to="/monsters">Monsters</Link>
-          <span onClick={this.handleLogout}>Logout</span>
+          <Link to="/logout" onClick={this.props.handleLogout}>Logout</Link>
         </div>
         <Route
           exact path="/monsters"
@@ -101,13 +100,15 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchUserData: bindActionCreators(actions.fetchUserData , dispatch),
-    handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch)
+    handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch),
+    handleLogout: bindActionCreators(actions.logoutUser, dispatch)
+
   }
 }
 
 const mapStateToProps = state => {
   return {
-    auth: state.user.auth
+    auth: state.user.auth,
   }
 }
 
