@@ -35,7 +35,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  addMonster: bindActionCreators(actions.addMonster, dispatch)
+  return {
+    addMonster: bindActionCreators(actions.addMonster, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
