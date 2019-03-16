@@ -1,6 +1,8 @@
 import Auth from '../modules/Auth'
 
 export function addMonster(e, data) {
+  e.preventDefault()
+  console.log(data)
   return (dispatch) => {
     fetch('/monsters', {
       method: 'POST',
@@ -14,8 +16,7 @@ export function addMonster(e, data) {
       })
     }).then( res => res.json())
     .then( res => {
-      console.log(res)
-      dispatch({ type: 'ADD_USER_MONSTER', payload: res })
+      console.log("added")
     }).catch( err => console.log(err))
   }
 }
