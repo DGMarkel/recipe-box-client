@@ -2,7 +2,6 @@ import Auth from '../modules/Auth'
 
 export function addMonster(e, data) {
   e.preventDefault()
-  console.log(data)
   return (dispatch) => {
     fetch('/monsters', {
       method: 'POST',
