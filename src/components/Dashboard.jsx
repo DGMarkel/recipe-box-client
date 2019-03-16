@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Auth from '../modules/Auth'
 import AddMonsterForm from './AddMonsterForm'
+import * as actions from '../actions/MonsterActions'
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 class DashBoard extends Component {
@@ -8,7 +9,7 @@ class DashBoard extends Component {
   render() {
     return (
       <div>
-      <AddMonsterForm addMonster={this.addMonster} />
+      <AddMonsterForm addMonster={this.props.addMonster} />
 
       {  (this.props.monsters.list)
             ? this.props.monsters.list.map( monster => {
@@ -26,11 +27,15 @@ class DashBoard extends Component {
   }
 }
 
-const mapDispatchToProps = state => {
+const mapStateToProps = state => {
   return {
     user: state.user,
     monsters: state.user.monsters
   }
 }
 
-export default connect(mapDispatchToProps)(DashBoard)
+const mapDispatchToProps = dispatch => {
+  addMonster: bindActionCreators(actions.addMonster, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
