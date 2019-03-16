@@ -1,3 +1,5 @@
+import Auth from '../modules/Auth'
+
 export default function prelimReducer(state={
   user: {
     username: '',
@@ -6,6 +8,8 @@ export default function prelimReducer(state={
     monsters: {
       list: null,
     },
+    auth: Auth.isUserAuthenticated(),
+    isLoaded: false
   }
 }, action) {
 
@@ -26,8 +30,26 @@ export default function prelimReducer(state={
         }
       }
 
+      case 'REGISTER_USER':
+        return {
+          ...state,
+            user: {
+              ...state.user,
+              auth: Auth.isUserAuthenticated()
+            }
+        }
+
+      case 'LOADING_USER_DATA':
+        return {
+          ...state,
+            user: {
+              ...state.user,
+              isLoaded: true
+            }
+        }
+
       case 'LOAD_USER_DATA':
-        if (action.payload) {
+        if (state.user.isLoaded) {
           return {
             ...state,
               user: {
@@ -42,9 +64,6 @@ export default function prelimReducer(state={
         }else {
           console.log("Still Loading")
         }
-
-
-
 
     default:
       return state

@@ -17,7 +17,6 @@ class App extends Component {
     this.state = {
       auth: Auth.isUserAuthenticated(),
     };
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -40,28 +39,6 @@ class App extends Component {
           })
         }
       }).catch(err => console.log(err))
-  }
-
-
-  handleRegisterSubmit(e, data) {
-    e.preventDefault();
-    fetch('/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: data
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
-    .then(res => {
-      Auth.authenticateToken(res.token);
-      this.setState({
-        auth: Auth.isUserAuthenticated(),
-      });
-    }).catch(err => {
-      console.log(err);
-    })
   }
 
   handleLogout = () => {
@@ -99,7 +76,7 @@ class App extends Component {
           render={()=>
             (this.state.auth) ?
               <Redirect to="/dash" /> :
-              <RegisterForm handleRegisterSubmit={this.handleRegisterSubmit}/>
+              <RegisterForm handleRegisterSubmit={this.props.handleRegisterSubmit}/>
           }
         />
         <Route
@@ -125,7 +102,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch)
+    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch),
+    handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch)
   }
 }
 
