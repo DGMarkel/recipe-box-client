@@ -60,6 +60,21 @@ export default function prelimReducer(state={
           console.log("Still Loading")
         }
 
+      case 'ADD_USER_MONSTER':
+        return {
+          ...state,
+            user: {
+              ...state.user,
+                monsters: {
+                  ...state.user.monsters,
+                  list:
+                    action.payload
+                  }
+                }
+              }
+
+
+
     default:
       return state
   }

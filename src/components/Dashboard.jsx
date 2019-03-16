@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 class DashBoard extends Component {
 
-  addMonster(e, data) {
+  addMonster = (e, data) => {
     fetch('/monsters', {
       method: 'POST',
       headers: {
@@ -18,8 +18,6 @@ class DashBoard extends Component {
       })
     }).then( res => res.json())
     .then( res => {
-      console.log(res);
-      this.getUserMonsters();
     }).catch( err => console.log(err))
   }
 
