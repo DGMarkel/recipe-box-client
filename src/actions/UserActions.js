@@ -34,3 +34,18 @@ export function fetchUserData() {
     }).catch( err => console.log(err))
   }
 }
+
+export function logoutUser() {
+  return (dispatch) => {
+    fetch('/logout', {
+      method: 'DELETE',
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`
+      }
+    }).then( res => {
+      Auth.deauthenticateToken()
+      dispatch({ type: 'LOGOUT_USER' })
+    }).catch( err => console.log(err))
+  }
+}
