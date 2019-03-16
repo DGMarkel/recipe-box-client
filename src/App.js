@@ -12,13 +12,6 @@ import * as actions from './actions/UserActions'
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      auth: Auth.isUserAuthenticated(),
-    };
-    this.handleLogout = this.handleLogout.bind(this);
-  }
 
   handleLoginSubmit = (e, data) => {
     e.preventDefault();
@@ -36,21 +29,6 @@ class App extends Component {
           this.props.fetchUserData();
         }
       }).catch(err => console.log(err))
-  }
-
-  handleLogout = () => {
-    fetch('/logout', {
-      method: 'DELETE',
-      headers: {
-        token: Auth.getToken(),
-        'Authorization': `Token ${Auth.getToken()}`
-      }
-    }).then( res => {
-      Auth.deauthenticateToken()
-      this.setState({
-        auth: Auth.isUserAuthenticated(),
-      })
-    }).catch( err => console.log(err))
   }
 
   render() {
