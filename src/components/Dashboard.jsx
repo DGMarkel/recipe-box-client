@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AddMonsterForm from './AddMonsterForm'
+import MyMonstersList from './MyMonstersList'
 import * as actions from '../actions/MonsterActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
@@ -28,6 +29,7 @@ class DashBoard extends Component {
     return (
       <div>
       <AddMonsterForm addMonster={this.props.addMonster} />
+      <MyMonstersList />
       {  (this.state.loaded)
             ? this.state.myMonsters.monsters.map( monster => {
                 if (monster.user_id === this.props.user.id) {
