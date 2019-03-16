@@ -44,7 +44,8 @@ export default function prelimReducer(state={
           ...state,
             user: {
               ...state.user,
-              isLoaded: true
+              isLoaded: true,
+              auth: true
             }
         }
 
@@ -53,6 +54,7 @@ export default function prelimReducer(state={
           return {
             ...state,
               user: {
+                ...state.user,
                 username: action.payload.user.username,
                 email: action.payload.user.email,
                 name: action.payload.user.name,

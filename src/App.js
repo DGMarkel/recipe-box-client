@@ -34,9 +34,6 @@ class App extends Component {
         Auth.authenticateToken(res.token)
         if (Auth.isUserAuthenticated()) {
           this.props.fetchUserData();
-          this.setState({
-            auth: Auth.isUserAuthenticated()
-          })
         }
       }).catch(err => console.log(err))
   }
@@ -57,6 +54,7 @@ class App extends Component {
   }
 
   render() {
+          console.log(this.props.auth)
     return (
       <Router>
       <div className="App">
@@ -74,7 +72,7 @@ class App extends Component {
         <Route
           exact path="/register"
           render={()=>
-            (this.state.auth) ?
+            (this.props.auth) ?
               <Redirect to="/dash" /> :
               <RegisterForm handleRegisterSubmit={this.props.handleRegisterSubmit}/>
           }
@@ -83,7 +81,7 @@ class App extends Component {
           exact path="/login"
           render = {
             () =>
-              (Auth.isUserAuthenticated()) ?
+              (this.props.auth) ?
                 <Redirect to="/dash" /> :
                 <LoginForm handleLoginSubmit={this.handleLoginSubmit} />
           }
@@ -107,4 +105,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+const mapStateToProps = state => {
+  return {
+    auth: state.user.auth
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
