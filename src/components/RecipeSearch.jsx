@@ -19,7 +19,7 @@ export default class RecipeSearch extends Component {
 
   render() {
     console.log(this.state.name)
-    return {
+    return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
         <form>
@@ -33,6 +33,6 @@ export default class RecipeSearch extends Component {
           <input type="submit" value="Add Ingredient" />
         </form>
       </div>
-    }
+    )
   }
 }

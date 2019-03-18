@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AddMonsterForm from './AddMonsterForm'
 import MyMonstersList from './MyMonstersList'
+import RecipeSearch from './RecipeSearch'
 import * as actions from '../actions/MonsterActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
