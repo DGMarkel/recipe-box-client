@@ -4,6 +4,7 @@ import MyMonstersList from './MyMonstersList'
 import * as actions from '../actions/MonsterActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+
 class DashBoard extends Component {
 
   constructor(props) {
