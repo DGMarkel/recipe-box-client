@@ -15,18 +15,6 @@ class DashBoard extends Component {
     }
   }
 
-  fetchMonsters = () => {
-    console.log("hi")
-    fetch('/monsters')
-      .then(res => res.json())
-      .then(resJSON => {
-        this.setState({
-          monsters: resJSON.monsters,
-          monstersLoaded: true
-        })
-      }).catch(err => console.log(err))
-  }
-
   render() {
     return (
 
