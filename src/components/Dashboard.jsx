@@ -7,14 +7,6 @@ import { connect } from 'react-redux'
 
 class DashBoard extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      myMonsters: [],
-      loaded: false
-    }
-  }
-
   render() {
     return (
 
