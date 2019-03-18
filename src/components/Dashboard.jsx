@@ -13,6 +13,7 @@ class DashBoard extends Component {
 
       <div>
         <AddMonsterForm addMonster={this.props.addMonster} />
+        <RecipeSearch />
         <MyMonstersList myMonsters={this.props.monsters}/>
       </div>
     )

@@ -28,7 +28,7 @@ export default class RecipeSearch extends Component {
             name="name"
             value={this.state.name}
             placeholder="Ingredient"
-            onChange={event => this.handleOnchange(event)}
+            onChange={event => this.handleOnChange(event)}
             />
           <input type="submit" value="Add Ingredient" />
         </form>
