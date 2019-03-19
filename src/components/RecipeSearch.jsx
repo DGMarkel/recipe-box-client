@@ -8,7 +8,8 @@ export default class RecipeSearch extends Component {
     this.state={
       name: '',
       recipeTitle: '',
-      recipeIngredients: []
+      recipeIngredients: [],
+      recipeLoaded: false
     }
   }
 
@@ -38,13 +39,15 @@ export default class RecipeSearch extends Component {
         res.foods.map( ingredient => {
           this.setState({
               recipeIngredients: [
-                ...this.state.recipeIngredients.concat(ingredient)]
+                ...this.state.recipeIngredients.concat(ingredient)],
+              recipeLoaded: true
           })
         })
       }).catch(err => console.log(err));
   }
 
   render() {
+    console.log(this.state.recipeIngredients)
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
@@ -58,7 +61,10 @@ export default class RecipeSearch extends Component {
             />
           <input type="submit" value="Add Ingredients" />
         </form>
-        <RecipeContainer />
+        { (this.state.recipeLoaded)
+          ? <RecipeContainer ingredients={this.state.recipeIngredients} />
+          : <p>Recipe will go here</p>
+         }
       </div>
     )
   }
