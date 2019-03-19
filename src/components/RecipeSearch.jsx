@@ -43,8 +43,6 @@ export default class RecipeSearch extends Component {
   }
 
   render() {
-    console.log(this.state.recipeIngredients)
-    console.log(this.state.name)
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
