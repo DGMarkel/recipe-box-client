@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import IngredientContainer from './IngredientContainer'
 
 export default class RecipeContainer extends Component {
 
@@ -6,7 +7,7 @@ export default class RecipeContainer extends Component {
     return (
       <div className="recipe-card">
         { this.props.ingredients.map(ingredient => {
-          return <p>{ingredient.food_name}</p>
+          return <IngredientContainer ingredient={ingredient} />
         })}
       </div>
     )
