@@ -5,7 +5,8 @@ export default class RecipeSearch extends Component {
   constructor() {
     super()
     this.state={
-      name: ''
+      name: '',
+      recipeIngredients: []
     }
   }
 
@@ -30,11 +31,19 @@ export default class RecipeSearch extends Component {
         'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY,
       }
       }).then(res => res.json())
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        console.log(res)
+        res.foods.map( ingredient => {
+          this.setState({
+              recipeIngredients: [
+                ...this.state.recipeIngredients.concat(ingredient)]
+          })
+        })
+      }).catch(err => console.log(err));
   }
 
   render() {
+    console.log(this.state.recipeIngredients)
     console.log(this.state.name)
     return (
       <div className="search-form">
