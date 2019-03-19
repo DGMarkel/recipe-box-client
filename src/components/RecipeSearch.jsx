@@ -17,12 +17,24 @@ export default class RecipeSearch extends Component {
     });
   }
 
+  handleOnSubmit = (event, data) => {
+    fetch(`https://trackapi.nutritionix.com/v2/search/instant?query=${data}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-app-id': process.env.REACT_APP_NUTRITIONIX_APP_ID,
+        'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY,
+      }
+      }).then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
   render() {
     console.log(this.state.name)
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
-        <form>
+        <form onSubmit={(e) => this.handleOnSubmit(e, this.state.name)}>
           <input
             type="text"
             name="name"
