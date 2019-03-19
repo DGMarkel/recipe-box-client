@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import RecipeContainer from '../containers/RecipeContainer'
 
 export default class RecipeSearch extends Component {
 
@@ -6,6 +7,7 @@ export default class RecipeSearch extends Component {
     super()
     this.state={
       name: '',
+      recipeTitle: '',
       recipeIngredients: []
     }
   }
@@ -54,8 +56,9 @@ export default class RecipeSearch extends Component {
             placeholder="Ingredient"
             onChange={event => this.handleOnChange(event)}
             />
-          <input type="submit" value="Add Ingredient" />
+          <input type="submit" value="Add Ingredients" />
         </form>
+        <RecipeContainer />
       </div>
     )
   }
