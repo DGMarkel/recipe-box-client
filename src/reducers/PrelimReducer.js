@@ -7,6 +7,7 @@ export default function prelimReducer(state={
     email: '',
     name: '',
     monsters: [],
+    recipes: [],
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
   }
@@ -66,6 +67,15 @@ export default function prelimReducer(state={
               monsters: [...state.user.monsters.concat(action.payload)]
             }
           }
+
+      case 'ADD_RECIPE':
+        return {
+          ...state,
+            user: {
+              ...state.user,
+              recipes: [...state.user.recipes.concat(action.payload)]
+            }
+        }
 
 
     default:
