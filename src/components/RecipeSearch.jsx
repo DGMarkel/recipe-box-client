@@ -11,7 +11,7 @@ class RecipeSearch extends Component {
     super(props);
     this.state = {
       title: '',
-      id: props.recipes.length + 1,
+      id: props.recipes.length + 1 || null,
       ingredients: ''
     }
   }
@@ -25,6 +25,9 @@ class RecipeSearch extends Component {
   }
 
   render() {
+
+    const newRecipe = this.props.recipes.find(recipe => recipe.id === this.state.id)
+
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
@@ -45,7 +48,11 @@ class RecipeSearch extends Component {
             />
           <input type="submit" value="Add Ingredients" />
         </form>
-        <RecipeContainer recipe={this.props.recipes} />
+        { (newRecipe)
+          ? <RecipeContainer recipe={newRecipe} />
+          : <p>Waiting...</p>
+        }
+
       </div>
     )
   }
@@ -59,7 +66,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.user.recipes
+    recipes: state.user.recipes,
   }
 }
 
