@@ -60,7 +60,8 @@ class RecipeSearch extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch)
+    fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch),
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
 

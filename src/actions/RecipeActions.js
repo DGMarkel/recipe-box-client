@@ -1,3 +1,4 @@
+
 export function fetchIngredients(event, title, id, data) {
   event.preventDefault()
   return (dispatch) => {
@@ -24,4 +25,14 @@ export function fetchIngredients(event, title, id, data) {
       })
     }).catch(err => console.log(err));
   }
+}
+
+export function deleteIngredient(recipeId, ingredientIndex) {
+  return dispatch => ({
+    type: 'DELETE_INGREDIENT',
+    payload: {
+      recipeId: recipeId,
+      ingredientIndex: ingredientIndex
+    }
+  })
 }
