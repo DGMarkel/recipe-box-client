@@ -1,4 +1,4 @@
-export function fetchIngredients = (event, data) => {
+export function fetchIngredients(event, data) {
   event.preventDefault()
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
@@ -13,7 +13,7 @@ export function fetchIngredients = (event, data) => {
     }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)   
+      console.log(res)
     }).catch(err => console.log(err));
   }
 }

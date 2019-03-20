@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import RecipeContainer from '../containers/RecipeContainer'
+import * as actions from '../actions/RecipeActions'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+
 
 export default class RecipeSearch extends Component {
 
