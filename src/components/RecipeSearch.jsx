@@ -28,7 +28,7 @@ class RecipeSearch extends Component {
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
-        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.props.recipes.length + 1, this.state.ingredients)}>
+        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.state.id, this.state.ingredients)}>
           <input
             type="text"
             name="title"
