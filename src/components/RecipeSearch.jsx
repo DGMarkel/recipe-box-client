@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 
-export default class RecipeSearch extends Component {
+class RecipeSearch extends Component {
 
   constructor() {
     super();
@@ -15,7 +15,7 @@ export default class RecipeSearch extends Component {
   }
 
   handleOnChange = event => {
-    const ingredients = event.target.ingredients;
+    const ingredients = event.target.name;
     const value = event.target.value;
     this.setState({
       [ingredients]: value
@@ -26,7 +26,7 @@ export default class RecipeSearch extends Component {
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
-        <form onSubmit={(e) => this.handleOnSubmit(e, this.state.ingredients)}>
+        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.ingredients)}>
           <input
             type="text"
             name="ingredients"
@@ -44,3 +44,11 @@ export default class RecipeSearch extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(RecipeSearch)
