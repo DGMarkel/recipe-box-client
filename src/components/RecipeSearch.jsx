@@ -7,10 +7,11 @@ import { connect } from 'react-redux'
 
 class RecipeSearch extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: '',
+      id: props.recipes.length + 1,
       ingredients: ''
     }
   }
