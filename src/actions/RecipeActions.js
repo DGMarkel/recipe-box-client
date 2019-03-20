@@ -1,4 +1,4 @@
-export function fetchIngredients(event, data) {
+export function fetchIngredients(event, title, id, data) {
   event.preventDefault()
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
@@ -16,7 +16,11 @@ export function fetchIngredients(event, data) {
       console.log(res);
       dispatch({
         type: 'ADD_RECIPE',
-        payload: res.foods        
+        payload: {
+          title: title,
+          id: id,
+          ingredients: res.foods
+        }
       })
     }).catch(err => console.log(err));
   }

@@ -10,6 +10,7 @@ class RecipeSearch extends Component {
   constructor() {
     super();
     this.state = {
+      title: '',
       ingredients: ''
     }
   }
@@ -26,9 +27,16 @@ class RecipeSearch extends Component {
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
-        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.ingredients)}>
+        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.props.recipes.length + 1, this.state.ingredients)}>
           <input
             type="text"
+            name="title"
+            value={this.state.title}
+            placeholder="Title"
+            onChange={event => this.handleOnChange(event)}
+            /><br />
+          <input
+            type="textarea"
             name="ingredients"
             value={this.state.ingredients}
             placeholder="Ingredient"
@@ -36,10 +44,7 @@ class RecipeSearch extends Component {
             />
           <input type="submit" value="Add Ingredients" />
         </form>
-        { (this.state.recipeLoaded)
-          ? <RecipeContainer />
-          : <p>Recipe will go here</p>
-         }
+        <RecipeContainer recipe={this.props.recipes} />
       </div>
     )
   }
@@ -51,4 +56,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(RecipeSearch)
+const mapStateToProps = state => {
+  return {
+    recipes: state.user.recipes
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeSearch)
