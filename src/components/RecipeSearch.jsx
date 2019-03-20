@@ -7,31 +7,37 @@ import { connect } from 'react-redux'
 
 export default class RecipeSearch extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      ingredients: ''
+    }
+  }
+
   handleOnChange = event => {
-    const name = event.target.name;
+    const ingredients = event.target.ingredients;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [ingredients]: value
     });
   }
 
   render() {
-    console.log(this.state.recipeIngredients)
     return (
       <div className="search-form">
         <h1>Add a New Recipe</h1>
-        <form onSubmit={(e) => this.handleOnSubmit(e, this.state.name)}>
+        <form onSubmit={(e) => this.handleOnSubmit(e, this.state.ingredients)}>
           <input
             type="text"
-            name="name"
-            value={this.state.name}
+            name="ingredients"
+            value={this.state.ingredients}
             placeholder="Ingredient"
             onChange={event => this.handleOnChange(event)}
             />
           <input type="submit" value="Add Ingredients" />
         </form>
         { (this.state.recipeLoaded)
-          ? <RecipeContainer ingredients={this.state.recipeIngredients} />
+          ? <RecipeContainer />
           : <p>Recipe will go here</p>
          }
       </div>
