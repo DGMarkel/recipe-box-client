@@ -69,6 +69,7 @@ export default function prelimReducer(state={
           }
 
       case 'ADD_RECIPE':
+        console.log(action.payload)
         return {
           ...state,
             user: {

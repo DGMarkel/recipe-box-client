@@ -13,7 +13,11 @@ export function fetchIngredients(event, data) {
     }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)
+      console.log(res);
+      dispatch({
+        type: 'ADD_RECIPE',
+        payload: res.foods        
+      })
     }).catch(err => console.log(err));
   }
 }
