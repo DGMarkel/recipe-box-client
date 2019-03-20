@@ -10,6 +10,9 @@ export default class RecipeContainer extends Component {
         { this.props.recipe.ingredients.map(ingredient => {
           return <IngredientContainer key={ingredient.food_name} ingredient={ingredient} />
         })}
+        <form>
+          <input type="submit" value="Save Recipe" />
+        </form>
       </div>
     )
   }
