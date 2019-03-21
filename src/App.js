@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css'
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom'
 import Auth from './modules/Auth'
-import MonsterList from './components/MonsterList'
+import RecipeList from './components/RecipeList'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import DashBoard from './components/Dashboard'
@@ -39,12 +39,12 @@ class App extends Component {
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
           <Link to="/dash">Dashboard</Link>
-          <Link to="/monsters">Monsters</Link>
+          <Link to="/recipes">Recipes</Link>
           <Link to="/logout" onClick={this.props.handleLogout}>Logout</Link>
         </div>
         <Route
-          exact path="/monsters"
-          render={()=><MonsterList />}
+          exact path="/recipes"
+          render={()=><RecipeList />}
         />
         <Route
           exact path="/register"

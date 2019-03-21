@@ -55,6 +55,6 @@ export function saveRecipe(e, ingredients) {
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
-    })
+    }).catch(err => console.log(err))
   }
 }

@@ -10,7 +10,8 @@ export default function prelimReducer(state={
     recipes: [],
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
-  }
+  },
+  recipeAdded: false
 }, action) {
 
   switch(action.type) {
