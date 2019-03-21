@@ -49,7 +49,11 @@ class RecipeSearch extends Component {
           <input type="submit" value="Add Ingredients" />
         </form>
         { (newRecipe)
-          ? <RecipeContainer recipe={newRecipe} deleteIngredient={this.props.deleteIngredient} />
+          ? <RecipeContainer
+              recipe={newRecipe}
+              deleteIngredient={this.props.deleteIngredient}
+              saveRecipe={this.props.saveRecipe}
+            />
           : <p>Waiting...</p>
         }
 
@@ -61,7 +65,8 @@ class RecipeSearch extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch),
-    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch),
+    saveRecipe: bindActionCreators(actions.saveRecipe, dispatch)
   }
 }
 
