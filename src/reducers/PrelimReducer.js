@@ -52,22 +52,12 @@ export default function prelimReducer(state={
                 id: action.payload.user.id,
                 username: action.payload.user.username,
                 email: action.payload.user.email,
-                name: action.payload.user.name,
-                monsters: action.payload.monsters
+                name: action.payload.user.name,              
               }
           }
         }else {
           console.log("Still Loading")
         }
-
-      case 'ADD_USER_MONSTER':
-        return {
-          ...state,
-            user: {
-              ...state.user,
-              monsters: [...state.user.monsters.concat(action.payload)]
-            }
-          }
 
       case 'ADD_RECIPE':
         console.log(action.payload)
