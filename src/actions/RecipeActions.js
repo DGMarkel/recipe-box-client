@@ -43,15 +43,16 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
 
 export function saveRecipe(e, recipe) {
   e.preventDefault();
-  console.log(recipe)
   return (dispatch) => {
     fetch('/recipes', {
       method: 'POST',
       body: JSON.stringify({
-        recipe: recipe
+        recipe: {
+          title: recipe.title
+        }
       }),
       headers: {
-        'Content-Type': 'app/json',
+        'Content-Type': 'application/json',
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }

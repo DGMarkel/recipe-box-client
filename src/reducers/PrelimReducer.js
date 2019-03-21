@@ -6,12 +6,10 @@ export default function prelimReducer(state={
     username: '',
     email: '',
     name: '',
-    monsters: [],
     recipes: [],
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
-  },
-  recipeAdded: false
+  }
 }, action) {
 
   switch(action.type) {
@@ -44,6 +42,7 @@ export default function prelimReducer(state={
         }
 
       case 'LOAD_USER_DATA':
+        console.log(action.payload)
         if (state.user.isLoaded) {
           return {
             ...state,

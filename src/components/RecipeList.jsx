@@ -10,12 +10,12 @@ export default class MonsterList extends Component {
   }
 
   componentDidMount() {
-    fetch('/monsters')
+    fetch('/recipes')
       .then(res => res.json())
       .then(resJSON => {
         this.setState({
-          monsters: resJSON.monsters,
-          monstersLoaded: true
+          recipes: resJSON.recipes,
+          recipesLoaded: true
         })
       }).catch(err => console.log(err))
   }
