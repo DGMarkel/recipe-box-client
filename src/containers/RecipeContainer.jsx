@@ -3,12 +3,6 @@ import IngredientContainer from './IngredientContainer'
 
 export default class RecipeContainer extends Component {
 
-  deleteIngredient = (e, index) => {
-    e.preventDefault();
-      this.props.recipe.ingredients.splice(index, 1)
-      console.log(this.props.recipe.ingredients)
-  }
-
   render() {
     return (
       <div className="recipe-card">
