@@ -40,6 +40,10 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
   }
 }
 
-export function saveRecipe() {
-  
+export function saveRecipe(e, ingredients) {
+  e.preventDefault();
+  console.log(ingredients)
+  return (dispatch) => {
+    
+  }
 }

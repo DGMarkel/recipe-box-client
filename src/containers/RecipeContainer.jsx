@@ -17,7 +17,7 @@ export default class RecipeContainer extends Component {
             </div>
           )
         })}
-        <form>
+        <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe.ingredients)}}>
           <input type="submit" value="Save Recipe" />
         </form>
       </div>
