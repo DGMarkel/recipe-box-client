@@ -1,3 +1,4 @@
+import Auth from '../modules/Auth'
 
 export function fetchIngredients(event, title, id, data) {
   event.preventDefault()
@@ -44,6 +45,16 @@ export function saveRecipe(e, ingredients) {
   e.preventDefault();
   console.log(ingredients)
   return (dispatch) => {
-    
+    fetch('/recipes', {
+      method: 'POST',
+      body: JSON.stringify({
+        recipe: ingredients,
+      }),
+      headers: {
+        'Content-Type': 'app/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    })
   }
 }
