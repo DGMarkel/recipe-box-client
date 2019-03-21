@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-export default class MonsterList extends Component {
+export default class RecipeList extends Component {
   constructor() {
     super()
     this.state = {
-      monsters: null,
-      monstersLoaded: false
+      recipes: null,
+      recipesLoaded: false
     }
   }
 
@@ -21,11 +21,11 @@ export default class MonsterList extends Component {
   }
 
   render() {
-    console.log(this.state.monsters)
+    console.log(this.state.recipes)
     return (
       <div>
-        { (this.state.monstersLoaded)
-          ? this.state.monsters.map( monster => { return <h1>{monster.name}</h1> })
+        { (this.state.recipesLoaded)
+          ? this.state.recipes.map( recipe => { return <h1>{recipe.title}</h1> })
           : <p>Loading...</p>
         }
       </div>
