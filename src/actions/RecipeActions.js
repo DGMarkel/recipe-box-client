@@ -41,14 +41,14 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
   }
 }
 
-export function saveRecipe(e, ingredients) {
+export function saveRecipe(e, recipe) {
   e.preventDefault();
-  console.log(ingredients)
+  console.log(recipe)
   return (dispatch) => {
     fetch('/recipes', {
       method: 'POST',
       body: JSON.stringify({
-        recipe: ingredients,
+        recipe: recipe
       }),
       headers: {
         'Content-Type': 'app/json',

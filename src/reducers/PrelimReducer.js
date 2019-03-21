@@ -52,7 +52,7 @@ export default function prelimReducer(state={
                 id: action.payload.user.id,
                 username: action.payload.user.username,
                 email: action.payload.user.email,
-                name: action.payload.user.name,              
+                name: action.payload.user.name,
               }
           }
         }else {
@@ -83,8 +83,6 @@ export default function prelimReducer(state={
             recipes: [recipe]
             }
           }
-
-
 
     default:
       return state
