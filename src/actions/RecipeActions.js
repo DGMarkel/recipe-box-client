@@ -27,12 +27,15 @@ export function fetchIngredients(event, title, id, data) {
   }
 }
 
-export function deleteIngredient(recipeId, ingredientIndex) {
-  return dispatch => ({
-    type: 'DELETE_INGREDIENT',
-    payload: {
-      recipeId: recipeId,
-      ingredientIndex: ingredientIndex
-    }
-  })
+export function deleteIngredient(e, recipeId, ingredientIndex) {
+  e.preventDefault();
+  return (dispatch) => {
+    dispatch({
+      type: 'DELETE_INGREDIENT',
+      payload: {
+        recipeId: recipeId,
+        ingredientIndex: ingredientIndex
+      }
+    })
+  }
 }

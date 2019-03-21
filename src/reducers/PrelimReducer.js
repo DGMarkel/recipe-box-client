@@ -78,6 +78,22 @@ export default function prelimReducer(state={
             }
         }
 
+      case 'DELETE_INGREDIENT':
+        const recipeId = action.payload.recipeId
+        const ingredientIndex = action.payload.ingredientIndex
+        const recipe = state.user.recipes[recipeId]
+        recipe.ingredients.splice(ingredientIndex, 1)
+        state.user.recipes[recipeId] = recipe
+
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            recipes: [recipe]
+            }
+          }
+
+
 
     default:
       return state

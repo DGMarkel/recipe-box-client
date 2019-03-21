@@ -11,7 +11,7 @@ class RecipeSearch extends Component {
     super(props);
     this.state = {
       title: '',
-      id: props.recipes.length + 1 || null,
+      id: props.recipes.length,
       ingredients: ''
     }
   }
@@ -49,7 +49,7 @@ class RecipeSearch extends Component {
           <input type="submit" value="Add Ingredients" />
         </form>
         { (newRecipe)
-          ? <RecipeContainer recipe={newRecipe} />
+          ? <RecipeContainer recipe={newRecipe} deleteIngredient={this.props.deleteIngredient} />
           : <p>Waiting...</p>
         }
 

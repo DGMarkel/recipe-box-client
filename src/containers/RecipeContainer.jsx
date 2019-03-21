@@ -17,7 +17,7 @@ export default class RecipeContainer extends Component {
           return (
             <div>
               <IngredientContainer key={ingredient.food_name} ingredient={ingredient} />
-              <form onSubmit={e => this.deleteIngredient(e, index)}>
+              <form onSubmit={e => this.props.deleteIngredient(e, this.props.recipe.id, index)}>
                 <input type="submit" value="Delete Ingredient" />
               </form>
             </div>
