@@ -46,7 +46,7 @@ class RecipeSearch extends Component {
             placeholder="Ingredient"
             onChange={event => this.handleOnChange(event)}
             />
-          <input type="submit" value="Add Ingredients" />
+          <input type="submit" value="Submit Recipe" />
         </form>
         { (newRecipe)
           ? <RecipeContainer
