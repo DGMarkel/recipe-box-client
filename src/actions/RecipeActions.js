@@ -61,8 +61,11 @@ export function saveRecipe(e, recipe) {
     return ingredientList
   })
 
+
+
   e.preventDefault();
   return (dispatch) => {
+      console.log(ingredientList)
     fetch('/recipes', {
       method: 'POST',
       body: JSON.stringify({
