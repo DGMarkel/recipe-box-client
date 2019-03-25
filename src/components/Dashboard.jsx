@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RecipeSearch from './RecipeSearch'
+import RecipeForm from './RecipeForm'
 
 export default class DashBoard extends Component {
 
@@ -10,7 +10,7 @@ export default class DashBoard extends Component {
       <div>
         <p>Welcome, {this.props.user.name}</p>
         <p>You've added {this.props.user.recipes.length} recipe(s) since you joined.</p>
-        <RecipeSearch />
+        <RecipeForm />
       </div>
     )
   }
