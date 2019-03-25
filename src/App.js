@@ -35,6 +35,9 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+        <div id="mainLogo">
+          <h1>Recipe Box</h1>
+        </div>
         <div className="nav">
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>

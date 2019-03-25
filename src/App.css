@@ -4,9 +4,12 @@
   border: 1px solid #eee;
 }
 
+.App #mainLogo {
+  margin: 2px 0;
+}
+
 .nav {
   background-color: lightgray;
-
 }
 
 .nav a {
