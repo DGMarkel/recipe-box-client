@@ -69,7 +69,7 @@ class App extends Component {
         <Route
           exact path="/dash"
           render = {
-            () => <DashBoard />
+            () => <DashBoard user={this.props.user}/>
           }
         />
       </div>
@@ -89,7 +89,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    auth: state.user.auth
+    auth: state.user.auth,
+    user: state.user
   }
 }
 
