@@ -42,16 +42,17 @@ export default function prelimReducer(state={
         }
 
       case 'LOAD_USER_DATA':
-      console.log(action.payload.recipes)
+      console.log(action.payload)
         if (state.user.isLoaded) {
           return {
             ...state,
               user: {
                 ...state.user,
-                id: action.payload.user.id,
-                username: action.payload.user.username,
-                email: action.payload.user.email,
-                name: action.payload.user.name,
+                id: action.payload.id,
+                username: action.payload.username,
+                email: action.payload.email,
+                name: action.payload.name,
+                recipes: action.payload.recipes
               }
           }
         }else {
