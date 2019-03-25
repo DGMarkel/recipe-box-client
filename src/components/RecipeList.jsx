@@ -13,8 +13,9 @@ export default class RecipeList extends Component {
     fetch('/recipes')
       .then(res => res.json())
       .then(resJSON => {
+
         this.setState({
-          recipes: resJSON.recipes,
+          recipes: resJSON,
           recipesLoaded: true
         })
       }).catch(err => console.log(err))
