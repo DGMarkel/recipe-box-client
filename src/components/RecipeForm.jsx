@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './RecipeForm.css'
 import RecipeContainer from '../containers/RecipeContainer'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
@@ -29,25 +30,28 @@ class RecipeSearch extends Component {
     const newRecipe = this.props.recipes.find(recipe => recipe.id === this.state.id)
 
     return (
-      <div className="search-form">
-        <h1>Add a New Recipe</h1>
-        <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.state.id, this.state.ingredients)}>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            placeholder="Title"
-            onChange={event => this.handleOnChange(event)}
-            /><br />
-          <input
-            type="textarea"
-            name="ingredients"
-            value={this.state.ingredients}
-            placeholder="Ingredient"
-            onChange={event => this.handleOnChange(event)}
-            />
-          <input type="submit" value="Submit Recipe" />
-        </form>
+      <div>
+        <div className="search-form">
+          <h1>Create a New Recipe</h1>
+          <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.state.id, this.state.ingredients)}>
+            <input
+              type="text"
+              name="title"
+              value={this.state.title}
+              placeholder="Title"
+              onChange={event => this.handleOnChange(event)}
+              /><br />
+            <input
+              type="textarea"
+              name="ingredients"
+              value={this.state.ingredients}
+              placeholder="Ingredient"
+              onChange={event => this.handleOnChange(event)}
+              />
+            <input type="submit" value="Add Ingredients" />
+          </form>
+        </div>
+        <div className="recipe-container">
         { (newRecipe)
           ? <RecipeContainer
               recipe={newRecipe}
@@ -56,7 +60,7 @@ class RecipeSearch extends Component {
             />
           : <p>Waiting...</p>
         }
-
+        </div>
       </div>
     )
   }

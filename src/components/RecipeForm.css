@@ -1,0 +1,5 @@
+.search-form, .recipe-container {
+  width: 50%;
+  margin: 0;
+  float: left;
+}

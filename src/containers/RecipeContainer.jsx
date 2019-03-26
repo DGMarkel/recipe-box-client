@@ -19,7 +19,8 @@ export default class RecipeContainer extends Component {
   render() {
     return (
       <div className="recipe-card">
-        <h3>{this.props.recipe.title}</h3>
+        <h1>{this.props.recipe.title}</h1>
+        <p>{this.props.recipe.description}</p>
         {this.renderIngredients()}
         <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe)}}>
           <input type="submit" value="Save Recipe" />
