@@ -6,8 +6,8 @@ export default class RecipesContainer extends Component {
   renderIngredients = () => {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
-        <div>
-          <IngredientContainer key={index} ingredient={ingredient} />
+        <div key={index} className="ingredient-data">
+          <IngredientContainer ingredient={ingredient} />
           <form onSubmit={e => this.props.deleteIngredient(e, this.props.recipe.id, index)}>
             <input type="submit" value="Delete Ingredient" />
           </form>
