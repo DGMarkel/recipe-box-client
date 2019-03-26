@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom'
+import RecipeContainer from '../containers/RecipeContainer'
 
 export default class RecipeList extends Component {
   constructor() {
@@ -22,13 +24,24 @@ export default class RecipeList extends Component {
   }
 
   render() {
+    console.log(this.state.recipes)
     return (
-      <div>
-        { (this.state.recipesLoaded)
-          ? this.state.recipes.map( recipe => { return <h1>{recipe.title}</h1> })
-          : <p>Loading...</p>
-        }
-      </div>
+      <Router>
+        <div>
+          { (this.state.recipesLoaded)
+            ? this.state.recipes.map( recipe =>
+              <div>
+              <Link to={"/recipes/" + recipe.title}>{recipe.title}</Link>
+              <Route
+                exact path={"/recipes/" + recipe.title}
+                render={()=><RecipeContainer recipe={recipe} />}
+              />
+              </div>
+            )
+            : <p>Loading...</p>
+          }
+        </div>
+      </Router>
     )
   }
 }
