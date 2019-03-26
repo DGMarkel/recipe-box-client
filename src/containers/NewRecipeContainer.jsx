@@ -10,7 +10,7 @@ class RecipeContainer extends Component {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
         <div>
-          <IngredientContainer key={ingredient.food_name} ingredient={ingredient} />
+          <IngredientContainer key={index} ingredient={ingredient} />
           <form onSubmit={e => this.props.deleteIngredient(e, this.props.recipe.id, index)}>
             <input type="submit" value="Delete Ingredient" />
           </form>
