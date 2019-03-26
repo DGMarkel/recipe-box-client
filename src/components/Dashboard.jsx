@@ -4,7 +4,6 @@ import RecipeForm from './RecipeForm'
 export default class DashBoard extends Component {
 
   render() {
-    console.log(this.props.user)
     return (
 
       <div>
