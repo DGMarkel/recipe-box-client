@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import IngredientContainer from './IngredientContainer'
+import './RecipesContainer.css'
 
 export default class RecipesContainer extends Component {
 
