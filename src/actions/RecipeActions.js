@@ -45,7 +45,7 @@ export function saveRecipe(e, recipe) {
 
   const ingredientList = recipe.ingredients.map( ingredient => {
     let ingredientList = {}
-    ingredientList["name"] = ingredient.food_name;
+    ingredientList["food_name"] = ingredient.food_name;
     ingredientList["serving_qty"] = ingredient.serving_qty;
     ingredientList["serving_unit"] = ingredient.serving_unit;
     ingredientList["calories"] = ingredient.nf_calories;
