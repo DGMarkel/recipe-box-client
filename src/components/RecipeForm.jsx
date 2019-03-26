@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 
-class RecipeSearch extends Component {
+class RecipeForm extends Component {
 
   constructor(props) {
     super(props);
@@ -74,4 +74,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm)
