@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './RecipeForm.css'
-import RecipeContainer from '../containers/RecipeContainer'
+import NewRecipeContainer from '../containers/NewRecipeContainer'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
@@ -53,7 +53,7 @@ class RecipeForm extends Component {
         </div>
         <div className="recipe-container">
         { (newRecipe)
-          ? <RecipeContainer />
+          ? <NewRecipeContainer />
           : <p>Waiting...</p>
         }
         </div>

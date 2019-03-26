@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom'
-import RecipeContainer from '../containers/RecipeContainer'
 
 export default class RecipeList extends Component {
   constructor() {
@@ -34,7 +33,7 @@ export default class RecipeList extends Component {
               <Link to={"/recipes/" + recipe.title}>{recipe.title}</Link>
               <Route
                 exact path={"/recipes/" + recipe.title}
-                render={()=><RecipeContainer recipe={recipe} />}
+                
               />
               </div>
             )
