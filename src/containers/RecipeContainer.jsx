@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import IngredientContainer from './IngredientContainer'
+import * as actions from '../actions/RecipeActions'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
 
-export default class RecipeContainer extends Component {
+class RecipeContainer extends Component {
 
   renderIngredients = () => {
     return this.props.recipe.ingredients.map((ingredient, index) => {
@@ -29,3 +32,18 @@ export default class RecipeContainer extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch),
+    saveRecipe: bindActionCreators(actions.saveRecipe, dispatch)
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    recipe: state.user.recipes[state.user.recipes.length - 1]
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeContainer)

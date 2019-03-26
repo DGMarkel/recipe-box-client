@@ -53,11 +53,7 @@ class RecipeSearch extends Component {
         </div>
         <div className="recipe-container">
         { (newRecipe)
-          ? <RecipeContainer
-              recipe={newRecipe}
-              deleteIngredient={this.props.deleteIngredient}
-              saveRecipe={this.props.saveRecipe}
-            />
+          ? <RecipeContainer />
           : <p>Waiting...</p>
         }
         </div>
@@ -69,8 +65,6 @@ class RecipeSearch extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch),
-    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch),
-    saveRecipe: bindActionCreators(actions.saveRecipe, dispatch)
   }
 }
 
