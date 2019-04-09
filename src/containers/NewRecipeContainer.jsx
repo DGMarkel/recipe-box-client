@@ -23,7 +23,7 @@ class RecipeContainer extends Component {
     return (
       <div className="recipe-card">
         <h1>{this.props.recipe.title}</h1>
-        <h3>{this.props.recipe.description}</h3>
+        <em>{this.props.recipe.description}</em>
         {this.renderIngredients()}
         <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe)}}>
           <input type="submit" value="Save Recipe" />
