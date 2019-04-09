@@ -1,12 +1,12 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredients(event, title, id, data) {
+export function fetchIngredients(event, title, id, ingredients, description) {
   event.preventDefault()
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: data
+      query: ingredients
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -15,13 +15,13 @@ export function fetchIngredients(event, title, id, data) {
     }
     }).then(res => res.json())
     .then(res => {
-      console.log(res);
       dispatch({
         type: 'ADD_RECIPE',
         payload: {
           title: title,
           id: id,
-          ingredients: res.foods
+          ingredients: res.foods,
+          description: description
         }
       })
     }).catch(err => console.log(err));
@@ -41,7 +41,7 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
   }
 }
 
-export function saveRecipe(e, recipe) {
+export function saveRecipe(e, recipe, description) {
 
   const ingredientList = recipe.ingredients.map( ingredient => {
     let ingredientList = {}
@@ -61,16 +61,14 @@ export function saveRecipe(e, recipe) {
     return ingredientList
   })
 
-
-
   e.preventDefault();
   return (dispatch) => {
-      console.log(ingredientList)
     fetch('/recipes', {
       method: 'POST',
       body: JSON.stringify({
         recipe: {
           title: recipe.title,
+          description: description,
           ingredients: ingredientList
         }
       }),
