@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RecipeForm from './RecipeForm'
+import RecipeForm from '../containers/RecipeForm'
 
 export default class DashBoard extends Component {
 
