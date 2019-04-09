@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './RecipeForm.css'
+import './NewRecipe.css'
 import NewRecipeContainer from './NewRecipeContainer'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
