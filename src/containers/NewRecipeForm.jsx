@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './NewRecipe.css'
+import './NewRecipeForm.css'
 import NewRecipeContainer from './NewRecipeContainer'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 
-class NewRecipe extends Component {
+class NewRecipeForm extends Component {
 
   constructor(props) {
     super(props);
@@ -83,4 +83,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe)
+export default connect(mapStateToProps, mapDispatchToProps)(NewRecipeForm)
