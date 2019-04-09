@@ -62,7 +62,7 @@ class NewRecipeForm extends Component {
         </div>
         <div className="recipe-container">
         { (newRecipe)
-          ? <NewRecipeContainer />
+          ? <NewRecipeContainer description={this.state.description}/>
           : <p>Waiting...</p>
         }
         </div>
