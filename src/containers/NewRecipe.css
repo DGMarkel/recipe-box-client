@@ -3,3 +3,9 @@
   margin: 0;
   float: left;
 }
+
+textarea {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+
+}

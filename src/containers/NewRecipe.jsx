@@ -11,8 +11,9 @@ class NewRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
       id: props.recipes.length,
+      title: '',
+      description: '',
       ingredients: ''
     }
   }
@@ -34,20 +35,28 @@ class NewRecipe extends Component {
         <div className="search-form">
           <h1>Create a New Recipe</h1>
           <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.state.id, this.state.ingredients)}>
-            <input
-              type="text"
+            <textarea
+              cols="60"
               name="title"
               value={this.state.title}
               placeholder="Title"
               onChange={event => this.handleOnChange(event)}
               /><br />
-            <input
-              type="textarea"
+            <textarea
+              cols="60"
+              name="description"
+              value={this.state.description}
+              placeholder="Brief Description"
+              onChange={event => this.handleOnChange(event)}
+            /><br />
+            <textarea
+              rows="10"
+              cols="60"
               name="ingredients"
               value={this.state.ingredients}
               placeholder="Ingredient"
               onChange={event => this.handleOnChange(event)}
-              />
+              /><br />
             <input type="submit" value="Add Ingredients" />
           </form>
         </div>
