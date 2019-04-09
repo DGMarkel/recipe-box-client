@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import IngredientContainer from './IngredientContainer'
+import Ingredient from '../components/IngredientComponent'
 import './RecipesContainer.css'
 
 export default class RecipesContainer extends Component {
@@ -8,7 +8,7 @@ export default class RecipesContainer extends Component {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
         <div key={index} className="ingredient-data">
-          <IngredientContainer ingredient={ingredient} />
+          <Ingredient ingredient={ingredient} />
           <form onSubmit={e => this.props.deleteIngredient(e, this.props.recipe.id, index)}>
             <input type="submit" value="Delete Ingredient" />
           </form>

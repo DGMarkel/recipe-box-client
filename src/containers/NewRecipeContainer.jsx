@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import IngredientContainer from './IngredientContainer'
+import Ingredient from '../components/IngredientComponent'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
@@ -10,7 +10,7 @@ class RecipeContainer extends Component {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
         <div>
-          <IngredientContainer key={index} ingredient={ingredient} />
+          <Ingredient key={index} ingredient={ingredient} />
           <form onSubmit={e => this.props.deleteIngredient(e, this.props.recipe.id, index)}>
             <input type="submit" value="Delete Ingredient" />
           </form>
