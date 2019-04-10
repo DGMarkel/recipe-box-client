@@ -7,8 +7,13 @@ export default class IngredientContainer extends Component {
     const ingredient = this.props.ingredient
     return (
       <div>
-        <p>{ingredient.serving_qty} {ingredient.serving_unit} {ingredient.food_name}</p>
-        <p>Calories: {Math.floor(ingredient.calories)}</p>
+        <tr>
+          <td>{ingredient.food_name}, {ingredient.serving_qty} {ingredient.serving_unit}</td>
+          <td>{Math.floor(ingredient.calories)}</td>
+          <td>{ingredient.total_carbohydrates}</td>
+          <td>{ingredient.protein}</td>
+          <td>{ingredient.sugars}</td>
+        </tr>
       </div>
     )
   }
