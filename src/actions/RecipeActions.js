@@ -60,8 +60,8 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
   }
 }
 
-export function saveRecipe(e, recipe, description) {
-
+export function saveRecipe(e, recipe) {
+  console.log(recipe)
   e.preventDefault();
   return (dispatch) => {
     fetch('/recipes', {
@@ -69,7 +69,7 @@ export function saveRecipe(e, recipe, description) {
       body: JSON.stringify({
         recipe: {
           title: recipe.title,
-          description: description,
+          description: recipe.description,
           ingredients: recipe.ingredients
         }
       }),
