@@ -15,12 +15,31 @@ export function fetchIngredients(event, title, id, ingredients, description) {
     }
     }).then(res => res.json())
     .then(res => {
+
+      const ingredientList = res.foods.map( ingredient => {
+        let ingredientList = {}
+        ingredientList["food_name"] = ingredient.food_name;
+        ingredientList["serving_qty"] = ingredient.serving_qty;
+        ingredientList["serving_unit"] = ingredient.serving_unit;
+        ingredientList["calories"] = ingredient.nf_calories;
+        ingredientList["total_fat"] = ingredient.nf_total_fat;
+        ingredientList["saturated_fat"] = ingredient.nf_saturated_fat;
+        ingredientList["cholesterol"] = ingredient.nf_cholesterol;
+        ingredientList["sodium"] = ingredient.nf_sodium;
+        ingredientList["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
+        ingredientList["dietary_fiber"] = ingredient.nf_dietary_fiber;
+        ingredientList["sugars"] = ingredient.nf_sugars;
+        ingredientList["protein"] = ingredient.nf_protein;
+        ingredientList["potassium"] = ingredient.nf_potassium;
+        return ingredientList
+      })
+
       dispatch({
         type: 'ADD_RECIPE',
         payload: {
           title: title,
           id: id,
-          ingredients: res.foods,
+          ingredients: ingredientList,
           description: description
         }
       })
@@ -43,24 +62,6 @@ export function deleteIngredient(e, recipeId, ingredientIndex) {
 
 export function saveRecipe(e, recipe, description) {
 
-  const ingredientList = recipe.ingredients.map( ingredient => {
-    let ingredientList = {}
-    ingredientList["food_name"] = ingredient.food_name;
-    ingredientList["serving_qty"] = ingredient.serving_qty;
-    ingredientList["serving_unit"] = ingredient.serving_unit;
-    ingredientList["calories"] = ingredient.nf_calories;
-    ingredientList["total_fat"] = ingredient.nf_total_fat;
-    ingredientList["saturated_fat"] = ingredient.nf_saturated_fat;
-    ingredientList["cholesterol"] = ingredient.nf_cholesterol;
-    ingredientList["sodium"] = ingredient.nf_sodium;
-    ingredientList["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
-    ingredientList["dietary_fiber"] = ingredient.nf_dietary_fiber;
-    ingredientList["sugars"] = ingredient.nf_sugars;
-    ingredientList["protein"] = ingredient.nf_protein;
-    ingredientList["potassium"] = ingredient.nf_potassium;
-    return ingredientList
-  })
-
   e.preventDefault();
   return (dispatch) => {
     fetch('/recipes', {
@@ -69,7 +70,7 @@ export function saveRecipe(e, recipe, description) {
         recipe: {
           title: recipe.title,
           description: description,
-          ingredients: ingredientList
+          ingredients: recipe.ingredients
         }
       }),
       headers: {
