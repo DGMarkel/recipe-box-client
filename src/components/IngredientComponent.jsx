@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 export default class IngredientContainer extends Component {
 
   render() {
+    console.log(this.props.recipe)
     return (
       <table border="1">
         <tr>
