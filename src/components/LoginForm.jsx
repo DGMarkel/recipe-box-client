@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/UserActions'
 import Auth from '../modules/Auth'
 
-export default class LoginForm extends Component {
+
+class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -57,7 +61,14 @@ export default class LoginForm extends Component {
           <input type="submit" value="Login"/>
         </form>
       </div>
-
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)
