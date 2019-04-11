@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../actions/UserActions'
 
-export default class RegisterForm extends Component {
+class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -59,3 +62,11 @@ export default class RegisterForm extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SignUpForm)
