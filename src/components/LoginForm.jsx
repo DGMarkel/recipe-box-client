@@ -44,7 +44,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="form">
-        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state), this.props.history.push("/") }>
+        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state) }>
           <input
             type="text"
             name="username"
