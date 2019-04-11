@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import * as actions from '../actions/UserActions'
 import Auth from '../modules/Auth'
 
@@ -43,7 +44,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="form">
-        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state) }>
+        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state), this.props.history.push("/") }>
           <input
             type="text"
             name="username"
@@ -60,6 +61,7 @@ class LoginForm extends Component {
           />
           <input type="submit" value="Login"/>
         </form>
+        <Link to="/signup">Sign Up</Link>
       </div>
     )
   }
