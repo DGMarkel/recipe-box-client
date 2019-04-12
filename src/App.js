@@ -4,7 +4,7 @@ import Auth from './modules/Auth'
 import './App.css'
 import routes from './routes'
 
-class App extends Component {
+export default class App extends Component {
 
   renderNavLinks = () => {
     return (

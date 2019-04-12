@@ -18,7 +18,7 @@ export default (
       <Route path='/logout' component={ () => Auth.isUserAuthenticated() ? Auth.deauthenticateToken() : <Redirect to="/"/> }/>
       <Route path='/dash' component={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
-      <Route path='/my-recipes' component={ () => Auth.isUserAuthenticated() ? <UserRecipes /> : <Redirect to="/"}
+      <Route path='/my-recipes' component={ () => Auth.isUserAuthenticated() ? <UserRecipes /> : <Redirect to="/"/> }/>
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
     </Switch>
   </BrowserRouter>
