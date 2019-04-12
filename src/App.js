@@ -17,12 +17,22 @@ class App extends Component {
     )
   }
 
+  renderUserData = (user) => {
+    return (
+        <div>
+          <a href="#">Settings</a>
+          <a href="#">Help</a>
+        </div>
+    )
+  }
+
   render() {
-    console.log(this.props.state)
+    console.log(this.props.user)
     return (
       <div className="App">
         <div id="mainLogo">
           <h1>Recipe Box</h1>
+          { Auth.isUserAuthenticated() ? this.renderUserData(this.props.user) : <></>}
         </div>
         <div className="nav">
           { Auth.isUserAuthenticated() ? this.renderNavLinks() : <></>}
@@ -35,7 +45,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    state: state
+    user: state.user
   }
 }
 
