@@ -5,7 +5,7 @@ import RecipesContainer from '../containers/RecipesContainer'
 class UserRecipes extends Component {
 
   render() {
-    console.log(this.props.userRecipes)
+    console.log(this.props)
     return (
       <div>
       </div>
@@ -16,7 +16,7 @@ class UserRecipes extends Component {
 
 const mapStateToProps = state => {
   return {
-    userRecipes: state.user.recipes
+    userRecipes: state
   }
 }
 
