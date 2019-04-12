@@ -17,7 +17,7 @@ class App extends Component {
     )
   }
 
-  renderUserData = (user) => {
+  renderUserLinks = (user) => {
     return (
         <div>
           <a href="#">Settings</a>
