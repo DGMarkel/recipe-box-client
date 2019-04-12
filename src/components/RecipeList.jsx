@@ -26,8 +26,7 @@ export default class RecipeList extends Component {
   renderRecipeIngredients = (recipe, index) => {
     return (
       <div className="ingredientsList" key={index}>
-        <Link to={"/recipes/" + recipe.title}>{recipe.title}</Link><br />
-        <em>{recipe.description}</em>
+        <Link to={"/recipes/" + recipe.title}>{recipe.title}</Link> - <em>{recipe.description}</em><br />
         <Route
           exact path={"/recipes/" + recipe.title}
           render={()=><RecipesContainer recipe={recipe} />}
@@ -37,7 +36,6 @@ export default class RecipeList extends Component {
   }
 
   render() {
-    console.log(this.state.recipes)
     return (
       <Router>
         <div>

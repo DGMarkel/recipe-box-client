@@ -10,7 +10,8 @@ export default class App extends Component {
     return (
       <div>
          <a href="/dash">Dashboard</a>
-         <a href="/recipes">Recipes</a>
+         <a href="/recipes">My Recipes</a>
+         <a href="recipes/new">Add a Recipe</a>
          <a href="/logout" onClick={this.props.handleLogout}>Logout</a>
        </div>
     )
