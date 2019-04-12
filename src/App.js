@@ -23,7 +23,7 @@ export default class App extends Component {
           <h1>Recipe Box</h1>
         </div>
         <div className="nav">
-          { Auth.isUserAuthenticated() ? this.renderNavLinks() : <> </>}
+          { Auth.isUserAuthenticated() ? this.renderNavLinks() : <></>}
         </div>
       <>{ routes }</>
       </div>
