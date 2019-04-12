@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+
 import Auth from './modules/Auth'
 import './App.css'
 import routes from './routes'
 
-
-export default class App extends Component {
+class App extends Component {
 
   renderNavLinks = () => {
     return (
       <div>
          <a href="/dash">Dashboard</a>
-         <a href="/recipes">My Recipes</a>
+         <a href="/my-recipes/">My Recipes</a>
          <a href="recipes/new">Add a Recipe</a>
          <a href="/logout" onClick={this.props.handleLogout}>Logout</a>
        </div>
