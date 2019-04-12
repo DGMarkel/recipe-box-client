@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
+import Auth from './modules/Auth'
 import './App.css'
 import routes from './routes'
 
+
 export default class App extends Component {
-  render() {
+
+  renderNavLinks = () => {
     return (
-      <div className="App">
-       <div id="mainLogo">
-         <h1>Recipe Box</h1>
-       </div>
-       <div className="nav">
+      <div>
          <a href="/dash">Dashboard</a>
          <a href="/recipes">Recipes</a>
          <a href="/logout" onClick={this.props.handleLogout}>Logout</a>
        </div>
+    )
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div id="mainLogo">
+          <h1>Recipe Box</h1>
+        </div>
+        <div className="nav">
+          { Auth.isUserAuthenticated() ? this.renderNavLinks() : <> </>}
+        </div>
       <>{ routes }</>
       </div>
     )
