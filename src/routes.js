@@ -6,6 +6,7 @@ import Login from './components/LoginForm'
 import SignUp from './components/SignUpForm'
 import Dashboard from './components/Dashboard'
 import Recipes from './components/RecipeList'
+import UserRecipes from './components/UserRecipes'
 import NewRecipeForm from './containers/NewRecipeForm'
 
 export default (
@@ -17,6 +18,7 @@ export default (
       <Route path='/logout' component={ () => Auth.isUserAuthenticated() ? Auth.deauthenticateToken() : <Redirect to="/"/> }/>
       <Route path='/dash' component={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
+      <Route path='/my-recipes' component={ () => Auth.isUserAuthenticated() ? <UserRecipes /> : <Redirect to="/"}
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
     </Switch>
   </BrowserRouter>
