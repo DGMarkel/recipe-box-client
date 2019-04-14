@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import './NavBar.css'
 
 class NavBar extends Component {
 
   render() {
     return (
-      <div className="navigation">
+      <div className="nav">
         <div>
            <a href="/dash">Dashboard</a>
            <a href="/my-recipes">My Recipes</a>
