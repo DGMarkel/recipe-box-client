@@ -13,24 +13,6 @@ import * as actions from './actions/UserActions'
 
 class App extends Component {
 
-  handleLoginSubmit = (e, data) => {
-    e.preventDefault();
-    return fetch('/login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      })
-      .then(res => res.json())
-      .then(res => {
-        Auth.authenticateToken(res.token)
-        if (Auth.isUserAuthenticated()) {
-          this.props.fetchUserData();
-        }
-      }).catch(err => console.log(err))
-  }
-
   render() {
     return (
       <Router>
@@ -80,18 +62,10 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch),
     handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch),
     handleLogout: bindActionCreators(actions.logoutUser, dispatch)
 
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    auth: state.user.auth,
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
