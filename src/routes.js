@@ -4,7 +4,7 @@ import Auth from './modules/Auth'
 
 import Login from './components/LoginForm'
 import SignUp from './components/SignUpForm'
-import Dashboard from './components/Dashboard'
+import Dashboard from './containers/Dashboard'
 import Recipes from './components/RecipeList'
 import NewRecipeForm from './containers/NewRecipeForm'
 
