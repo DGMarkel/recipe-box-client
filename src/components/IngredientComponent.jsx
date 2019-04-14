@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class IngredientContainer extends Component {
+export default class IngredientsTable extends Component {
 
   render() {
     console.log(this.props.recipe)
