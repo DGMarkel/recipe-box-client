@@ -1,6 +1,6 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredients(event, title, id, ingredients, description) {
+export function fetchIngredients(event, title, image_url, id, ingredients, description) {
   event.preventDefault()
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
@@ -38,6 +38,7 @@ export function fetchIngredients(event, title, id, ingredients, description) {
         type: 'ADD_RECIPE',
         payload: {
           title: title,
+          image_url: image_url,
           id: id,
           ingredients: ingredientList,
           description: description
