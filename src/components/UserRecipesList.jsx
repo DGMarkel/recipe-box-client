@@ -4,10 +4,23 @@ import * as actions from '../actions/RecipeActions'
 
 class UserRecipesList extends Component {
 
-  render() {
-    console.log(this.props.recipes)
+  renderRecipeIngredients = (recipe, index) => {
     return (
-      <div></div>
+      <div className="ingredientsList" key={index}>
+        <p>{recipe.title}</p><br />
+        <em>{recipe.description}</em>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        { (this.props.recipes)
+            ? this.props.recipes.map((recipe, index) => this.renderRecipeIngredients(recipe, index))
+            : <h2>You haven't added any recipes yet</h2>
+        }
+      </div>
     )
   }
 }
