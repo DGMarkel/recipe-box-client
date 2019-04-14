@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import routes from './routes'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 import { withRouter, Link } from 'react-router-dom'
-import * as actions from './actions/UserActions'
-
-
 class App extends Component {
 
   render() {
@@ -24,13 +19,6 @@ class App extends Component {
         <>{ routes }</>
       </div>
     );
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleLogout: bindActionCreators(actions.logoutUser, dispatch)
-
   }
 }
 
