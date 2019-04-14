@@ -5,7 +5,7 @@ import Auth from './modules/Auth'
 import RecipeList from './components/RecipeList'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
-import DashBoard from './components/Dashboard'
+import DashBoard from './containers/Dashboard'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as actions from './actions/UserActions'

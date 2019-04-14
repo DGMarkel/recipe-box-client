@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Auth from '../modules/Auth'
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,10 +19,28 @@ export default class LoginForm extends Component {
     });
   }
 
+  handleLoginSubmit = (e, data) => {
+    e.preventDefault();
+    return fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      })
+      .then(res => res.json())
+      .then(res => {
+        Auth.authenticateToken(res.token)
+        if (Auth.isUserAuthenticated()) {
+          this.props.fetchUserData();
+        }
+      }).catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="form">
-        <form onSubmit={ (e) => this.props.handleLoginSubmit(e, this.state) }>
+        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state) }>
           <input
             type="text"
             name="username"
@@ -43,3 +62,11 @@ export default class LoginForm extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUserData: bindActionCreators(actions.fetchUserData , dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)
