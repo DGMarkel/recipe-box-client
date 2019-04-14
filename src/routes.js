@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Auth from './modules/Auth'
 
 import Login from './components/LoginForm'

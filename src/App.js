@@ -3,6 +3,7 @@ import './App.css'
 import routes from './routes'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import { withRouter, Link } from 'react-router-dom'
 import * as actions from './actions/UserActions'
 
 
@@ -10,7 +11,16 @@ class App extends Component {
 
   render() {
     return (
-      <>{ routes }</>
+      <div className="App">
+        <div id="mainLogo">
+          <h1>Recipe Box</h1>
+        </div>
+        <div className="nav">
+          <Link to="/recipes">Recipes</Link>
+          <Link to="/logout" onClick={this.props.handleLogout}>Logout</Link>
+        </div>
+        <>{ routes }</>
+      </div>
     );
   }
 }
@@ -23,4 +33,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default withRouter(connect(null, mapDispatchToProps)(App))
