@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './NavBar.css'
 
-class NavBar extends Component {
+export default class NavBar extends Component {
 
   render() {
     return (
       <div className="nav">
         <div>
-           <a href="/dash">Dashboard</a>
-           <a href="/my-recipes">My Recipes</a>
-           <a href="recipes/new">Add a Recipe</a>
-           <a href="/logout" onClick={this.props.handleLogout}>Logout</a>
+           <Link to="/dash">Dashboard</Link>
+           <Link to="/my-recipes">My Recipes</Link>
+           <Link to="recipes/new">Add a Recipe</Link>
+           <Link to="/logout" onClick={this.props.handleLogout}>Logout</Link>
          </div>
       </div>
     )
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(NavBar)

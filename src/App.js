@@ -7,23 +7,23 @@ import NavBar from './components/NavBar'
 
 class App extends Component {
 
-  renderUserLinks = (user) => {
+  renderUserData = (user) => {
     return (
-        <div>
-          <a href="#">Settings</a>
-          <a href="#">Help</a>
-        </div>
+      <>
+        <p>Hi, {user.username}</p>
+        <a href="#">Settings</a>
+        <a href="#">Help</a>
+      </>
     )
   }
 
   render() {
-    console.log(this.props.user)
     return (
       <div className="App">
         <div id="mainLogo">
           <h1>Recipe Box</h1>
+          { Auth.isUserAuthenticated() ? <NavBar /> : <></>}
         </div>
-        { Auth.isUserAuthenticated() ? <NavBar/> : <></>}
         <>{ routes }</>
       </div>
     )
