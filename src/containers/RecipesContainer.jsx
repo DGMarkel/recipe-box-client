@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import IngredientsTable from '../components/IngredientsTable'
+import { withRouter } from 'react-router-dom'
 
-export default class RecipesContainer extends Component {
+class RecipesContainer extends Component {
+
+  recipe = this.props.location.state.recipe
 
   render() {
     return (
       <div className="recipe-card">
-        <h1>{this.props.recipe.title}</h1>
-        <p>{this.props.recipe.description}</p>
-        <IngredientsTable recipe={this.props.recipe} />
+        <h1>{this.recipe.title}</h1>
+        <p>{this.recipe.description}</p>
+        <IngredientsTable recipe={this.recipe} />
       </div>
     )
   }
 }
+
+export default withRouter(RecipesContainer)

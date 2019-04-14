@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import RecipesContainer from '../containers/RecipesContainer'
 
-export default class RecipeList extends Component {
+class RecipeList extends Component {
   constructor() {
     super()
     this.state = {
@@ -26,20 +26,19 @@ export default class RecipeList extends Component {
   renderRecipeIngredients = (recipe, index) => {
     return (
       <div className="ingredientsList" key={index}>
-        <Link to={"/recipes/" + recipe.title}>{recipe.title}</Link><br />
+        <Link to={{
+          pathname: `recipes/${recipe.title}`,
+          state: {
+            recipe: recipe
+          }
+        }}>{recipe.title}</Link><br />
         <em>{recipe.description}</em>
-        <Route
-          exact path={"/recipes/" + recipe.title}
-          render={()=><RecipesContainer recipe={recipe} />}
-        />
       </div>
     )
   }
 
   render() {
-    console.log(this.state.recipes)
     return (
-      <Router>
         <div>
           { (this.state.recipesLoaded)
             ? this.state.recipes.map( (recipe, index) =>
@@ -48,7 +47,8 @@ export default class RecipeList extends Component {
             : <p>Loading...</p>
           }
         </div>
-      </Router>
     )
   }
 }
+
+export default withRouter(RecipeList)
