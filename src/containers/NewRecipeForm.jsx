@@ -63,7 +63,7 @@ class NewRecipeForm extends Component {
         <div className="recipe-container">
         { (newRecipe)
           ? <NewRecipeContainer />
-          : <p>Waiting...</p>
+          : <div id="preview"><h1>Preview</h1></div>
         }
         </div>
       </div>

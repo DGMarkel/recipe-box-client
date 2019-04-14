@@ -1,5 +1,5 @@
 .search-form, .recipe-container {
-  width: 50%;
+  width: 48%;
   margin: 0;
   float: left;
 }
@@ -7,5 +7,9 @@
 textarea {
   border: 1px solid lightgrey;
   border-radius: 5px;
+}
 
+#preview h1 {
+  text-align: center;
+  color: lightgrey;
 }
