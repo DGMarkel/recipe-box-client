@@ -28,10 +28,9 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleRegisterSubmit: bindActionCreators(actions.registerUser, dispatch),
     handleLogout: bindActionCreators(actions.logoutUser, dispatch)
 
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default withRouter(App)

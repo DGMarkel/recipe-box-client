@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Auth from './modules/Auth'
 
 import Login from './components/LoginForm'
@@ -9,7 +9,6 @@ import Recipes from './components/RecipeList'
 import NewRecipeForm from './containers/NewRecipeForm'
 
 export default (
-  <BrowserRouter>
     <Switch id='routes'>
       <Route exact path='/' render={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
       <Route path='/signup' component={ () => Auth.isUserAuthenticated() ? <Redirect to="/"/> : <SignUp/> }/>
@@ -19,5 +18,4 @@ export default (
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
     </Switch>
-  </BrowserRouter>
 )
