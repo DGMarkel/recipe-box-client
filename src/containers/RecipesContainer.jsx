@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import IngredientComponent from '../components/IngredientComponent'
+import IngredientsTable from '../components/IngredientsTable'
 
 export default class RecipesContainer extends Component {
 
@@ -8,7 +8,7 @@ export default class RecipesContainer extends Component {
       <div className="recipe-card">
         <h1>{this.props.recipe.title}</h1>
         <p>{this.props.recipe.description}</p>
-        <IngredientComponent recipe={this.props.recipe} />
+        <IngredientsTable recipe={this.props.recipe} />
       </div>
     )
   }
