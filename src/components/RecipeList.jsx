@@ -31,8 +31,10 @@ class RecipeList extends Component {
           state: {
             recipe: recipe
           }
-        }}>{recipe.title}</Link><br />
+        }}>
+        {recipe.title}</Link><br />
         <em>{recipe.description}</em>
+        <img src={recipe.image_url} />
       </div>
     )
   }

@@ -11,6 +11,7 @@ class RecipesContainer extends Component {
       <div className="recipe-card">
         <h1>{this.recipe.title}</h1>
         <p>{this.recipe.description}</p>
+        <img src={this.recipe.image_url} />
         <IngredientsTable recipe={this.recipe} />
       </div>
     )
