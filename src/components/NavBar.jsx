@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Auth from './modules/Auth'
-import './App.css'
-import routes from './routes'
 
-class App extends Component {
+class NavBar extends Component {
 
   render() {
     return (
-      <div className="navigation"
-        <div id="mainLogo">
-          <h1>Recipe Box</h1>
-        </div>
+      <div className="navigation">
         <div>
            <a href="/dash">Dashboard</a>
            <a href="/my-recipes">My Recipes</a>
@@ -29,4 +23,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(NavBar)
