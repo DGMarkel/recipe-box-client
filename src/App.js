@@ -32,7 +32,7 @@ class App extends Component {
       <div className="App">
         <div id="mainLogo">
           <h1>Recipe Box</h1>
-          { Auth.isUserAuthenticated() ? this.renderUserData(this.props.user) : <></>}
+          { Auth.isUserAuthenticated() ? this.renderUserLinks(this.props.user) : <></>}
         </div>
         <div className="nav">
           { Auth.isUserAuthenticated() ? this.renderNavLinks() : <></>}
