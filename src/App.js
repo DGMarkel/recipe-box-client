@@ -7,16 +7,6 @@ import NavBar from './components/NavBar'
 
 class App extends Component {
 
-  renderUserData = (user) => {
-    return (
-      <>
-        <p>Hi, {user.username}</p>
-        <a href="#">Settings</a>
-        <a href="#">Help</a>
-      </>
-    )
-  }
-
   render() {
     return (
       <div className="App">
