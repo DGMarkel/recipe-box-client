@@ -31,7 +31,8 @@ class EditRecipe extends Component {
           <h3>{ingredient.food_name}</h3>
           <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
           Quantity: <input type="text" value={ingredient.serving_qty} />
-          Serving Unit: <input type="text" value={ingredient.serving_unit} />
+          Serving Unit: <input type="text" value={ingredient.serving_unit} /><br />
+          <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
         </div>
       )
