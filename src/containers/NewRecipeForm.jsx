@@ -33,7 +33,7 @@ class NewRecipeForm extends Component {
 
     return (
       <div>
-        <div className="search-form">
+        <div className="recipe-form">
           <h1>Create a New Recipe</h1>
           <form onSubmit={(e) => this.props.fetchIngredients(e, this.state.title, this.state.image_url, this.state.id, this.state.ingredients, this.state.description)}>
             <textarea
