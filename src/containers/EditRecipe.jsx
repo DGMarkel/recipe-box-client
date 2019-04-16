@@ -15,9 +15,21 @@ class EditRecipe extends Component {
     }
   }
 
+  handleOnChange = event => {
+    const ingredients = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [ingredients]: value
+    });
+  }
+
   render() {
     return (
-      <></>
+      <>
+        <form>
+        
+        </form>
+      </>
     )
   }
 }
