@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import RecipesContainer from '../containers/RecipesContainer'
+import RecipeBrief from './RecipeBrief'
 
 class RecipeList extends Component {
   constructor() {
@@ -21,26 +21,6 @@ class RecipeList extends Component {
           recipesLoaded: true
         })
       }).catch(err => console.log(err))
-  }
-
-  formatRecipeURL = recipe => {
-    return recipe.toLowerCase().replace(/\s/g , "-")
-  }
-
-  renderRecipeIngredients = (recipe, index) => {
-    return (
-      <div className="ingredientsList" key={index}>
-        <Link to={{
-          pathname: `recipes/${this.formatRecipeURL(recipe.title)}`,
-          state: {
-            recipe: recipe
-          }
-        }}>
-        {recipe.title}</Link><br />
-        <em>{recipe.description}</em>
-        <img src={recipe.image_url} />
-      </div>
-    )
   }
 
   render() {
