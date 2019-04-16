@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Auth from '../modules/Auth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import {withRouter} from 'react-router-dom'
 import * as actions from '../actions/UserActions'
 
 class LoginForm extends Component {
@@ -36,6 +37,7 @@ class LoginForm extends Component {
         Auth.authenticateToken(res.token)
         if (Auth.isUserAuthenticated()) {
           this.props.fetchUserData();
+          this.props.history.push('/')
         }
       }).catch(err => console.log(err))
   }
@@ -72,4 +74,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm))
