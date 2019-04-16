@@ -20,8 +20,8 @@ export default (
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <UserRecipes/> : <Redirect to="/login"/> }/>
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
-      <Route path='/recipes/:recipeName' component={ () => <RecipeCard/> }/>
-      <Route path='/recipes/edit' component={ () => Auth.isUserAuthenticated() ? <EditRecipe/> : <Redirect to="/"/> }/>
+      <Route exact path='/recipes/:recipeName' component={ () => <RecipeCard/> }/>
+      <Route exact path='/recipes/:recipeName/edit' component={ () => <EditRecipe/> }/>
 
     </Switch>
 )
