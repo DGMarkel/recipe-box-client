@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import IngredientsTable from '../components/IngredientsTable'
 import { withRouter } from 'react-router-dom'
 
-class RecipesContainer extends Component {
+class RecipesCard extends Component {
 
   recipe = this.props.location.state.recipe
 
@@ -18,4 +18,4 @@ class RecipesContainer extends Component {
   }
 }
 
-export default withRouter(RecipesContainer)
+export default withRouter(RecipesCard)
