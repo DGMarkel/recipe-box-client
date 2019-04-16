@@ -10,4 +10,4 @@ class EditRecipe extends Component {
   }
 }
 
-export default withRouter(EditRecipe)
+export default EditRecipe
