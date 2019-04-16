@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import RecipesContainer from './RecipesContainer'
 import IngredientsTable from '../components/IngredientsTable'
+import RecipeBrief from '../components/RecipeBrief'
 import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
@@ -10,9 +10,7 @@ class RecipeContainer extends Component {
   render() {
     return (
       <div className="recipe-card">
-        <h1>{this.props.recipe.title}</h1>
-        <img src={this.props.recipe.image_url} />
-        <p>{this.props.recipe.description}</p>
+        <RecipeBrief recipe={this.props.recipe} index={0} />
         <IngredientsTable recipe={this.props.recipe} />
         <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe)}}>
           <input type="submit" value="Save Recipe" />

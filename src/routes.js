@@ -8,7 +8,7 @@ import Dashboard from './containers/Dashboard'
 import Recipes from './components/RecipeList'
 import UserRecipes from './components/UserRecipesList'
 import NewRecipeForm from './containers/NewRecipeForm'
-import Recipe from './containers/RecipesContainer'
+import RecipeCard from './components/RecipeCard'
 
 export default (
     <Switch id='routes'>
@@ -20,6 +20,6 @@ export default (
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <UserRecipes/> : <Redirect to="/login"/> }/>
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
-      <Route exact path='/recipes/:recipeName' component={ () => <Recipe/> }/>
+      <Route exact path='/recipes/:recipeName' component={ () => <RecipeCard/> }/>
     </Switch>
 )
