@@ -28,7 +28,7 @@ class RecipeList extends Component {
         <div>
           { (this.state.recipesLoaded)
             ? this.state.recipes.map( (recipe, index) =>
-              { return this.renderRecipeIngredients(recipe, index) }
+              <RecipeBrief recipe={recipe} index={index} />
             )
             : <p>Loading...</p>
           }
