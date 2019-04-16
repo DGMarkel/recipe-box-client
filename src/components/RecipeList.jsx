@@ -23,11 +23,15 @@ class RecipeList extends Component {
       }).catch(err => console.log(err))
   }
 
+  formatRecipeURL = recipe => {
+    return recipe.toLowerCase().replace(/\s/g , "-")
+  }
+
   renderRecipeIngredients = (recipe, index) => {
     return (
       <div className="ingredientsList" key={index}>
         <Link to={{
-          pathname: `recipes/${recipe.title}`,
+          pathname: `recipes/${this.formatRecipeURL(recipe.title)}`,
           state: {
             recipe: recipe
           }
