@@ -14,7 +14,7 @@ class App extends Component {
           <Link to="/dash">Home</Link>
           <Link to="/my-recipes">My Recipes</Link>
           <Link to="/recipes/new">Add a Recipe</Link>
-          <Link to="/logout" onClick={this.props.handleLogout}>Logout</Link>
+          <Link to="/logout">Logout</Link>
         </div>
         <>{ routes }</>
       </div>
