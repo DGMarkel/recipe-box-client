@@ -23,11 +23,47 @@ class EditRecipe extends Component {
     });
   }
 
+  renderIngredientsInForm = () => {
+    return this.state.ingredients.map(ingredient => {
+      console.log(ingredient)
+      return (
+        <div className="ingredient">
+          <h3>{ingredient.food_name}</h3>
+          <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
+          Quantity: <input type="text" value={ingredient.serving_qty} />
+          Serving Unit: <input type="text" value={ingredient.serving_unit} />
+          <hr />
+        </div>
+      )
+    })
+  }
+
   render() {
     return (
       <>
         <form>
-        
+          <textarea
+            cols="60"
+            name="title"
+            value={this.state.title}
+            placeholder="Title"
+            onChange={event => this.handleOnChange(event)}
+            /><br />
+            <textarea
+              cols="60"
+              name="image_url"
+              value={this.state.image_url}
+              placeholder="Image"
+              onChange={event => this.handleOnChange(event)}
+              /><br />
+          <textarea
+            cols="60"
+            name="description"
+            value={this.state.description}
+            placeholder="Brief Description"
+            onChange={event => this.handleOnChange(event)}
+          /><br />
+          { this.renderIngredientsInForm() }
         </form>
       </>
     )
