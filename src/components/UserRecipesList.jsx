@@ -17,7 +17,12 @@ class UserRecipesList extends Component {
             ? this.props.recipes.map((recipe, index) =>
               <>
                 <RecipeBrief recipe={recipe} index={index} />
-                <Link to={`/recipes/${this.formatRecipeURL(recipe.title)}/edit`}>Edit</Link>
+                <Link to={{
+                  pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
+                  state: {
+                    recipe: recipe 
+                  }
+                }}>Edit</Link>
               </>
             )
             : <h2>You haven't added any recipes yet</h2>
