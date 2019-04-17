@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/RecipeActions'
 import Auth from '../modules/Auth'
 
 import RecipeCard from '../components/RecipeCard'
@@ -83,7 +85,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={this.props.fetchIngredient(ingredient, index)} />
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={event => this.props.fetchIngredient(event, ingredient, index)} />
           <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
         </div>
@@ -124,4 +126,10 @@ class EditRecipe extends Component {
   }
 }
 
-export default withRouter(EditRecipe)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchIngredient: bindActionCreators(actions.fetchIngredient, dispatch)
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(EditRecipe))
