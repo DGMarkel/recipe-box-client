@@ -17,22 +17,33 @@ export function updateRecipe(event, recipe) {
     }
   }).then(res => res.json())
   .then(res => {
-    const updatedIngredient = res.foods.map( ingredient => {
-      let updatedIngredient = {}
-      updatedIngredient["food_name"] = ingredient.food_name;
-      updatedIngredient["serving_qty"] = ingredient.serving_qty;
-      updatedIngredient["serving_unit"] = ingredient.serving_unit;
-      updatedIngredient["calories"] = ingredient.nf_calories;
-      updatedIngredient["total_fat"] = ingredient.nf_total_fat;
-      updatedIngredient["saturated_fat"] = ingredient.nf_saturated_fat;
-      updatedIngredient["cholesterol"] = ingredient.nf_cholesterol;
-      updatedIngredient["sodium"] = ingredient.nf_sodium;
-      updatedIngredient["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
-      updatedIngredient["dietary_fiber"] = ingredient.nf_dietary_fiber;
-      updatedIngredient["sugars"] = ingredient.nf_sugars;
-      updatedIngredient["protein"] = ingredient.nf_protein;
-      updatedIngredient["potassium"] = ingredient.nf_potassium;
-      return updatedIngredient
+    const updatedIngredientList = res.foods.map( ingredient => {
+      let updatedIngredientList = {}
+      updatedIngredientList["food_name"] = ingredient.food_name;
+      updatedIngredientList["serving_qty"] = ingredient.serving_qty;
+      updatedIngredientList["serving_unit"] = ingredient.serving_unit;
+      updatedIngredientList["calories"] = ingredient.nf_calories;
+      updatedIngredientList["total_fat"] = ingredient.nf_total_fat;
+      updatedIngredientList["saturated_fat"] = ingredient.nf_saturated_fat;
+      updatedIngredientList["cholesterol"] = ingredient.nf_cholesterol;
+      updatedIngredientList["sodium"] = ingredient.nf_sodium;
+      updatedIngredientList["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
+      updatedIngredientList["dietary_fiber"] = ingredient.nf_dietary_fiber;
+      updatedIngredientList["sugars"] = ingredient.nf_sugars;
+      updatedIngredientList["protein"] = ingredient.nf_protein;
+      updatedIngredientList["potassium"] = ingredient.nf_potassium;
+      return updatedIngredientList
+
+      dispatch({
+        type: 'UPDATE_RECIPE',
+        payload: {
+          title: recipe.title,
+          image_url: recipe.image_url,
+          id: recipe.id,
+          ingredients: updatedIngredientList,
+          description: recipe.description
+        }
+      })
     })
   }).catch(err => console.log(err));
   }
