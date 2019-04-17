@@ -1,13 +1,14 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredient(event, ingredient, ingredientIndex, recipeId) {
+export function updateRecipe(event, recipe) {
   event.preventDefault();
-  const ingredient_data = `${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name}`
+  let ingredients = ''
+  recipe.ingredients.map(ingredient => ingredient_data += (`${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name} `))
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: ingredient_data
+      query: ingredients
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -16,7 +17,6 @@ export function fetchIngredient(event, ingredient, ingredientIndex, recipeId) {
     }
   }).then(res => res.json())
   .then(res => {
-    console.log(res)
     const updatedIngredient = res.foods.map( ingredient => {
       let updatedIngredient = {}
       updatedIngredient["food_name"] = ingredient.food_name;
@@ -33,14 +33,6 @@ export function fetchIngredient(event, ingredient, ingredientIndex, recipeId) {
       updatedIngredient["protein"] = ingredient.nf_protein;
       updatedIngredient["potassium"] = ingredient.nf_potassium;
       return updatedIngredient
-    })
-    dispatch({
-      type: 'UPDATE_RECIPE_INGREDIENT',
-      payload: {
-        recipeId: recipeId,
-        ingredientIndex: ingredientIndex,
-        ingredient: updatedIngredient
-      }
     })
   }).catch(err => console.log(err));
   }
