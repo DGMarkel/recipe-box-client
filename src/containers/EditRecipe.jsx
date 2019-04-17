@@ -9,6 +9,7 @@ class EditRecipe extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: props.location.state.recipe.id,
       title: props.location.state.recipe.title,
       image_url: props.location.state.recipe.image_url,
       description: props.location.state.recipe.description,
@@ -82,7 +83,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`}
+          <input type="submit" value={`Update ${ingredient.food_name}` onClick={this.props.fetchIngredient(ingredient, index)}} />
           <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
         </div>
