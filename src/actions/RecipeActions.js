@@ -1,12 +1,12 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredient(ingredient_data, id) {
+export function fetchIngredient(event, ingredient, id) {
   event.preventDefault();
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: ingredient_data
+      query: ingredient
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -37,9 +37,8 @@ export function fetchIngredient(ingredient_data, id) {
     dispatch({
       type: 'ADD_INGREDIENT_TO_RECIPE',
       payload: {
-        id:
+        id: id,
         ingredients: ingredientList,
-        description: description
       }
     })
   }).catch(err => console.log(err));
