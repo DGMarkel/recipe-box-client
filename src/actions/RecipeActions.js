@@ -1,12 +1,13 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredient(event, ingredient, id) {
+export function fetchIngredient(event, ingredient, ingredientIndex, recipeId) {
   event.preventDefault();
+  const ingredient_data = `${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name}`
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: ingredient
+      query: ingredient_data
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -15,30 +16,30 @@ export function fetchIngredient(event, ingredient, id) {
     }
   }).then(res => res.json())
   .then(res => {
-
-    const ingredientList = res.foods.map( ingredient => {
-      let ingredientList = {}
-      ingredientList["food_name"] = ingredient.food_name;
-      ingredientList["serving_qty"] = ingredient.serving_qty;
-      ingredientList["serving_unit"] = ingredient.serving_unit;
-      ingredientList["calories"] = ingredient.nf_calories;
-      ingredientList["total_fat"] = ingredient.nf_total_fat;
-      ingredientList["saturated_fat"] = ingredient.nf_saturated_fat;
-      ingredientList["cholesterol"] = ingredient.nf_cholesterol;
-      ingredientList["sodium"] = ingredient.nf_sodium;
-      ingredientList["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
-      ingredientList["dietary_fiber"] = ingredient.nf_dietary_fiber;
-      ingredientList["sugars"] = ingredient.nf_sugars;
-      ingredientList["protein"] = ingredient.nf_protein;
-      ingredientList["potassium"] = ingredient.nf_potassium;
-      return ingredientList
+    console.log(res)
+    const updatedIngredient = res.foods.map( ingredient => {
+      let updatedIngredient = {}
+      updatedIngredient["food_name"] = ingredient.food_name;
+      updatedIngredient["serving_qty"] = ingredient.serving_qty;
+      updatedIngredient["serving_unit"] = ingredient.serving_unit;
+      updatedIngredient["calories"] = ingredient.nf_calories;
+      updatedIngredient["total_fat"] = ingredient.nf_total_fat;
+      updatedIngredient["saturated_fat"] = ingredient.nf_saturated_fat;
+      updatedIngredient["cholesterol"] = ingredient.nf_cholesterol;
+      updatedIngredient["sodium"] = ingredient.nf_sodium;
+      updatedIngredient["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
+      updatedIngredient["dietary_fiber"] = ingredient.nf_dietary_fiber;
+      updatedIngredient["sugars"] = ingredient.nf_sugars;
+      updatedIngredient["protein"] = ingredient.nf_protein;
+      updatedIngredient["potassium"] = ingredient.nf_potassium;
+      return updatedIngredient
     })
-
     dispatch({
-      type: 'ADD_INGREDIENT_TO_RECIPE',
+      type: 'UPDATE_RECIPE_INGREDIENT',
       payload: {
-        id: id,
-        ingredients: ingredientList,
+        recipeId: recipeId,
+        ingredientIndex: ingredientIndex,
+        ingredient: updatedIngredient
       }
     })
   }).catch(err => console.log(err));

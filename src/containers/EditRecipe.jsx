@@ -85,7 +85,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={event => this.props.fetchIngredient(event, ingredient, index)} />
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={event => this.props.fetchIngredient(event, ingredient, index, this.state.id)} />
           <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
         </div>
