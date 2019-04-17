@@ -16,12 +16,17 @@ class EditRecipe extends Component {
     }
   }
 
-  editRecipe = (e, data) => {
+  editRecipe = (e, recipe) => {
     e.preventDefault();
     fetch('/edit', {
       method: 'PATCH',
       body: JSON.stringify({
-        recipe: data
+        recipe: {
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+          ingredients: recipe.ingredients
+        }
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -77,6 +82,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
+          <input type="submit" value={`Update ${ingredient.food_name}`}
           <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
         </div>
