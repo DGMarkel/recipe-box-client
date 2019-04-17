@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Auth from '../modules/Auth'
 
@@ -16,7 +17,7 @@ class EditRecipe extends Component {
     }
   }
 
-  editRecipe = e, data => {
+  editRecipe = (e, data) => {
     e.preventDefault();
     fetch('/edit', {
       method: 'PATCH',
@@ -24,7 +25,7 @@ class EditRecipe extends Component {
         recipe: data
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
@@ -35,7 +36,7 @@ class EditRecipe extends Component {
       console.log(err);
     })
   }
-  }
+  
 
   handleOnChange = event => {
     const ingredients = event.target.name;
