@@ -33,7 +33,6 @@ class UserRecipesList extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
   return {
     recipes: state.user.recipes
   }
