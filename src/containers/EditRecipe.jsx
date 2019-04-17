@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import Auth from '../modules/Auth'
 
 import RecipeCard from '../components/RecipeCard'
 
@@ -15,8 +16,25 @@ class EditRecipe extends Component {
     }
   }
 
-  fetchRecipe = () => {
-
+  editRecipe = e, data => {
+    e.preventDefault();
+    fetch('/edit', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        recipe: data
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then(res => res.json())
+    .then(res => {
+      console.log('success')
+    }).catch(err => {
+      console.log(err);
+    })
+  }
   }
 
   handleOnChange = event => {
@@ -34,7 +52,7 @@ class EditRecipe extends Component {
         <div className="ingredient">
           <h3>{ingredient.food_name}</h3>
           <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
-          Quantity: <input type="text" value={ingredient.serving_qty} />
+          Quantity: <input type="text" value={ingredient.serving_qty} onChange={e=>this.handleOnChange(e)} />
           Serving Unit: <input type="text" value={ingredient.serving_unit} /><br />
           <input type="submit" value={`Delete ${ingredient.food_name}`}/>
           <hr />
@@ -46,7 +64,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form>
+        <form onSubmit={e => {this.editRecipe(e, this.state)}}>
           <textarea
             cols="60"
             name="title"
