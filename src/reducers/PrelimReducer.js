@@ -82,7 +82,7 @@ export default function prelimReducer(state={
       case 'DELETE_INGREDIENT':
         const recipeId = action.payload.recipeId
         const ingredientIndex = action.payload.ingredientIndex
-        const recipe = state.user.recipes[recipeId]
+        const recipe = state.user.recipes.find(recipe => recipe.id === recipeId)
         recipe.ingredients.splice(ingredientIndex, 1)
         state.user.recipes[recipeId] = recipe
 
@@ -90,7 +90,7 @@ export default function prelimReducer(state={
           ...state,
           user: {
             ...state.user,
-            recipes: [recipe]
+            recipes: state.user.recipes
             }
           }
 
