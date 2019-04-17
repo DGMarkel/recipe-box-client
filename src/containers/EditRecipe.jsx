@@ -8,11 +8,15 @@ class EditRecipe extends Component {
     super(props)
     this.state = {
       id: props.location.state.recipe.id,
-      title: props.location.state.recipe.title,
-      image_url: props.location.state.recipe.image_url,
-      description: props.location.state.recipe.description,
-      ingredients: props.location.state.recipe.ingredients
+      title: '',
+      image_url: '',
+      description: '',
+      ingredients: ''
     }
+  }
+
+  fetchRecipe = () => {
+
   }
 
   handleOnChange = event => {
