@@ -3,7 +3,7 @@ import Auth from '../modules/Auth'
 export function updateRecipe(event, recipe) {
   event.preventDefault();
   let ingredients = ''
-  recipe.ingredients.map(ingredient => ingredient_data += (`${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name} `))
+  recipe.ingredients.map(ingredient => ingredients += (`${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name} `))
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
@@ -33,6 +33,7 @@ export function updateRecipe(event, recipe) {
       updatedIngredientList["protein"] = ingredient.nf_protein;
       updatedIngredientList["potassium"] = ingredient.nf_potassium;
       return updatedIngredientList
+    })
 
       dispatch({
         type: 'UPDATE_RECIPE',
@@ -44,8 +45,7 @@ export function updateRecipe(event, recipe) {
           description: recipe.description
         }
       })
-    })
-  }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
   }
 }
 

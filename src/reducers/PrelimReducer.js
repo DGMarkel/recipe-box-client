@@ -68,7 +68,8 @@ export default function prelimReducer(state={
             }
         }
 
-      case 'UPDATE_INGREDIENT':
+      case 'UPDATE_RECIPE':
+      debugger
         const recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.recipeId)
 
         return {
