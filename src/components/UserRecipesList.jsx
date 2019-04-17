@@ -20,7 +20,7 @@ class UserRecipesList extends Component {
                 <Link to={{
                   pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
                   state: {
-                    recipe: recipe 
+                    recipe: recipe
                   }
                 }}>Edit</Link>
               </>
@@ -33,6 +33,7 @@ class UserRecipesList extends Component {
 }
 
 const mapStateToProps = state => {
+  debugger
   return {
     recipes: state.user.recipes
   }
