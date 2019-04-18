@@ -127,7 +127,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.updateRecipeIngredients(e)}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.updateRecipeIngredients(e); this.props.history.push('/my-recipes')}}>
           <textarea
             cols="60"
             name="title"
@@ -150,7 +150,7 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChange(event)}
           /><br />
           { this.renderIngredientsInForm() }
-          <input type="submit" value="Update Recipe" />
+          <input type="submit" value="Update Recipe"/>
         </form>
       </>
     )
