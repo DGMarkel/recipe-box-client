@@ -50,7 +50,10 @@ class EditRecipe extends Component {
     fetch('/edit-ingredients', {
       method: 'PATCH',
       body: JSON.stringify({
-        ingredients: this.state.ingredients
+        recipe_data: {
+          id: this.state.id,
+          ingredients: this.state.ingredients
+        }
       }),
       headers: {
         'Content-Type': 'application/json',
