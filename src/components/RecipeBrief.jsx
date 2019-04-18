@@ -9,7 +9,7 @@ class RecipeBrief extends Component {
 
   render() {
     return (
-      <div className="ingredientsList" key={this.props.index}>
+      <div className="recipe_card" key={this.props.index}>
         <Link to={{
           pathname: `recipes/${this.formatRecipeURL(this.props.recipe.title)}`,
           state: {
