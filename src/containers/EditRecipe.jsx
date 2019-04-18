@@ -45,6 +45,26 @@ class EditRecipe extends Component {
     })
   }
 
+  updateRecipeIngredients = (e) => {
+    e.preventDefault();
+    fetch('/edit-ingredients', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        ingredients: this.state.ingredients
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then(res => res.json())
+    .then(res => {
+      console.log('success')
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
 
   handleOnChange = event => {
     const ingredients = event.target.name;
@@ -104,7 +124,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.editRecipeDetails(e, this.state)}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.editRecipeDetails(e, this.state); this.updateRecipeIngredients(e)}}>
           <textarea
             cols="60"
             name="title"
