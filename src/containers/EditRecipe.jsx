@@ -25,6 +25,7 @@ class EditRecipe extends Component {
       method: 'PATCH',
       body: JSON.stringify({
         recipe: {
+          id: recipe.id,
           title: recipe.title,
           description: recipe.description,
           image_url: recipe.image_url,
@@ -103,7 +104,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state)}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.editRecipe(e, this.state)}}>
           <textarea
             cols="60"
             name="title"
