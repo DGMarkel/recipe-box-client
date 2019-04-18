@@ -75,7 +75,7 @@ export default function prelimReducer(state={
           ...state,
             user: {
               ...state.user,
-                recipes: [state.user.recipes][0]
+                recipes: state.user.recipes
             }
         }
 
