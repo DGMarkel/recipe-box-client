@@ -19,7 +19,7 @@ class EditRecipe extends Component {
     }
   }
 
-  editRecipeDetails = (e, recipe) => {
+  updateRecipeDetails = (e, recipe) => {
     e.preventDefault();
     fetch('/edit', {
       method: 'PATCH',
@@ -127,7 +127,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.editRecipeDetails(e, this.state); this.updateRecipeIngredients(e)}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.updateRecipeIngredients(e)}}>
           <textarea
             cols="60"
             name="title"
