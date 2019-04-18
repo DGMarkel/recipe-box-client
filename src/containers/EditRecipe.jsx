@@ -53,6 +53,14 @@ class EditRecipe extends Component {
     });
   }
 
+  handleLocalStateDelete = (e, index) => {
+    e.preventDefault();
+    this.state.ingredients.splice(index, 1)
+    this.setState({
+      ingredients: this.state.ingredients
+    })
+  }
+
   handleIngredientUpdate = (e, index) => {
     const data_type = e.target.name;
     const portion_data = e.target.value;
@@ -85,7 +93,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.props.deleteIngredient(e, this.state.id, index)}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.handleLocalStateDelete(e, index); this.props.deleteIngredient(e, this.state.id, index)}}/>
           <hr />
         </div>
       )
