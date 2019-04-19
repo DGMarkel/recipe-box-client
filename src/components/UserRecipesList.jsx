@@ -29,7 +29,7 @@ class UserRecipesList extends Component {
   render() {
     return (
       <div>
-        { (this.props.recipes)
+        { (this.props.recipes.length !== 0)
             ? this.renderBriefRecipeCards()
             : <h2>You haven't added any recipes yet</h2>
         }
