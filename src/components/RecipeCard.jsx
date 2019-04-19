@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 import IngredientsTable from '../components/IngredientsTable'
 import { withRouter } from 'react-router-dom'
 
-class RecipesCard extends Component {
+class RecipeCard extends Component {
 
   recipe = this.props.location.state.recipe
 
+  recipe_totals = this.recipe.recipe_totals
+
   render() {
+    console.log(this.recipe_totals)
     return (
       <div className="recipe-card">
         <h1>{this.recipe.title}</h1>
-        <p>{this.recipe.description}</p>
+        <em>{this.recipe.description}</em>
+        <p>Calories: {this.recipe_totals.calories} Protein: {this.recipe_totals.protein} Carbohydrates: {this.recipe_totals.total_carbohydrate} Total Fat: {this.recipe_totals.total_fat} Saturated Fat: {this.recipe_totals.saturated_fat}</p>
         <img src={this.recipe.image_url} />
         <IngredientsTable recipe={this.recipe} />
       </div>
@@ -18,4 +22,4 @@ class RecipesCard extends Component {
   }
 }
 
-export default withRouter(RecipesCard)
+export default withRouter(RecipeCard)
