@@ -42,7 +42,7 @@ class EditRecipe extends Component {
     })
   }
 
-  deleteIngredient = (e, ingredient) => {
+  deleteIngredient = (e, ingredient, index) => {
     e.preventDefault();
     fetch('/delete', {
       method: 'DELETE',
@@ -57,10 +57,11 @@ class EditRecipe extends Component {
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
-    }).then(res => res.json())
-    .then(res => {
-      console.log('success')
-    }).catch(err => {
+    }).then(
+      this.setState({
+        ingredients: this.state.ingredients.splice(index, 1)
+      })
+    ).catch(err => {
       console.log(err);
     })
   }
@@ -72,14 +73,6 @@ class EditRecipe extends Component {
     this.setState({
       [ingredients]: value
     });
-  }
-
-  handleLocalStateDelete = (e, index) => {
-    e.preventDefault();
-    this.state.ingredients.splice(index, 1)
-    this.setState({
-      ingredients: this.state.ingredients
-    })
   }
 
   handleIngredientUpdate = (e, index) => {
@@ -114,7 +107,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.handleLocalStateDelete(e, index); this.deleteIngredient(e, ingredient)}}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.deleteIngredient(e, ingredient, index)}}/>
           <hr />
         </div>
       )
