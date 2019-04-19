@@ -9,7 +9,7 @@ class RecipeBrief extends Component {
     return recipe.toLowerCase().replace(/\s/g , "-")
   }
 
-  render() {
+  renderRecipeCard = () => {
     return (
       <div className="recipe-card" key={this.props.index}>
         <div className="recipe-header">
@@ -17,18 +17,19 @@ class RecipeBrief extends Component {
           <h3 className="calorie-count">{this.props.recipe.recipe_totals.calories} Calories</h3>
         </div>
         <img src={this.props.recipe.image_url} />
-        <div class="container">
-          <Link to={{
-            pathname: `recipes/${this.formatRecipeURL(this.props.recipe.title)}`,
-            state: {
-              recipe: this.props.recipe
-            }
-            }}>
-
-          </Link><br />
-          <p>{this.props.recipe.description}</p>
-        </div>
+        <p>{this.props.recipe.description}</p>
       </div>
+    )
+  }
+
+  render() {
+    return (
+      <Link to={{
+        pathname: `recipes/${this.formatRecipeURL(this.props.recipe.title)}`,
+        state: {recipe: this.props.recipe}
+      }}>
+        {this.renderRecipeCard()}
+      </Link>
     )
   }
 }
