@@ -11,7 +11,10 @@ class RecipeBrief extends Component {
 
   render() {
     return (
-      <div className="recipe_card" key={this.props.index}>
+      <div className="recipe-card" key={this.props.index}>
+        <div className="username">
+          <p>Added by {this.props.recipe.creator_name}</p>
+        </div>
         <img src={this.props.recipe.image_url} />
         <div class="container">
           <Link to={{
