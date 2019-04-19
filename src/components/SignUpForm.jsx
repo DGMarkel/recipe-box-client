@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/UserActions'
 
-export default class RegisterForm extends Component {
+class SignupForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,7 +27,7 @@ export default class RegisterForm extends Component {
   render() {
     return (
       <div className="form">
-        <form onSubmit={ (e) => { this.props.handleRegisterSubmit(e, this.state) } }>
+        <form onSubmit={ (e) => { this.props.registerUser(e, this.state, this.props.history) } }>
           <input
             type="text"
             name="name"
@@ -59,3 +63,13 @@ export default class RegisterForm extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    registerUser: bindActionCreators(actions.registerUser, dispatch)
+  }
+}
+
+
+
+export default withRouter(connect(null, mapDispatchToProps)(SignupForm))
