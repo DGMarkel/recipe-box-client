@@ -27,7 +27,6 @@ class EditRecipe extends Component {
           title: recipe.title,
           description: recipe.description,
           image_url: recipe.image_url,
-          ingredients: recipe.ingredients
         }
       }),
       headers: {
