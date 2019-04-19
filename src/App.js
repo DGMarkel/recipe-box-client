@@ -12,18 +12,27 @@ class App extends Component {
     this.props.history.push('/');
   }
 
-  render() {
+  renderNavBar = () => {
     return (
-      <div className="App">
-        <div id="mainLogo">
-          <h1>Recipe Box</h1>
-        </div>
         <div className="nav">
           <Link to="/dash">Home</Link>
           <Link to="/my-recipes">My Recipes</Link>
           <Link to="/recipes/new">Add a Recipe</Link>
           <a href="/logout" onClick={e => this.handleLogout(e)}>Logout</a>
         </div>
+    )
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div id="mainLogo">
+          <h1>Recipe Box</h1>
+        </div>
+        { (Auth.isUserAuthenticated())
+          ? this.renderNavBar()
+          : <></>
+        }
         <>{ routes }</>
       </div>
     );
