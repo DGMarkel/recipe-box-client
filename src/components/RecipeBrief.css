@@ -16,8 +16,11 @@
   padding: 2px 16px;
 }
 
+.username p {
+  padding: 15px 0 0 10px;
+}
+
 img {
   display: block;
-  margin: 0 auto;
   width: 100%;
 }
