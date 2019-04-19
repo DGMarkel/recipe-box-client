@@ -12,8 +12,9 @@ class RecipeBrief extends Component {
   render() {
     return (
       <div className="recipe-card" key={this.props.index}>
-        <div className="username">
-          <p>Added by {this.props.recipe.creator_name}</p>
+        <div className="recipe-header">
+          <h3 className="title">{this.props.recipe.title}</h3>
+          <h3 className="calorie-count">{this.props.recipe.recipe_totals.calories} Calories</h3>
         </div>
         <img src={this.props.recipe.image_url} />
         <div class="container">
@@ -23,7 +24,7 @@ class RecipeBrief extends Component {
               recipe: this.props.recipe
             }
             }}>
-            {this.props.recipe.title}
+
           </Link><br />
           <p>{this.props.recipe.description}</p>
         </div>

@@ -4,6 +4,7 @@
   border-radius: 5px;
   margin: 10px;
   width: 50%;
+  background-color: white;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -16,8 +17,18 @@
   padding: 2px 16px;
 }
 
-.username p {
-  padding: 15px 0 0 10px;
+.recipe-header .title, .calorie-count {
+  display: inline;
+}
+
+.title {
+  float: left;
+  padding-left: 10px;
+}
+
+.calorie-count {
+  float: right;
+  padding-right: 10px;
 }
 
 img {
