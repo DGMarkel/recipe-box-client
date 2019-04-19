@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 
 import './BriefRecipeCard.css'
 
-class RecipeBrief extends Component {
+class BriefRecipeCard extends Component {
 
   formatRecipeURL = recipe => {
     return recipe.toLowerCase().replace(/\s/g , "-")
@@ -34,4 +34,4 @@ class RecipeBrief extends Component {
   }
 }
 
-export default withRouter(RecipeBrief)
+export default withRouter(BriefRecipeCard)
