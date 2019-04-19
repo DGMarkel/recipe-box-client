@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import IngredientsTable from '../components/IngredientsTable'
 import { withRouter } from 'react-router-dom'
+import './FullRecipeCard.css'
 
 class FullRecipeCard extends Component {
 
