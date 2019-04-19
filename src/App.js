@@ -26,7 +26,7 @@ class App extends Component {
   renderPublicNavBar = () => {
     return (
       <div className="nav">
-        <Link to="/dash">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/login">Log In</Link>
       </div>
