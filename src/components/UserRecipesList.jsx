@@ -10,21 +10,27 @@ class UserRecipesList extends Component {
     return recipe.toLowerCase().replace(/\s/g , "-")
   }
 
+  renderRecipeBriefs = () => {
+    return (
+      this.props.recipes.map((recipe, index) =>
+        <>
+          <RecipeBrief recipe={recipe} index={index} />
+          <Link to={{
+            pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
+            state: {
+              recipe: recipe
+            }
+          }}><button>Edit</button></Link>
+        </>
+      )
+    )
+  }
+
   render() {
     return (
       <div>
         { (this.props.recipes)
-            ? this.props.recipes.map((recipe, index) =>
-              <>
-                <RecipeBrief recipe={recipe} index={index} />
-                <Link to={{
-                  pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
-                  state: {
-                    recipe: recipe
-                  }
-                }}>Edit</Link>
-              </>
-            )
+            ? this.renderRecipeBriefs()
             : <h2>You haven't added any recipes yet</h2>
         }
       </div>
