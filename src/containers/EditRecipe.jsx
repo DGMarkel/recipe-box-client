@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
 import Auth from '../modules/Auth'
 
-import RecipeCard from '../components/RecipeCard'
-
 class EditRecipe extends Component {
   constructor(props) {
     super(props)
