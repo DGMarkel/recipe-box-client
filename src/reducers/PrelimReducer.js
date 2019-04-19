@@ -14,15 +14,6 @@ export default function prelimReducer(state={
 
   switch(action.type) {
 
-      case 'REGISTER_USER':
-        return {
-          ...state,
-            user: {
-              ...state.user,
-              auth: Auth.isUserAuthenticated()
-            }
-        }
-
       case 'LOGOUT_USER':
         return {
             user: {
@@ -52,7 +43,7 @@ export default function prelimReducer(state={
                 username: action.payload.username,
                 email: action.payload.email,
                 name: action.payload.name,
-                recipes: action.payload.recipes
+                recipes: action.payload.recipes || []
               }
           }
         }else {

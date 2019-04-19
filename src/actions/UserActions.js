@@ -1,24 +1,5 @@
 import Auth from '../modules/Auth'
 
-export function registerUser(e, data) {
-  return (dispatch) => {
-    fetch('/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: data
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
-    .then(res => {
-      dispatch({ type: 'REGISTER_USER' })
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-}
-
 export function fetchUserData() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_USER_DATA'})
