@@ -12,7 +12,7 @@ class App extends Component {
     this.props.history.push('/');
   }
 
-  renderNavBar = () => {
+  renderPrivateNavBar = () => {
     return (
         <div className="nav">
           <Link to="/dash">Home</Link>
@@ -23,6 +23,16 @@ class App extends Component {
     )
   }
 
+  renderPublicNavBar = () => {
+    return (
+      <div className="nav">
+        <Link to="/dash">Home</Link>
+        <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Log In</Link>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,8 +40,8 @@ class App extends Component {
           <h1>Recipe Box</h1>
         </div>
         { (Auth.isUserAuthenticated())
-          ? this.renderNavBar()
-          : <></>
+          ? this.renderPrivateNavBar()
+          : this.renderPublicNavBar()
         }
         <>{ routes }</>
       </div>
