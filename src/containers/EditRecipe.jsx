@@ -42,14 +42,14 @@ class EditRecipe extends Component {
     })
   }
 
-  updateRecipeIngredients = (e) => {
+  deleteIngredient = (e, ingredient) => {
     e.preventDefault();
-    fetch('/edit-ingredients', {
-      method: 'PATCH',
+    fetch('/delete', {
+      method: 'DELETE',
       body: JSON.stringify({
-        recipe_data: {
+        ingredient: {
           id: this.state.id,
-          ingredients: this.state.ingredients
+          ingredient_data: ingredient
         }
       }),
       headers: {
@@ -114,7 +114,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.handleLocalStateDelete(e, index)}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.handleLocalStateDelete(e, index); this.deleteIngredient(e, ingredient)}}/>
           <hr />
         </div>
       )
@@ -124,7 +124,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.updateRecipeIngredients(e); this.props.history.push('/my-recipes')}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.props.history.push('/my-recipes')}}>
           <textarea
             cols="60"
             name="title"
