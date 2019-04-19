@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import RecipeBrief from './RecipeBrief'
+import BriefRecipeCard from './BriefRecipeCard'
 
 class RecipeList extends Component {
   constructor() {
@@ -28,7 +28,7 @@ class RecipeList extends Component {
         <div>
           { (this.state.recipesLoaded)
             ? this.state.recipes.map( (recipe, index) =>
-              <RecipeBrief recipe={recipe} index={index} />
+              <BriefRecipeCard recipe={recipe} index={index} />
             )
             : <p>Loading...</p>
           }

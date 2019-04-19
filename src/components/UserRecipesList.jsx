@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
-import RecipeBrief from './RecipeBrief'
+import BriefRecipeCard from './BriefRecipeCard'
 
 class UserRecipesList extends Component {
 
@@ -10,11 +10,11 @@ class UserRecipesList extends Component {
     return recipe.toLowerCase().replace(/\s/g , "-")
   }
 
-  renderRecipeBriefs = () => {
+  renderBriefRecipeCards = () => {
     return (
       this.props.recipes.map((recipe, index) =>
         <>
-          <RecipeBrief recipe={recipe} index={index} />
+          <BriefRecipeCard recipe={recipe} index={index} />
           <Link to={{
             pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
             state: {
@@ -30,7 +30,7 @@ class UserRecipesList extends Component {
     return (
       <div>
         { (this.props.recipes)
-            ? this.renderRecipeBriefs()
+            ? this.renderBriefRecipeCards()
             : <h2>You haven't added any recipes yet</h2>
         }
       </div>

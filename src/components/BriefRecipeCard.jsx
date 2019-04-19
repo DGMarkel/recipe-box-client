@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 
-import './RecipeBrief.css'
+import './BriefRecipeCard.css'
 
 class RecipeBrief extends Component {
 
