@@ -13,7 +13,6 @@ export function registerUser(e, data) {
     }).then(res => res.json())
     .then(res => {
       dispatch({ type: 'REGISTER_USER' })
-      Auth.authenticateToken(res.token)
     }).catch(err => {
       console.log(err);
     })

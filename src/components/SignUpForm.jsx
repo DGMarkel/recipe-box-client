@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/UserActions'
+import Auth from '../modules/Auth'
 
 class SignupForm extends Component {
   constructor() {
@@ -24,10 +25,29 @@ class SignupForm extends Component {
     });
   }
 
+  handleSignUpSubmit = (e) => {
+    e.preventDefault();
+    return fetch('/users', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      })
+      .then(res => res.json())
+      .then(res => {
+        Auth.authenticateToken(res.token)
+        if (Auth.isUserAuthenticated()) {
+          this.props.fetchUserData();
+          this.props.history.push('/')
+        }
+      }).catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="form">
-        <form onSubmit={ (e) => { this.props.registerUser(e, this.state, this.props.history) } }>
+        <form onSubmit={ (e) => { this.handleSignUpSubmit(e) } }>
           <input
             type="text"
             name="name"
@@ -66,7 +86,7 @@ class SignupForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    registerUser: bindActionCreators(actions.registerUser, dispatch)
+    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
   }
 }
 
