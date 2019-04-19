@@ -14,13 +14,7 @@ class UserRecipesList extends Component {
     return (
       this.props.recipes.map((recipe, index) =>
         <>
-          <BriefRecipeCard recipe={recipe} index={index} />
-          <Link to={{
-            pathname: `/recipes/${this.formatRecipeURL(recipe.title)}/edit`,
-            state: {
-              recipe: recipe
-            }
-          }}><button>Edit</button></Link>
+          <BriefRecipeCard recipe={recipe} index={index} user_recipe={true} />
         </>
       )
     )
