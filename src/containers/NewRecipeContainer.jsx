@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import IngredientsTable from '../components/IngredientsTable'
-import RecipeBrief from '../components/RecipeBrief'
-import * as actions from '../actions/RecipeActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+
+import IngredientsTable from '../components/IngredientsTable'
+import NewRecipeCard from '../components/NewRecipeCard'
+import * as actions from '../actions/RecipeActions'
 
 class RecipeContainer extends Component {
 
   render() {
     return (
       <div className="recipe-card">
-        <RecipeBrief recipe={this.props.recipe} index={0} />
+        <NewRecipeCard recipe={this.props.recipe} />
         <IngredientsTable recipe={this.props.recipe} />
         <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe)}}>
           <input type="submit" value="Save Recipe" />
