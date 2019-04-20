@@ -9,11 +9,14 @@ class EditRecipe extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: props.location.state.recipe.id,
-      title: props.location.state.recipe.title,
-      image_url: props.location.state.recipe.image_url,
-      description: props.location.state.recipe.description,
-      ingredients: props.location.state.recipe.ingredients
+      recipe: {
+        id: props.location.state.recipe.id,
+        title: props.location.state.recipe.title,
+        image_url: props.location.state.recipe.image_url,
+        description: props.location.state.recipe.description,
+        ingredients: props.location.state.recipe.ingredients
+      },
+      newIngredientForm: 0
     }
   }
 
@@ -68,10 +71,12 @@ class EditRecipe extends Component {
 
 
   handleOnChange = event => {
-    const ingredients = event.target.name;
+    const name = event.target.name;
     const value = event.target.value;
+    const recipe = {...this.state.recipe}
+    recipe[name] = value
     this.setState({
-      [ingredients]: value
+      recipe: recipe
     });
   }
 
@@ -88,7 +93,7 @@ class EditRecipe extends Component {
   }
 
   renderIngredientsInForm = () => {
-    return this.state.ingredients.map((ingredient, index) => {
+    return this.state.recipe.ingredients.map((ingredient, index) => {
       return (
         <div className="ingredient">
           <h3>{ingredient.food_name}</h3>
@@ -121,21 +126,21 @@ class EditRecipe extends Component {
           <textarea
             cols="60"
             name="title"
-            value={this.state.title}
+            value={this.state.recipe.title}
             placeholder="Title"
             onChange={event => this.handleOnChange(event)}
             /><br />
             <textarea
               cols="60"
               name="image_url"
-              value={this.state.image_url}
+              value={this.state.recipe.image_url}
               placeholder="Image"
               onChange={event => this.handleOnChange(event)}
               /><br />
           <textarea
             cols="60"
             name="description"
-            value={this.state.description}
+            value={this.state.recipe.description}
             placeholder="Brief Description"
             onChange={event => this.handleOnChange(event)}
           /><br />
