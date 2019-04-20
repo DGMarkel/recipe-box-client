@@ -45,13 +45,21 @@ class EditRecipe extends Component {
     })
   }
 
+  deleteIngredientFromState = (index) => {
+    const recipe = this.state.recipe
+    recipe.ingredients.splice(index, 1);
+    this.setState({
+      recipe: recipe
+    })
+  }
+
   deleteIngredient = (e, ingredient, index) => {
     e.preventDefault();
     fetch('/delete', {
       method: 'DELETE',
       body: JSON.stringify({
         ingredient: {
-          id: this.state.id,
+          id: this.state.recipe.id,
           ingredient_data: ingredient
         }
       }),
@@ -61,9 +69,7 @@ class EditRecipe extends Component {
         'authorization':  `Token ${Auth.getToken()}`
       }
     }).then(
-      this.setState({
-        ingredients: this.state.ingredients.splice(index, 1)
-      })
+      this.deleteIngredientFromState(index)
     ).catch(err => {
       console.log(err);
     })
@@ -122,7 +128,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.props.history.push('/my-recipes')}}>
+        <form onSubmit={e => {this.props.updateRecipe(e, this.state.recipe); this.updateRecipeDetails(e, this.state.recipe); this.props.history.push('/my-recipes')}}>
           <textarea
             cols="60"
             name="title"
