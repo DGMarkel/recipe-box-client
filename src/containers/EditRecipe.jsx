@@ -20,6 +20,13 @@ class EditRecipe extends Component {
     }
   }
 
+  addIngredient = e => {
+    e.preventDefault();
+    this.setState({
+      newIngredientForm: true
+    })
+  }
+
   updateRecipeDetails = (e, recipe) => {
     e.preventDefault();
     fetch('/edit', {
@@ -125,6 +132,15 @@ class EditRecipe extends Component {
     })
   }
 
+  renderNewIngredientForm = () => {
+    return (
+      <form>
+        <input type="text" name="new_ingredients" placeholder="Add New Ingredients" />
+        <input type="Add Ingredients" />
+      </form>
+    )
+  }
+
   render() {
     return (
       <>
@@ -151,6 +167,11 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChange(event)}
           /><br />
           { this.renderIngredientsInForm() }
+          { (this.state.newIngredientForm )
+              ? this.renderNewIngredientForm()
+              : <></>
+          }
+          <button onClick={e => this.addIngredient(e)}>Add Ingredient</button>
           <input type="submit" value="Update Recipe"/>
         </form>
       </>
