@@ -64,7 +64,7 @@ class EditRecipe extends Component {
               onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
           <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient)}}/>
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.deleteIngredient(e, ingredient, index)}}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient)}}/>
           <hr />
         </div>
       )
@@ -107,6 +107,7 @@ class EditRecipe extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
 

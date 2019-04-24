@@ -98,14 +98,21 @@ export function fetchIngredients(event, title, image_url, id, ingredients, descr
   }
 }
 
-export function deleteIngredient(e, recipeId, ingredientIndex) {
+export function deleteIngredient(e, recipeId, ingredient) {
   e.preventDefault();
   return (dispatch) => {
-    dispatch({
-      type: 'DELETE_INGREDIENT',
-      payload: {
-        recipeId: recipeId,
-        ingredientIndex: ingredientIndex
+    fetch('/delete', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        ingredient: {
+          recipeID: recipeId,
+          ingredient_data: ingredient
+        }
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
       }
     })
   }
