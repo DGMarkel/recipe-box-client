@@ -1,14 +1,15 @@
 import Auth from '../modules/Auth'
 
-export function updateRecipe(event, recipe) {
+export function updateIngredient(event, recipe) {
   event.preventDefault();
-  let ingredients = ''
-  recipe.ingredients.map(ingredient => ingredients += (`${ingredient.serving_qty} ${ingredient.serving_unit} ${ingredient.food_name} `))
+  let ingredientsList = ''
+  recipe.ingredients.map( ingredient => { if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit })
+  recipe.ingredients.map(ingredient => ingredientsList += (`${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name} `))
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: ingredients
+      query: ingredientsList
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -34,17 +35,23 @@ export function updateRecipe(event, recipe) {
       updatedIngredientList["potassium"] = ingredient.nf_potassium;
       return updatedIngredientList
     })
-
-      dispatch({
-        type: 'UPDATE_RECIPE',
-        payload: {
-          title: recipe.title,
-          image_url: recipe.image_url,
+    fetch('/edit', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        recipe: {
           id: recipe.id,
-          ingredients: updatedIngredientList,
-          description: recipe.description
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+          ingredient_data: updatedIngredientList
         }
-      })
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    })
     }).catch(err => console.log(err));
   }
 }
