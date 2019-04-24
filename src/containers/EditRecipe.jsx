@@ -23,7 +23,10 @@ class EditRecipe extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      recipe: {
+      ...this.state.recipe,
+        [name]: value
+      }
     });
   }
 
