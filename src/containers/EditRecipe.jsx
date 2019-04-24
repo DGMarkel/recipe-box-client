@@ -17,73 +17,11 @@ class EditRecipe extends Component {
     }
   }
 
-  updateRecipeDetails = (e, recipe) => {
-    e.preventDefault();
-    fetch('/edit', {
-      method: 'PATCH',
-      body: JSON.stringify({
-        recipe: {
-          id: recipe.id,
-          title: recipe.title,
-          description: recipe.description,
-          image_url: recipe.image_url,
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(res => res.json())
-    .then(res => {
-      console.log('success')
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
-  deleteIngredient = (e, ingredient, index) => {
-    e.preventDefault();
-    fetch('/delete', {
-      method: 'DELETE',
-      body: JSON.stringify({
-        ingredient: {
-          id: this.state.id,
-          ingredient_data: ingredient
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(
-      this.setState({
-        ingredients: this.state.ingredients.splice(index, 1)
-      })
-    ).catch(err => {
-      console.log(err);
-    })
-  }
-
-
   handleOnChange = event => {
-    const ingredients = event.target.name;
+    const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [ingredients]: value
-    });
-  }
-
-  handleIngredientUpdate = (e, index) => {
-    const data_type = e.target.name;
-    const portion_data = e.target.value;
-    let new_ingredients = [...this.state.ingredients];
-    let ingredient = {...new_ingredients[index]};
-    ingredient[data_type] = portion_data;
-    new_ingredients[index] = ingredient
-    this.setState({
-      ingredients: new_ingredients
+      [name]: value
     });
   }
 
@@ -98,14 +36,12 @@ class EditRecipe extends Component {
               type="text"
               name="serving_qty"
               value={ingredient.serving_qty}
-              onChange={e=>this.handleIngredientUpdate(e, index)}
             />
           Serving Unit:
             <input
               type="text"
               name="serving_unit"
               value={ingredient.serving_unit}
-              onChange={e=>this.handleIngredientUpdate(e, index)}
             /><br />
           <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.deleteIngredient(e, ingredient, index)}}/>
           <hr />
@@ -117,7 +53,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.props.history.push('/my-recipes')}}>
+        <form>
           <textarea
             cols="60"
             name="title"
