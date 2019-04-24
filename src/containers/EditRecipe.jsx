@@ -30,10 +30,23 @@ class EditRecipe extends Component {
     });
   }
 
+  handleOnChangeForIngredients = (event, index) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    const updatedIngredients = this.state.recipe.ingredients
+    updatedIngredients[index][name] = value
+    this.setState({
+      recipe: {
+        ...this.state.recipe,
+        ingredients: updatedIngredients
+      }
+    })
+  }
+
   renderIngredientsInForm = () => {
     return this.state.recipe.ingredients.map((ingredient, index) => {
       return (
-        <div className="ingredient">
+        <div className="ingredient" key={index}>
           <h3>{ingredient.food_name}</h3>
           <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
           Quantity:
@@ -41,12 +54,14 @@ class EditRecipe extends Component {
               type="text"
               name="serving_qty"
               value={ingredient.serving_qty}
+              onChange={e=>this.handleOnChangeForIngredients(e, index)}
             />
           Serving Unit:
             <input
               type="text"
               name="serving_unit"
               value={ingredient.serving_unit}
+              onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
           <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.deleteIngredient(e, ingredient, index)}}/>
           <hr />
