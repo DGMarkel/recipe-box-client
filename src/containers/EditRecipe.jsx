@@ -19,7 +19,7 @@ class EditRecipe extends Component {
     }
   }
 
-  handleOnChange = event => {
+  handleOnChangeForRecipeDetails = event => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -64,21 +64,21 @@ class EditRecipe extends Component {
             name="title"
             value={this.state.recipe.title}
             placeholder="Title"
-            onChange={event => this.handleOnChange(event)}
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
             /><br />
             <textarea
               cols="60"
               name="image_url"
               value={this.state.recipe.image_url}
               placeholder="Image"
-              onChange={event => this.handleOnChange(event)}
+              onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
           <textarea
             cols="60"
             name="description"
             value={this.state.recipe.description}
             placeholder="Brief Description"
-            onChange={event => this.handleOnChange(event)}
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           { this.renderIngredientsInForm() }
           <input type="submit" value="Update Recipe"/>
