@@ -96,13 +96,17 @@ class EditRecipe extends Component {
   handleIngredientUpdate = (e, index) => {
     const data_type = e.target.name;
     const portion_data = e.target.value;
-    let new_ingredients = [...this.state.ingredients];
+    let new_ingredients = [...this.state.recipe.ingredients];
     let ingredient = {...new_ingredients[index]};
     ingredient[data_type] = portion_data;
     new_ingredients[index] = ingredient
     this.setState({
-      ingredients: new_ingredients
+      recipe: {
+        ...this.state.recipe,
+          ingredients: new_ingredients
+        }
     });
+    console.log(this.state.recipe.ingredients)
   }
 
   renderIngredientsInForm = () => {
