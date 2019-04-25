@@ -34,10 +34,14 @@ class NewRecipeForm extends Component {
   }
 
   handleOnChangeForIngredients = event => {
-
+    const value = event.target.value
+    this.setState({
+      ingredients_to_fetch: value
+    })
   }
 
   render() {
+    console.log(this.state.ingredients_to_fetch)
     return (
       <div>
         <div className="recipe-form">
