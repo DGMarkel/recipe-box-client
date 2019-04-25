@@ -1,5 +1,31 @@
 import Auth from '../modules/Auth'
 
+export function updateRecipeDetails(event, recipe) {
+  event.preventDefault();
+
+  return(dispatch) => {
+    fetch('/edit-recipe', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        recipe: {
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+        }
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
+  }
+}
+
 export function updateIngredient(event, recipeID, ingredient) {
 
   event.preventDefault();
