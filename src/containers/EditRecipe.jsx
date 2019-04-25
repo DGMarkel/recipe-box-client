@@ -33,7 +33,6 @@ class EditRecipe extends Component {
           }
         })
       }).catch(err => console.log(err))
-      console.log(this.state.recipe.ingredients)
   }
 
   handleOnChangeForRecipeDetails = event => {
