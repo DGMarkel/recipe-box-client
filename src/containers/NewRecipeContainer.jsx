@@ -29,7 +29,6 @@ class RecipeContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch),
     saveRecipe: bindActionCreators(actions.saveRecipe, dispatch)
   }
 }

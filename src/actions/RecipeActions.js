@@ -82,17 +82,6 @@ export function fetchIngredients(event, title, image_url, id, ingredients, descr
         ingredientList["potassium"] = ingredient.nf_potassium;
         return ingredientList
       })
-
-      dispatch({
-        type: 'ADD_RECIPE',
-        payload: {
-          title: title,
-          image_url: image_url,
-          id: id,
-          ingredients: ingredientList,
-          description: description
-        }
-      })
     }).catch(err => console.log(err));
   }
 }
