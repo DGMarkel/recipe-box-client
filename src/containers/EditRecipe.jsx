@@ -25,7 +25,10 @@ class EditRecipe extends Component {
       .then(res => {
         this.setState({
           recipe: {
-            ...this.state.recipe,
+            id: res.id,
+            title: res.title,
+            image_url: res.image_url,
+            description: res.description,
             ingredients: res.ingredients
           }
         })
@@ -55,6 +58,10 @@ class EditRecipe extends Component {
         ingredients: updatedIngredients
       }
     })
+  }
+
+  componentDidMount() {
+    this.fetchRecipe();
   }
 
   renderIngredientsInForm = () => {

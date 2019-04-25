@@ -87,6 +87,10 @@ export function saveRecipe(e, recipe) {
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
-    }).catch(err => console.log(err))
+    }).then(res => res.json())
+    .then(res => {
+      dispatch({ type: 'ADD_RECIPE', payload: res.recipe})
+    })
+    .catch(err => console.log(err))
   }
 }
