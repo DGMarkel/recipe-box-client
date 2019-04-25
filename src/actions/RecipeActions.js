@@ -21,7 +21,7 @@ export function updateRecipeDetails(event, recipe) {
       }
     }).then(res => res.json())
     .then(res => {
-      console.log(res)
+      dispatch({ type: 'UPDATE_RECIPE_DETAILS', payload: res.recipe })
     })
     .catch(err => console.log(err))
   }
