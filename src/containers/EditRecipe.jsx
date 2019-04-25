@@ -50,7 +50,6 @@ class EditRecipe extends Component {
       return (
         <div className="ingredient" key={index}>
           <h3>{ingredient.food_name}</h3>
-          <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
           Quantity:
             <input
               type="text"
@@ -75,34 +74,38 @@ class EditRecipe extends Component {
 
   render() {
     return (
-      <>
-        <form onSubmit={e => this.props.updateIngredient(e, this.state.recipe)}>
-          <textarea
-            cols="60"
-            name="title"
-            value={this.state.recipe.title}
-            placeholder="Title"
-            onChange={event => this.handleOnChangeForRecipeDetails(event)}
-            /><br />
+      <div className="recipe-editor">
+        <div className="edit-recipe-form">
+          <form onSubmit={e => this.props.updateIngredient(e, this.state.recipe)}>
             <textarea
               cols="60"
-              name="image_url"
-              value={this.state.recipe.image_url}
-              placeholder="Image"
+              name="title"
+              value={this.state.recipe.title}
+              placeholder="Title"
               onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
-          <textarea
-            cols="60"
-            name="description"
-            value={this.state.recipe.description}
-            placeholder="Brief Description"
-            onChange={event => this.handleOnChangeForRecipeDetails(event)}
-          /><br />
-          { this.renderIngredientsInForm() }
-          <input type="submit" value="Update Recipe"/>
-        </form>
-        <RecipePreview recipe={this.props.recipe} />
-      </>
+              <textarea
+                cols="60"
+                name="image_url"
+                value={this.state.recipe.image_url}
+                placeholder="Image"
+                onChange={event => this.handleOnChangeForRecipeDetails(event)}
+                /><br />
+            <textarea
+              cols="60"
+              name="description"
+              value={this.state.recipe.description}
+              placeholder="Brief Description"
+              onChange={event => this.handleOnChangeForRecipeDetails(event)}
+            /><br />
+            { this.renderIngredientsInForm() }
+            <input type="submit" value="Update Recipe"/>
+          </form>
+        </div>
+        <div className="recipe-preview">
+          <RecipePreview recipe={this.props.recipe} />
+        </div>
+      </div>
     )
   }
 }
