@@ -83,7 +83,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => this.props.updateIngredient(e, this.state.recipe)}>
+        <form onSubmit={e => this.props.updateRecipeDetails(e, this.state.recipe)}>
           <textarea
             cols="60"
             name="title"
@@ -115,6 +115,7 @@ class EditRecipe extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
