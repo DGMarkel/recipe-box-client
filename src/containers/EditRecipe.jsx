@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
-
 import * as actions from '../actions/RecipeActions'
-import './EditRecipe.css'
-
 import Auth from '../modules/Auth'
-import RecipePreview from '../components/RecipePreview'
 
 class EditRecipe extends Component {
   constructor(props) {
@@ -47,11 +43,22 @@ class EditRecipe extends Component {
     })
   }
 
+  updateState = () => {
+    this.setState({
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.props.recipe.ingredients
+        }
+    })
+  }
+
   renderIngredientsInForm = () => {
-    return this.state.recipe.ingredients.map((ingredient, index) => {
+    console.log(this.state.recipe.ingredients)
+    return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
-        <div className="ingredient" key={ingredient.food_name}>
+        <div className="ingredient" key={index}>
           <h3>{ingredient.food_name}</h3>
+          <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
           Quantity:
             <input
               type="text"
@@ -66,7 +73,7 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient)} }/>
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient); this.updateState() }}/>
           <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient)} }/>
           <hr />
         </div>
@@ -76,38 +83,33 @@ class EditRecipe extends Component {
 
   render() {
     return (
-      <div className="recipe-editor">
-        <div className="edit-recipe-form">
-          <form onSubmit={e => this.props.updateIngredient(e, this.state.recipe)}>
+      <>
+        <form onSubmit={e => this.props.updateIngredient(e, this.state.recipe)}>
+          <textarea
+            cols="60"
+            name="title"
+            value={this.state.recipe.title}
+            placeholder="Title"
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
+            /><br />
             <textarea
               cols="60"
-              name="title"
-              value={this.state.recipe.title}
-              placeholder="Title"
+              name="image_url"
+              value={this.state.recipe.image_url}
+              placeholder="Image"
               onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
-              <textarea
-                cols="60"
-                name="image_url"
-                value={this.state.recipe.image_url}
-                placeholder="Image"
-                onChange={event => this.handleOnChangeForRecipeDetails(event)}
-                /><br />
-            <textarea
-              cols="60"
-              name="description"
-              value={this.state.recipe.description}
-              placeholder="Brief Description"
-              onChange={event => this.handleOnChangeForRecipeDetails(event)}
-            /><br />
-            { this.renderIngredientsInForm() }
-            <input type="submit" value="Update Recipe"/>
-          </form>
-        </div>
-        <div className="recipe-preview">
-          <RecipePreview recipe={this.props.recipe} />
-        </div>
-      </div>
+          <textarea
+            cols="60"
+            name="description"
+            value={this.state.recipe.description}
+            placeholder="Brief Description"
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
+          /><br />
+          { this.renderIngredientsInForm() }
+          <input type="submit" value="Update Recipe"/>
+        </form>
+      </>
     )
   }
 }
@@ -120,7 +122,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.user.recipes)
   return {
     recipe: state.user.recipes.find( recipe => recipe.id === ownProps.location.state.recipe.id )
   }

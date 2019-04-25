@@ -20,7 +20,7 @@ export function updateIngredient(event, recipeID, ingredient) {
     }
   }).then(res => res.json())
   .then(res => {
-
+      console.log(res)
       let updatedIngredient = {}
       updatedIngredient["food_name"] = res.foods[0].food_name;
       updatedIngredient["serving_qty"] = res.foods[0].serving_qty;
