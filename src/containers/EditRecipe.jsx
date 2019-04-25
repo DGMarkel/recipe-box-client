@@ -53,7 +53,6 @@ class EditRecipe extends Component {
   }
 
   renderIngredientsInForm = () => {
-    console.log(this.state.recipe.ingredients)
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
         <div className="ingredient" key={index}>
@@ -88,21 +87,21 @@ class EditRecipe extends Component {
           <textarea
             cols="60"
             name="title"
-            value={this.state.recipe.title}
+            value={this.props.recipe.title}
             placeholder="Title"
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
             /><br />
             <textarea
               cols="60"
               name="image_url"
-              value={this.state.recipe.image_url}
+              value={this.props.recipe.image_url}
               placeholder="Image"
               onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
           <textarea
             cols="60"
             name="description"
-            value={this.state.recipe.description}
+            value={this.props.recipe.description}
             placeholder="Brief Description"
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
