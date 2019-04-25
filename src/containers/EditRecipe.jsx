@@ -50,7 +50,7 @@ class EditRecipe extends Component {
   renderIngredientsInForm = () => {
     return this.state.recipe.ingredients.map((ingredient, index) => {
       return (
-        <div className="ingredient" key={index}>
+        <div className="ingredient" key={ingredient.food_name}>
           <h3>{ingredient.food_name}</h3>
           Quantity:
             <input
