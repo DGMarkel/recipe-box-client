@@ -19,10 +19,10 @@ class NewRecipeForm extends Component {
   }
 
   handleOnChange = event => {
-    const ingredients = event.target.name;
+    const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [ingredients]: value
+      [name]: value
     });
   }
 
