@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import './NewRecipeForm.css'
 import NewRecipeContainer from './NewRecipeContainer'
-import * as actions from '../actions/RecipeActions'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux'
-
 
 class NewRecipeForm extends Component {
 
