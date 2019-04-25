@@ -8,6 +8,7 @@ export function updateRecipeDetails(event, recipe) {
       method: 'PATCH',
       body: JSON.stringify({
         recipe: {
+          id: recipe.id,
           title: recipe.title,
           description: recipe.description,
           image_url: recipe.image_url,

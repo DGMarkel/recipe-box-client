@@ -87,21 +87,21 @@ class EditRecipe extends Component {
           <textarea
             cols="60"
             name="title"
-            value={this.props.recipe.title}
+            value={this.state.recipe.title}
             placeholder="Title"
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
             /><br />
             <textarea
               cols="60"
               name="image_url"
-              value={this.props.recipe.image_url}
+              value={this.state.recipe.image_url}
               placeholder="Image"
               onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
           <textarea
             cols="60"
             name="description"
-            value={this.props.recipe.description}
+            value={this.state.recipe.description}
             placeholder="Brief Description"
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
