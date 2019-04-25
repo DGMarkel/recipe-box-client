@@ -1,9 +1,12 @@
 import Auth from '../modules/Auth'
 
 export function updateIngredient(event, recipeID, ingredient) {
+
   event.preventDefault();
+
   if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
   const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
+
   return(dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
@@ -17,6 +20,7 @@ export function updateIngredient(event, recipeID, ingredient) {
     }
   }).then(res => res.json())
   .then(res => {
+
       let updatedIngredient = {}
       updatedIngredient["food_name"] = res.foods[0].food_name;
       updatedIngredient["serving_qty"] = res.foods[0].serving_qty;

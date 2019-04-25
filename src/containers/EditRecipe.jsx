@@ -10,13 +10,12 @@ class EditRecipe extends Component {
     super(props)
     this.state = {
       recipe: {
-        id: props.location.state.recipe.id,
-        title: props.location.state.recipe.title,
-        image_url: props.location.state.recipe.image_url,
-        description: props.location.state.recipe.description,
-        ingredients: props.location.state.recipe.ingredients
-      },
-      recipeUpdated: false
+        id: props.recipe.id,
+        title: props.recipe.title,
+        image_url: props.recipe.image_url,
+        description: props.recipe.description,
+        ingredients: props.recipe.ingredients
+      }
     }
   }
 
@@ -132,4 +131,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(EditRecipe))
+const mapStateToProps = (state, ownProps) => {
+  return {
+    recipe: state.user.recipes.find( recipe => recipe.id === ownProps.location.state.recipe.id )
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditRecipe))
