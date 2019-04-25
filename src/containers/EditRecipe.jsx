@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
+
 import Auth from '../modules/Auth'
+import RecipePreview from '../components/RecipePreview'
 
 class EditRecipe extends Component {
   constructor(props) {
@@ -99,6 +101,7 @@ class EditRecipe extends Component {
           { this.renderIngredientsInForm() }
           <input type="submit" value="Update Recipe"/>
         </form>
+        <RecipePreview recipe={this.props.recipe} />
       </>
     )
   }
@@ -112,6 +115,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state.user.recipes)
   return {
     recipe: state.user.recipes.find( recipe => recipe.id === ownProps.location.state.recipe.id )
   }
