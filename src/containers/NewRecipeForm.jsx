@@ -127,16 +127,4 @@ class NewRecipeForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchIngredients: bindActionCreators(actions.fetchIngredients, dispatch),
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    recipes: state.user.recipes
-  }
-}
-
 export default NewRecipeForm
