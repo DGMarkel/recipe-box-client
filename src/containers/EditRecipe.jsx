@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
+
 import * as actions from '../actions/RecipeActions'
+import './EditRecipe.css'
 
 import Auth from '../modules/Auth'
 import RecipePreview from '../components/RecipePreview'
