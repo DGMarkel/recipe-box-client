@@ -61,6 +61,7 @@ export default function prelimReducer(state={
 
       case 'UPDATE_RECIPE':
         const index = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
+        //this needs to be rewritten
         state.user.recipes[index] = action.payload
         return {
           ...state,
@@ -84,6 +85,12 @@ export default function prelimReducer(state={
              }
            }
 
+        case 'UPDATE_RECIPE_DETAILS':
+          const recipeToUpdateIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
+          //needs to be rewritten
+          state.user.recipes[recipeToUpdateIndex].title = action.payload.title
+          state.user.recipes[recipeToUpdateIndex].image_url = action.payload.image_url
+          state.user.recipes[recipeToUpdateIndex].description = action.payload.description
 
       // case 'DELETE_INGREDIENT':
       //   const recipeId = action.payload.recipeId
