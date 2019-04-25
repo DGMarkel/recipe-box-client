@@ -11,10 +11,13 @@ class NewRecipeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      image_url: '',
-      description: '',
-      ingredients: ''
+      recipe: {
+        title: '',
+        image_url: '',
+        description: '',
+        ingredients: ''
+      },
+      ingredients_to_fetch: ''
     }
   }
 
@@ -22,12 +25,19 @@ class NewRecipeForm extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      ...this.state,
+      recipe: {
+        ...this.state.recipe,
+        [name]: value
+      }
     });
   }
 
-  render() {
+  handleOnChangeForIngredients = event => {
 
+  }
+
+  render() {
     return (
       <div>
         <div className="recipe-form">
@@ -60,13 +70,13 @@ class NewRecipeForm extends Component {
               name="ingredients"
               value={this.state.ingredients}
               placeholder="Ingredient"
-              onChange={event => this.handleOnChange(event)}
+              onChange={event => this.handleOnChangeForIngredients(event)}
               /><br />
             <input type="submit" value="Add Ingredients" />
           </form>
         </div>
         <div className="recipe-container">
-        { <NewRecipeContainer recipe={this.state} /> }
+
         </div>
       </div>
     )
