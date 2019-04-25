@@ -62,7 +62,6 @@ export default function prelimReducer(state={
       case 'UPDATE_RECIPE':
         const index = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
         state.user.recipes[index] = action.payload
-        debugger
         return {
           ...state,
             user: {
@@ -71,20 +70,34 @@ export default function prelimReducer(state={
             }
         }
 
-      case 'DELETE_INGREDIENT':
-        const recipeId = action.payload.recipeId
-        const ingredientIndex = action.payload.ingredientIndex
-        const recipe = state.user.recipes.find(recipe => recipe.id === recipeId)
-        recipe.ingredients.splice(ingredientIndex, 1)
-        state.user.recipes[recipeId] = recipe
+      case 'UPDATE_RECIPE_INGREDIENT':
+        const recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.recipeID)
+        const ingredientIndex = state.user.recipes[recipeIndex].ingredients.findIndex(i => i.food_name === action.payload.updatedIngredient.food_name)
 
         return {
           ...state,
-          user: {
-            ...state.user,
-            recipes: state.user.recipes
-            }
-          }
+            user: {
+              ...state.user,
+              recipes:
+                state.user.recipes.map( recipe =>
+                  recipe.id === action.payload.recipeID ? recipe.ingredients[ingredientIndex] = action.payload.updatedIngredient : recipe )
+              }
+        }
+
+      // case 'DELETE_INGREDIENT':
+      //   const recipeId = action.payload.recipeId
+      //   const ingredientIndex = action.payload.ingredientIndex
+      //   const recipe = state.user.recipes.find(recipe => recipe.id === recipeId)
+      //   recipe.ingredients.splice(ingredientIndex, 1)
+      //   state.user.recipes[recipeId] = recipe
+      //
+      //   return {
+      //     ...state,
+      //     user: {
+      //       ...state.user,
+      //       recipes: state.user.recipes
+      //       }
+      //     }
 
     default:
       return state
