@@ -11,7 +11,6 @@ class NewRecipeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.recipes.length,
       title: '',
       image_url: '',
       description: '',
@@ -28,8 +27,6 @@ class NewRecipeForm extends Component {
   }
 
   render() {
-
-    const newRecipe = this.props.recipes.find(recipe => recipe.id === this.state.id)
 
     return (
       <div>
@@ -69,10 +66,7 @@ class NewRecipeForm extends Component {
           </form>
         </div>
         <div className="recipe-container">
-        { (newRecipe)
-          ? <NewRecipeContainer />
-          : <div id="preview"><h1>Preview</h1></div>
-        }
+        { <NewRecipeContainer recipe={this.state} /> }
         </div>
       </div>
     )

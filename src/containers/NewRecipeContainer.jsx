@@ -15,7 +15,10 @@ class RecipeContainer extends Component {
         </div>
         <img src={this.props.recipe.image_url} />
         <p>{this.props.recipe.description}</p>
-        <IngredientsTable recipe={this.props.recipe} />
+        { (this.props.recipe.ingredients)
+          ? <IngredientsTable recipe={this.props.recipe} />
+          : <></>
+        }
         <form onSubmit={event => {this.props.saveRecipe(event, this.props.recipe)}}>
           <input type="submit" value="Save Recipe" />
         </form>
@@ -31,10 +34,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    recipe: state.user.recipes[state.user.recipes.length - 1]
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeContainer)
+export default connect(null, mapDispatchToProps)(RecipeContainer)

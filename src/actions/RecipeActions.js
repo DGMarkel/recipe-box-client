@@ -65,7 +65,6 @@ export function fetchIngredients(event, title, image_url, id, ingredients, descr
     }
     }).then(res => res.json())
     .then(res => {
-
       const ingredientList = res.foods.map( ingredient => {
         let ingredientList = {}
         ingredientList["food_name"] = ingredient.food_name;
