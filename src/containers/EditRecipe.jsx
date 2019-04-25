@@ -15,7 +15,8 @@ class EditRecipe extends Component {
         image_url: props.location.state.recipe.image_url,
         description: props.location.state.recipe.description,
         ingredients: props.location.state.recipe.ingredients
-      }
+      },
+      recipeUpdated: false
     }
   }
 

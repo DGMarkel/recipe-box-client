@@ -31,20 +31,8 @@ export function updateIngredient(event, recipeID, ingredient) {
       updatedIngredient["sugars"] = res.foods[0].nf_sugars;
       updatedIngredient["protein"] = res.foods[0].nf_protein;
       updatedIngredient["potassium"] = res.foods[0].nf_potassium;
-    fetch('/edit-ingredient', {
-      method: 'PATCH',
-      body: JSON.stringify({
-          ingredient: {
-            ingredient_data: updatedIngredient,
-            recipeID: recipeID
-          }
-        }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    })
+
+      dispatch({ type: 'UPDATE_RECIPE_INGREDIENT', payload: {updatedIngredient, recipeID} })
     }).catch(err => console.log(err));
   }
 }
