@@ -119,7 +119,6 @@ export function deleteIngredient(e, recipeId, ingredient) {
 }
 
 export function saveRecipe(e, recipe) {
-  console.log(recipe)
   e.preventDefault();
   return (dispatch) => {
     fetch('/recipes', {

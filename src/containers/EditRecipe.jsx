@@ -19,6 +19,20 @@ class EditRecipe extends Component {
     }
   }
 
+  fetchRecipe = () => {
+    fetch(`/recipes/${this.state.recipe.id}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          recipe: {
+            ...this.state.recipe,
+            ingredients: res.ingredients
+          }
+        })
+      }).catch(err => console.log(err))
+      console.log(this.state.recipe.ingredients)
+  }
+
   handleOnChangeForRecipeDetails = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -63,8 +77,8 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient)}}/>
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient)}}/>
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient); this.fetchRecipe()}}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient); this.fetchRecipe()}}/>
           <hr />
         </div>
       )
