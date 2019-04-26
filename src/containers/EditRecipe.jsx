@@ -139,6 +139,7 @@ class EditRecipe extends Component {
             updateIngredient={this.props.updateIngredient}
             updateLocalIngredients={this.updateLocalIngredients}
             deleteIngredient={this.props.deleteIngredient}
+            fetchRecipe={this.fetchRecipe}
             ingredients={this.state.recipe.ingredients}
             recipeID={this.state.recipe.id}
           />
