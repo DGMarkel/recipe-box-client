@@ -70,6 +70,12 @@ class EditRecipe extends Component {
     })
   }
 
+  toggleAddIngredientsForm = () => {
+    this.setState({
+      toggleAddIngredients: (this.state.toggleAddIngredients) ? false : true
+    })
+  }
+
   handleOnChange = e => {
     const name = e.target.name
     const value = e.target.value
@@ -104,7 +110,7 @@ class EditRecipe extends Component {
 
 
   render() {
-    console.log(this.state.recipe.ingredients)
+    console.log(this.state.toggleAddIngredients)
     return (
       <>
         <form>
@@ -138,12 +144,15 @@ class EditRecipe extends Component {
             recipeID={this.state.recipe.id}
           />
           { (this.state.toggleAddIngredients)
-              ? <AddIngredientsForm
-                fetchAndPostIngredients={this.props.fetchAndPostIngredients}
-                handleOnChange={this.handleOnChange}
-                state={this.state}
-                />
-              : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
+              ? <div className="add-ingredients-form">
+                  <AddIngredientsForm
+                  fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                  handleOnChange={this.handleOnChange}
+                  state={this.state}
+                  />
+                  <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
+                </div>
+              : <input type="button" value="Add Ingredients" onClick={this.displayAddIngredientsForm} />
           }
         </form>
       </>
