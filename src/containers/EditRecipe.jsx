@@ -116,8 +116,10 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           { this.renderIngredientsInForm() }
-          { this.state.toggleAddIngredients ? <AddIngredients recipe_id={this.state.recipe.id}/> : <></> }
-          <input type="button" value="Add Ingredients" onClick={e=>this.toggleAddIngredients(e)}/>
+          { this.state.toggleAddIngredients ?
+              <AddIngredients recipe_id={this.state.recipe.id}/>
+              : <input type="button" value="Add Ingredients" onClick={e=>this.toggleAddIngredients(e)}/>
+          }
           <input type="submit" value="Update Recipe"/>
         </form>
       </>

@@ -14,7 +14,7 @@ export default class AddIngredients extends Component {
     const name = e.target.name
     const value = e.target.value
     this.setState({
-      name: value
+      [name]: value
     })
   }
 
@@ -23,7 +23,7 @@ export default class AddIngredients extends Component {
       fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
       method: 'POST',
       body: JSON.stringify({
-        query: this.state.ingredients_to_fetch
+        query: this.state.rawIngredients
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -47,13 +47,33 @@ export default class AddIngredients extends Component {
           ingredientList["sugars"] = ingredient.nf_sugars;
           ingredientList["protein"] = ingredient.nf_protein;
           ingredientList["potassium"] = ingredient.nf_potassium;
-          ingredientList["recipe_id"] = this.props.recipe_id
           return ingredientList
         })
         this.setState({
           fetchedIngredients: ingredientList
         })
       }).catch(err => console.log(err));
+  }
+
+  postIngredients = event => {
+    event.preventDefault();
+    fetch('/ingredients', {
+      method: 'POST',
+      body: JSON.stringify({
+        ingredient: {
+          id: recipe.id,
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+        }
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    })
+    })
   }
 
   render() {
@@ -63,8 +83,8 @@ export default class AddIngredients extends Component {
         <textarea
           rows="10"
           cols="60"
-          name="ingredients"
-          value={this.state.ingredients}
+          name="rawIngredients"
+          value={this.state.rawIngredients}
           placeholder="Ingredient"
           onChange={e => this.handleOnChange(e)}
           /><br />
