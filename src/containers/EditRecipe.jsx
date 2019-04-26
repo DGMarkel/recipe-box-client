@@ -78,24 +78,6 @@ class EditRecipe extends Component {
     })
   }
 
-  renderAddIngredientsForm = () => {
-    return (
-      <form onSubmit={e => {this.props.fetchAndPostIngredients(e, this.state); this.setState({toggleAddIngredients: false})} }>
-        <textarea
-          rows="10"
-          cols="60"
-          name="rawIngredients"
-          value={this.state.rawIngredients}
-          placeholder="Ingredient"
-          onChange={e => this.handleOnChange(e)}
-          /><br />
-        <input type="submit" value="Save Ingredients"/>
-      </form>
-    )
-  }
-
-
-
   render() {
     return (
       <>
@@ -128,8 +110,12 @@ class EditRecipe extends Component {
             ingredients={this.state.recipe.ingredients}
             recipeID={this.state.recipe.id}
           />
-          { (this.state.toggleAddIngredients) ?
-              this.renderAddIngredientsForm()
+          { (this.state.toggleAddIngredients)
+              ? <AddIngredientsForm
+                fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                handleOnChange={this.handleOnChange}
+                state={this.state}
+                />
               : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
           }
           <input type="submit" value="Update Recipe"/>
