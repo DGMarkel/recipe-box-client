@@ -72,7 +72,7 @@ export default function prelimReducer(state={
         }
 
       case 'UPDATE_RECIPE_INGREDIENT':
-        const recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.recipeID)
+        let recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.recipeID)
         const ingredientIndex = state.user.recipes[recipeIndex].ingredients.findIndex(i => i.food_name === action.payload.updatedIngredient.food_name)
         // below written to get the ball rolling - will rewrite later
         state.user.recipes[recipeIndex][ingredientIndex] = action.payload.updatedIngredient
@@ -86,11 +86,11 @@ export default function prelimReducer(state={
            }
 
         case 'UPDATE_RECIPE_DETAILS':
-          const recipeToUpdateIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
+          recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
           //needs to be rewritten
-          state.user.recipes[recipeToUpdateIndex].title = action.payload.title
-          state.user.recipes[recipeToUpdateIndex].image_url = action.payload.image_url
-          state.user.recipes[recipeToUpdateIndex].description = action.payload.description
+          state.user.recipes[recipeIndex].title = action.payload.title
+          state.user.recipes[recipeIndex].image_url = action.payload.image_url
+          state.user.recipes[recipeIndex].description = action.payload.description
 
       // case 'DELETE_INGREDIENT':
       //   const recipeId = action.payload.recipeId
