@@ -1,11 +1,11 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredients(event, rawIngredients) {
+export function fetchIngredients(event, recipeData) {
   event.preventDefault()
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
-      query: rawIngredients
+      query: recipeData.rawIngredients
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -31,20 +31,20 @@ export function fetchIngredients(event, rawIngredients) {
         ingredientList["potassium"] = ingredient.nf_potassium;
         return ingredientList
       })
-      postIngredients(ingredientList)
+      postIngredients(ingredientList, recipeData)
     }).catch(err => console.log(err));
 }
 
-function postIngredients(ingredients) {
+function postIngredients(ingredientsList, recipeData) {
   fetch('/edit-recipe', {
     method: 'PATCH',
     body: JSON.stringify({
       recipe: {
-        id: this.state.recipe.id,
-        title: this.state.recipe.title,
-        description: this.state.recipe.description,
-        image_url: this.state.recipe.image_url,
-        ingredients: ingredients
+        id: recipeData.recipe.id,
+        title: recipeData.recipe.title,
+        description: recipeData.recipe.description,
+        image_url: recipeData.recipe.image_url,
+        ingredients: ingredientsList
       }
     }),
     headers: {
