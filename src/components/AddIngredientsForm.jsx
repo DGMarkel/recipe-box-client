@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 export default class AddIngredientsForm extends Component {
   render() {
-    console.log(this.props.state.rawIngredients)
     return (
       <form onSubmit={e => this.props.fetchAndPostIngredients(e, this.props.state) }>
         <textarea
