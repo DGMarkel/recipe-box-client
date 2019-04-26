@@ -54,15 +54,6 @@ class EditRecipe extends Component {
     })
   }
 
-  updateState = () => {
-    this.setState({
-        recipe: {
-          ...this.state.recipe,
-          ingredients: this.props.recipe.ingredients
-        }
-    })
-  }
-
   renderIngredientsInForm = () => {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
@@ -83,8 +74,8 @@ class EditRecipe extends Component {
               value={ingredient.serving_unit}
               onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
-          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient); this.updateState() }}/>
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient)} }/>
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.state.recipe.id, ingredient) }/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.props.deleteIngredient(e, this.state.recipe.id, ingredient) }/>
           <hr />
         </div>
       )
