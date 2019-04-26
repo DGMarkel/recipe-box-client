@@ -19,6 +19,7 @@ class EditRecipe extends Component {
         description: '',
         ingredients: []
       },
+      ingredientUpdated: false,
       toggleAddIngredients: false,
       rawIngredients: ''
     }
@@ -29,11 +30,16 @@ class EditRecipe extends Component {
       recipe: {
         ...this.state.recipe,
         ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient != this.state.recipe.ingredients[ingredientIndex] )
-      }
+      },
+      ingredientUpdated: true
     })
   }
 
   componentDidMount() {
+    this.fetchRecipe()
+  }
+
+  fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
       headers: {
