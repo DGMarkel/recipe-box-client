@@ -22,6 +22,28 @@ class EditRecipe extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch(`/recipes/${this.props.location.state.recipe.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then(res => res.json())
+    .then(res => {
+      this.setState({
+        recipe: {
+          id: res.id,
+          title: res.title,
+          description: res.description,
+          image_url: res.image_url,
+          ingredients: res.ingredients
+        }
+      })
+    })
+  }
+
   handleOnChange = e => {
     const name = e.target.name
     const value = e.target.value
@@ -55,7 +77,7 @@ class EditRecipe extends Component {
   }
 
   renderIngredientsInForm = () => {
-    return this.props.recipe.ingredients.map((ingredient, index) => {
+    return this.state.recipe.ingredients.map((ingredient, index) => {
       return (
         <div className="ingredient" key={index}>
           <h3>{ingredient.food_name}</h3>
