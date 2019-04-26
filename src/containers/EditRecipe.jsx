@@ -22,6 +22,14 @@ class EditRecipe extends Component {
     }
   }
 
+  handleOnChange = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      [name]: value
+    })
+  }
+
   handleOnChangeForRecipeDetails = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -76,7 +84,7 @@ class EditRecipe extends Component {
 
   renderAddIngredientsForm = () => {
     return (
-      <form onSubmit={e => this.setState({toggleAddIngredients: false}) }>
+      <form onSubmit={e => {this.fetchIngredients(e); this.setState({toggleAddIngredients: false})} }>
         <textarea
           rows="10"
           cols="60"
