@@ -39,6 +39,15 @@ class EditRecipe extends Component {
     this.fetchRecipe()
   }
 
+  componentDidUpdate() {
+    if (this.state.ingredientUpdated) {
+      this.fetchRecipe();
+      this.setState({
+        ingredientUpdated: false
+      })
+    }
+  }
+
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
