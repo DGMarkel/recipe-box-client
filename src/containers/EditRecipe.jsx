@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
 
 import Auth from '../modules/Auth'
-import AddIngredients from '../components/AddIngredients'
+
 
 class EditRecipe extends Component {
   constructor(props) {
@@ -18,7 +18,8 @@ class EditRecipe extends Component {
         description: props.recipe.description,
         ingredients: props.recipe.ingredients
       },
-      toggleAddIngredients: false
+      toggleAddIngredients: false,
+      rawIngredients: ''
     }
   }
 
