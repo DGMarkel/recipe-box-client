@@ -180,7 +180,7 @@ class EditRecipe extends Component {
             ingredients={this.state.recipe.ingredients}
             recipeID={this.state.recipe.id}
           />
-          { this.state.toggleAddIngredients ?
+          { (this.state.toggleAddIngredients) ?
               this.renderAddIngredientsForm()
               : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
           }
@@ -199,10 +199,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    recipe: state.user.recipes.find( recipe => recipe.id === ownProps.location.state.recipe.id )
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditRecipe))
+export default withRouter(connect(null, mapDispatchToProps)(EditRecipe))
