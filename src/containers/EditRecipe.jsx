@@ -29,7 +29,7 @@ class EditRecipe extends Component {
     this.setState({
       recipe: {
         ...this.state.recipe,
-        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient != this.state.recipe.ingredients[ingredientIndex] )
+        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
       },
       ingredientUpdated: true
     })
