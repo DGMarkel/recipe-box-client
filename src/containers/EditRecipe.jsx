@@ -91,6 +91,22 @@ class EditRecipe extends Component {
     })
   }
 
+  renderAddIngredientsForm = () => {
+    return (
+      <form onSubmit={e => this.fetchIngredients(e) }>
+        <textarea
+          rows="10"
+          cols="60"
+          name="rawIngredients"
+          value={this.state.rawIngredients}
+          placeholder="Ingredient"
+          onChange={e => this.handleOnChange(e)}
+          /><br />
+        <input type="submit" value="Save Ingredients"/>
+      </form>
+    )
+  }
+
   render() {
     return (
       <>
@@ -118,7 +134,7 @@ class EditRecipe extends Component {
           /><br />
           { this.renderIngredientsInForm() }
           { this.state.toggleAddIngredients ?
-              <AddIngredients recipe_id={this.state.recipe.id}/>
+              this.renderAddIngredientsForm()
               : <input type="button" value="Add Ingredients" onClick={e=>this.toggleAddIngredients(e)}/>
           }
           <input type="submit" value="Update Recipe"/>
