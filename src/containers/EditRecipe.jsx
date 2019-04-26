@@ -24,6 +24,15 @@ class EditRecipe extends Component {
     }
   }
 
+  updateLocalIngredients = ingredientIndex => {
+    this.setState({
+      recipe: {
+        ...this.state.recipe,
+        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient != this.state.recipe.ingredients[ingredientIndex] )
+      }
+    })
+  }
+
   componentDidMount() {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
@@ -78,7 +87,9 @@ class EditRecipe extends Component {
     })
   }
 
+
   render() {
+    console.log(this.state.recipe.ingredients)
     return (
       <>
         <form>
@@ -106,6 +117,7 @@ class EditRecipe extends Component {
           <EditIngredients
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
+            updateLocalIngredients={this.updateLocalIngredients}
             deleteIngredient={this.props.deleteIngredient}
             ingredients={this.state.recipe.ingredients}
             recipeID={this.state.recipe.id}
