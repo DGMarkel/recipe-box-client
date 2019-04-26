@@ -47,13 +47,6 @@ class EditRecipe extends Component {
     })
   }
 
-  toggleAddIngredients = e => {
-    e.preventDefault();
-    this.setState({
-      toggleAddIngredients: true
-    })
-  }
-
   renderIngredientsInForm = () => {
     return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
@@ -84,7 +77,7 @@ class EditRecipe extends Component {
 
   renderAddIngredientsForm = () => {
     return (
-      <form onSubmit={e => this.fetchIngredients(e) }>
+      <form onSubmit={e => this.setState({toggleAddIngredients: false}) }>
         <textarea
           rows="10"
           cols="60"
@@ -126,7 +119,7 @@ class EditRecipe extends Component {
           { this.renderIngredientsInForm() }
           { this.state.toggleAddIngredients ?
               this.renderAddIngredientsForm()
-              : <input type="button" value="Add Ingredients" onClick={e=>this.toggleAddIngredients(e)}/>
+              : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
           }
           <input type="submit" value="Update Recipe"/>
         </form>
