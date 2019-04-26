@@ -18,7 +18,7 @@ class BriefRecipeCard extends Component {
           <h3 className="title">{this.props.recipe.title}</h3>
         </div>
 
-        <img src={this.props.recipe.image_url} />
+        <img src={this.props.recipe.image_url} alt={this.props.recipe.title} />
 
         <div className="container">
           <p>{this.props.recipe.description}</p>
