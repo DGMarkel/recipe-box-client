@@ -11,11 +11,11 @@ class EditRecipe extends Component {
     super(props)
     this.state = {
       recipe: {
-        id: props.recipe.id,
-        title: props.recipe.title,
-        image_url: props.recipe.image_url,
-        description: props.recipe.description,
-        ingredients: props.recipe.ingredients
+        id: '',
+        title: '',
+        image_url: '',
+        description: '',
+        ingredients: []
       },
       toggleAddIngredients: false,
       rawIngredients: ''
