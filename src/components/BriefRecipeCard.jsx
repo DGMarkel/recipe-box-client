@@ -12,7 +12,7 @@ class BriefRecipeCard extends Component {
 
   renderRecipeCard = () => {
     return (
-      <div className="recipe-card" key={this.props.index}>
+      <div className="recipe-card">
 
         <div className="recipe-header">
           <h3 className="title">{this.props.recipe.title}</h3>
@@ -28,7 +28,7 @@ class BriefRecipeCard extends Component {
               : <></>
           }
         </div>
-        
+
       </div>
     )
   }

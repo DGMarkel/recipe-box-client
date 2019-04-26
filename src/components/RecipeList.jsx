@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import BriefRecipeCard from './BriefRecipeCard'
 
-import './RecipeList.css'
-
 class RecipeList extends Component {
   constructor() {
     super()
@@ -27,16 +25,17 @@ class RecipeList extends Component {
 
   render() {
     return (
-        <div className="recipes-container">
-          { (this.state.recipesLoaded)
-            ? this.state.recipes.map( (recipe, index) =>
-              <BriefRecipeCard recipe={recipe} index={index} />
+      <>
+        { (this.state.recipesLoaded)
+          ? this.state.recipes.map( recipe =>
+              <BriefRecipeCard recipe={recipe} key={recipe.food_name} />
             )
-            : <p>Loading...</p>
-          }
-        </div>
+          : <p>Loading...</p>
+        }
+      </>
     )
   }
+
 }
 
 export default withRouter(RecipeList)
