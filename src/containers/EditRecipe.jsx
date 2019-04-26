@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
+import EditIngredients from '../components/EditIngredients'
 
 import Auth from '../modules/Auth'
 
@@ -78,24 +79,10 @@ class EditRecipe extends Component {
 
   renderIngredientsInForm = () => {
     return this.state.recipe.ingredients.map((ingredient, index) => {
+      console.log(ingredient)
       return (
-        <div className="ingredient" key={index}>
-          <h3>{ingredient.food_name}</h3>
-          <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
-          Quantity:
-            <input
-              type="text"
-              name="serving_qty"
-              value={ingredient.serving_qty}
-              onChange={e=>this.handleOnChangeForIngredients(e, index)}
-            />
-          Serving Unit:
-            <input
-              type="text"
-              name="serving_unit"
-              value={ingredient.serving_unit}
-              onChange={e=>this.handleOnChangeForIngredients(e, index)}
-            /><br />
+        <div>
+          <EditIngredients handleOnChange={this.handleOnChangeForIngredients} ingredient={ingredient} index={index} />
           <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.state.recipe.id, ingredient) }/>
           <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.props.deleteIngredient(e, this.state.recipe.id, ingredient) }/>
           <hr />
