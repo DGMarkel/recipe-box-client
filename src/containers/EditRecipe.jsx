@@ -77,20 +77,6 @@ class EditRecipe extends Component {
     })
   }
 
-  renderIngredientsInForm = () => {
-      return (
-        <div>
-          <EditIngredients
-            handleOnChange={this.handleOnChangeForIngredients}
-            updateIngredient={this.props.updateIngredient}
-            deleteIngredient={this.props.deleteIngredient}
-            ingredients={this.state.recipe.ingredients}
-            recipeID={this.state.recipe.id}
-          />
-        </div>
-      )
-  }
-
   renderAddIngredientsForm = () => {
     return (
       <form onSubmit={e => {this.fetchIngredients(e); this.setState({toggleAddIngredients: false})} }>
@@ -187,7 +173,13 @@ class EditRecipe extends Component {
             placeholder="Brief Description"
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
-          { this.renderIngredientsInForm() }
+          <EditIngredients
+            handleOnChange={this.handleOnChangeForIngredients}
+            updateIngredient={this.props.updateIngredient}
+            deleteIngredient={this.props.deleteIngredient}
+            ingredients={this.state.recipe.ingredients}
+            recipeID={this.state.recipe.id}
+          />
           { this.state.toggleAddIngredients ?
               this.renderAddIngredientsForm()
               : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
