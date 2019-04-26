@@ -47,6 +47,7 @@ export default class AddIngredients extends Component {
           ingredientList["sugars"] = ingredient.nf_sugars;
           ingredientList["protein"] = ingredient.nf_protein;
           ingredientList["potassium"] = ingredient.nf_potassium;
+          ingredientList["recipe_id"] = this.props.recipe_id
           return ingredientList
         })
         this.setState({
@@ -56,8 +57,9 @@ export default class AddIngredients extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
-      <form onSubmit={e => this.fetchIngredients(e)}>
+      <form onSubmit={e => this.fetchIngredients(e) }>
         <textarea
           rows="10"
           cols="60"
