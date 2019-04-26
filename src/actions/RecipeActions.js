@@ -119,8 +119,6 @@ export function updateIngredient(event, recipeID, ingredient) {
       updatedIngredient["protein"] = res.foods[0].nf_protein;
       updatedIngredient["potassium"] = res.foods[0].nf_potassium;
 
-      dispatch({ type: 'UPDATE_RECIPE_INGREDIENT', payload: { updatedIngredient, recipeID } })
-
       fetch('/edit-ingredient', {
         method: 'PATCH',
         body: JSON.stringify({
