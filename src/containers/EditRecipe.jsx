@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
 import EditIngredients from '../components/EditIngredients'
+import AddIngredientsForm from '../components/AddIngredientsForm'
 
 import Auth from '../modules/Auth'
 
