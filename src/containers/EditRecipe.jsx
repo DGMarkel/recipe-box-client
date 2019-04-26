@@ -9,88 +9,53 @@ class EditRecipe extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: props.location.state.recipe.id,
-      title: props.location.state.recipe.title,
-      image_url: props.location.state.recipe.image_url,
-      description: props.location.state.recipe.description,
-      ingredients: props.location.state.recipe.ingredients
+      recipe: {
+        id: props.recipe.id,
+        title: props.recipe.title,
+        image_url: props.recipe.image_url,
+        description: props.recipe.description,
+        ingredients: props.recipe.ingredients
+      }
     }
   }
 
-  updateRecipeDetails = (e, recipe) => {
-    e.preventDefault();
-    fetch('/edit', {
-      method: 'PATCH',
-      body: JSON.stringify({
-        recipe: {
-          id: recipe.id,
-          title: recipe.title,
-          description: recipe.description,
-          image_url: recipe.image_url,
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(res => res.json())
-    .then(res => {
-      console.log('success')
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
-  deleteIngredient = (e, ingredient, index) => {
-    e.preventDefault();
-    fetch('/delete', {
-      method: 'DELETE',
-      body: JSON.stringify({
-        ingredient: {
-          id: this.state.id,
-          ingredient_data: ingredient
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(
-      this.setState({
-        ingredients: this.state.ingredients.splice(index, 1)
-      })
-    ).catch(err => {
-      console.log(err);
-    })
-  }
-
-
-  handleOnChange = event => {
-    const ingredients = event.target.name;
+  handleOnChangeForRecipeDetails = event => {
+    const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [ingredients]: value
+      recipe: {
+      ...this.state.recipe,
+        [name]: value
+      }
     });
   }
 
-  handleIngredientUpdate = (e, index) => {
-    const data_type = e.target.name;
-    const portion_data = e.target.value;
-    let new_ingredients = [...this.state.ingredients];
-    let ingredient = {...new_ingredients[index]};
-    ingredient[data_type] = portion_data;
-    new_ingredients[index] = ingredient
+  handleOnChangeForIngredients = (event, index) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    const updatedIngredients = this.state.recipe.ingredients
+    updatedIngredients[index][name] = value
     this.setState({
-      ingredients: new_ingredients
-    });
+      recipe: {
+        ...this.state.recipe,
+        ingredients: updatedIngredients
+      }
+    })
+  }
+
+  updateState = () => {
+    this.setState({
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.props.recipe.ingredients
+        }
+    })
   }
 
   renderIngredientsInForm = () => {
-    return this.state.ingredients.map((ingredient, index) => {
+    return this.props.recipe.ingredients.map((ingredient, index) => {
       return (
-        <div className="ingredient">
+        <div className="ingredient" key={index}>
           <h3>{ingredient.food_name}</h3>
           <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
           Quantity:
@@ -98,16 +63,17 @@ class EditRecipe extends Component {
               type="text"
               name="serving_qty"
               value={ingredient.serving_qty}
-              onChange={e=>this.handleIngredientUpdate(e, index)}
+              onChange={e=>this.handleOnChangeForIngredients(e, index)}
             />
           Serving Unit:
             <input
               type="text"
               name="serving_unit"
               value={ingredient.serving_unit}
-              onChange={e=>this.handleIngredientUpdate(e, index)}
+              onChange={e=>this.handleOnChangeForIngredients(e, index)}
             /><br />
-          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.deleteIngredient(e, ingredient, index)}}/>
+          <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => {this.props.updateIngredient(e, this.state.recipe.id, ingredient); this.updateState() }}/>
+          <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.state.recipe.id, ingredient)} }/>
           <hr />
         </div>
       )
@@ -117,27 +83,27 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => {this.props.updateRecipe(e, this.state); this.updateRecipeDetails(e, this.state); this.props.history.push('/my-recipes')}}>
+        <form onSubmit={e => this.props.updateRecipeDetails(e, this.state.recipe)}>
           <textarea
             cols="60"
             name="title"
-            value={this.state.title}
+            value={this.state.recipe.title}
             placeholder="Title"
-            onChange={event => this.handleOnChange(event)}
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
             /><br />
             <textarea
               cols="60"
               name="image_url"
-              value={this.state.image_url}
+              value={this.state.recipe.image_url}
               placeholder="Image"
-              onChange={event => this.handleOnChange(event)}
+              onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
           <textarea
             cols="60"
             name="description"
-            value={this.state.description}
+            value={this.state.recipe.description}
             placeholder="Brief Description"
-            onChange={event => this.handleOnChange(event)}
+            onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           { this.renderIngredientsInForm() }
           <input type="submit" value="Update Recipe"/>
@@ -149,8 +115,16 @@ class EditRecipe extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateRecipe: bindActionCreators(actions.updateRecipe, dispatch),
+    updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
+    updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(EditRecipe))
+const mapStateToProps = (state, ownProps) => {
+  return {
+    recipe: state.user.recipes.find( recipe => recipe.id === ownProps.location.state.recipe.id )
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditRecipe))
