@@ -13,16 +13,22 @@ class BriefRecipeCard extends Component {
   renderRecipeCard = () => {
     return (
       <div className="recipe-card" key={this.props.index}>
+
         <div className="recipe-header">
           <h3 className="title">{this.props.recipe.title}</h3>
         </div>
+
         <img src={this.props.recipe.image_url} />
-        <p>{this.props.recipe.description}</p>
-        { (this.props.user_recipe)
-            ?  <Link to={{pathname: `/recipes/${this.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}>
-                <button>Edit</button></Link>
-            : <></>
-        }
+
+        <div className="container">
+          <p>{this.props.recipe.description}</p>
+          { (this.props.user_recipe)
+              ?  <Link to={{pathname: `/recipes/${this.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}>
+                  <button>Edit</button></Link>
+              : <></>
+          }
+        </div>
+        
       </div>
     )
   }
