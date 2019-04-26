@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
+
 import Auth from '../modules/Auth'
+import AddIngredients from '../components/AddIngredients'
 
 class EditRecipe extends Component {
   constructor(props) {
@@ -41,6 +43,13 @@ class EditRecipe extends Component {
         ...this.state.recipe,
         ingredients: updatedIngredients
       }
+    })
+  }
+
+  toggleAddIngredients = e => {
+    e.preventDefault();
+    this.setState({
+      toggleAddIngredients: true
     })
   }
 
@@ -107,6 +116,8 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           { this.renderIngredientsInForm() }
+          { this.state.toggleAddIngredients ? <AddIngredients /> : <></> }
+          <input type="button" value="Add Ingredients" onClick={e=>this.toggleAddIngredients(e)}/>
           <input type="submit" value="Update Recipe"/>
         </form>
       </>
