@@ -15,7 +15,8 @@ class EditRecipe extends Component {
         image_url: props.recipe.image_url,
         description: props.recipe.description,
         ingredients: props.recipe.ingredients
-      }
+      },
+      toggleAddIngredients: false
     }
   }
 
