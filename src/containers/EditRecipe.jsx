@@ -81,7 +81,7 @@ class EditRecipe extends Component {
   render() {
     return (
       <>
-        <form onSubmit={e => this.props.updateRecipeDetails(e, this.state.recipe)}>
+        <form>
           <textarea
             cols="60"
             name="title"
@@ -118,7 +118,6 @@ class EditRecipe extends Component {
                 />
               : <input type="button" value="Add Ingredients" onClick={this.setState({toggleAddIngredients:true})}/>
           }
-          <input type="submit" value="Update Recipe"/>
         </form>
       </>
     )
