@@ -1,6 +1,6 @@
 import Auth from '../modules/Auth'
 
-export function fetchIngredients(event, recipeData) {
+export function fetchandPostIngredients(event, recipeData) {
   event.preventDefault()
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
