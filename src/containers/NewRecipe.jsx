@@ -88,13 +88,14 @@ class NewRecipe extends Component {
         <div className="recipe-form">
           <NewRecipeForm
             recipe={this.state.recipe}
+            ingredients_to_fetch={this.state.ingredients_to_fetch}
             fetchIngredients={this.fetchIngredients}
             handleOnChange={this.handleOnChange}
             handleOnChangeForIngredients={this.handleOnChangeForIngredients}
           />
         </div>
         <div className="recipe-container">
-          <RecipePreview recipe={this.state.recipe} fetchIngredients={this.props.saveRecipe} newRecipe="true" />
+          <RecipePreview recipe={this.state.recipe} saveRecipe={this.props.saveRecipe} newRecipe="true" />
         </div>
       </>
     )

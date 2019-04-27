@@ -32,11 +32,11 @@ class NewRecipeForm extends Component {
               rows="10"
               cols="60"
               name="ingredients"
-              value={this.props.recipe.ingredients}
+              value={this.props.ingredients_to_fetch}
               placeholder="Ingredient"
               onChange={event => this.props.handleOnChangeForIngredients(event)}
               /><br />
-            <input type="submit" value="Add Ingredients" onSubmit={e=>this.props.fetchIngredients} />
+            <input type="submit" value="Add Ingredients" onSubmit={e=>this.props.fetchIngredients(e)} />
           </form>
       </div>
     )
