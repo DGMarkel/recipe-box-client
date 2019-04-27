@@ -11,21 +11,21 @@ class NewRecipeForm extends Component {
             <textarea
               cols="60"
               name="title"
-              value={this.state.title}
+              value={this.props.recipe.title}
               placeholder="Title"
               onChange={event => this.props.handleOnChange(event)}
               /><br />
               <textarea
                 cols="60"
                 name="image_url"
-                value={this.state.image_url}
+                value={this.props.recipe.image_url}
                 placeholder="Image"
                 onChange={event => this.props.handleOnChange(event)}
                 /><br />
             <textarea
               cols="60"
               name="description"
-              value={this.state.description}
+              value={this.props.recipe.description}
               placeholder="Brief Description"
               onChange={event => this.props.handleOnChange(event)}
             /><br />
@@ -33,7 +33,7 @@ class NewRecipeForm extends Component {
               rows="10"
               cols="60"
               name="ingredients"
-              value={this.state.ingredients}
+              value={this.props.recipe.ingredients}
               placeholder="Ingredient"
               onChange={event => this.props.handleOnChangeForIngredients(event)}
               /><br />
