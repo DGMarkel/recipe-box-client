@@ -155,6 +155,12 @@ export function updateIngredient(event, recipeID, ingredient) {
   }
 }
 
+export function clearUpdatedIngredient() {
+  return (dispatch) => {
+    dispatch({ type: 'CLEAR_UPDATED_INGREDIENT'})
+  }
+}
+
 export function deleteIngredient(e, recipeId, ingredient) {
   e.preventDefault();
   return (dispatch) => {
