@@ -13,7 +13,7 @@ export default class RecipePreview extends Component {
             : <></>
         }
         { (this.props.newRecipe && this.props.recipe.title)
-          ? <input type="submit" value="Save Recipe" onSubmit={e=>this.props.saveRecipe(e, this.props.recipe)} />
+          ? <input type="submit" value="Save Recipe" onClick={e=>this.props.saveRecipe(e, this.props.recipe)} />
           : <></>
         }
       </div>
