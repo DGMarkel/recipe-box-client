@@ -4,27 +4,6 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/RecipeActions'
 
 class EditIngredients extends Component {
-  constructor() {
-    super()
-    this.state = {
-      ingredientUpdated: false
-    }
-  }
-
-  toggleState = () => {
-    this.setState({
-      ingredientUpdated: (this.state.ingredientUpdated) ? false : true
-    })
-  }
-
-  componentWillUpdate() {
-    if (this.state.ingredientUpdated) {
-      this.props.fetchRecipe()
-      this.setState({
-        ingredientUpdated: false
-      })
-    }
-  }
 
   render() {
     return (
