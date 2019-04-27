@@ -37,8 +37,20 @@ class EditRecipe extends Component {
     this.fetchRecipe();
   }
 
+  componentDidUpdate() {
+    if (this.props.newIngredients.length > 0) {
+      this.setState({
+        ...this.state,
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
+        }
+      })
+      this.props.clearNewIngredient()
+    }
+  }
+
   fetchRecipe = () => {
-    console.log("hi")
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
       headers: {
@@ -97,21 +109,6 @@ class EditRecipe extends Component {
       }
     })
   }
-
-  componentDidUpdate() {
-    console.log(this.props.updatedIngredients)
-    if (this.props.newIngredients.length > 0) {
-      this.setState({
-        ...this.state,
-        recipe: {
-          ...this.state.recipe,
-          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
-        }
-      })
-      this.props.clearNewIngredient()
-    }
-  }
-
 
   render() {
     return (
