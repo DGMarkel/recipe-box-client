@@ -2,6 +2,8 @@ import Auth from '../modules/Auth'
 
 export function fetchAndPostIngredients(event, recipeData) {
   event.preventDefault()
+
+  return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     body: JSON.stringify({
@@ -32,7 +34,8 @@ export function fetchAndPostIngredients(event, recipeData) {
         return ingredientList
       })
       postIngredients(ingredientList, recipeData)
-    }).catch(err => console.log(err));
+    }).then( dispatch({ type: 'TOGGLE_INGREDIENT_UPDATED'})).catch(err => console.log(err));
+  }
 }
 
 function postIngredients(ingredientsList, recipeData) {

@@ -66,7 +66,6 @@ class EditRecipe extends Component {
           image_url: res.image_url,
           ingredients: res.ingredients
         },
-        ingredientUpdated: true
       })
     })
   }
@@ -163,7 +162,7 @@ class EditRecipe extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAndPostIngredients: actions.fetchAndPostIngredients,
+    fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
