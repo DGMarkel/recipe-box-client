@@ -163,6 +163,7 @@ class EditRecipe extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
+    toggleIngredientUpdated: bindActionCreators(actions.toggleIngredientUpdated, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
