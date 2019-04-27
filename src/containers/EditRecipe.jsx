@@ -78,7 +78,7 @@ class EditRecipe extends Component {
           ingredients: res.ingredients
         },
       })
-    }).then(this.props.toggleIngredientUpdated()).then(console.log(this.props.ingredientUpdated))
+    })
   }
 
   toggleAddIngredientsForm = () => {
@@ -173,7 +173,6 @@ class EditRecipe extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ingredientUpdated: state.ingredientUpdated,
     newIngredients: state.newIngredients,
     updatedIngredient: state.updatedIngredient
   }
@@ -184,7 +183,6 @@ const mapDispatchToProps = dispatch => {
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     clearUpdatedIngredient: bindActionCreators(actions.clearUpdatedIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
-    toggleIngredientUpdated: bindActionCreators(actions.toggleIngredientUpdated, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)

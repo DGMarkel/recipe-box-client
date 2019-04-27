@@ -10,7 +10,6 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
     },
-  ingredientUpdated: false,
   newIngredients: [],
   updatedIngredient: {
     ingredient: {},
@@ -93,12 +92,6 @@ export default function prelimReducer(state={
             ingredient: {},
             ingredientID: ''
           }
-        }
-
-      case 'TOGGLE_INGREDIENT_UPDATED':
-        return {
-          ...state,
-          ingredientUpdated: (state.ingredientUpdated) ? false : true
         }
 
       case 'UPDATE_RECIPE':
