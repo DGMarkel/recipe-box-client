@@ -165,7 +165,8 @@ class EditRecipe extends Component {
 const mapStateToProps = state => {
   return {
     ingredientUpdated: state.ingredientUpdated,
-    newIngredients: state.newIngredients
+    newIngredients: state.newIngredients,
+    updatedIngredient: state.updatedIngredient
   }
 }
 
