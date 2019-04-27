@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import './NewRecipeForm.css'
-import NewRecipeContainer from './NewRecipeContainer'
 
 class NewRecipeForm extends Component {
 
@@ -116,7 +114,6 @@ class NewRecipeForm extends Component {
           </form>
         </div>
         <div className="recipe-container">
-          <NewRecipeContainer recipe={this.state.recipe} />
         </div>
       </div>
     )

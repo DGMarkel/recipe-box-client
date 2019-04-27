@@ -9,7 +9,7 @@ import './EditRecipe.css'
 import EditIngredients from '../components/EditIngredients'
 import RecipeDetails from '../components/RecipeDetails'
 import AddIngredientsForm from '../components/AddIngredientsForm'
-import NewRecipeContainer from './NewRecipeContainer'
+import NewRecipeContainer from '../components/NewRecipeContainer'
 
 import Auth from '../modules/Auth'
 
