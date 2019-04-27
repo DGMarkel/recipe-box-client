@@ -28,15 +28,6 @@ class EditRecipe extends Component {
     }
   }
 
-  deleteIngredientLocally = ingredientIndex => {
-    this.setState({
-      recipe: {
-        ...this.state.recipe,
-        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
-      }
-    })
-  }
-
   componentDidMount() {
     this.fetchRecipe();
   }
@@ -52,6 +43,28 @@ class EditRecipe extends Component {
       })
       this.props.clearNewIngredient()
     }
+  }
+
+  fetchRecipe = () => {
+    fetch(`/recipes/${this.props.location.state.recipe.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then(res => res.json())
+    .then(res => {
+      this.setState({
+        recipe: {
+          id: res.id,
+          title: res.title,
+          description: res.description,
+          image_url: res.image_url,
+          ingredients: res.ingredients
+        },
+      })
+    })
   }
 
   updateRecipeDetails = (event, recipe) => {
@@ -134,25 +147,12 @@ class EditRecipe extends Component {
         }).catch(err => console.log(err));
     }
 
-  fetchRecipe = () => {
-    fetch(`/recipes/${this.props.location.state.recipe.id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
+  deleteIngredientLocally = ingredientIndex => {
+    this.setState({
+      recipe: {
+        ...this.state.recipe,
+        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
       }
-    }).then(res => res.json())
-    .then(res => {
-      this.setState({
-        recipe: {
-          id: res.id,
-          title: res.title,
-          description: res.description,
-          image_url: res.image_url,
-          ingredients: res.ingredients
-        },
-      })
     })
   }
 
