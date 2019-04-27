@@ -25,7 +25,6 @@ class EditRecipe extends Component {
         ingredients: []
       },
       toggleAddIngredients: false,
-      rawIngredients: ''
     }
   }
 
@@ -36,27 +35,28 @@ class EditRecipe extends Component {
           <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
             <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
               <input type="submit" value="Update Recipe Details" />
-            </form>
-            <EditIngredients
-              handleOnChange={this.handleOnChangeForIngredients}
-              updateIngredient={this.updateIngredient}
-              deleteIngredientLocally={this.deleteIngredientLocally}
-              deleteIngredient={this.props.deleteIngredient}
-              fetchRecipe={this.fetchRecipe}
-              ingredients={this.state.recipe.ingredients}
-              recipeID={this.state.recipe.id}
-            />
-            { (this.state.toggleAddIngredients)
-                ? <div className="add-ingredients-form">
-                    <AddIngredientsForm
-                      fetchAndPostIngredients={this.props.fetchAndPostIngredients}
-                      handleOnChange={this.handleOnChange}
-                      state={this.state}
-                    />
-                    <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
-                  </div>
-                : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
-            }
+          </form>
+          <EditIngredients
+            handleOnChange={this.handleOnChangeForIngredients}
+            updateIngredient={this.updateIngredient}
+            deleteIngredientLocally={this.deleteIngredientLocally}
+            deleteIngredient={this.props.deleteIngredient}
+            fetchRecipe={this.fetchRecipe}
+            ingredients={this.state.recipe.ingredients}
+            recipeID={this.state.recipe.id}
+          />
+          {
+            (this.state.toggleAddIngredients)
+              ? <div className="add-ingredients-form">
+                <AddIngredientsForm
+                  fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                  handleOnChange={this.handleOnChange}
+                  state={this.state}
+                />
+                <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
+                </div>
+              : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
+          }
         </div>
         <div className="recipe-preview">
           <NewRecipeContainer recipe={this.state.recipe} />
