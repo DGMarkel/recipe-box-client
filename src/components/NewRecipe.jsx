@@ -81,8 +81,10 @@ export default class NewRecipe extends Component {
 
   render() {
     return (
-      <NewRecipeContainer />
-      <NewRecipeForm />
+      <>
+        <NewRecipeContainer />
+        <NewRecipeForm />
+      </>
     )
   }
 }
