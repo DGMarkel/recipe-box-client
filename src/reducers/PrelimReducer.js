@@ -10,11 +10,7 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
     },
-  newIngredients: [],
-  updatedIngredient: {
-    ingredient: {},
-    ingredientIndex: ''
-  }
+  newIngredients: []
 }, action) {
 
   switch(action.type) {
@@ -75,25 +71,6 @@ export default function prelimReducer(state={
         return {
           ...state,
           newIngredients: []
-        }
-
-      case 'UPDATE_INGREDIENT':
-        console.log(action.payload)
-        return {
-          ...state,
-          upDatedIngredient: {
-            ingredient: action.payload.updatedIngredient,
-            ingredientIndex: action.payload.ingredientIndex
-          }
-        }
-
-      case 'CLEAR_UPDATED_INGREDIENT':
-        return {
-          ...state,
-          upDatedIngredient: {
-            ingredient: {},
-            ingredientID: ''
-          }
         }
 
 // end of stuff i know i want to keep

@@ -92,12 +92,6 @@ export function updateRecipeDetails(event, recipe) {
   }
 }
 
-export function clearUpdatedIngredient() {
-  return (dispatch) => {
-    dispatch({ type: 'CLEAR_UPDATED_INGREDIENT'})
-  }
-}
-
 export function deleteIngredient(e, recipeId, ingredient) {
   e.preventDefault();
   return (dispatch) => {
