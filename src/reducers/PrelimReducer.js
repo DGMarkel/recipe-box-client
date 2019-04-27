@@ -13,7 +13,7 @@ export default function prelimReducer(state={
   newIngredients: [],
   updatedIngredient: {
     ingredient: {},
-    ingredientID: ''
+    ingredientIndex: ''
   }
 }, action) {
 
@@ -78,12 +78,12 @@ export default function prelimReducer(state={
         }
 
       case 'UPDATE_INGREDIENT':
-        console.log('hi')
+        console.log(action.payload)
         return {
           ...state,
           upDatedIngredient: {
             ingredient: action.payload.updatedIngredient,
-            ingredientID: action.payload.ingredientID
+            ingredientIndex: action.payload.ingredientIndex
           }
         }
 

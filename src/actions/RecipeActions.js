@@ -92,7 +92,7 @@ export function updateRecipeDetails(event, recipe) {
   }
 }
 
-export function updateIngredient(event, recipeID, ingredient) {
+export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
 
   event.preventDefault();
 
@@ -127,8 +127,8 @@ export function updateIngredient(event, recipeID, ingredient) {
       updatedIngredient["sugars"] = res.foods[0].nf_sugars;
       updatedIngredient["protein"] = res.foods[0].nf_protein;
       updatedIngredient["potassium"] = res.foods[0].nf_potassium;
-
-      dispatch({ type:'UPDATE_INGREDIENT', payload: { updatedIngredient: updatedIngredient, ingredientID: ingredient.id } })
+      console.log(ingredient)
+      dispatch({ type:'UPDATE_INGREDIENT', payload: { updatedIngredient: updatedIngredient, ingredientIndex: ingredientIndex } })
 
       fetch('/edit-ingredient', {
         method: 'PATCH',

@@ -53,7 +53,7 @@ class EditRecipe extends Component {
         ...this.state,
         recipe: {
           ...this.state.recipe,
-          ingredients: this.state.ingredients.map((ingredient, index) => index === this.props.updatedIngredient.ingredientID ? this.props.updatedIngredient : ingredient )
+          ingredients: this.state.ingredients.map((ingredient, index) => index === this.props.updatedIngredient.ingredientIndex ? this.props.updatedIngredient : ingredient )
         }
       })
     }
