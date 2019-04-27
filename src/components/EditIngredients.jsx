@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 
 export default class EditIngredients extends Component {
 
-  toggler = () => {
-        console.log(this.props.ingredientUpdated)
-    this.props.toggleIngredientUpdated()
-    console.log(this.props.ingredientUpdated)
-    if (this.props.ingredientUpdated) {
-      console.log("hiya")
-      this.props.fetchRecipe();
-    }
-  }
-
   render() {
     return (
       <div className="ingredients-list">
@@ -35,7 +25,7 @@ export default class EditIngredients extends Component {
                   value={ingredient.serving_unit}
                   onChange={e=>this.props.handleOnChange(e, index)}
                 /><br />
-                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => { this.props.updateIngredient(e, this.props.recipeID, ingredient); this.toggler() } }/>
+                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => { this.props.updateIngredient(e, this.props.recipeID, ingredient) } }/>
                 <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.props.recipeID, ingredient); this.props.updateLocalIngredients(index)} }/>
               </div>
             )
