@@ -7,7 +7,7 @@ import SignUp from './components/SignUpForm'
 import Dashboard from './containers/Dashboard'
 import Recipes from './components/RecipeList'
 import UserRecipes from './components/UserRecipesList'
-import NewRecipeForm from './containers/NewRecipeForm'
+import NewRecipe from './containers/NewRecipe'
 import EditRecipe from './containers/EditRecipe'
 import FullRecipeCard from './components/FullRecipeCard'
 
@@ -21,7 +21,7 @@ export default (
 
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <UserRecipes/> : <Redirect to="/login"/> }/>
-      <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipeForm/> : <Redirect to="/login"/> }/>
+      <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipe/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/:recipeName' component={ () => <FullRecipeCard/> }/>
       <Route exact path='/recipes/:recipeName/edit' component={ () => <EditRecipe/> }/>
     </Switch>

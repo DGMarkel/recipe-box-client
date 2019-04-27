@@ -6,8 +6,8 @@ import NewRecipeContainer from '..components/NewRecipeContainer'
 import NewRecipeForm from '..components/NewRecipeForm'
 
 export default class NewRecipe extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       recipe: {
         title: '',
