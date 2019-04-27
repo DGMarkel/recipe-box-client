@@ -28,7 +28,7 @@ class RecipeList extends Component {
       <>
         { (this.state.recipesLoaded)
           ? this.state.recipes.map( recipe =>
-            <div className="recipe-card">
+            <div className="recipe-card" style={{background: `url(${recipe.image_url})`, backgroundSize: '150%'}}>
               <BriefRecipeCard recipe={recipe} key={recipe.food_name} />
             </div>
             )
