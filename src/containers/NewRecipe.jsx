@@ -83,7 +83,7 @@ export default class NewRecipe extends Component {
     return (
       <>
         <RecipePreview recipe={this.state.recipe} />
-        <NewRecipeForm />
+        <NewRecipeForm handleOnChange={this.handleOnChange} handleOnChangeForIngredients={this.handleOnChangeForIngredients}/>
       </>
     )
   }
