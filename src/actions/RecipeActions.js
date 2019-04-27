@@ -58,6 +58,12 @@ function postIngredients(ingredientsList, recipeData) {
   })
 }
 
+export function toggleIngredientUpdated() {
+  return (dispatch) => {
+    dispatch({ type: 'TOGGLE_INGREDIENT_UPDATED'})
+  }
+}
+
 
 export function updateRecipeDetails(event, recipe) {
   event.preventDefault();
