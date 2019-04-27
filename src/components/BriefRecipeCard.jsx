@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Card from 'react-bootstrap/Card'
 
 import './BriefRecipeCard.css'
 
@@ -12,7 +13,7 @@ class BriefRecipeCard extends Component {
 
   renderRecipeCard = () => {
     return (
-      <div className="recipe-card">
+      <Card>
 
         <div className="recipe-header">
           <h3 className="title">{this.props.recipe.title}</h3>
@@ -29,7 +30,7 @@ class BriefRecipeCard extends Component {
           }
         </div>
 
-      </div>
+      </Card>
     )
   }
 
