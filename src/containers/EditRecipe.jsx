@@ -48,6 +48,15 @@ class EditRecipe extends Component {
       })
       this.props.clearNewIngredient()
     }
+    if (Object.entries(this.props.updatedIngredient.ingredient).length > 0 && this.props.updatedIngredient.constructor === Object) {
+      this.setState({
+        ...this.state,
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.state.ingredients.map((ingredient, index) => index === this.props.updatedIngredient.ingredientID ? this.props.updatedIngredient : ingredient )
+        }
+      })
+    }
   }
 
   fetchRecipe = () => {
@@ -173,6 +182,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
+    clearUpdatedIngredient: bindActionCreators(actions.clearUpdatedIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     toggleIngredientUpdated: bindActionCreators(actions.toggleIngredientUpdated, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),

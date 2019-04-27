@@ -77,11 +77,21 @@ export default function prelimReducer(state={
         }
 
       case 'UPDATE_INGREDIENT':
+        console.log('hi')
         return {
           ...state,
           upDatedIngredient: {
             ingredient: action.payload.updatedIngredient,
             ingredientID: action.payload.ingredientID
+          }
+        }
+
+      case 'CLEAR_UPDATED_INGREDIENT':
+        return {
+          ...state,
+          upDatedIngredient: {
+            ingredient: {},
+            ingredientID: ''
           }
         }
 
