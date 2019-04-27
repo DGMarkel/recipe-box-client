@@ -37,6 +37,8 @@ export default function prelimReducer(state={
             }
         }
 
+// stuff i know i want to keep
+
       case 'LOAD_USER_DATA':
         if (state.user.isLoaded) {
           return {
@@ -93,6 +95,8 @@ export default function prelimReducer(state={
             ingredientID: ''
           }
         }
+
+// end of stuff i know i want to keep
 
       case 'UPDATE_RECIPE':
         const index = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
