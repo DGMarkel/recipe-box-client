@@ -51,13 +51,12 @@ class EditRecipe extends Component {
   }
 
   updateIngredientLocally = () => {
-    debugger
     if (Object.entries(this.props.updatedIngredient.ingredient).length > 0 && this.props.updatedIngredient.constructor === Object) {
       this.setState({
         ...this.state,
         recipe: {
           ...this.state.recipe,
-          ingredients: this.state.ingredients.map((ingredient, index) => index === this.props.updatedIngredient.ingredientIndex ? this.props.updatedIngredient : ingredient )
+          ingredients: this.state.ingredients.map((ingredient, index) => index === this.props.updatedIngredient.ingredientIndex ? this.props.updatedIngredient.ingredient : ingredient )
         }
       })
     }
@@ -149,10 +148,9 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           <EditIngredients
-            ingredientUpdated={this.props.ingredientUpdated}
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
-            updateIngredientLocally={this.props.updateIngredientLocally}
+            updateIngredientLocally={this.updateIngredientLocally}
             deleteIngredientLocally={this.deleteIngredientLocally}
             deleteIngredient={this.props.deleteIngredient}
             fetchRecipe={this.fetchRecipe}
