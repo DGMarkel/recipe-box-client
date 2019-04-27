@@ -65,33 +65,6 @@ function postIngredients(ingredientsList, recipeData) {
   })
 }
 
-export function updateRecipeDetails(event, recipe) {
-  event.preventDefault();
-
-  return(dispatch) => {
-    fetch('/edit-recipe', {
-      method: 'PATCH',
-      body: JSON.stringify({
-        recipe: {
-          id: recipe.id,
-          title: recipe.title,
-          description: recipe.description,
-          image_url: recipe.image_url,
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(res => res.json())
-    .then(res => {
-      dispatch({ type: 'UPDATE_RECIPE_DETAILS', payload: res.recipe })
-    })
-    .catch(err => console.log(err))
-  }
-}
-
 export function deleteIngredient(e, recipeId, ingredient) {
   e.preventDefault();
   return (dispatch) => {

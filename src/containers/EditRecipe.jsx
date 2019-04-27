@@ -54,9 +54,30 @@ class EditRecipe extends Component {
     }
   }
 
+updateRecipeDetails = (event, recipe) => {
+  event.preventDefault();
+
+  fetch('/edit-recipe', {
+    method: 'PATCH',
+    body: JSON.stringify({
+      recipe: {
+        id: recipe.id,
+        title: recipe.title,
+        description: recipe.description,
+        image_url: recipe.image_url,
+      }
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+      token: Auth.getToken(),
+      'authorization':  `Token ${Auth.getToken()}`
+    }
+  }).catch(err => console.log(err))
+}
+
 updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
 
-    event.preventDefault();
+  event.preventDefault();
 
     if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
     const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
@@ -177,7 +198,7 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
     return (
       <>
         <div className="edit-recipe-form">
-          <form>
+          <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
             <textarea
               cols="60"
               name="title"
@@ -192,13 +213,15 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
                 placeholder="Image"
                 onChange={event => this.handleOnChangeForRecipeDetails(event)}
                 /><br />
-            <textarea
-              cols="60"
-              name="description"
-              value={this.state.recipe.description}
-              placeholder="Brief Description"
-              onChange={event => this.handleOnChangeForRecipeDetails(event)}
-            /><br />
+              <textarea
+                cols="60"
+                name="description"
+                value={this.state.recipe.description}
+                placeholder="Brief Description"
+                onChange={event => this.handleOnChangeForRecipeDetails(event)}
+              /><br />
+              <input type="submit" value="Update Recipe Details" />
+            </form>
             <EditIngredients
               handleOnChange={this.handleOnChangeForIngredients}
               updateIngredient={this.updateIngredient}
@@ -219,7 +242,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
                   </div>
                 : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
             }
-          </form>
         </div>
         <div className="recipe-preview">
           <NewRecipeContainer recipe={this.state.recipe} />
@@ -239,7 +261,6 @@ const mapDispatchToProps = dispatch => {
   return {
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
-    updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
