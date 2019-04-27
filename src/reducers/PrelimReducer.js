@@ -33,6 +33,8 @@ export default function prelimReducer(state={
             }
         }
 
+      //do I really need this case below?
+
       case 'LOAD_USER_DATA':
         if (state.user.isLoaded) {
           return {
