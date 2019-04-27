@@ -26,7 +26,7 @@ export default class EditIngredients extends Component {
                   onChange={e=>this.props.handleOnChange(e, index)}
                 /><br />
                 <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => { this.props.updateIngredient(e, this.props.recipeID, ingredient, index) } }/>
-                <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.props.recipeID, ingredient); this.props.deleteLocalIngredient(index)} }/>
+                <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.props.recipeID, ingredient); this.props.deleteIngredientLocally(index)} }/>
               </div>
             )
           })
