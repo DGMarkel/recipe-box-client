@@ -36,17 +36,11 @@ class EditRecipe extends Component {
   }
 
   componentDidMount() {
-    this.fetchRecipe()
+    this.fetchRecipe();
+    this.props.toggleIngredientUpdated();
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.ingredientUpdated) {
-  //     this.fetchRecipe();
-  //     this.setState({
-  //       ingredientUpdated: false
-  //     })
-  //   }
-  // }
+
 
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
@@ -135,6 +129,8 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           <EditIngredients
+            toggleIngredientUpdated={this.props.toggleIngredientUpdated}
+            ingredientUpdated={this.props.ingredientUpdated}
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
             updateLocalIngredients={this.updateLocalIngredients}
@@ -160,6 +156,12 @@ class EditRecipe extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ingredientUpdated: state.ingredientUpdated
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
@@ -170,4 +172,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(EditRecipe))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditRecipe))

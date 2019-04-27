@@ -61,7 +61,8 @@ export default function prelimReducer(state={
 
       case 'TOGGLE_INGREDIENT_UPDATED':
         return {
-          ingredientUpdated: state.ingredientUpdated ? false: true
+          ...state,
+          ingredientUpdated: (state.ingredientUpdated) ? false : true
         }
 
       case 'UPDATE_RECIPE':
