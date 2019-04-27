@@ -12,6 +12,10 @@ export default class RecipePreview extends Component {
             ? <IngredientsTable recipe={this.props.recipe} />
             : <></>
         }
+        { (this.props.newRecipe && this.props.recipe.title)
+          ? <input type="submit" value="Save Recipe" onSubmit={e=>this.props.saveRecipe(e, this.props.recipe)} />
+          : <></>
+        }
       </div>
     )
   }
