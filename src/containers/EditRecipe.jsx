@@ -38,6 +38,7 @@ class EditRecipe extends Component {
   }
 
   componentDidUpdate() {
+    console.log(this.props.updatedIngredient)
     if (this.props.newIngredients.length > 0) {
       this.setState({
         ...this.state,
@@ -51,6 +52,7 @@ class EditRecipe extends Component {
   }
 
   updateIngredientLocally = () => {
+    console.log(this.props.updatedIngredient)
     if (Object.entries(this.props.updatedIngredient.ingredient).length > 0 && this.props.updatedIngredient.constructor === Object) {
       this.setState({
         ...this.state,

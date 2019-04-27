@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class EditIngredients extends Component {
 
   render() {
-    console.log(this.props)
     return (
       <div className="ingredients-list">
         {

@@ -127,7 +127,6 @@ export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
       updatedIngredient["sugars"] = res.foods[0].nf_sugars;
       updatedIngredient["protein"] = res.foods[0].nf_protein;
       updatedIngredient["potassium"] = res.foods[0].nf_potassium;
-      console.log(ingredient)
       dispatch({ type:'UPDATE_INGREDIENT', payload: { updatedIngredient: updatedIngredient, ingredientIndex: ingredientIndex } })
 
       fetch('/edit-ingredient', {
