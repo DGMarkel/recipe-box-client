@@ -100,12 +100,12 @@ class EditRecipe extends Component {
 
   componentDidUpdate() {
     console.log(this.props.updatedIngredients)
-    if (this.props.updatedIngredients.length > 0) {
+    if (this.props.newIngredients.length > 0) {
       this.setState({
         ...this.state,
         recipe: {
           ...this.state.recipe,
-          ingredients: this.state.recipe.ingredients.concat(this.props.updatedIngredients)
+          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
         }
       })
       this.props.clearNewIngredient()
@@ -168,7 +168,7 @@ class EditRecipe extends Component {
 const mapStateToProps = state => {
   return {
     ingredientUpdated: state.ingredientUpdated,
-    updatedIngredients: state.updatedIngredients
+    newIngredients: state.newIngredients
   }
 }
 
