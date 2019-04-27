@@ -11,7 +11,11 @@ export default function prelimReducer(state={
     isLoaded: false
     },
   ingredientUpdated: false,
-  newIngredients: []
+  newIngredients: [],
+  updatedIngredient: {
+    ingredient: {},
+    ingredientID: ''
+  }
 }, action) {
 
   switch(action.type) {
@@ -70,6 +74,15 @@ export default function prelimReducer(state={
         return {
           ...state,
           newIngredients: []
+        }
+
+      case 'UPDATE_INGREDIENT':
+        return {
+          ...state,
+          upDatedIngredient: {
+            ingredient: action.payload.updatedIngredient,
+            ingredientID: action.payload.ingredientID
+          }
         }
 
       case 'TOGGLE_INGREDIENT_UPDATED':
