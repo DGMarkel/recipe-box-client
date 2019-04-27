@@ -3,7 +3,13 @@
   transition: 0.3s;
   border-radius: 5px;
   margin: 20px 10px;
-  max-width: 200px;
+  max-width: 300px;
+  height: 300px;
+  overflow: scroll;
+}
+
+.recipe-card-image {
+  width: 300px;
   height: 200px;
 }
 
@@ -18,16 +24,15 @@
 
 /* Add some padding inside the card container */
 .container {
-  padding: 2px 16px;
+  padding: 5px 5px;
 }
 
-.recipe-header .title, .calorie-count {
+.recipe-header, .calorie-count {
   display: inline;
 }
 
 .title {
-  float: left;
-  padding-left: 10px;
+  display: block;
 }
 
 .calorie-count {

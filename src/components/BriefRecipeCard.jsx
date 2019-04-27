@@ -15,15 +15,18 @@ class BriefRecipeCard extends Component {
       <div>
 
         <div className="recipe-header">
-          <h3 className="title">{this.props.recipe.title}</h3>
+          <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
+          </div>
         </div>
 
         <div className="container">
+          <p className="title">{this.props.recipe.title}</p>
           { (this.props.user_recipe)
               ?  <Link to={{pathname: `/recipes/${this.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}>
                   <button>Edit</button></Link>
               : <></>
           }
+          <p className="description">{this.props.recipe.description}</p>
         </div>
 
       </div>
