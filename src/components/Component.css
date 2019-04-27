@@ -6,6 +6,7 @@
   height: 400px;
   overflow: scroll;
   float: left;
+  background-color: white;
 }
 
 .recipe-card-image {
