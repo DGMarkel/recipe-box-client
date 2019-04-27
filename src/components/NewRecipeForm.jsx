@@ -6,7 +6,7 @@ class NewRecipeForm extends Component {
     return (
       <div>
           <h1>Create a New Recipe</h1>
-          <form>
+          <form onSubmit={e=>this.props.fetchIngredients(e)}>
             <textarea
               cols="60"
               name="title"
@@ -36,7 +36,7 @@ class NewRecipeForm extends Component {
               placeholder="Ingredient"
               onChange={event => this.props.handleOnChangeForIngredients(event)}
               /><br />
-            <input type="submit" value="Add Ingredients" onSubmit={e=>this.props.fetchIngredients(e)} />
+            <input type="submit" value="Add Ingredients" />
           </form>
       </div>
     )
