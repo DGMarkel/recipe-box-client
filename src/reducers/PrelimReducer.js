@@ -75,39 +75,6 @@ export default function prelimReducer(state={
 
 // end of stuff i know i want to keep
 
-      case 'UPDATE_RECIPE':
-        const index = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
-        //this needs to be rewritten
-        state.user.recipes[index] = action.payload
-        return {
-          ...state,
-            user: {
-              ...state.user,
-                recipes: state.user.recipes
-            }
-        }
-
-      case 'UPDATE_RECIPE_INGREDIENT':
-        let recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.recipeID)
-        const ingredientIndex = state.user.recipes[recipeIndex].ingredients.findIndex(i => i.food_name === action.payload.updatedIngredient.food_name)
-        // below written to get the ball rolling - will rewrite later
-        state.user.recipes[recipeIndex][ingredientIndex] = action.payload.updatedIngredient
-
-        return {
-           ...state,
-           user: {
-             ...state.user,
-             recipes: state.user.recipes
-             }
-           }
-
-        case 'UPDATE_RECIPE_DETAILS':
-          recipeIndex = state.user.recipes.findIndex(recipe => recipe.id === action.payload.id)
-          //needs to be rewritten
-          state.user.recipes[recipeIndex].title = action.payload.title
-          state.user.recipes[recipeIndex].image_url = action.payload.image_url
-          state.user.recipes[recipeIndex].description = action.payload.description
-
     default:
       return state
   }
