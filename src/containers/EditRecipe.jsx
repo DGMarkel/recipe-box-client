@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
 
+import './EditRecipe.css'
+
 import EditIngredients from '../components/EditIngredients'
 import AddIngredientsForm from '../components/AddIngredientsForm'
 import NewRecipeContainer from './NewRecipeContainer'
@@ -178,50 +180,54 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
   render() {
     return (
       <>
-        <form>
-          <textarea
-            cols="60"
-            name="title"
-            value={this.state.recipe.title}
-            placeholder="Title"
-            onChange={event => this.handleOnChangeForRecipeDetails(event)}
-            /><br />
+        <div className="edit-recipe-form">
+          <form>
             <textarea
               cols="60"
-              name="image_url"
-              value={this.state.recipe.image_url}
-              placeholder="Image"
+              name="title"
+              value={this.state.recipe.title}
+              placeholder="Title"
               onChange={event => this.handleOnChangeForRecipeDetails(event)}
               /><br />
-          <textarea
-            cols="60"
-            name="description"
-            value={this.state.recipe.description}
-            placeholder="Brief Description"
-            onChange={event => this.handleOnChangeForRecipeDetails(event)}
-          /><br />
-          <EditIngredients
-            handleOnChange={this.handleOnChangeForIngredients}
-            updateIngredient={this.props.updateIngredient}
-            deleteIngredientLocally={this.deleteIngredientLocally}
-            deleteIngredient={this.props.deleteIngredient}
-            fetchRecipe={this.fetchRecipe}
-            ingredients={this.state.recipe.ingredients}
-            recipeID={this.state.recipe.id}
-          />
-          { (this.state.toggleAddIngredients)
-              ? <div className="add-ingredients-form">
-                  <AddIngredientsForm
-                    fetchAndPostIngredients={this.props.fetchAndPostIngredients}
-                    handleOnChange={this.handleOnChange}
-                    state={this.state}
-                  />
-                  <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
-                </div>
-              : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
-          }
-        </form>
-        <NewRecipeContainer recipe={this.state.recipe} />
+              <textarea
+                cols="60"
+                name="image_url"
+                value={this.state.recipe.image_url}
+                placeholder="Image"
+                onChange={event => this.handleOnChangeForRecipeDetails(event)}
+                /><br />
+            <textarea
+              cols="60"
+              name="description"
+              value={this.state.recipe.description}
+              placeholder="Brief Description"
+              onChange={event => this.handleOnChangeForRecipeDetails(event)}
+            /><br />
+            <EditIngredients
+              handleOnChange={this.handleOnChangeForIngredients}
+              updateIngredient={this.props.updateIngredient}
+              deleteIngredientLocally={this.deleteIngredientLocally}
+              deleteIngredient={this.props.deleteIngredient}
+              fetchRecipe={this.fetchRecipe}
+              ingredients={this.state.recipe.ingredients}
+              recipeID={this.state.recipe.id}
+            />
+            { (this.state.toggleAddIngredients)
+                ? <div className="add-ingredients-form">
+                    <AddIngredientsForm
+                      fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                      handleOnChange={this.handleOnChange}
+                      state={this.state}
+                    />
+                    <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
+                  </div>
+                : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
+            }
+          </form>
+        </div>
+        <div className="recipe-preview">
+          <NewRecipeContainer recipe={this.state.recipe} />
+        </div>
       </>
     )
   }
