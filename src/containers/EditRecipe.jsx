@@ -65,7 +65,8 @@ class EditRecipe extends Component {
           description: res.description,
           image_url: res.image_url,
           ingredients: res.ingredients
-        }
+        },
+        ingredientUpdated: true
       })
     })
   }
