@@ -155,13 +155,11 @@ class EditRecipe extends Component {
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
     ingredientUpdated: state.ingredientUpdated
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
@@ -171,5 +169,4 @@ const mapDispatchToProps = dispatch => {
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
-
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditRecipe))

@@ -142,7 +142,7 @@ export function updateIngredient(event, recipeID, ingredient) {
           'authorization':  `Token ${Auth.getToken()}`
         }
       })
-    }).catch(err => console.log(err));
+    }).then(dispatch({ type: 'TOGGLE_INGREDIENT_UPDATED'})).catch(err => console.log(err));
   }
 }
 
