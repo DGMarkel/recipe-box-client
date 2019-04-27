@@ -232,7 +232,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
 const mapStateToProps = state => {
   return {
     newIngredients: state.newIngredients,
-    updatedIngredient: state.updatedIngredient
   }
 }
 
