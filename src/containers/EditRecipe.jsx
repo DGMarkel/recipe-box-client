@@ -9,7 +9,7 @@ import './EditRecipe.css'
 import EditIngredients from '../components/EditIngredients'
 import RecipeDetails from '../components/RecipeDetails'
 import AddIngredientsForm from '../components/AddIngredientsForm'
-import NewRecipeContainer from '../components/NewRecipeContainer'
+import RecipePreview from '../components/RecipePreview'
 
 import Auth from '../modules/Auth'
 
@@ -59,7 +59,7 @@ class EditRecipe extends Component {
           }
         </div>
         <div className="recipe-preview">
-          <NewRecipeContainer recipe={this.state.recipe} />
+          <RecipePreview recipe={this.state.recipe} />
         </div>
       </>
     )
