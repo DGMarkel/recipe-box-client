@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class EditIngredients extends Component {
+class EditIngredients extends Component {
   constructor() {
     super()
     this.state = {
@@ -56,3 +57,15 @@ export default class EditIngredients extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    ingredientUpdated: state.ingredientUpdated
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditIngredients)
