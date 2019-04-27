@@ -39,14 +39,14 @@ class EditRecipe extends Component {
     this.fetchRecipe()
   }
 
-  componentDidUpdate() {
-    if (this.state.ingredientUpdated) {
-      this.fetchRecipe();
-      this.setState({
-        ingredientUpdated: false
-      })
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.ingredientUpdated) {
+  //     this.fetchRecipe();
+  //     this.setState({
+  //       ingredientUpdated: false
+  //     })
+  //   }
+  // }
 
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
@@ -67,7 +67,7 @@ class EditRecipe extends Component {
           ingredients: res.ingredients
         },
       })
-    })
+    }).then(this.props.toggleIngredientUpdated())
   }
 
   toggleAddIngredientsForm = () => {
