@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { BrowserRouter } from 'react-router-dom'
 import PrelimReducer from './reducers/PrelimReducer'
-import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 

@@ -3,8 +3,11 @@
   transition: 0.3s;
   border-radius: 5px;
   margin: 10px;
-  width: 100%;
+  max-width: 20%;
+  max-height: 200px;
   background-color: white;
+  display: inline-block;
+  float: left;
 }
 
 /* On mouse-over, add a deeper shadow */
