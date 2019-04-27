@@ -48,6 +48,10 @@ class EditRecipe extends Component {
       })
       this.props.clearNewIngredient()
     }
+  }
+
+  updateIngredientLocally = () => {
+    debugger
     if (Object.entries(this.props.updatedIngredient.ingredient).length > 0 && this.props.updatedIngredient.constructor === Object) {
       this.setState({
         ...this.state,
@@ -145,7 +149,6 @@ class EditRecipe extends Component {
             onChange={event => this.handleOnChangeForRecipeDetails(event)}
           /><br />
           <EditIngredients
-            toggleIngredientUpdated={this.props.toggleIngredientUpdated}
             ingredientUpdated={this.props.ingredientUpdated}
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
