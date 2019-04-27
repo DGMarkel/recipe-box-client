@@ -23,6 +23,7 @@ export default (
       <Route path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <UserRecipes/> : <Redirect to="/login"/> }/>
       <Route path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipe/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/:recipeName' component={ () => <FullRecipeCard/> }/>
+      // will need to update edit route to only show to owner
       <Route exact path='/recipes/:recipeName/edit' component={ () => Auth.isUserAuthenticated() ? <EditRecipe/> : <Redirect to="/login"/> }/>
     </Switch>
 )
