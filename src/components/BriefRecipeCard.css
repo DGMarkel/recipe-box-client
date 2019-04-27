@@ -5,6 +5,7 @@
   max-width: 250px;
   height: 400px;
   overflow: scroll;
+  float: left;
 }
 
 .recipe-card-image {
@@ -18,8 +19,8 @@
 }
 
 /* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.recipe-card:hover {
+  box-shadow: 0 8px 16px 0 black;
 }
 
 /* Add some padding inside the card container */
@@ -39,4 +40,23 @@
 .calorie-count {
   float: right;
   padding-right: 10px;
+}
+
+h1 {
+  font-family: 'Bitter', serif;
+}
+
+.full-recipe-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 20px 10px;
+  width: 50%;
+  overflow: scroll;
+  float: left;
+}
+
+.ingredients-table {
+  float: right;
+  width: 45%;
+  margin: 10px;
 }

@@ -43,12 +43,13 @@ class FullRecipeCard extends Component {
   render() {
     return (
       <>
-        <div className="recipe-card">
+        <div className="full-recipe-card">
           <h1>{this.state.recipe.title}</h1>
           <em>{this.state.recipe.description}</em>
           <img src={this.state.recipe.image_url} alt={this.state.recipe.title} />
         </div>
         <div className="ingredients-table">
+          <h1>Nutritional Data</h1>
           <IngredientsTable recipe={this.state.recipe} />
         </div>
       </>

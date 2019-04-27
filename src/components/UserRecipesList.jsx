@@ -13,9 +13,9 @@ class UserRecipesList extends Component {
   renderBriefRecipeCards = () => {
     return (
       this.props.recipes.map(recipe =>
-        <>
+        <div className="recipe-card">
           <BriefRecipeCard recipe={recipe} user_recipe={true} key={recipe.food_name} />
-        </>
+        </div>
       )
     )
   }
