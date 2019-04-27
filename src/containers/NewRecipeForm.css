@@ -9,7 +9,7 @@ textarea {
   border-radius: 5px;
 }
 
-#preview h1 {
+.preview h1 {
   text-align: center;
   color: lightgrey;
 }

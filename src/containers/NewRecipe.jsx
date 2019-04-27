@@ -43,7 +43,6 @@ class NewRecipe extends Component {
 
   fetchIngredients = event => {
     event.preventDefault()
-      console.log(this.state.ingredients_to_fetch)
       fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
       method: 'POST',
       body: JSON.stringify({
