@@ -13,7 +13,7 @@ class BriefRecipeCard extends Component {
 
   renderRecipeCard = () => {
     return (
-      <Card>
+      <Card style={{ width: '18rem' }}>
 
         <div className="recipe-header">
           <h3 className="title">{this.props.recipe.title}</h3>
