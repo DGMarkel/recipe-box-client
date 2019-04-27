@@ -65,23 +65,22 @@ class EditRecipe extends Component {
     )
   }
 
+  componentDidMount() {
+    this.fetchRecipe();
+  }
 
-    componentDidMount() {
-      this.fetchRecipe();
+  componentDidUpdate() {
+    if (this.props.newIngredients.length > 0) {
+      this.setState({
+        ...this.state,
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
+        }
+      })
+      this.props.clearNewIngredient()
     }
-
-    componentDidUpdate() {
-      if (this.props.newIngredients.length > 0) {
-        this.setState({
-          ...this.state,
-          recipe: {
-            ...this.state.recipe,
-            ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
-          }
-        })
-        this.props.clearNewIngredient()
-      }
-    }
+  }
 
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
