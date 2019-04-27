@@ -33,8 +33,15 @@ export function fetchAndPostIngredients(event, recipeData) {
         ingredientList["potassium"] = ingredient.nf_potassium;
         return ingredientList
       })
+      dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: ingredientList })
       postIngredients(ingredientList, recipeData)
-    }).then( dispatch({ type: 'TOGGLE_INGREDIENT_UPDATED'})).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+  }
+}
+
+export function clearNewIngredient() {
+  return (dispatch) => {
+    dispatch({ type: 'CLEAR_NEW_INGREDIENTS' })
   }
 }
 

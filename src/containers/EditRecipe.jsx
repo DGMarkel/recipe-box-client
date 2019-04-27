@@ -19,7 +19,6 @@ class EditRecipe extends Component {
         description: '',
         ingredients: []
       },
-      ingredientUpdated: false,
       toggleAddIngredients: false,
       rawIngredients: ''
     }
@@ -30,8 +29,7 @@ class EditRecipe extends Component {
       recipe: {
         ...this.state.recipe,
         ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
-      },
-      ingredientUpdated: true
+      }
     })
   }
 
@@ -100,6 +98,20 @@ class EditRecipe extends Component {
     })
   }
 
+  componentDidUpdate() {
+    console.log(this.props.updatedIngredients)
+    if (this.props.updatedIngredients.length > 0) {
+      this.setState({
+        ...this.state,
+        recipe: {
+          ...this.state.recipe,
+          ingredients: this.state.recipe.ingredients.concat(this.props.updatedIngredients)
+        }
+      })
+      this.props.clearNewIngredient()
+    }
+  }
+
 
   render() {
     return (
@@ -155,11 +167,14 @@ class EditRecipe extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ingredientUpdated: state.ingredientUpdated
+    ingredientUpdated: state.ingredientUpdated,
+    updatedIngredients: state.updatedIngredients
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
+    clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     toggleIngredientUpdated: bindActionCreators(actions.toggleIngredientUpdated, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),

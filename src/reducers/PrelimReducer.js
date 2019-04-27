@@ -10,7 +10,8 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
     },
-  ingredientUpdated: false
+  ingredientUpdated: false,
+  newIngredients: []
 }, action) {
 
   switch(action.type) {
@@ -57,6 +58,18 @@ export default function prelimReducer(state={
               ...state.user,
               recipes: [...state.user.recipes.concat(action.payload)]
             }
+        }
+
+      case 'ADD_NEW_INGREDIENTS_TO_RECIPE':
+        return {
+          ...state,
+          newIngredients: action.payload
+        }
+
+      case 'CLEAR_NEW_INGREDIENTS':
+        return {
+          ...state,
+          newIngredients: []
         }
 
       case 'TOGGLE_INGREDIENT_UPDATED':
