@@ -29,22 +29,59 @@ class EditRecipe extends Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchRecipe();
+  render() {
+    return (
+      <>
+        <div className="edit-recipe-form">
+          <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
+            <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
+              <input type="submit" value="Update Recipe Details" />
+            </form>
+            <EditIngredients
+              handleOnChange={this.handleOnChangeForIngredients}
+              updateIngredient={this.updateIngredient}
+              deleteIngredientLocally={this.deleteIngredientLocally}
+              deleteIngredient={this.props.deleteIngredient}
+              fetchRecipe={this.fetchRecipe}
+              ingredients={this.state.recipe.ingredients}
+              recipeID={this.state.recipe.id}
+            />
+            { (this.state.toggleAddIngredients)
+                ? <div className="add-ingredients-form">
+                    <AddIngredientsForm
+                      fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                      handleOnChange={this.handleOnChange}
+                      state={this.state}
+                    />
+                    <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
+                  </div>
+                : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
+            }
+        </div>
+        <div className="recipe-preview">
+          <NewRecipeContainer recipe={this.state.recipe} />
+        </div>
+      </>
+    )
   }
 
-  componentDidUpdate() {
-    if (this.props.newIngredients.length > 0) {
-      this.setState({
-        ...this.state,
-        recipe: {
-          ...this.state.recipe,
-          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
-        }
-      })
-      this.props.clearNewIngredient()
+
+    componentDidMount() {
+      this.fetchRecipe();
     }
-  }
+
+    componentDidUpdate() {
+      if (this.props.newIngredients.length > 0) {
+        this.setState({
+          ...this.state,
+          recipe: {
+            ...this.state.recipe,
+            ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
+          }
+        })
+        this.props.clearNewIngredient()
+      }
+    }
 
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
@@ -195,41 +232,6 @@ class EditRecipe extends Component {
     })
   }
 
-  render() {
-    return (
-      <>
-        <div className="edit-recipe-form">
-          <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
-            <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
-              <input type="submit" value="Update Recipe Details" />
-            </form>
-            <EditIngredients
-              handleOnChange={this.handleOnChangeForIngredients}
-              updateIngredient={this.updateIngredient}
-              deleteIngredientLocally={this.deleteIngredientLocally}
-              deleteIngredient={this.props.deleteIngredient}
-              fetchRecipe={this.fetchRecipe}
-              ingredients={this.state.recipe.ingredients}
-              recipeID={this.state.recipe.id}
-            />
-            { (this.state.toggleAddIngredients)
-                ? <div className="add-ingredients-form">
-                    <AddIngredientsForm
-                      fetchAndPostIngredients={this.props.fetchAndPostIngredients}
-                      handleOnChange={this.handleOnChange}
-                      state={this.state}
-                    />
-                    <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
-                  </div>
-                : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
-            }
-        </div>
-        <div className="recipe-preview">
-          <NewRecipeContainer recipe={this.state.recipe} />
-        </div>
-      </>
-    )
-  }
 }
 
 const mapStateToProps = state => {
