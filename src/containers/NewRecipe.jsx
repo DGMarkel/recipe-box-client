@@ -82,8 +82,12 @@ export default class NewRecipe extends Component {
   render() {
     return (
       <>
-        <RecipePreview recipe={this.state.recipe} />
-        <NewRecipeForm recipe={this.state.recipe} handleOnChange={this.handleOnChange} handleOnChangeForIngredients={this.handleOnChangeForIngredients}/>
+        <div className="recipe-form">
+          <NewRecipeForm recipe={this.state.recipe} handleOnChange={this.handleOnChange} handleOnChangeForIngredients={this.handleOnChangeForIngredients}/>
+        </div>
+        <div className="recipe-container">
+          <RecipePreview recipe={this.state.recipe} fetchIngredients={this.fetchIngredients} newRecipe="true" />
+        </div>
       </>
     )
   }

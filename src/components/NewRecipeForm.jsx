@@ -5,7 +5,6 @@ class NewRecipeForm extends Component {
   render() {
     return (
       <div>
-        <div className="recipe-form">
           <h1>Create a New Recipe</h1>
           <form>
             <textarea
@@ -39,7 +38,6 @@ class NewRecipeForm extends Component {
               /><br />
             <input type="submit" value="Add Ingredients" />
           </form>
-        </div>
       </div>
     )
   }
