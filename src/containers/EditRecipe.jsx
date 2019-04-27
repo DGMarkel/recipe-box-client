@@ -96,8 +96,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
             }
         })
 
-        console.log(this.state.recipe.ingredients)
-
         fetch('/edit-ingredient', {
           method: 'PATCH',
           body: JSON.stringify({
@@ -241,7 +239,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
-    clearUpdatedIngredient: bindActionCreators(actions.clearUpdatedIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
