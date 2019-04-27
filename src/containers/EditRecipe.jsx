@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/RecipeActions'
+
 import EditIngredients from '../components/EditIngredients'
 import AddIngredientsForm from '../components/AddIngredientsForm'
+import NewRecipeContainer from './NewRecipeContainer'
 
 import Auth from '../modules/Auth'
 
@@ -201,7 +203,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
           <EditIngredients
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
-            updateIngredientLocally={this.updateIngredientLocally}
             deleteIngredientLocally={this.deleteIngredientLocally}
             deleteIngredient={this.props.deleteIngredient}
             fetchRecipe={this.fetchRecipe}
@@ -220,10 +221,12 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
               : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
           }
         </form>
+        <NewRecipeContainer recipe={this.state.recipe} />
       </>
     )
   }
 }
+
 const mapStateToProps = state => {
   return {
     newIngredients: state.newIngredients,
