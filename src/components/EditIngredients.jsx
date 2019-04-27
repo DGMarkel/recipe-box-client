@@ -3,10 +3,12 @@ import React, { Component } from 'react'
 export default class EditIngredients extends Component {
 
   toggler = () => {
+        console.log(this.props.ingredientUpdated)
     this.props.toggleIngredientUpdated()
+    console.log(this.props.ingredientUpdated)
     if (this.props.ingredientUpdated) {
+      console.log("hiya")
       this.props.fetchRecipe();
-      this.props.toggleIngredientUpdated()
     }
   }
 

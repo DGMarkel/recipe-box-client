@@ -37,12 +37,10 @@ class EditRecipe extends Component {
 
   componentDidMount() {
     this.fetchRecipe();
-    this.props.toggleIngredientUpdated();
   }
 
-
-
   fetchRecipe = () => {
+    console.log("hi")
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
       headers: {
@@ -61,7 +59,7 @@ class EditRecipe extends Component {
           ingredients: res.ingredients
         },
       })
-    }).then(this.props.toggleIngredientUpdated())
+    }).then(this.props.toggleIngredientUpdated()).then(console.log(this.props.ingredientUpdated))
   }
 
   toggleAddIngredientsForm = () => {
