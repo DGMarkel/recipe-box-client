@@ -7,6 +7,7 @@ import * as actions from '../actions/RecipeActions'
 import './EditRecipe.css'
 
 import EditIngredients from '../components/EditIngredients'
+import RecipeDetails from '../components/RecipeDetails'
 import AddIngredientsForm from '../components/AddIngredientsForm'
 import NewRecipeContainer from './NewRecipeContainer'
 
@@ -199,27 +200,7 @@ class EditRecipe extends Component {
       <>
         <div className="edit-recipe-form">
           <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
-            <textarea
-              cols="60"
-              name="title"
-              value={this.state.recipe.title}
-              placeholder="Title"
-              onChange={event => this.handleOnChangeForRecipeDetails(event)}
-              /><br />
-              <textarea
-                cols="60"
-                name="image_url"
-                value={this.state.recipe.image_url}
-                placeholder="Image"
-                onChange={event => this.handleOnChangeForRecipeDetails(event)}
-                /><br />
-              <textarea
-                cols="60"
-                name="description"
-                value={this.state.recipe.description}
-                placeholder="Brief Description"
-                onChange={event => this.handleOnChangeForRecipeDetails(event)}
-              /><br />
+            <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
               <input type="submit" value="Update Recipe Details" />
             </form>
             <EditIngredients
