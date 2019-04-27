@@ -3,7 +3,6 @@ import IngredientsTable from './IngredientsTable'
 
 export default class RecipePreview extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <h3 className="title">{this.props.recipe.title}</h3>
