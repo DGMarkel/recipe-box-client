@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/RecipeActions'
 
 class EditIngredients extends Component {
   constructor() {
@@ -65,7 +67,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditIngredients)
