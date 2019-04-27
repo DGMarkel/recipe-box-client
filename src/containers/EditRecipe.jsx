@@ -24,7 +24,7 @@ class EditRecipe extends Component {
     }
   }
 
-  updateLocalIngredients = ingredientIndex => {
+  deleteLocalIngredient = ingredientIndex => {
     this.setState({
       recipe: {
         ...this.state.recipe,
@@ -152,7 +152,7 @@ class EditRecipe extends Component {
             ingredientUpdated={this.props.ingredientUpdated}
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
-            updateLocalIngredients={this.updateLocalIngredients}
+            deleteLocalIngredient={this.deleteLocalIngredient}
             deleteIngredient={this.props.deleteIngredient}
             fetchRecipe={this.fetchRecipe}
             ingredients={this.state.recipe.ingredients}
