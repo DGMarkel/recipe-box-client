@@ -54,85 +54,85 @@ class EditRecipe extends Component {
     }
   }
 
-updateRecipeDetails = (event, recipe) => {
-  event.preventDefault();
+  updateRecipeDetails = (event, recipe) => {
+    event.preventDefault();
 
-  fetch('/edit-recipe', {
-    method: 'PATCH',
-    body: JSON.stringify({
-      recipe: {
-        id: recipe.id,
-        title: recipe.title,
-        description: recipe.description,
-        image_url: recipe.image_url,
-      }
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      token: Auth.getToken(),
-      'authorization':  `Token ${Auth.getToken()}`
-    }
-  }).catch(err => console.log(err))
-}
-
-updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
-
-  event.preventDefault();
-
-    if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
-    const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
-
-      fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
-      method: 'POST',
+    fetch('/edit-recipe', {
+      method: 'PATCH',
       body: JSON.stringify({
-        query: ingredientString
+        recipe: {
+          id: recipe.id,
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+        }
       }),
       headers: {
         'Content-Type': 'application/json',
-        'x-app-id': process.env.REACT_APP_NUTRITIONIX_APP_ID,
-        'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY,
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
       }
-    }).then(res => res.json())
-    .then(res => {
-        let updatedIngredient = {}
-        updatedIngredient["food_name"] = res.foods[0].food_name;
-        updatedIngredient["serving_qty"] = res.foods[0].serving_qty;
-        updatedIngredient["serving_unit"] = res.foods[0].serving_unit;
-        updatedIngredient["calories"] = res.foods[0].nf_calories;
-        updatedIngredient["total_fat"] = res.foods[0].nf_total_fat;
-        updatedIngredient["saturated_fat"] = res.foods[0].nf_saturated_fat;
-        updatedIngredient["cholesterol"] = res.foods[0].nf_cholesterol;
-        updatedIngredient["sodium"] = res.foods[0].nf_sodium;
-        updatedIngredient["total_carbohydrate"] = res.foods[0].nf_total_carbohydrate;
-        updatedIngredient["dietary_fiber"] = res.foods[0].nf_dietary_fiber;
-        updatedIngredient["sugars"] = res.foods[0].nf_sugars;
-        updatedIngredient["protein"] = res.foods[0].nf_protein;
-        updatedIngredient["potassium"] = res.foods[0].nf_potassium;
-
-        this.setState({
-          ...this.state,
-            recipe: {
-              ...this.state.recipe,
-              ingredients: this.state.recipe.ingredients.map((ingredient, index) => index === ingredientIndex ? updatedIngredient : ingredient)
-            }
-        })
-
-        fetch('/edit-ingredient', {
-          method: 'PATCH',
-          body: JSON.stringify({
-              ingredient: {
-                ingredient_data: updatedIngredient,
-                recipeID: recipeID
-              }
-            }),
-          headers: {
-            'Content-Type': 'application/json',
-            token: Auth.getToken(),
-            'authorization':  `Token ${Auth.getToken()}`
-          }
-        })
-      }).catch(err => console.log(err));
+    }).catch(err => console.log(err))
   }
+
+  updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
+
+    event.preventDefault();
+
+      if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
+      const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
+
+        fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
+        method: 'POST',
+        body: JSON.stringify({
+          query: ingredientString
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-app-id': process.env.REACT_APP_NUTRITIONIX_APP_ID,
+          'x-app-key': process.env.REACT_APP_NUTRITIONIX_KEY,
+        }
+      }).then(res => res.json())
+      .then(res => {
+          let updatedIngredient = {}
+          updatedIngredient["food_name"] = res.foods[0].food_name;
+          updatedIngredient["serving_qty"] = res.foods[0].serving_qty;
+          updatedIngredient["serving_unit"] = res.foods[0].serving_unit;
+          updatedIngredient["calories"] = res.foods[0].nf_calories;
+          updatedIngredient["total_fat"] = res.foods[0].nf_total_fat;
+          updatedIngredient["saturated_fat"] = res.foods[0].nf_saturated_fat;
+          updatedIngredient["cholesterol"] = res.foods[0].nf_cholesterol;
+          updatedIngredient["sodium"] = res.foods[0].nf_sodium;
+          updatedIngredient["total_carbohydrate"] = res.foods[0].nf_total_carbohydrate;
+          updatedIngredient["dietary_fiber"] = res.foods[0].nf_dietary_fiber;
+          updatedIngredient["sugars"] = res.foods[0].nf_sugars;
+          updatedIngredient["protein"] = res.foods[0].nf_protein;
+          updatedIngredient["potassium"] = res.foods[0].nf_potassium;
+
+          this.setState({
+            ...this.state,
+              recipe: {
+                ...this.state.recipe,
+                ingredients: this.state.recipe.ingredients.map((ingredient, index) => index === ingredientIndex ? updatedIngredient : ingredient)
+              }
+          })
+
+          fetch('/edit-ingredient', {
+            method: 'PATCH',
+            body: JSON.stringify({
+                ingredient: {
+                  ingredient_data: updatedIngredient,
+                  recipeID: recipeID
+                }
+              }),
+            headers: {
+              'Content-Type': 'application/json',
+              token: Auth.getToken(),
+              'authorization':  `Token ${Auth.getToken()}`
+            }
+          })
+        }).catch(err => console.log(err));
+    }
 
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
