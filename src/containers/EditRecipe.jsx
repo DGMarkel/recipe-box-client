@@ -42,7 +42,6 @@ class EditRecipe extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.updatedIngredient)
     if (this.props.newIngredients.length > 0) {
       this.setState({
         ...this.state,
@@ -62,7 +61,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
     if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
     const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
 
-    return(dispatch) => {
       fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
       method: 'POST',
       body: JSON.stringify({
@@ -75,7 +73,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
       }
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         let updatedIngredient = {}
         updatedIngredient["food_name"] = res.foods[0].food_name;
         updatedIngredient["serving_qty"] = res.foods[0].serving_qty;
@@ -95,9 +92,11 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
           ...this.state,
             recipe: {
               ...this.state.recipe,
-              ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
+              ingredients: this.state.recipe.ingredients.map((ingredient, index) => index === ingredientIndex ? updatedIngredient : ingredient)
             }
         })
+
+        console.log(this.state.recipe.ingredients)
 
         fetch('/edit-ingredient', {
           method: 'PATCH',
@@ -114,7 +113,6 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
           }
         })
       }).catch(err => console.log(err));
-    }
   }
 
   fetchRecipe = () => {
@@ -205,7 +203,7 @@ updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
             /><br />
             <EditIngredients
               handleOnChange={this.handleOnChangeForIngredients}
-              updateIngredient={this.props.updateIngredient}
+              updateIngredient={this.updateIngredient}
               deleteIngredientLocally={this.deleteIngredientLocally}
               deleteIngredient={this.props.deleteIngredient}
               fetchRecipe={this.fetchRecipe}
