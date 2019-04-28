@@ -61,3 +61,8 @@ h1 {
   width: 45%;
   margin: 10px;
 }
+
+.preview-image {
+  height: 200px;
+  width: auto;
+}

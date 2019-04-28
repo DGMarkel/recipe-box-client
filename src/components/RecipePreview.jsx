@@ -8,8 +8,9 @@ export default class RecipePreview extends Component {
         { (this.props.recipe.title)
           ? <>
               <h3 className="title">{this.props.recipe.title}</h3>
-              <img src={this.props.recipe.image_url} />
               <p>{this.props.recipe.description}</p>
+              <div className="preview-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '100%'}}>
+              </div>
             </>
           : <h1>Preview</h1>
         }
