@@ -26,6 +26,7 @@ class SignupForm extends Component {
   }
 
   handleSignUpSubmit = (e) => {
+    console.log(JSON.stringify(this.state))
     e.preventDefault();
     return fetch('/users', {
       method: 'POST',
