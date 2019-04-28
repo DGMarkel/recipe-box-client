@@ -30,7 +30,9 @@ class SignupForm extends Component {
     e.preventDefault();
     return fetch('/users', {
       method: 'POST',
-      body: JSON.stringify(this.state),
+      body: JSON.stringify({
+        user: this.state
+      }),
       headers: {
         'Content-Type': 'application/json'
       }
