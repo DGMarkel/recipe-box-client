@@ -1,28 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/UserActions'
-import Auth from '../modules/Auth'
 
 class SignupForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: '',
-      email: ''
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
 
   render() {
     return (
@@ -57,12 +36,4 @@ class SignupForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
-  }
-}
-
-
-
-export default withRouter(connect(null, mapDispatchToProps)(SignupForm))
+export default withRouter((SignupForm))

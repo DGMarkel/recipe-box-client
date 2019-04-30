@@ -76,7 +76,7 @@ class App extends Component {
           ? this.renderPrivateNavBar()
           : this.renderPublicNavBar()
         }
-        { this.state.signupToggled ? <SignUpForm /> : <></> }
+        { this.state.signupToggled ? <SignUpForm handleSignUpSubmit={this.props.handleSignUpSubmit}/> : <></> }
         { this.state.loginToggled ? <LoginForm /> : <></> }
         <>{ routes }</>
       </div>
