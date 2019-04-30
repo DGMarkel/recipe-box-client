@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import './App.css'
+import { withRouter, Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+
 import Auth from './modules/Auth'
 import routes from './routes'
-import { withRouter, Link } from 'react-router-dom'
-
+import './App.css'
+import * as actions from './actions/UserActions'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 
@@ -81,4 +84,11 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSignUpSubmit: bindActionCreators(actions.handleSignUpSubmit, dispatch),
+    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App))

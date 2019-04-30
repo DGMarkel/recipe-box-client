@@ -2,7 +2,8 @@ import Auth from '../modules/Auth'
 
 export function handleSignUpSubmit(e, user) {
   e.preventDefault();
-  return fetch('/users', {
+  return(dispatch) => {
+    fetch('/users', {
     method: 'POST',
     body: JSON.stringify({
       user: user
@@ -19,6 +20,7 @@ export function handleSignUpSubmit(e, user) {
         this.props.history.push('/')
       }
     }).catch(err => console.log(err))
+  }
 }
 
 
