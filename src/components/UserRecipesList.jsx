@@ -9,10 +9,6 @@ import BriefRecipeCard from './BriefRecipeCard'
 
 class UserRecipesList extends Component {
 
-  formatRecipeURL = recipe => {
-    return recipe.toLowerCase().replace(/\s/g , "-")
-  }
-
   renderBriefRecipeCards = () => {
     return (
       this.props.recipes.map(recipe =>
