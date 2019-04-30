@@ -27,6 +27,13 @@ class App extends Component {
     this.props.history.push('/');
   }
 
+  formToggler = e => {
+    const name = e.target.name;
+    this.setState({
+      [name]: this.state[name] ? false : true
+    })
+  }
+
   renderPrivateNavBar = () => {
     return (
         <div className="nav">
@@ -36,13 +43,6 @@ class App extends Component {
           <a href="/logout" onClick={e => this.handleLogout(e)}>Logout</a>
         </div>
     )
-  }
-
-  formToggler = e => {
-    const name = e.target.name;
-    this.setState({
-      [name]: this.state[name] ? false : true
-    })
   }
 
   renderPublicNavBar = () => {
