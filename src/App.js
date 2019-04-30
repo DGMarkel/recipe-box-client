@@ -106,6 +106,7 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     handleSignUpSubmit: bindActionCreators(actions.handleSignUpSubmit, dispatch),
+    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
   }
 }
 

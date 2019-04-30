@@ -15,6 +15,10 @@ export function handleSignUpSubmit(e, user) {
     .then(res => res.json())
     .then(res => {
       Auth.authenticateToken(res.token)
+      if (Auth.isUserAuthenticated()) {
+        this.props.fetchUserData(dispatch);
+        this.props.history.push('/')
+      }
     }).catch(err => console.log(err))
   }
 }

@@ -6,7 +6,7 @@ class SignupForm extends Component {
   render() {
     return (
       <div className="form">
-        <form onSubmit={e=> { this.props.signupAndSignIn(e, this.props.user) } }>
+        <form onSubmit={e=> { this.props.handleLoginSubmit(e, this.props.user) } }>
           <input
             type="text"
             name="username"
