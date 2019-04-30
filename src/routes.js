@@ -10,6 +10,7 @@ import UserRecipes from './components/UserRecipesList'
 import NewRecipe from './containers/NewRecipe'
 import EditRecipe from './containers/EditRecipe'
 import FullRecipeCard from './components/FullRecipeCard'
+import GenericNotFound from './components/GenericNotFound'
 
 export default (
     <Switch id='routes'>
@@ -25,5 +26,6 @@ export default (
       <Route exact path='/recipes/:recipeName' component={ () => <FullRecipeCard/> }/>
       // will need to update edit route to only show to owner
       <Route exact path='/recipes/:recipeName/edit' component={ () => Auth.isUserAuthenticated() ? <EditRecipe/> : <Redirect to="/login"/> }/>
+      <Route path='*' component={() => <GenericNotFound />} />
     </Switch>
 )
