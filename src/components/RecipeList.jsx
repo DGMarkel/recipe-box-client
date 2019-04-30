@@ -17,6 +17,26 @@ class RecipeList extends Component {
   }
 
   componentDidMount() {
+    this.props.user ? this.userRecipes() : this.allRecipes()
+  }
+
+  userRecipes = () => {
+    fetch('/profile', {
+      method: 'GET',
+      headers: {
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
+      }
+    }).then( res => res.json())
+    .then( res => {
+      this.setState({
+        recipes: res.recipes,
+        recipesLoaded: true
+      })
+    })
+  }
+
+  allRecipes = () => {
     fetch('/recipes')
       .then(res => res.json())
       .then(resJSON => {
@@ -29,7 +49,6 @@ class RecipeList extends Component {
   }
 
   render() {
-    console.log(Auth.isUserAuthenticated())
     return (
       <>
         { (this.state.recipesLoaded)
