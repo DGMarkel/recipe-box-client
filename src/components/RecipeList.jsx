@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import BriefRecipeCard from './BriefRecipeCard'
+import Auth from '../modules/Auth'
 
 class RecipeList extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class RecipeList extends Component {
   }
 
   render() {
+    console.log(Auth.isUserAuthenticated())
     return (
       <>
         { (this.state.recipesLoaded)

@@ -12,7 +12,8 @@ class FullRecipeCard extends Component {
         title: '',
         image_url: '',
         description: '',
-        ingredients: []
+        ingredients: [],
+        recipe_totals: []
       }
     }
   }
@@ -33,13 +34,15 @@ class FullRecipeCard extends Component {
           title: res.title,
           description: res.description,
           image_url: res.image_url,
-          ingredients: res.ingredients
+          ingredients: res.ingredients,
+          recipe_totals: res.recipe_totals
         }
       })
     })
   }
 
   render() {
+    console.log(this.state.recipe.recipe_totals)
     return (
       <>
         <div className="full-recipe-card">
