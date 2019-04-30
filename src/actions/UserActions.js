@@ -1,6 +1,6 @@
 import Auth from '../modules/Auth'
 
-export function handleSignUpSubmit(e, user) => {
+export function handleSignUpSubmit(e, user) {
   e.preventDefault();
   return fetch('/users', {
     method: 'POST',
@@ -15,14 +15,14 @@ export function handleSignUpSubmit(e, user) => {
     .then(res => {
       Auth.authenticateToken(res.token)
       if (Auth.isUserAuthenticated()) {
-        fetchUserData();
+        this.props.fetchUserData(dispatch);
         this.props.history.push('/')
       }
     }).catch(err => console.log(err))
 }
 
 
-function fetchUserData() {
+export function fetchUserData() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_USER_DATA'})
     fetch('/profile', {
