@@ -4,6 +4,9 @@ import Auth from './modules/Auth'
 import routes from './routes'
 import { withRouter, Link } from 'react-router-dom'
 
+import LoginForm from './components/LoginForm'
+import SignUpForm from './components/SignUpForm'
+
 class App extends Component {
 
   handleLogout = e => {
@@ -27,7 +30,7 @@ class App extends Component {
     return (
       <div className="nav">
         <Link to="/">Home</Link>
-        <Link to="/signup">Sign Up</Link>
+        <Link onClick={()=>this.toggleSignUpForm()}>Sign Up</Link>
         <Link to="/login">Log In</Link>
       </div>
     )
