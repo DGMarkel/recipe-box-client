@@ -45,14 +45,17 @@ class LoginForm extends Component {
           this.props.fetchUserData();
           this.props.history.push('/')
         }
-      }).catch(err => {
-        this.setState({
-          errors: true
-        })
-      })
+        else {
+          this.setState({
+            ...this.state,
+              errors: true
+          })
+        }
+      }).catch(err => {console.log(err)})
   }
 
   render() {
+    console.log(this.state.errors)
     return (
       <div className="form">
         <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state) }>
@@ -72,9 +75,11 @@ class LoginForm extends Component {
           />
           <input type="submit" value="Login"/>
         </form>
-        { this.state.errors ?
-        <div className="errors">
-        </div>
+        { this.state.errors
+          ? <div className="errors">
+              There was a problem logging you in.  Please try again.
+            </div>
+          : <></>
         }
       </div>
 
