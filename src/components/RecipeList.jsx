@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators} from 'redux'
 import { withRouter } from 'react-router-dom'
 
+import * as actions from '../actions/UserActions'
 import BriefRecipeCard from './BriefRecipeCard'
 import Auth from '../modules/Auth'
 
