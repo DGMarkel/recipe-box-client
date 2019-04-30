@@ -9,28 +9,33 @@ class SignupForm extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
-      email: ''
+      user: {
+        username: '',
+        password: '',
+        email: ''
+      },
+      errors: false
     }
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-      [name]: value,
+      ...this.state,
+        user: {
+          ...this.state.user,
+          [name]: value,
+        }
     });
   }
 
   handleSignUpSubmit = (e) => {
-    console.log(JSON.stringify(this.state))
     e.preventDefault();
     return fetch('/users', {
       method: 'POST',
       body: JSON.stringify({
-        user: this.state
+        user: this.state.user
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -43,6 +48,12 @@ class SignupForm extends Component {
           this.props.fetchUserData();
           this.props.history.push('/')
         }
+        else {
+          this.setState({
+            ...this.state,
+              errors: true
+          })
+        }
       }).catch(err => console.log(err))
   }
 
@@ -54,25 +65,31 @@ class SignupForm extends Component {
             type="text"
             name="username"
             placeholder="username"
-            value={this.state.username}
+            value={this.state.user.username}
             onChange={this.handleChange}
           />
           <input
             type="email"
             name="email"
             placeholder="email"
-            value={this.state.email}
+            value={this.state.user.email}
             onChange={this.handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="password"
-            value={this.state.password}
+            value={this.state.user.password}
             onChange={this.handleChange}
           />
           <input type="submit" value="Register!"/>
         </form>
+        { this.state.errors
+          ? <div className="errors">
+              There was a problem creating your account.  Please ensure that all forms are filled.
+            </div>
+          : <></>
+        }
       </div>
 
     )
