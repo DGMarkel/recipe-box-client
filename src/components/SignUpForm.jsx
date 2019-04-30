@@ -13,21 +13,21 @@ class SignupForm extends Component {
             name="username"
             placeholder="username"
             value={this.props.user.username}
-            onChange={this.props.handleChange}
+            onChange={e=>this.props.handleChange(e)}
           />
           <input
             type="email"
             name="email"
             placeholder="email"
             value={this.props.user.email}
-            onChange={this.props.handleChange}
+            onChange={e=>this.props.handleChange(e)}
           />
           <input
             type="password"
             name="password"
             placeholder="password"
             value={this.props.user.password}
-            onChange={this.props.handleChange}
+            onChange={e=>this.props.handleChange(e)}
           />
           <input type="submit" value="Register!"/>
         </form>

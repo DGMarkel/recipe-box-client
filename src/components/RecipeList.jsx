@@ -25,7 +25,6 @@ class RecipeList extends Component {
   }
 
   render() {
-    console.log(Auth.isUserAuthenticated())
     return (
       <>
         { (this.state.recipesLoaded)

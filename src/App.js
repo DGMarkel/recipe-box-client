@@ -28,7 +28,11 @@ class App extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-      [name]: value,
+      ...this.state,
+        user: {
+          ...this.state.user,
+            [name]: value,
+        }
     });
   }
 
