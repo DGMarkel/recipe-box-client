@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import RecipeList from '../components/RecipeList'
+import Recipes from '../containers/Recipes'
 
 export default class DashBoard extends Component {
 
   render() {
     return (
       <div>
-        <RecipeList />
+        <Recipes />
       </div>
     )
   }

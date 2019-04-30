@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import BriefRecipeCard from './BriefRecipeCard'
+import BriefRecipeCard from '../components/BriefRecipeCard'
 import Auth from '../modules/Auth'
 
 class RecipeList extends Component {
