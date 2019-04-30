@@ -15,7 +15,6 @@ class LoginForm extends Component {
       },
       errors: false
     }
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = e => {
@@ -24,6 +23,7 @@ class LoginForm extends Component {
     this.setState({
       ...this.state,
       user: {
+        ...this.state.user,
         [name]: value,
       }
     });
@@ -55,22 +55,21 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state.errors)
     return (
       <div className="form">
-        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state) }>
+        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state.user) }>
           <input
             type="text"
             name="username"
             placeholder="username"
-            value={this.state.username}
+            value={this.state.user.username}
             onChange={this.handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="password"
-            value={this.state.password}
+            value={this.state.user.password}
             onChange={this.handleChange}
           />
           <input type="submit" value="Login"/>
