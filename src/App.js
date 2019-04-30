@@ -33,11 +33,15 @@ class App extends Component {
     )
   }
 
+  formToggler = e => {
+    (console.log(e.target.name))
+  }
+
   renderPublicNavBar = () => {
     return (
       <div className="nav">
         <Link to="/">Home</Link>
-        <Link onClick={()=>this.toggleSignUpForm()}>Sign Up</Link>
+        <Link to= "#" name="toggleSignUp" onClick={e=>this.formToggler(e)}>Sign Up</Link>
         <Link to="/login">Log In</Link>
       </div>
     )
