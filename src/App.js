@@ -34,7 +34,10 @@ class App extends Component {
   }
 
   formToggler = e => {
-    (console.log(e.target.name))
+    const name = e.target.name;
+    this.setState({
+      [name]: this.state[name] ? false : true
+    })
   }
 
   renderPublicNavBar = () => {
