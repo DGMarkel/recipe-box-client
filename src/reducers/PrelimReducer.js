@@ -5,7 +5,6 @@ export default function prelimReducer(state={
     id: null,
     username: '',
     email: '',
-    name: '',
     recipes: [],
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
