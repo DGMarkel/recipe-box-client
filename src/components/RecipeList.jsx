@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators} from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import * as actions from '../actions/UserActions'
 import BriefRecipeCard from './BriefRecipeCard'
 import Auth from '../modules/Auth'
 
@@ -65,16 +62,4 @@ class RecipeList extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    recipes: state.user.recipes
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeList))
+export default withRouter(RecipeList)
