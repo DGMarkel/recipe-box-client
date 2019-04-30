@@ -24,7 +24,7 @@ class UserRecipesList extends Component {
   }
 
   componentDidMount() {
-
+    this.props.fetchUserData();
   }
 
   render() {
