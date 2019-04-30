@@ -8,6 +8,13 @@ import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state={
+      signUpToggled: false,
+      loginToggled: false
+    }
+  }
 
   handleLogout = e => {
     e.preventDefault();
