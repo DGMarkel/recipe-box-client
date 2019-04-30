@@ -70,7 +70,7 @@ class LoginForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
+
   }
 }
 

@@ -4,10 +4,9 @@ import { withRouter } from 'react-router-dom'
 class SignupForm extends Component {
 
   render() {
-    console.log(this.props.user)
     return (
       <div className="form">
-        <form onSubmit={ (e) => { this.props.handleSignUpSubmit(e, this.props.user) } }>
+        <form onSubmit={e=> { this.props.signupAndSignIn(e, this.props.user) } }>
           <input
             type="text"
             name="username"

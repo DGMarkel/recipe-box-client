@@ -60,6 +60,14 @@ class App extends Component {
     )
   }
 
+  signupAndSignIn = (e, user) => {
+    this.props.handleSignUpSubmit(e, user);
+    this.setState({
+      signupToggled: false
+    });
+    this.props.history.push("/");
+  }
+
   renderPublicNavBar = () => {
     return (
       <div className="nav">
@@ -82,7 +90,7 @@ class App extends Component {
         }
         { this.state.signupToggled
           ? <SignUpForm
-              handleSignUpSubmit={this.props.handleSignUpSubmit}
+              signupAndSignIn={this.signupAndSignIn}
               handleChange={this.handleChange}
               user={this.state.user}
             />
@@ -98,7 +106,6 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     handleSignUpSubmit: bindActionCreators(actions.handleSignUpSubmit, dispatch),
-    fetchUserData: bindActionCreators(actions.fetchUserData, dispatch)
   }
 }
 
