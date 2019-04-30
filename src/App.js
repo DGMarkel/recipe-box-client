@@ -11,6 +11,11 @@ class App extends Component {
   constructor() {
     super();
     this.state={
+      user: {
+        username: '',
+        password: '',
+        email: ''
+      },
       signupToggled: false,
       loginToggled: false
     }
