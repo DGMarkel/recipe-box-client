@@ -11,8 +11,7 @@ class SignupForm extends Component {
     this.state = {
       username: '',
       password: '',
-      email: '',
-      name: ''
+      email: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -51,13 +50,6 @@ class SignupForm extends Component {
     return (
       <div className="form">
         <form onSubmit={ (e) => { this.handleSignUpSubmit(e) } }>
-          <input
-            type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.name}
-            onChange={(e) => this.handleChange(e)}
-          />
           <input
             type="text"
             name="username"
