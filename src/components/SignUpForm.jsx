@@ -24,28 +24,6 @@ class SignupForm extends Component {
     });
   }
 
-  handleSignUpSubmit = (e) => {
-    console.log(JSON.stringify(this.state))
-    e.preventDefault();
-    return fetch('/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: this.state
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      })
-      .then(res => res.json())
-      .then(res => {
-        Auth.authenticateToken(res.token)
-        if (Auth.isUserAuthenticated()) {
-          this.props.fetchUserData();
-          this.props.history.push('/')
-        }
-      }).catch(err => console.log(err))
-  }
-
   render() {
     return (
       <div className="form">

@@ -1,6 +1,28 @@
 import Auth from '../modules/Auth'
 
-export function fetchUserData() {
+export function handleSignUpSubmit(e, user) => {
+  e.preventDefault();
+  return fetch('/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      user: user
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(res => res.json())
+    .then(res => {
+      Auth.authenticateToken(res.token)
+      if (Auth.isUserAuthenticated()) {
+        fetchUserData();
+        this.props.history.push('/')
+      }
+    }).catch(err => console.log(err))
+}
+
+
+function fetchUserData() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_USER_DATA'})
     fetch('/profile', {
