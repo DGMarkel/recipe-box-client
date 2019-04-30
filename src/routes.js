@@ -6,7 +6,6 @@ import Login from './components/LoginForm'
 import SignUp from './components/SignUpForm'
 import Dashboard from './containers/Dashboard'
 import Recipes from './components/RecipeList'
-import UserRecipes from './components/UserRecipesList'
 import NewRecipe from './containers/NewRecipe'
 import EditRecipe from './containers/EditRecipe'
 import FullRecipeCard from './components/FullRecipeCard'
@@ -21,7 +20,7 @@ export default (
       <Route exact path='/dash' component={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
 
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
-      <Route exact path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <UserRecipes/> : <Redirect to="/login"/> }/>
+      <Route exact path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <Recipes user="true"/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipe/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/:recipeName' component={ () => <FullRecipeCard/> }/>
       // will need to update edit route to only show to owner
