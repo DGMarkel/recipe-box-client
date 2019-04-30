@@ -39,7 +39,11 @@ class LoginForm extends Component {
           this.props.fetchUserData();
           this.props.history.push('/')
         }
-      }).catch(err => console.log(err))
+      }).catch(err => {
+        this.setState({
+          errors: true
+        })
+      })
   }
 
   render() {
