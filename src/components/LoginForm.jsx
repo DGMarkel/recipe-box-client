@@ -9,8 +9,11 @@ class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
+      user: {
+        username: '',
+        password: ''
+      },
+      errors: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,7 +22,10 @@ class LoginForm extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-      [name]: value,
+      ...this.state,
+      user: {
+        [name]: value,
+      }
     });
   }
 
@@ -66,6 +72,10 @@ class LoginForm extends Component {
           />
           <input type="submit" value="Login"/>
         </form>
+        { this.state.errors ?
+        <div className="errors">
+        </div>
+        }
       </div>
 
     )
