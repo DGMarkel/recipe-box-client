@@ -18,7 +18,8 @@ class NewRecipe extends Component {
         description: '',
         ingredients: ''
       },
-      ingredients_to_fetch: ''
+      ingredients_to_fetch: '',
+      errors: ''
     }
   }
 
@@ -43,6 +44,10 @@ class NewRecipe extends Component {
 
   fetchIngredients = event => {
     event.preventDefault()
+      this.setState({
+        ...this.state,
+          errors: ''
+      })
       fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
       method: 'POST',
       body: JSON.stringify({
@@ -55,6 +60,13 @@ class NewRecipe extends Component {
       }
       }).then(res => res.json())
       .then(res => {
+        if (res.message) {
+          this.setState({
+            ...this.state,
+            errors: res.message
+          })
+        }
+        else {
         const ingredientList = res.foods.map( ingredient => {
           let ingredientList = {}
           ingredientList["food_name"] = ingredient.food_name;
@@ -79,6 +91,7 @@ class NewRecipe extends Component {
             ingredients: ingredientList
           }
         })
+      }
       }).catch(err => console.log(err));
   }
 
@@ -94,9 +107,14 @@ class NewRecipe extends Component {
             handleOnChangeForIngredients={this.handleOnChangeForIngredients}
           />
         </div>
-        <div className="recipe-container">
-          <RecipePreview recipe={this.state.recipe} saveRecipe={this.props.saveRecipe} newRecipe="true" />
-        </div>
+        { this.state.errors
+          ? <div className="errors">
+              <h1>{this.state.errors}</h1>
+            </div>
+          : <div className="recipe-container">
+            <RecipePreview recipe={this.state.recipe} saveRecipe={this.props.saveRecipe} newRecipe="true" />
+          </div>
+        }
       </>
     )
   }
