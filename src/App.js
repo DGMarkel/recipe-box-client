@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      signUpToggled: false,
+      signupToggled: false,
       loginToggled: false
     }
   }
@@ -44,8 +44,8 @@ class App extends Component {
     return (
       <div className="nav">
         <Link to="/">Home</Link>
-        <Link to= "#" name="toggleSignUp" onClick={e=>this.formToggler(e)}>Sign Up</Link>
-        <Link to="/login">Log In</Link>
+        <Link to= "#" name="signupToggled" onClick={e=>this.formToggler(e)}>Sign Up</Link>
+        <Link to="#" name="loginToggled" onClick={e=>this.formToggler(e)}>Log In</Link>
       </div>
     )
   }
@@ -60,6 +60,8 @@ class App extends Component {
           ? this.renderPrivateNavBar()
           : this.renderPublicNavBar()
         }
+        { this.state.signupToggled ? <SignUpForm /> : <></> }
+        { this.state.loginToggled ? <LoginForm /> : <></> }
         <>{ routes }</>
       </div>
     );
