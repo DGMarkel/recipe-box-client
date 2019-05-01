@@ -44,7 +44,7 @@ class Recipes extends Component {
     fetch('/recipes')
       .then(res => res.json())
       .then(resJSON => {
-
+        console.log(resJSON)
         this.setState({
           recipes: resJSON,
           recipesLoaded: true

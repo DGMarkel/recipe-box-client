@@ -16,7 +16,7 @@ export default class IngredientsTable extends Component {
           return <tr key={index}>
             <td>{ingredient.food_name}, {ingredient.serving_qty} {ingredient.serving_unit}</td>
             <td>{Math.floor(ingredient.calories)}</td>
-            <td>{ingredient.total_carbohydrates}</td>
+            <td>{ingredient.total_carbohydrate}</td>
             <td>{ingredient.protein}</td>
             <td>{ingredient.sugars}</td>
           </tr>
