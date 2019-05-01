@@ -23,6 +23,8 @@ class EditRecipe extends Component {
         image_url: '',
         description: '',
         ingredients: [],
+        servings: '',
+        recipe_totals: {},
         nutritional_data_per_serving: {}
       },
       toggleAddIngredients: false,
@@ -100,6 +102,8 @@ class EditRecipe extends Component {
           description: res.description,
           image_url: res.image_url,
           ingredients: res.ingredients,
+          servings: res.servings,
+          recipe_totals: res.recipe_totals,
           nutritional_data_per_serving: res.nutritional_data_per_serving
         },
       })
