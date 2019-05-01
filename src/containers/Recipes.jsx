@@ -75,7 +75,6 @@ class RecipeList extends Component {
     return (
       <form onSubmit={e=>this.searchRecipes(e)}>
         <input type="text" onChange={e => {this.setState({ search_term: e.target.value })}} />
-        <input type="submit" value="Search" />
       </form>
     )
   }
