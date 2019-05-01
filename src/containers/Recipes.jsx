@@ -10,7 +10,8 @@ class Recipes extends Component {
     this.state = {
       recipes: null,
       recipesLoaded: false,
-      search_term: ''
+      search_term: '',
+      search: true
     }
   }
 
@@ -19,8 +20,19 @@ class Recipes extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.search_term === '' && !this.props.user) {
-      this.loadAllRecipes()
+    if (this.state.search_term === '' && this.state.search && !this.props.user) {
+      this.loadAllRecipes();
+      this.setState({
+        ...this.state,
+          search: false
+      })
+    }
+    if (this.state.search_term === '' && this.state.search && this.props.user) {
+      this.loadUserRecipes();
+      this.setState({
+        ...this.state,
+          search: false
+      })
     }
   }
 
@@ -62,7 +74,8 @@ class Recipes extends Component {
 
     this.setState({
       ...this.state,
-        recipes: recipes
+        recipes: recipes,
+        search: true
     });
   }
 
