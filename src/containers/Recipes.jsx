@@ -72,7 +72,11 @@ class Recipes extends Component {
       <div className="recipes-list">
         <div className="search">
           <form onSubmit={e=>this.searchAllRecipes(e)}>
-            <input type="text" onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}} />
+            <input
+              type="text"
+              placeholder="Search recipes by ingredient"
+              onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}}
+            />
           </form>
         </div>
         { (this.state.recipesLoaded)
