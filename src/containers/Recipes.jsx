@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import BriefRecipeCard from '../components/BriefRecipeCard'
 import Auth from '../modules/Auth'
 
-class RecipeList extends Component {
+class Recipes extends Component {
   constructor() {
     super()
     this.state = {
@@ -87,4 +87,4 @@ class RecipeList extends Component {
   }
 }
 
-export default withRouter(RecipeList)
+export default withRouter(Recipes)
