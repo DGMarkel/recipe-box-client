@@ -95,7 +95,8 @@ export function saveRecipe(e, recipe) {
           title: recipe.title,
           description: recipe.description,
           image_url: recipe.image_url,
-          ingredients: recipe.ingredients
+          ingredients: recipe.ingredients,
+          servings: recipe.servings
         }
       }),
       headers: {
