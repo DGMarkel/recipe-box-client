@@ -15,16 +15,16 @@ class Recipes extends Component {
   }
 
   componentDidMount() {
-    this.props.user ? this.userRecipes() : this.allRecipes()
+    this.props.user ? this.loadUserRecipes() : this.loadAllRecipes()
   }
 
   componentDidUpdate() {
     if (this.state.search_term === '') {
-      this.allRecipes()
+      this.loadAllRecipes()
     }
   }
 
-  userRecipes = () => {
+  loadUserRecipes = () => {
     fetch('/profile', {
       method: 'GET',
       headers: {
@@ -40,7 +40,7 @@ class Recipes extends Component {
     })
   }
 
-  allRecipes = () => {
+  loadAllRecipes = () => {
     fetch('/recipes')
       .then(res => res.json())
       .then(resJSON => {
@@ -52,7 +52,7 @@ class Recipes extends Component {
       }).catch(err => console.log(err))
   }
 
-  searchAllRecipes = (e) => {
+  searchRecipes = (e) => {
     e.preventDefault();
     const recipes = this.state.recipes.filter(
       recipe =>
@@ -71,7 +71,7 @@ class Recipes extends Component {
     return (
       <div className="recipes-list">
         <div className="search">
-          <form onSubmit={e=>this.searchAllRecipes(e)}>
+          <form onSubmit={e=>this.searchRecipes(e)}>
             <input
               type="text"
               placeholder="Search recipes by ingredient"
