@@ -46,7 +46,7 @@ class RecipeList extends Component {
       }).catch(err => console.log(err))
   }
 
-  searchRecipes = (e) => {
+  searchAllRecipes = (e) => {
     e.preventDefault();
     const payload = JSON.stringify({
       ingredient: {
@@ -82,7 +82,7 @@ class RecipeList extends Component {
   render() {
     return (
       <>
-        { this.renderSearch() }
+        { this.props.user ? <></> : this.renderSearch() }
         { (this.state.recipesLoaded)
           ?
             this.state.recipes.map( recipe =>
