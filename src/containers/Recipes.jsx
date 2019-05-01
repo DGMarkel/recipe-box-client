@@ -73,7 +73,7 @@ class RecipeList extends Component {
 
   renderSearch = () => {
     return (
-      <form onSubmit={e=>this.searchRecipes(e)}>
+      <form onSubmit={e=>this.searchAllRecipes(e)}>
         <input type="text" onChange={e => {this.setState({ search_term: e.target.value })}} />
       </form>
     )
@@ -95,7 +95,5 @@ class RecipeList extends Component {
       </>
     )
   }
-
 }
-
 export default withRouter(RecipeList)
