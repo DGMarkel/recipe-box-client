@@ -36,13 +36,6 @@ class NewRecipeForm extends Component {
               placeholder="Ingredient"
               onChange={event => this.props.handleOnChangeForIngredients(event)}
               /><br />
-            <input
-              type="text"
-              name="servings"
-              value={this.props.recipe.servings}
-              placeholder="Servings"
-              onChange={event => this.props.handleOnChange(event)}
-            /><br />
             <input type="submit" value="Add Ingredients" />
           </form>
       </div>
