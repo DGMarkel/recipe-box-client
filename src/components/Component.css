@@ -66,3 +66,13 @@ h1 {
   height: 200px;
   width: auto;
 }
+
+.search {
+  margin: 10px 0 -10px 10px;
+}
+
+.search form input {
+  outline: none;
+  width: 245px;
+  height: 25px;
+}
