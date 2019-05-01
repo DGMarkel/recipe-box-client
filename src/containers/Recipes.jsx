@@ -54,27 +54,18 @@ class RecipeList extends Component {
 
   searchAllRecipes = (e) => {
     e.preventDefault();
-    const payload = JSON.stringify({
-      ingredient: {
-        search_term: this.state.search_term
-      }
-    })
-    fetch('/search-by-ingredient', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: payload
-    }).then(res=>res.json())
-    .then(res=>{
-      console.log(res)
-      this.setState({
-        ...this.state,
-          recipes: res
-      })
-    })
+    const recipes = this.state.recipes.filter(
+      recipe =>
+        recipe.ingredients.find(ingredient =>
+          ingredient["food_name"].includes(this.state.search_term)
+        )
+      );
 
-    }
+    this.setState({
+      ...this.state,
+        recipes: recipes
+    });
+  }
 
   renderSearch = () => {
     return (
