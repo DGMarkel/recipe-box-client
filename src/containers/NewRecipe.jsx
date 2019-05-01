@@ -16,7 +16,8 @@ class NewRecipe extends Component {
         title: '',
         image_url: '',
         description: '',
-        ingredients: ''
+        ingredients: '',
+        servings: ''
       },
       ingredients_to_fetch: '',
       errors: ''
