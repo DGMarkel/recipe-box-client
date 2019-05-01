@@ -19,7 +19,7 @@ class Recipes extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.search_term === '') {
+    if (this.state.search_term === '' && !this.props.user) {
       this.loadAllRecipes()
     }
   }
@@ -52,7 +52,7 @@ class Recipes extends Component {
       }).catch(err => console.log(err))
   }
 
-  searchRecipes = (e) => {
+  searchAllRecipes = (e) => {
     e.preventDefault();
     const recipes = this.state.recipes.filter(
       recipe =>
@@ -71,7 +71,7 @@ class Recipes extends Component {
     return (
       <div className="recipes-list">
         <div className="search">
-          <form onSubmit={e=>this.searchRecipes(e)}>
+          <form onSubmit={e=>this.searchAllRecipes(e)}>
             <input
               type="text"
               placeholder="Search recipes by ingredient"
