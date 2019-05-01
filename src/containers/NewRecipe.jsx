@@ -24,6 +24,7 @@ class NewRecipe extends Component {
   }
 
   handleOnChange = event => {
+    event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -36,6 +37,7 @@ class NewRecipe extends Component {
   }
 
   handleOnChangeForIngredients = event => {
+    event.preventDefault();
     const value = event.target.value
     this.setState({
       ingredients_to_fetch: value
