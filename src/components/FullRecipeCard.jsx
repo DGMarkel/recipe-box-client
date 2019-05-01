@@ -4,19 +4,6 @@ import { withRouter } from 'react-router-dom'
 import Auth from '../modules/Auth'
 
 class FullRecipeCard extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      recipe: {
-        id: '',
-        title: '',
-        image_url: '',
-        description: '',
-        ingredients: [],
-        recipe_totals: []
-      }
-    }
-  }
 
   componentDidMount() {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
@@ -41,18 +28,19 @@ class FullRecipeCard extends Component {
     })
   }
 
+  recipe = this.props.location.state.recipe
+
   render() {
-    console.log(this.state.recipe.recipe_totals)
     return (
       <>
         <div className="full-recipe-card">
-          <h1>{this.state.recipe.title}</h1>
-          <em>{this.state.recipe.description}</em>
-          <img src={this.state.recipe.image_url} alt={this.state.recipe.title} />
+          <h1>{this.recipe.title}</h1>
+          <em>{this.recipe.description}</em>
+          <img src={this.recipe.image_url} alt={this.recipe.title} />
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-          <IngredientsTable recipe={this.state.recipe} />
+          <IngredientsTable recipe={this.recipe} />
         </div>
       </>
     )
