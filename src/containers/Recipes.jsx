@@ -86,4 +86,5 @@ class RecipeList extends Component {
     )
   }
 }
+
 export default withRouter(RecipeList)
