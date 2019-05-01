@@ -18,6 +18,12 @@ class RecipeList extends Component {
     this.props.user ? this.userRecipes() : this.allRecipes()
   }
 
+  componentDidUpdate() {
+    if (this.state.search_term === '' && !this.props.user) {
+      this.allRecipes()
+    }
+  }
+
   userRecipes = () => {
     fetch('/profile', {
       method: 'GET',
@@ -70,7 +76,6 @@ class RecipeList extends Component {
 
     }
 
-
   renderSearch = () => {
     return (
       <form onSubmit={e=>this.searchAllRecipes(e)}>
@@ -87,7 +92,7 @@ class RecipeList extends Component {
           ?
             this.state.recipes.map( recipe =>
               <div className="recipe-card">
-                <BriefRecipeCard recipe={recipe} key={recipe.food_name} />
+                <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
               </div>
             )
           : <p>Loading...</p>

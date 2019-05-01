@@ -21,7 +21,7 @@ class BriefRecipeCard extends Component {
 
         <div className="container">
           <h3 className="title">{this.props.recipe.title}</h3>
-          { (this.props.user_recipe)
+          { (this.props.user)
               ?  <Link to={{pathname: `/recipes/${this.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}>
                   <button>Edit</button></Link>
               : <></>
