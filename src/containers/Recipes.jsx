@@ -19,9 +19,10 @@ class Recipes extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.search_term === '' && !this.props.user) {
-      this.loadAllRecipes()
-    }
+    // REWRITE TO IMPLEMENT WITHOUT RUNNING loadAllRecipes INFINITELY
+    // if (this.state.search_term === '' && !this.props.user && recipesLoaded ) {
+    //   this.loadAllRecipes()
+    // }
   }
 
   loadUserRecipes = () => {
