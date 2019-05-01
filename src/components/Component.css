@@ -57,9 +57,8 @@ h1 {
 }
 
 .ingredients-table {
-  float: left;
-  width: 30%;
-  margin: 0 10px;
+  float: right;
+  width: 35%;
 }
 
 .preview-image {
@@ -75,4 +74,13 @@ h1 {
   outline: none;
   width: 245px;
   height: 25px;
+}
+
+table {
+  outline: none !important;
+  font-size: 10px;
+}
+
+tr:nth-child(2n+0) {
+  background-color: lightblue;
 }

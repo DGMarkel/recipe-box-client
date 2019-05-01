@@ -4,7 +4,7 @@ export default class IngredientsTable extends Component {
 
   render() {
     return (
-      <table border="1">
+      <table>
         <tr>
           <th>Ingredient</th>
           <th>Calories(kCal)</th>

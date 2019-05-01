@@ -12,8 +12,8 @@ class FullRecipeCard extends Component {
       <>
         <div className="full-recipe-card">
           <h1>{this.recipe.title}</h1>
+          <h4>Calories per serving: {this.recipe.recipe_totals.calories} (actually total calories, need to adjust this later)</h4>
           <p>{this.recipe.description}</p>
-          <h4>Calories: {this.recipe.recipe_totals.calories}</h4>
           <img src={this.recipe.image_url} alt={this.recipe.title} />
         </div>
         <div className="ingredients-table">
