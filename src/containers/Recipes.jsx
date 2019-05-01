@@ -67,18 +67,12 @@ class RecipeList extends Component {
     });
   }
 
-  renderSearch = () => {
-    return (
-      <form onSubmit={e=>this.searchAllRecipes(e)}>
-        <input type="text" onChange={e => {this.setState({ search_term: e.target.value })}} />
-      </form>
-    )
-  }
-
   render() {
     return (
       <>
-        { this.props.user ? <></> : this.renderSearch() }
+        <form onSubmit={e=>this.searchAllRecipes(e)}>
+          <input type="text" onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}} />
+        </form>
         { (this.state.recipesLoaded)
           ?
             this.state.recipes.map( recipe =>
