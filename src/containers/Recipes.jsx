@@ -19,7 +19,7 @@ class Recipes extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.search_term === '' && !this.props.user) {
+    if (this.state.search_term === '') {
       this.allRecipes()
     }
   }
