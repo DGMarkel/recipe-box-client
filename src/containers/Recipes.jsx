@@ -69,10 +69,12 @@ class Recipes extends Component {
 
   render() {
     return (
-      <>
-        <form onSubmit={e=>this.searchAllRecipes(e)}>
-          <input type="text" onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}} />
-        </form>
+      <div className="recipes-list">
+        <div className="search">
+          <form onSubmit={e=>this.searchAllRecipes(e)}>
+            <input type="text" onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}} />
+          </form>
+        </div>
         { (this.state.recipesLoaded)
           ?
             this.state.recipes.map( recipe =>
@@ -82,7 +84,7 @@ class Recipes extends Component {
             )
           : <p>Loading...</p>
         }
-      </>
+      </div>
     )
   }
 }
