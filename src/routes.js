@@ -16,9 +16,7 @@ export default (
       <Route exact path='/' render={ () => <Recipes/> }/>
       <Route exact path='/signup' component={ () => Auth.isUserAuthenticated() ? <Redirect to="/"/> : <SignUp/> }/>
       <Route exact path='/login' component={ () => Auth.isUserAuthenticated() ? <Redirect to="/dash"/> : <Login/> }/>
-
       <Route exact path='/dash' component={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
-
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route exact path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <Recipes user="true"/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipe/> : <Redirect to="/login"/> }/>

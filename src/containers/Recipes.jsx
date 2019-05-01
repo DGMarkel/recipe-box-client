@@ -45,6 +45,24 @@ class RecipeList extends Component {
       }).catch(err => console.log(err))
   }
 
+  searchRecipes = (e) => {
+    const search_term = e.target.value
+    fetch('/search-by-ingredient', {
+      body: {
+        ingredient: {
+          search_term: search_term
+        }
+      }
+    }).then(res=>res.json())
+    .then(res=>{
+      this.setState({
+        ...this.state,
+          recipes: res
+      })
+    })
+    }
+  }
+
   render() {
     return (
       <>
