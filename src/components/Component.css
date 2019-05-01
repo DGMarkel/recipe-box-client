@@ -57,9 +57,9 @@ h1 {
 }
 
 .ingredients-table {
-  float: right;
-  width: 45%;
-  margin: 10px;
+  float: left;
+  width: 30%;
+  margin: 0 10px;
 }
 
 .preview-image {
