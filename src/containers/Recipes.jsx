@@ -9,7 +9,8 @@ class RecipeList extends Component {
     super()
     this.state = {
       recipes: null,
-      recipesLoaded: false
+      recipesLoaded: false,
+      search_term: ''
     }
   }
 
@@ -46,31 +47,49 @@ class RecipeList extends Component {
   }
 
   searchRecipes = (e) => {
-    const search_term = e.target.value
-    fetch('/search-by-ingredient', {
-      body: {
-        ingredient: {
-          search_term: search_term
-        }
+    e.preventDefault();
+    const payload = JSON.stringify({
+      ingredient: {
+        search_term: this.state.search_term
       }
+    })
+    fetch('/search-by-ingredient', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: payload
     }).then(res=>res.json())
     .then(res=>{
+      console.log(res)
       this.setState({
         ...this.state,
           recipes: res
       })
     })
+
     }
+
+
+  renderSearch = () => {
+    return (
+      <form onSubmit={e=>this.searchRecipes(e)}>
+        <input type="text" onChange={e => {this.setState({ search_term: e.target.value })}} />
+        <input type="submit" value="Search" />
+      </form>
+    )
   }
 
   render() {
     return (
       <>
+        { this.renderSearch() }
         { (this.state.recipesLoaded)
-          ? this.state.recipes.map( recipe =>
-            <div className="recipe-card">
-              <BriefRecipeCard recipe={recipe} key={recipe.food_name} />
-            </div>
+          ?
+            this.state.recipes.map( recipe =>
+              <div className="recipe-card">
+                <BriefRecipeCard recipe={recipe} key={recipe.food_name} />
+              </div>
             )
           : <p>Loading...</p>
         }
