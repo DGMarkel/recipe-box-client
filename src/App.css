@@ -3,13 +3,12 @@
 } */
 
 .App {
-  margin: 100px auto;
+  margin: 50px auto;
   max-width: 90%;
 }
 
 .App #mainLogo h1 {
   margin-bottom: 0;
-  margin-left: 10px;
 }
 
 .nav {
