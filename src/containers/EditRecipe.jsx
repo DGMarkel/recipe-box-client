@@ -25,6 +25,7 @@ class EditRecipe extends Component {
         ingredients: []
       },
       toggleAddIngredients: false,
+      rawIngredients: ''
     }
   }
 
