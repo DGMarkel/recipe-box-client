@@ -237,6 +237,7 @@ class EditRecipe extends Component {
     return Math.round(this.state.recipe.ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
   }
 
+  //displays changes to ingredients in ingredients table
   handleOnChangeForIngredients = (event, index) => {
     const name = event.target.name;
     const value = event.target.value;
