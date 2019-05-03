@@ -9,7 +9,8 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
     },
-  newIngredients: []
+  newIngredients: [],
+  sumNutritionalDataFor: (array, dataPoint) => Math.round(array.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
 }, action) {
 
   switch(action.type) {

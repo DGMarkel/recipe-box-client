@@ -60,7 +60,7 @@ class EditRecipe extends Component {
           }
         </div>
         <div className="recipe-preview">
-          <RecipePreview recipe={this.state.recipe} sumNutritionalDataFor={this.sumNutritionalDataFor} />
+          <RecipePreview recipe={this.state.recipe} sumNutritionalDataFor={this.props.sumNutritionalDataFor} />
         </div>
       </>
     )
@@ -231,12 +231,6 @@ class EditRecipe extends Component {
     });
   }
 
-  //returns the total nutritional value of a given ingredient property (ie, calories) from
-  //an array of recipe ingredients
-  sumNutritionalDataFor = dataPoint => {
-    return Math.round(this.state.recipe.ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
-  }
-
   //displays changes to ingredients in ingredients table
   handleOnChangeForIngredients = (event, index) => {
     const name = event.target.name;
@@ -256,6 +250,7 @@ class EditRecipe extends Component {
 const mapStateToProps = state => {
   return {
     newIngredients: state.newIngredients,
+    sumNutritionalDataFor: state.sumNutritionalDataFor
   }
 }
 
