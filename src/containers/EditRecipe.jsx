@@ -125,6 +125,10 @@ class EditRecipe extends Component {
     }).catch(err => console.log(err))
   }
 
+  // fetches new data for edited ingredients from 3rd party API;
+  // updates local state with new ingredient data;
+  // updates backend ingredients
+
   updateIngredient = (event, recipeID, ingredient, ingredientIndex) => {
 
     event.preventDefault();
@@ -184,6 +188,7 @@ class EditRecipe extends Component {
         }).catch(err => console.log(err));
     }
 
+  // removes deleted ingredients from state
   deleteIngredientLocally = ingredientIndex => {
     this.setState({
       recipe: {
@@ -193,6 +198,7 @@ class EditRecipe extends Component {
     })
   }
 
+  // opens and closes form field for new ingredients
   toggleAddIngredientsForm = () => {
     this.setState({
       toggleAddIngredients: (this.state.toggleAddIngredients) ? false : true
@@ -207,6 +213,7 @@ class EditRecipe extends Component {
     })
   }
 
+  // updates state properties for title, description, and image_url
   handleOnChangeForRecipeDetails = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -219,7 +226,7 @@ class EditRecipe extends Component {
   }
 
   //returns the total nutritional value of a given ingredient property (ie, calories) from
-  //an array of recipe ingredients 
+  //an array of recipe ingredients
   sumNutritionalDataFor = dataPoint => {
     return Math.round(this.state.recipe.ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
   }
