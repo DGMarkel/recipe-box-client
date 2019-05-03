@@ -70,6 +70,8 @@ class EditRecipe extends Component {
   }
 
   componentDidUpdate() {
+    // when new ingredients have been saved to backend and added to global state property newIngredients,
+    // they're then added to state.recipe.ingredients
     if (this.props.newIngredients.length > 0) {
       this.setState({
         ...this.state,
@@ -82,6 +84,7 @@ class EditRecipe extends Component {
     }
   }
 
+  // fetches recipe based on withRouter location.state
   fetchRecipe = () => {
     fetch(`/recipes/${this.props.location.state.recipe.id}`, {
       method: 'GET',
@@ -104,6 +107,7 @@ class EditRecipe extends Component {
     })
   }
 
+  // updates recipe title, description, and image_url on backend
   updateRecipeDetails = (event, recipe) => {
     event.preventDefault();
 
@@ -205,6 +209,7 @@ class EditRecipe extends Component {
     })
   }
 
+  // updates state property rawIngredients
   handleOnChange = e => {
     const name = e.target.name
     const value = e.target.value
