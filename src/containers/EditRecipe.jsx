@@ -59,7 +59,7 @@ class EditRecipe extends Component {
           }
         </div>
         <div className="recipe-preview">
-          <RecipePreview recipe={this.state.recipe} />
+          <RecipePreview recipe={this.state.recipe} sumNutritionalDataFor={this.sumNutritionalDataFor} />
         </div>
       </>
     )
@@ -216,6 +216,12 @@ class EditRecipe extends Component {
         [name]: value
       }
     });
+  }
+
+  //returns the total nutritional value of a given ingredient property (ie, calories) from
+  //an array of recipe ingredients 
+  sumNutritionalDataFor = dataPoint => {
+    return Math.round(this.state.recipe.ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
   }
 
   handleOnChangeForIngredients = (event, index) => {
