@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import BriefRecipeCard from '../components/BriefRecipeCard'
 import Auth from '../modules/Auth'
@@ -102,6 +103,12 @@ class Recipes extends Component {
         }
       </div>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    sumNutritionalDataFor: state.sumNutritionalDataFor
   }
 }
 
