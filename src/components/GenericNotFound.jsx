@@ -5,7 +5,7 @@ export default class GenericNotFound extends Component {
     return (
       <>
         <h1>Something went wrong.</h1>
-        <img src="https://media.giphy.com/media/7QZ0XOOuTaMdW/giphy.gif" />
+        <img src="https://media.giphy.com/media/7QZ0XOOuTaMdW/giphy.gif" alt="facepalm" />
       </>
     )
   }

@@ -98,7 +98,7 @@ class Recipes extends Component {
         { (this.state.recipesLoaded)
           ?
             this.state.recipes.map( recipe =>
-              <div className="recipe-card">
+              <div className="recipe-card" >
                 <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
               </div>
             )
