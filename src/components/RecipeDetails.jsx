@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class RecipeDetails extends Component {
   render() {
     return (
-      <>
+      <div className="recipe-details">
         <textarea
           cols="60"
           name="title"
@@ -25,7 +25,7 @@ export default class RecipeDetails extends Component {
           placeholder="Brief Description"
           onChange={event => this.props.handleOnChange(event)}
         /><br />
-      </>
+      </div>
     )
   }
 }
