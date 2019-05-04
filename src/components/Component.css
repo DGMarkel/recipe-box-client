@@ -1,7 +1,9 @@
 .welcome {
   width: 520px;
-  height: 520px;
-  margin: 20px 0 20px 10px;
+  height: auto;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid black;
 }
 
 .welcome-bg {
