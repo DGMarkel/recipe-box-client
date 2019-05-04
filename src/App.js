@@ -36,6 +36,15 @@ class App extends Component {
     })
   }
 
+  renderForms = () => {
+    if (this.state.loginToggled) {
+      return <LoginForm />
+    }
+    if (this.state.signupToggled) {
+      return <SignUpForm />
+    }
+  }
+
   renderPrivateNavBar = () => {
     return (
         <div className="nav">
@@ -67,13 +76,9 @@ class App extends Component {
           ? this.renderPrivateNavBar()
           : this.renderPublicNavBar()
         }
-        { this.state.loginToggled
-          ? <LoginForm />
-          : <></>
-        }
-        { this.state.signupToggled
-          ? <SignUpForm />
-          : <></>
+        { !(Auth.isUserAuthenticated())
+           ? this.renderForms()
+           : <></>
         }
         <>{ routes }</>
       </div>
