@@ -1,4 +1,4 @@
-.edit-recipe-form, .recipe-preview {
+.edit-recipe-form {
   width: 48%;
   margin: 0;
   float: left;
@@ -15,4 +15,11 @@
 
 .edit-recipe-form input {
   width: 75px;
+}
+
+.recipe-details textarea:first-of-type {
+  font-family: 'Bitter', serif;
+  font-size: 20px;
+  height: 25px;
+  max-width: 48%;
 }
