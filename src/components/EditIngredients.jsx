@@ -5,6 +5,17 @@ export default class EditIngredients extends Component {
   render() {
     return (
       <div className="ingredients-list">
+        <table>
+          <tr>
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Serving Unit</th>
+            <th>Calories(kCal)</th>
+            <th>Carbohydrates(g)</th>
+            <th>Protein(g)</th>
+            <th>Sugars(g)</th>
+          </tr>
+        </table>
         {
           this.props.ingredients.map((ingredient, index) => {
             return (
