@@ -1,4 +1,3 @@
-
 .edit-ingredients-form {
   width: 60%;
   float: right;
@@ -8,13 +7,6 @@
   width: 30%;
   margin: 10px;
   float: left;
-}
-
-.recipe-details textarea:first-of-type {
-  font-family: 'Bitter', serif;
-  color: black;
-  font-size: 35px;
-  height: 40px;
 }
 
 .recipe-details textarea {
