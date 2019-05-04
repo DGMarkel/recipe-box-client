@@ -4,7 +4,7 @@ export default class EditIngredients extends Component {
 
   render() {
     return (
-      <div className="ingredients-list">
+      <div className="edit-recipe-form">
         <table>
           <tr>
             <th>Ingredient</th>
@@ -15,33 +15,37 @@ export default class EditIngredients extends Component {
             <th>Protein(g)</th>
             <th>Sugars(g)</th>
           </tr>
-        </table>
         {
           this.props.ingredients.map((ingredient, index) => {
             return (
-              <div className="ingredient" key={ingredient.food_name}>
-              <h3>{ingredient.food_name}</h3>
-              <p>Calories: {ingredient.calories} Total Fat: {ingredient.total_fat} Protein: {ingredient.protein} Carbs: {ingredient.total_carbohydrate}</p>
-              Quantity:
-                <input
-                  type="text"
-                  name="serving_qty"
-                  value={ingredient.serving_qty}
-                  onChange={e=>this.props.handleOnChange(e, index)}
-                />
-              Serving Unit:
-                <input
-                  type="text"
-                  name="serving_unit"
-                  value={ingredient.serving_unit}
-                  onChange={e=>this.props.handleOnChange(e, index)}
-                /><br />
-                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient, index) }/>
-                <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.props.recipeID, ingredient); this.props.deleteIngredientLocally(index)} }/>
-              </div>
+              <tr>
+                <td>{ingredient.food_name}</td>
+                <td>
+                  <input
+                    type="text"
+                    name="serving_qty"
+                    value={ingredient.serving_qty}
+                    onChange={e=>this.props.handleOnChange(e, index)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="serving_unit"
+                    value={ingredient.serving_unit}
+                    onChange={e=>this.props.handleOnChange(e, index)}
+                  />
+                </td>
+                <td>{ingredient.calories}</td>
+                <td>{ingredient.total_carbohydrate}</td>
+                <td>{ingredient.protein}}</td>
+                <td>{ingredient.protein}</td>
+                <td>{ingredient.sugars}</td>
+              </tr>
             )
           })
         }
+        </table>
       </div>
     )
   }
