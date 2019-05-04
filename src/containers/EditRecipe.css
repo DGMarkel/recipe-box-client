@@ -1,20 +1,13 @@
-.edit-recipe-form {
-  width: 48%;
-  margin: 0;
+
+.edit-ingredients-form {
+  width: 60%;
+  float: right;
+}
+
+.recipe-details {
+  width: 30%;
+  margin: 10px;
   float: left;
-}
-
-.edit-recipe-form {
-  margin-top: 20px;
-}
-
-.edit-recipe-form td {
-  padding: 1px 10px;
-  margin: 0 10px;
-}
-
-.edit-recipe-form input {
-  width: 75px;
 }
 
 .recipe-details textarea:first-of-type {

@@ -4,7 +4,7 @@ export default class EditIngredients extends Component {
 
   render() {
     return (
-      <div className="edit-recipe-form">
+      <div className="edit-ingredients-form">
         <table>
           <tr>
             <th>Ingredient</th>
