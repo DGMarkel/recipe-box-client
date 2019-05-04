@@ -9,8 +9,11 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false
     },
+  //collects ingredients added to an existing recipe
   newIngredients: [],
-  sumNutritionalDataFor: (array, dataPoint) => Math.round(array.map(i => i[dataPoint]).reduce((a,b)=>a+b,0)),
+  // adds up total nutritional data for a given dataPoint (ie, calories) and array of ingredients
+  sumNutritionalDataFor: (ingredients, dataPoint) => Math.round(ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0)),
+  // replaces spaces with dashes in recipe titles
   formatRecipeURL:  recipe => { return recipe.toLowerCase().replace(/\s/g , "-" ) }
 }, action) {
 
