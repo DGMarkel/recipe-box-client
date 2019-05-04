@@ -32,7 +32,7 @@ class App extends Component {
   toggleLogin = () => {
     this.setState({
       loginToggled: this.state.loginToggled ? false : true,
-      toggleSignup: false
+      signupToggled: false
     })
   }
 
