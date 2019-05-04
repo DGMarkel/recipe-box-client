@@ -60,8 +60,8 @@ class App extends Component {
     return (
       <div className="nav">
         <Link to="/">Home</Link>
-        <a href="#" onClick={()=>this.toggleSignup()}>Sign Up</a>
-        <a href="#" onClick={()=>this.toggleLogin()}>Log In</a>
+        <Link to="/" onClick={()=>this.toggleSignup()}>Sign Up</Link>
+        <Link to="/" onClick={()=>this.toggleLogin()}>Log In</Link>
       </div>
     )
   }
