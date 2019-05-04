@@ -19,7 +19,17 @@
 
 .recipe-details textarea:first-of-type {
   font-family: 'Bitter', serif;
-  font-size: 20px;
-  height: 25px;
-  max-width: 48%;
+  color: black;
+  font-size: 35px;
+  height: 40px;
+}
+
+.recipe-details textarea {
+  font-size: 16px;
+  color: gray;
+  width: 100%
+}
+
+.recipe-details img {
+  width: 100%;
 }
