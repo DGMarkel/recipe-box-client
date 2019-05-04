@@ -10,7 +10,8 @@ export default function prelimReducer(state={
     isLoaded: false
     },
   newIngredients: [],
-  sumNutritionalDataFor: (array, dataPoint) => Math.round(array.map(i => i[dataPoint]).reduce((a,b)=>a+b,0))
+  sumNutritionalDataFor: (array, dataPoint) => Math.round(array.map(i => i[dataPoint]).reduce((a,b)=>a+b,0)),
+  formatRecipeURL:  recipe => { return recipe.toLowerCase().replace(/\s/g , "-" ) }
 }, action) {
 
   switch(action.type) {
