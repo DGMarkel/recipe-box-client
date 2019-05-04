@@ -6,6 +6,7 @@ import { withRouter, Link } from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
+import Welcome from './components/Welcome'
 
 class App extends Component {
   constructor() {
@@ -80,6 +81,7 @@ class App extends Component {
            ? this.renderForms()
            : <></>
         }
+        <Welcome />
         <>{ routes }</>
       </div>
     );
