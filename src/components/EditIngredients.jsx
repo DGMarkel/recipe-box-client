@@ -14,6 +14,7 @@ export default class EditIngredients extends Component {
             <th>Carbohydrates(g)</th>
             <th>Protein(g)</th>
             <th>Sugars(g)</th>
+            <th>Total Fat</th>
           </tr>
         {
           this.props.ingredients.map((ingredient, index) => {
@@ -39,8 +40,8 @@ export default class EditIngredients extends Component {
                 <td>{ingredient.calories}</td>
                 <td>{ingredient.total_carbohydrate}</td>
                 <td>{ingredient.protein}</td>
-                <td>{ingredient.protein}</td>
                 <td>{ingredient.sugars}</td>
+                <td>{ingredient.total_fat}</td>
                 <td>
                   <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient, index) }/>
                 </td>

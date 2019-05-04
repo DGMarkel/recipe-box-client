@@ -59,9 +59,6 @@ class EditRecipe extends Component {
               : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
           }
         </div>
-        <div className="recipe-preview">
-          <RecipePreview recipe={this.state.recipe} sumNutritionalDataFor={this.props.sumNutritionalDataFor} />
-        </div>
       </>
     )
   }
