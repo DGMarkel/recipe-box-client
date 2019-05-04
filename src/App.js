@@ -5,6 +5,7 @@ import routes from './routes'
 import { withRouter, Link } from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
+import SignUpForm from './components/SignUpForm'
 
 class App extends Component {
   constructor() {
@@ -50,7 +51,7 @@ class App extends Component {
     return (
       <div className="nav">
         <Link to="/">Home</Link>
-        <Link to="/signup">Sign Up</Link>
+        <a href="#" onClick={()=>this.toggleSignup()}>Sign Up</a>
         <a href="#" onClick={()=>this.toggleLogin()}>Log In</a>
       </div>
     )
@@ -68,6 +69,10 @@ class App extends Component {
         }
         { this.state.loginToggled
           ? <LoginForm />
+          : <></>
+        }
+        { this.state.signupToggled
+          ? <SignUpForm />
           : <></>
         }
         <>{ routes }</>
