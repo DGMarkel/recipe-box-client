@@ -4,6 +4,8 @@ import Auth from './modules/Auth'
 import routes from './routes'
 import { withRouter, Link } from 'react-router-dom'
 
+import LoginForm from './components/LoginForm'
+
 class App extends Component {
   constructor() {
     super();
@@ -21,16 +23,16 @@ class App extends Component {
 
   toggleSignup = () => {
     this.setState({
+      loginToggled: false,
       signupToggled: this.state.signupToggled ? false : true
     })
-    this.toggleLogin();
   }
 
   toggleLogin = () => {
     this.setState({
-      loginToggled: this.state.loginToggled ? false : true
+      loginToggled: this.state.loginToggled ? false : true,
+      toggleSignup: false
     })
-    this.toggleSignup();
   }
 
   renderPrivateNavBar = () => {
@@ -49,7 +51,7 @@ class App extends Component {
       <div className="nav">
         <Link to="/">Home</Link>
         <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Log In</Link>
+        <a href="#" onClick={()=>this.toggleLogin()}>Log In</a>
       </div>
     )
   }
@@ -63,6 +65,10 @@ class App extends Component {
         { (Auth.isUserAuthenticated())
           ? this.renderPrivateNavBar()
           : this.renderPublicNavBar()
+        }
+        { this.state.loginToggled
+          ? <LoginForm />
+          : <></>
         }
         <>{ routes }</>
       </div>
