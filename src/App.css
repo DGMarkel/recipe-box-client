@@ -3,7 +3,7 @@
 } */
 
 .App {
-  margin: 50px auto;
+  margin: 90px auto;
   max-width: 90%;
 }
 
@@ -11,19 +11,26 @@
   margin-bottom: 0;
 }
 
-.nav {
+.navigation {
+  position: fixed;
+  top: 0px;
+  background: white;
+  width: 100%;
+}
+
+.nav-bar {
   height: 20px;
   padding-top: 2px;
   background-color: lightblue;
 }
 
-.nav a {
+.nav-bar a {
   padding-top: 20px;
   margin-right: 20px;
   color: black;
   text-decoration: none;
 }
 
-.nav a:first-of-type {
+.nav-bar a:first-of-type {
   margin-left: 10px;
 }

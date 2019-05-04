@@ -48,7 +48,7 @@ class App extends Component {
 
   renderPrivateNavBar = () => {
     return (
-        <div className="nav">
+        <div className="nav-bar">
           <Link to="/dash">Home</Link>
           <Link to="/my-recipes">My Recipes</Link>
           <Link to="/recipes/new">Add a Recipe</Link>
@@ -59,7 +59,7 @@ class App extends Component {
 
   renderPublicNavBar = () => {
     return (
-      <div className="nav">
+      <div className="nav-bar">
         <Link to="/">Home</Link>
         <Link to={this.props.history} onClick={()=>this.toggleSignup()}>Sign Up</Link>
         <Link to={this.props.history} onClick={()=>this.toggleLogin()}>Log In</Link>
@@ -70,6 +70,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="navigation">
         <div id="mainLogo">
           <h1>Recipe Box</h1>
         </div>
@@ -77,11 +78,16 @@ class App extends Component {
           ? this.renderPrivateNavBar()
           : this.renderPublicNavBar()
         }
-        { !(Auth.isUserAuthenticated())
+        { (!Auth.isUserAuthenticated())
            ? this.renderForms()
            : <></>
         }
-        <Welcome />
+        </div>
+        { (!Auth.isUserAuthenticated())
+          ? <Welcome />
+          : <></>
+        }
+
         <>{ routes }</>
       </div>
     );
