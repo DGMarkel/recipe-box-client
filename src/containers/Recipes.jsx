@@ -8,7 +8,7 @@ class Recipes extends Component {
   constructor() {
     super()
     this.state = {
-      recipes: null,
+      recipes: [],
       recipesLoaded: false,
       search_term: '',
       search: true
@@ -89,6 +89,10 @@ class Recipes extends Component {
               placeholder="Search recipes by ingredient"
               onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}}
             />
+            { this.state.recipes.length === 0
+              ? <p>No matches found.</p>
+              : <></>
+            }
           </form>
         </div>
         { (this.state.recipesLoaded)
