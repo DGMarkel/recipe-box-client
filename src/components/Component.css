@@ -1,13 +1,13 @@
 .welcome {
-  width: 500px;
-  height: 250px;
-  margin: 20px 0;
+  width: 520px;
+  height: 520px;
+  margin: 20px 0 20px 10px;
 }
 
 .welcome-bg {
   width: 520px;
-  height: 350px;
-  background: url('https://blackbarnrestaurant.com/wp-content/uploads/2018/07/MVIMG_20180718_124614-1.jpg') no-repeat;
+  height: 520px;
+  background: url('https://thetabletales.com/wp-content/uploads/2018/01/Chefs-Table-Omakase-Menu-1000x400.jpg') no-repeat;
 }
 
 .recipe-card {
