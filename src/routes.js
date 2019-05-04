@@ -2,8 +2,6 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Auth from './modules/Auth'
 
-import Login from './components/LoginForm'
-import SignUp from './components/SignUpForm'
 import Dashboard from './containers/Dashboard'
 import Recipes from './containers/Recipes'
 import NewRecipe from './containers/NewRecipe'
@@ -14,8 +12,6 @@ import GenericNotFound from './components/GenericNotFound'
 export default (
     <Switch id='routes'>
       <Route exact path='/' render={ () => <Recipes/> }/>
-      <Route exact path='/signup' component={ () => Auth.isUserAuthenticated() ? <Redirect to="/"/> : <SignUp/> }/>
-      <Route exact path='/login' component={ () => Auth.isUserAuthenticated() ? <Redirect to="/dash"/> : <Login/> }/>
       <Route exact path='/dash' component={ () =>  Auth.isUserAuthenticated() ? <Dashboard/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes' component={ () =>  <Recipes/> }/>
       <Route exact path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <Recipes user="true"/> : <Redirect to="/login"/> }/>
