@@ -38,9 +38,13 @@ export default class EditIngredients extends Component {
                 </td>
                 <td>{ingredient.calories}</td>
                 <td>{ingredient.total_carbohydrate}</td>
-                <td>{ingredient.protein}}</td>
+                <td>{ingredient.protein}</td>
                 <td>{ingredient.protein}</td>
                 <td>{ingredient.sugars}</td>
+                <td>
+                  <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient, index) }/>
+                  <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => {this.props.deleteIngredient(e, this.props.recipeID, ingredient); this.props.deleteIngredientLocally(index)} }/>
+                </td>
               </tr>
             )
           })
