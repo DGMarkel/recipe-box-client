@@ -13,7 +13,6 @@ class BriefRecipeCard extends Component {
   renderRecipeCard = () => {
     return (
       <div>
-
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
           </div>

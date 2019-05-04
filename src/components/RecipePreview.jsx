@@ -8,7 +8,7 @@ export default class RecipePreview extends Component {
         { (this.props.recipe.title)
           ? <>
               <h3 className="title">{this.props.recipe.title}</h3>
-              <h5>Total Calories: {this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories")}</h5>
+              <h5>Total Calories: {this.props.recipe.ingredients ? this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories") : <>Data Unavailable</>}</h5>
               <p>{this.props.recipe.description}</p>
               <div className="preview-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '100%'}}>
               </div>
