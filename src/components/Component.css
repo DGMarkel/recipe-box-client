@@ -1,3 +1,15 @@
+.welcome {
+  width: 500px;
+  height: 250px;
+  margin: 20px 0;
+}
+
+.welcome-bg {
+  width: 520px;
+  height: 350px;
+  background: url('https://blackbarnrestaurant.com/wp-content/uploads/2018/07/MVIMG_20180718_124614-1.jpg') no-repeat;
+}
+
 .recipe-card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
