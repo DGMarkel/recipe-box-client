@@ -7,3 +7,12 @@
 .edit-recipe-form {
   margin-top: 20px;
 }
+
+.edit-recipe-form td {
+  padding: 1px 10px;
+  margin: 0 10px;
+}
+
+.edit-recipe-form input {
+  width: 75px;
+}
