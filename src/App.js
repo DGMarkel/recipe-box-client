@@ -10,13 +10,27 @@ class App extends Component {
     this.state={
       loginToggled: false,
       signupToggled: false
-    }     
+    }
   }
 
   handleLogout = e => {
     e.preventDefault();
     Auth.deauthenticateToken();
     this.props.history.push('/');
+  }
+
+  toggleSignup = () => {
+    this.setState({
+      signupToggled: this.state.signupToggled ? false : true
+    })
+    this.toggleLogin();
+  }
+
+  toggleLogin = () => {
+    this.setState({
+      loginToggled: this.state.loginToggled ? false : true
+    })
+    this.toggleSignup();
   }
 
   renderPrivateNavBar = () => {
