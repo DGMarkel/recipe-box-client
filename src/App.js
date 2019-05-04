@@ -5,6 +5,13 @@ import routes from './routes'
 import { withRouter, Link } from 'react-router-dom'
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state={
+      loginToggled: false,
+      signupToggled: false
+    }     
+  }
 
   handleLogout = e => {
     e.preventDefault();
