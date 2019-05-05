@@ -13,7 +13,8 @@ class App extends Component {
     super();
     this.state={
       loginToggled: false,
-      signupToggled: false
+      signupToggled: false,
+      firstView: true
     }
   }
 
@@ -67,7 +68,16 @@ class App extends Component {
     )
   }
 
+  componentDidUpdate() {
+    if (this.state.firstView) {
+      this.setState({
+        firstView: false
+      })
+    }
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <div className="navigation">
@@ -83,7 +93,7 @@ class App extends Component {
            : <></>
         }
         </div>
-        { (!Auth.isUserAuthenticated())
+        { (!Auth.isUserAuthenticated() && this.state.firstView)
           ? <Welcome />
           : <></>
         }
