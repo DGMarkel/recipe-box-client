@@ -59,7 +59,7 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div className="form">
+      <div className="signup-form">
         <form onSubmit={ (e) => { this.handleSignUpSubmit(e) } }>
           <input
             type="text"

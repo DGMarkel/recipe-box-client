@@ -53,7 +53,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div className="form">
+      <div className="login-form">
         <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state.user) }>
           <input
             type="text"

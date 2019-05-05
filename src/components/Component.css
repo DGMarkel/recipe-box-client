@@ -5,6 +5,11 @@
   border: 1px solid black;
 }
 
+.signup-form, .login-form {
+  background-color: white;
+  margin: 10px 0;
+}
+
 .welcome-bg {
   width: 520px;
   height: 520px;
