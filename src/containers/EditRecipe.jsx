@@ -24,7 +24,7 @@ class EditRecipe extends Component {
         description: '',
         ingredients: []
       },
-      toggleAddIngredients: false,
+      toggleAddIngredients: false, // opens/closes new ingredients form
       rawIngredients: ''
     }
   }
@@ -49,12 +49,12 @@ class EditRecipe extends Component {
           {
             (this.state.toggleAddIngredients)
               ? <div className="add-ingredients-form">
-                <AddIngredientsForm
-                  fetchAndPostIngredients={this.props.fetchAndPostIngredients}
-                  handleOnChange={this.handleOnChange}
-                  state={this.state}
-                />
-                <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
+                  <AddIngredientsForm
+                    fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                    handleOnChange={this.handleOnChange}
+                    state={this.state}
+                  />
+                  <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
                 </div>
               : <input type="button" value="Add Ingredients" onClick={this.toggleAddIngredientsForm} />
           }
