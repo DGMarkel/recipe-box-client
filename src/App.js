@@ -20,10 +20,12 @@ class App extends Component {
 
   handleLogout = e => {
     e.preventDefault();
+    this.toggleLogin(); // toggles state.login to false; otherwise login form visible on redirect to home
     Auth.deauthenticateToken();
     this.props.history.push('/');
   }
 
+  // opens/closes signup form
   toggleSignup = () => {
     this.setState({
       loginToggled: false,
@@ -31,6 +33,7 @@ class App extends Component {
     })
   }
 
+  //opens/closes login form
   toggleLogin = () => {
     this.setState({
       loginToggled: this.state.loginToggled ? false : true,
@@ -38,6 +41,7 @@ class App extends Component {
     })
   }
 
+  // renders login or signup forms depending on whether loginToggled/signupToggled = true || false
   renderForms = () => {
     if (this.state.loginToggled) {
       return <LoginForm />
@@ -69,6 +73,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    // hides welcome component from view after first page view
     if (this.state.firstView) {
       this.setState({
         firstView: false
@@ -81,17 +86,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="navigation">
-        <div id="mainLogo">
-          <h1>Recipe Box</h1>
-        </div>
-        { (Auth.isUserAuthenticated())
-          ? this.renderPrivateNavBar()
-          : this.renderPublicNavBar()
-        }
-        { (!Auth.isUserAuthenticated())
-           ? this.renderForms()
-           : <></>
-        }
+          <div id="mainLogo">
+            <h1>Recipe Box</h1>
+          </div>
+          { (Auth.isUserAuthenticated())
+            ? this.renderPrivateNavBar()
+            : this.renderPublicNavBar()
+          }
+          { (!Auth.isUserAuthenticated())
+             ? this.renderForms()
+             : <></>
+          }
         </div>
         { (!Auth.isUserAuthenticated() && this.state.firstView)
           ? <Welcome />
