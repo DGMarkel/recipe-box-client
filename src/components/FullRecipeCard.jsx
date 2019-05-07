@@ -5,33 +5,53 @@ import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
 
 class FullRecipeCard extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
       ingredientsTableToggled: false,
-      nutritionTableToggled: true
+      nutritionalTableToggled: true
     }
   }
 
   recipe = this.props.location.state.recipe
 
+  formToggler = () => {
+    console.log("hi")
+    if (this.state.ingredientsTableToggled) {
+      this.setState({
+        ingredientsTableToggled: false,
+        nutritionalTableToggled: true
+      })
+    }
+    if (this.state.nutritionalTableToggled) {
+      this.setState({
+        ingredientsTableToggled: true,
+        nutritionalTableToggled: false
+      })
+    }
+  }
+
   renderForm = () => {
-    if (this.state.nutrionalTableToggled) {
+    if (this.state.nutritionalTableToggled) {
       return (
-        <NutritionalTable recipe={this.props.recipe} />
-        <button value="View Nutritional Data By Ingredient" onClick={this.formToggler} />
+        <>
+          <NutritionalTable recipe={this.recipe} />
+          <button onClick={(e)=>this.formToggler(e)}>View Nutritional Data By Ingredient</button>
+        </>
       )
     }
     if (this.state.ingredientsTableToggled) {
       return (
-        <IngredientsTable recipe={this.props.recipe}/>
-        <button value="View Nutritional Totals" onClick={this.formToggler} />
+        <>
+          <IngredientsTable recipe={this.recipe}/>
+          <button onClick={(e)=>this.formToggler(e)}>View Nutritional Totals</button>
+        </>
       )
     }
   }
 
   render() {
-    console.log(this.recipe)
+    console.log(this.state)
     return (
       <>
         <div className="full-recipe-card">
@@ -42,8 +62,7 @@ class FullRecipeCard extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-          <IngredientsTable recipe={this.recipe} />
-          <NutritionalTable recipe={this.recipe} />
+          { this.renderForm() }
         </div>
       </>
     )
