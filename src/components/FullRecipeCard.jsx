@@ -36,8 +36,6 @@ class FullRecipeCard extends Component {
       : <button onClick={()=>this.formToggler()}>View Nutritional Data By Ingredient</button>
   }
 
-
-
   renderForm = () => {
     return (
       this.state.nutritionalTableToggled
@@ -52,7 +50,6 @@ class FullRecipeCard extends Component {
       <>
         <div className="full-recipe-card">
           <h1>{this.recipe.title}</h1>
-          <h4>Calories per serving: {this.recipe.recipe_totals.calories} (actually total calories, need to adjust this later)</h4>
           <p>{this.recipe.description}</p>
           <img src={this.recipe.image_url} alt={this.recipe.title} />
         </div>
