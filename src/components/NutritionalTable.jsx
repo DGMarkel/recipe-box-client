@@ -8,41 +8,17 @@ class NutritionalTable extends Component {
   nutritionalTotals = this.dataPoints.map(dataPoint => this.props.sumNutritionalDataFor(this.ingredients, dataPoint))
 
   render() {
-    console.log(this.props.recipe)
-    debugger
     return (
       <table>
         <tbody>
-          <tr>
-            <th>Calories</th>
-          </tr>
-          <tr>
-            <th>Total Fat</th>
-          </tr>
-          <tr>
-            <th>Saturated Fat</th>
-          </tr>
-          <tr>
-            <th>Cholesterol</th>
-          </tr>
-          <tr>
-            <th>Sodium</th>
-          </tr>
-          <tr>
-            <th>Carbohydrates</th>
-          </tr>
-          <tr>
-            <th>Fiber</th>
-          </tr>
-          <tr>
-            <th>Sugars</th>
-          </tr>
-          <tr>
-            <th>Protein</th>
-          </tr>
-          <tr>
-            <th>Potassium</th>
-          </tr>
+          { this.dataPoints.map( (dataPoint, index) => {
+            return (
+              <tr>
+                <th style={{textAlign: 'left'}}>{dataPoint}</th>
+                <td style={{width: '150%', textAlign: 'right'}}>{this.nutritionalTotals[index]}</td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
       )
