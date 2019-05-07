@@ -6,6 +6,11 @@ import './Component.css'
 
 class BriefRecipeCard extends Component {
 
+  shortDescription = description => {
+    const shortDescription = description.substr(0, 80)
+    return shortDescription.substr(0, Math.min(shortDescription.length, shortDescription.lastIndexOf(" "))).concat("...")
+  }
+
   render() {
     return (
       <Link to={{
@@ -24,7 +29,7 @@ class BriefRecipeCard extends Component {
                   <button>Edit</button></Link>
               : <></>
           }
-          <p className="description">{this.props.recipe.description}</p>
+          <p className="description">{this.shortDescription(this.props.recipe.description)}</p>
         </div>
       </Link>
     )
