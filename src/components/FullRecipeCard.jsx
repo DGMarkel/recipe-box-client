@@ -5,6 +5,13 @@ import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
 
 class FullRecipeCard extends Component {
+  constructor() {
+    super()
+    this.state={
+      ingredientTableToggled: false,
+      nutritionTableToggled: true
+    }
+  }
 
   recipe = this.props.location.state.recipe
 
