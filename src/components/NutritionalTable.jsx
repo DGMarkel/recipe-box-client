@@ -5,20 +5,38 @@ export default class IngredientsTable extends Component {
   render() {
     return (
       <table>
-        <tr>
-          <th>
-            <td>Calories</td>
-            <td>Total Fat</td>
-            <td>Saturated Fat</td>
-            <td>Cholesterol</td>
-            <td>Sodium</td>
-            <td>Carbohydrates</td>
-            <td>Fiber</td>
-            <td>Sugars</td>
-            <td>Protein</td>
-            <td>Potassium</td>
-          </th>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Calories</th>
+          </tr>
+          <tr>
+            <th>Total Fat</th>
+          </tr>
+          <tr>
+            <th>Saturated Fat</th>
+          </tr>
+          <tr>
+            <th>Cholesterol</th>
+          </tr>
+          <tr>
+            <th>Sodium</th>
+          </tr>
+          <tr>
+            <th>Carbohydrates</th>
+          </tr>
+          <tr>
+            <th>Fiber</th>
+          </tr>
+          <tr>
+            <th>Sugars</th>
+          </tr>
+          <tr>
+            <th>Protein</th>
+          </tr>
+          <tr>
+            <th>Potassium</th>
+          </tr>
+        </tbody>
       </table>
       )
     }

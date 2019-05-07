@@ -21,6 +21,7 @@ class FullRecipeCard extends Component {
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
           <IngredientsTable recipe={this.recipe} />
+          <NutritionalTable recipe={this.recipe} />
         </div>
       </>
     )
