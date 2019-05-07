@@ -16,7 +16,6 @@ class FullRecipeCard extends Component {
   recipe = this.props.location.state.recipe
 
   formToggler = () => {
-    console.log("hi")
     if (this.state.ingredientsTableToggled) {
       this.setState({
         ingredientsTableToggled: false,
@@ -31,21 +30,25 @@ class FullRecipeCard extends Component {
     }
   }
 
+  buttonToggler = () => {
+    return this.state.ingredientsTableToggled
+      ? <button onClick={()=>this.formToggler()}>View Nutritional Data By Recipe</button>
+      : <button onClick={()=>this.formToggler()}>View Nutritional Data By Ingredient</button>
+  }
+
+
+
   renderForm = () => {
     if (this.state.nutritionalTableToggled) {
       return (
         <>
           <NutritionalTable recipe={this.recipe} />
-          <button onClick={(e)=>this.formToggler(e)}>View Nutritional Data By Ingredient</button>
         </>
       )
     }
     if (this.state.ingredientsTableToggled) {
       return (
-        <>
           <IngredientsTable recipe={this.recipe}/>
-          <button onClick={(e)=>this.formToggler(e)}>View Nutritional Totals</button>
-        </>
       )
     }
   }
@@ -62,6 +65,7 @@ class FullRecipeCard extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
+          { this.buttonToggler() }
           { this.renderForm() }
         </div>
       </>
