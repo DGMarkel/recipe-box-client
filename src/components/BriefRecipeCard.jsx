@@ -3,7 +3,6 @@ import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import './Component.css'
-import NutritionalTable from './NutritionalTable'
 
 class BriefRecipeCard extends Component {
 
@@ -22,7 +21,7 @@ class BriefRecipeCard extends Component {
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
             <div className="nutritional-table">
-              <NutritionalTable recipe={this.props.recipe} />
+              Calories per serving: { this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories")}
             </div>
           </div>
         </div>
@@ -44,7 +43,8 @@ class BriefRecipeCard extends Component {
 const mapStateToProps = state => {
   return {
     username: state.user.username, // unused, can be used to display author of recipe's name
-    formatRecipeURL: state.formatRecipeURL
+    formatRecipeURL: state.formatRecipeURL,
+    sumNutritionalDataFor: state.sumNutritionalDataFor
   }
 }
 
