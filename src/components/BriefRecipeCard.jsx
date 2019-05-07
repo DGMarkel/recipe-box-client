@@ -42,7 +42,7 @@ class BriefRecipeCard extends Component {
 
 const mapStateToProps = state => {
   return {
-    username: state.user.username,
+    username: state.user.username, // unused, can be used to display author of recipe's name
     formatRecipeURL: state.formatRecipeURL
   }
 }
