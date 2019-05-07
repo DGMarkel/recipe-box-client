@@ -28,6 +28,9 @@ class NewRecipeForm extends Component {
               placeholder="Brief Description"
               onChange={event => this.props.handleOnChange(event)}
             /><br />
+            Servings: <input type="number"
+              value={this.props.recipe.servings}
+              onChange={event => this.props.handleOnChange(event)} /><br />
             <textarea
               rows="10"
               cols="60"
