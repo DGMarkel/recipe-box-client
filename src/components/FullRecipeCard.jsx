@@ -39,18 +39,11 @@ class FullRecipeCard extends Component {
 
 
   renderForm = () => {
-    if (this.state.nutritionalTableToggled) {
-      return (
-        <>
-          <NutritionalTable recipe={this.recipe} />
-        </>
-      )
-    }
-    if (this.state.ingredientsTableToggled) {
-      return (
-          <IngredientsTable recipe={this.recipe}/>
-      )
-    }
+    return (
+      this.state.nutritionalTableToggled
+      ? <NutritionalTable recipe={this.recipe} />
+      : <IngredientsTable recipe={this.recipe}/>
+    )
   }
 
   render() {
