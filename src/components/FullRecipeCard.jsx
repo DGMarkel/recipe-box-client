@@ -8,12 +8,27 @@ class FullRecipeCard extends Component {
   constructor() {
     super()
     this.state={
-      ingredientTableToggled: false,
+      ingredientsTableToggled: false,
       nutritionTableToggled: true
     }
   }
 
   recipe = this.props.location.state.recipe
+
+  renderForm = () => {
+    if (this.state.nutrionalTableToggled) {
+      return (
+        <NutritionalTable recipe={this.props.recipe} />
+        <button value="View Nutritional Data By Ingredient" onClick={this.formToggler} />
+      )
+    }
+    if (this.state.ingredientsTableToggled) {
+      return (
+        <IngredientsTable recipe={this.props.recipe}/>
+        <button value="View Nutritional Totals" onClick={this.formToggler} />
+      )
+    }
+  }
 
   render() {
     console.log(this.recipe)
