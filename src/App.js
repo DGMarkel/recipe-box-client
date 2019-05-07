@@ -51,6 +51,7 @@ class App extends Component {
     }
   }
 
+  // displays links for logged in user
   renderPrivateNavBar = () => {
     return (
         <div className="nav-bar">
@@ -62,6 +63,7 @@ class App extends Component {
     )
   }
 
+  //displays links to unregistered/not logged in users
   renderPublicNavBar = () => {
     return (
       <div className="nav-bar">
@@ -89,20 +91,22 @@ class App extends Component {
           <div id="mainLogo">
             <h1>Recipe Box</h1>
           </div>
+          // determines which navbar to display
           { (Auth.isUserAuthenticated())
             ? this.renderPrivateNavBar()
             : this.renderPublicNavBar()
           }
+          // displays login/signup forms if user isn't logged in
           { (!Auth.isUserAuthenticated())
              ? this.renderForms()
              : <></>
           }
         </div>
+          // renders welcome component only on first user view
         { (!Auth.isUserAuthenticated() && this.state.firstView)
           ? <Welcome />
           : <></>
         }
-
         <>{ routes }</>
       </div>
     );
