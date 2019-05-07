@@ -6,9 +6,12 @@ import './Component.css'
 
 class BriefRecipeCard extends Component {
 
-  renderRecipeCard = () => {
+  render() {
     return (
-      <div>
+      <Link to={{
+        pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
+        state: {recipe: this.props.recipe}
+      }}>
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
           </div>
@@ -23,18 +26,6 @@ class BriefRecipeCard extends Component {
           }
           <p className="description">{this.props.recipe.description}</p>
         </div>
-
-      </div>
-    )
-  }
-
-  render() {
-    return (
-      <Link to={{
-        pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
-        state: {recipe: this.props.recipe}
-      }}>
-        {this.renderRecipeCard()}
       </Link>
     )
   }
