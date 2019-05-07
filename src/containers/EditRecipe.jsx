@@ -72,7 +72,7 @@ class EditRecipe extends Component {
 
   componentDidUpdate() {
     // when new ingredients have been saved to backend and added to global state property newIngredients,
-    // they're then added to state.recipe.ingredients
+    // they're then added to local state.recipe.ingredients
     if (this.props.newIngredients.length > 0) {
       this.setState({
         ...this.state,
