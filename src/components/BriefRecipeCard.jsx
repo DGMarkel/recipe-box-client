@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import './Component.css'
+import NutritionalTable from './NutritionalTable'
 
 class BriefRecipeCard extends Component {
 
@@ -20,6 +21,9 @@ class BriefRecipeCard extends Component {
       }}>
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
+            <div className="nutritional-table">
+              <NutritionalTable recipe={this.props.recipe} />
+            </div>
           </div>
         </div>
 
