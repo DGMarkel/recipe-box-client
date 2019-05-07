@@ -91,19 +91,22 @@ class App extends Component {
           <div id="mainLogo">
             <h1>Recipe Box</h1>
           </div>
-          // determines which navbar to display
-          { (Auth.isUserAuthenticated())
+          {
+            // determines which navbar to display
+            (Auth.isUserAuthenticated())
             ? this.renderPrivateNavBar()
             : this.renderPublicNavBar()
           }
-          // displays login/signup forms if user isn't logged in
-          { (!Auth.isUserAuthenticated())
+          {
+            // displays login/signup forms if user isn't logged in
+            (!Auth.isUserAuthenticated())
              ? this.renderForms()
              : <></>
           }
         </div>
+        {
           // renders welcome component only on first user view
-        { (!Auth.isUserAuthenticated() && this.state.firstView)
+          (!Auth.isUserAuthenticated() && this.state.firstView)
           ? <Welcome />
           : <></>
         }
