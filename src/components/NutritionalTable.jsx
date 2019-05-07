@@ -7,7 +7,7 @@ export default class IngredientsTable extends Component {
       <table>
         <tr>
           <th>
-            <td>Calories<td>
+            <td>Calories</td>
             <td>Total Fat</td>
             <td>Saturated Fat</td>
             <td>Cholesterol</td>
@@ -19,7 +19,7 @@ export default class IngredientsTable extends Component {
             <td>Potassium</td>
           </th>
         </tr>
-        </table>
+      </table>
       )
     }
 }
