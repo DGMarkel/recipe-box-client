@@ -6,6 +6,7 @@ import './Component.css'
 
 class BriefRecipeCard extends Component {
 
+  // shortens recipe descriptions to fit recipe card
   shortDescription = description => {
     const shortDescription = description.substr(0, 80)
     return shortDescription.substr(0, Math.min(shortDescription.length, shortDescription.lastIndexOf(" "))).concat("...")
