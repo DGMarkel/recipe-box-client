@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class IngredientsTable extends Component {
+class NutritionalTable extends Component {
 
   render() {
     return (
@@ -41,3 +42,11 @@ export default class IngredientsTable extends Component {
       )
     }
 }
+
+const mapStateToProps = state => {
+  return {
+    sumNutritionalDataFor: state.sumNutritionalDataFor
+  }
+}
+
+export default connect(mapStateToProps)(NutritionalTable)
