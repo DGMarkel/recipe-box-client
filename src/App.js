@@ -20,7 +20,7 @@ class App extends Component {
 
   handleLogout = e => {
     e.preventDefault();
-    this.toggleLogin(); // toggles state.login to false; otherwise login form visible on redirect to home
+    this.toggleLogin(); // toggles state.login to false; otherwise login form would be visible on redirect to home
     Auth.deauthenticateToken();
     this.props.history.push('/');
   }
