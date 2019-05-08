@@ -14,7 +14,7 @@ class BriefRecipeCard extends Component {
   }
 
   calsPerServing = recipe => {
-    return this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings
+    return Math.round(this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings)
   }
 
   render() {
@@ -33,11 +33,6 @@ class BriefRecipeCard extends Component {
 
         <div className="container">
           <h3 className="title">{this.props.recipe.title}</h3>
-          { (this.props.user)
-              ?  <Link to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}>
-                  <button>Edit</button></Link>
-              : <></>
-          }
           <p className="description">{this.shortDescription(this.props.recipe.description)}</p>
         </div>
       </Link>
