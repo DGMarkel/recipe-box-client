@@ -18,6 +18,12 @@ export default class RecipeDetails extends Component {
           placeholder="Image"
           onChange={event => this.props.handleOnChange(event)}
         /><br />
+        Servings: <input
+          type="number"
+          name="servings"
+          value={this.props.recipe.servings}
+          onChange={event => this.props.handleOnChange(event)}
+        /><br />
         <textarea
           cols="60"
           name="description"

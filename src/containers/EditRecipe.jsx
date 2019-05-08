@@ -22,7 +22,8 @@ class EditRecipe extends Component {
         title: '',
         image_url: '',
         description: '',
-        ingredients: []
+        ingredients: [],
+        servings: ''
       },
       toggleAddIngredients: false, // opens/closes new ingredients form
       rawIngredients: ''
@@ -102,7 +103,8 @@ class EditRecipe extends Component {
           title: res.title,
           description: res.description,
           image_url: res.image_url,
-          ingredients: res.ingredients
+          ingredients: res.ingredients,
+          servings: res.servings
         },
       })
     })
@@ -120,6 +122,7 @@ class EditRecipe extends Component {
           title: recipe.title,
           description: recipe.description,
           image_url: recipe.image_url,
+          servings: recipe.servings
         }
       }),
       headers: {
