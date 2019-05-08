@@ -84,7 +84,8 @@ h1 {
   float: left;
 }
 
-.full-recipe-card img {
+.ingredients-table img {
+  margin-top: 25px;
   width: 100%;
 }
 

@@ -64,9 +64,9 @@ class FullRecipeCard extends Component {
         <div className="full-recipe-card">
           <h1>{this.recipe.title}</h1>
           <p>{this.recipe.description}</p>
-          <img src={this.recipe.image_url} alt={this.recipe.title} />
         </div>
         <div className="ingredients-table">
+          <img src={this.recipe.image_url} alt={this.recipe.title} />
           <h1>Nutritional Data</h1>
             <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
             <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
