@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import Auth from '../../modules/Auth'
 
 export default class EditRecipeDetails extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       recipe: {
-        id: this.props.recipe.id,
-        title: this.props.recipe.title,
-        image_url: this.props.recipe.image_url,
-        description: this.props.recipe.description,
-        servings: this.props.recipe.servings
+        id: props.recipe.id,
+        title: props.recipe.title,
+        image_url: props.recipe.image_url,
+        description: props.recipe.description,
+        servings: props.recipe.servings
       }
     }
   }

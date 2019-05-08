@@ -81,7 +81,7 @@ class Recipe extends Component {
     return (
       this.state.editDetailsToggled
       ? <EditRecipeDetails recipe={this.recipe} />
-      : <RecipeDetails recipe={this.recipe} owner={this.props.username === this.recipe.creator_name}/>
+      : <RecipeDetails recipe={this.recipe} owner={this.props.username === this.recipe.creator_name} editDetailsToggler={this.editDetailsToggler}/>
     )
   }
 
