@@ -55,17 +55,6 @@ class Recipes extends Component {
     })
   }
 
-  loadAllRecipes = () => {
-    fetch('/recipes')
-      .then(res => res.json())
-      .then(resJSON => {
-        this.setState({
-          recipes: resJSON,
-          recipesLoaded: true
-        })
-      }).catch(err => console.log(err))
-  }
-
   searchAllRecipes = (e) => {
     e.preventDefault();
     const recipes = this.state.recipes.filter(
@@ -120,7 +109,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadAllRecipes: bindActionCreators(actions.loadAllRecipes, dispatch)
+    loadRecipes: bindActionCreators(actions.loadRecipes, dispatch)
   }
 }
 

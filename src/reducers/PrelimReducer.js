@@ -9,6 +9,7 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false // unnecessary?
     },
+  recipes: []
   //collects ingredients added to an existing recipe
   newIngredients: [],
   // adds up total nutritional data for a given dataPoint (ie, calories) and array of ingredients
@@ -53,6 +54,12 @@ export default function prelimReducer(state={
           }
         }else {
           console.log("Still Loading")
+        }
+
+      case 'LOAD_RECIPES':
+        return {
+          ...state,
+            recipes: action.payload
         }
 
       case 'ADD_RECIPE':

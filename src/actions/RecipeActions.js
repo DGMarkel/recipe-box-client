@@ -1,5 +1,16 @@
 import Auth from '../modules/Auth'
 
+export function loadRecipes() {
+  return (dispatch) => {
+  fetch('/recipes')
+    .then(res => res.json())
+    .then(resJSON => {
+      dispatch({type:'LOAD_RECIPES', payload: resJSON})
+    })
+    .catch(err => console.log(err))
+  }
+}
+
 export function fetchAndPostIngredients(event, recipeData) {
   event.preventDefault()
 
