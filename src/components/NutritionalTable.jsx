@@ -8,6 +8,8 @@ class NutritionalTable extends Component {
   dataPoints = Object.keys(this.ingredients[0]).slice(3, this.ingredients.length)
   // tally the values for each nutritional datapoint across the entire array of ingredients
   nutritionalTotals = this.dataPoints.map(dataPoint => this.props.sumNutritionalDataFor(this.ingredients, dataPoint))
+  // if this.props.serving === true, calculate nutritional data for single serving
+  servingTotals = this.nutritionalTotals.map(data => Math.round(data/this.props.recipe.servings))
 
   render() {
     return (
@@ -17,7 +19,9 @@ class NutritionalTable extends Component {
             return (
               <tr>
                 <th style={{textAlign: 'left'}}>{dataPoint}</th>
-                <td style={{width: '150%', textAlign: 'right'}}>{this.nutritionalTotals[index]}</td>
+                <td style={{width: '150%', textAlign: 'right'}}>
+                  { this.props.serving ? this.servingTotals[index] : this.nutritionalTotals[index] }
+                </td>
               </tr>
             )
           })}

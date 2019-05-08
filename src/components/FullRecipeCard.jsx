@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
@@ -68,9 +68,9 @@ class FullRecipeCard extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-            <Link to={this.props.history} onClick={()=>this.formToggler('recipe')}>By Recipe</Link> |
-            <Link to={this.props.history} onClick={()=>this.formToggler('serving')}> By Serving</Link> |
-            <Link to={this.props.history} onClick={()=>this.formToggler('ingredient')}> By Ingredient</Link>
+            <a href="#" onClick={()=>this.formToggler('recipe')}>By Recipe</a> |
+            <a href="#" onClick={()=>this.formToggler('serving')}> By Serving</a> |
+            <a href="#" onClick={()=>this.formToggler('ingredient')}> By Ingredient</a>
           { this.renderForm() }
         </div>
       </>
