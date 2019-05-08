@@ -50,7 +50,7 @@ class Recipe extends Component {
   }
 
   // display edit link if user owns viewed recipe
-  editLink = () => {
+  editIngredientsLink = () => {
     if (this.props.username === this.recipe.creator_name) {
       return (
         <Link to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}> | Edit</Link>
@@ -83,7 +83,7 @@ class Recipe extends Component {
             <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
             <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
-          { this.editLink() }
+          { this.editIngredientsLink() }
           { this.renderForm() }
         </div>
       </>
