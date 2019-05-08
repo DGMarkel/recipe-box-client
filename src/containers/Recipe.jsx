@@ -20,6 +20,13 @@ class Recipe extends Component {
 
   recipe = this.props.location.state.recipe
 
+  editDetailsToggler = () => {
+    this.setState({
+      ...this.state,
+        editDetailsToggled: this.state.editDetailsToggled ? false : true
+    })
+  }
+
   formToggler = formType => {
     switch(formType) {
       case 'recipe':
