@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
@@ -45,6 +46,13 @@ class FullRecipeCard extends Component {
     }
   }
 
+  showEditLink = () => {
+    debugger
+    if (this.recipe.creator_name === this.props.creatorName) {
+      return <a href={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}> | Edit</a>
+    }
+  }
+
   renderForm = () => {
     if (this.state.nutritionalTableToggled) {
       return <NutritionalTable recipe={this.recipe} />
@@ -58,7 +66,6 @@ class FullRecipeCard extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <>
         <div className="full-recipe-card">
@@ -71,6 +78,7 @@ class FullRecipeCard extends Component {
             <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
             <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
+          { this.showEditLink() }
           { this.renderForm() }
         </div>
       </>
@@ -78,4 +86,11 @@ class FullRecipeCard extends Component {
   }
 }
 
-export default withRouter(FullRecipeCard)
+const mapStateToProps = state => {
+  return {
+    creatorName: state.user.username,
+    formatRecipeURL: state.formatRecipeURL
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(FullRecipeCard))
