@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { bindActionCreators} from 'redux'
+import * as actions from '../actions/RecipeActions'
 
 import BriefRecipeCard from '../components/RecipeComponents/BriefRecipeCard'
 import Auth from '../modules/Auth'
@@ -116,4 +118,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Recipes))
+const mapDispatchToProps = dispatch => {
+  return {
+    loadAllRecipes: bindActionCreators(actions.loadAllRecipes, dispatch)
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Recipes))
