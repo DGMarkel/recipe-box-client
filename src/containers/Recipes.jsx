@@ -55,20 +55,47 @@ class Recipes extends Component {
   //   })
   // }
 
-  searchAllRecipes = (e) => {
-    e.preventDefault();
-    const recipes = this.state.recipes.filter(
-      recipe =>
-        recipe.ingredients.find(ingredient =>
-          ingredient["food_name"].includes(this.state.search_term)
-        )
-      );
+  // searchAllRecipes = (e) => {
+  //   e.preventDefault();
+  //   const recipes = this.props.recipes.filter(
+  //     recipe =>
+  //       recipe.ingredients.find(ingredient =>
+  //         ingredient["food_name"].includes(this.state.search_term)
+  //       )
+  //     );
+  //
+  //   this.setState({
+  //     ...this.state,
+  //       recipes: recipes,
+  //       search: true
+  //   });
+  // }
 
-    this.setState({
-      ...this.state,
-        recipes: recipes,
-        search: true
-    });
+  recipeDisplay = () => {
+      if (this.state.search) {
+        const recipes = this.props.recipes.filter(
+          recipe =>
+            recipe.ingredients.find(ingredient =>
+              ingredient["food_name"].includes(this.state.search_term)
+            )
+          );
+        return (
+          recipes.map( recipe =>
+            <div className="recipe-card" >
+            <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
+            </div>
+          )
+        )
+      }
+      else {
+        return (
+          this.props.recipes.map( recipe =>
+            <div className="recipe-card" >
+              <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
+            </div>
+          )
+        )
+      }
   }
 
   render() {
@@ -87,13 +114,7 @@ class Recipes extends Component {
             }
           </form>
         </div>
-        {
-          this.props.recipes.map( recipe =>
-            <div className="recipe-card" >
-              <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
-            </div>
-          )
-        }
+        { this.recipeDisplay() }
       </div>
     )
   }
