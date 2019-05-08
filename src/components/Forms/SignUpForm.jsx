@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Auth from '../modules/Auth';
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../../actions/UserActions'
+import Auth from '../../modules/Auth'
 
-import * as actions from '../actions/UserActions';
-
-class LoginForm extends Component {
+class SignupForm extends Component {
   constructor() {
     super();
     this.state = {
       user: {
         username: '',
-        password: ''
+        password: '',
+        email: ''
       },
       errors: false
     }
@@ -23,18 +23,20 @@ class LoginForm extends Component {
     const value = e.target.value;
     this.setState({
       ...this.state,
-      user: {
-        ...this.state.user,
-        [name]: value,
-      }
+        user: {
+          ...this.state.user,
+          [name]: value,
+        }
     });
   }
 
-  handleLoginSubmit = (e, data) => {
+  handleSignUpSubmit = (e) => {
     e.preventDefault();
-    return fetch('/login', {
+    return fetch('/users', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        user: this.state.user
+      }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -44,7 +46,7 @@ class LoginForm extends Component {
         Auth.authenticateToken(res.token)
         if (Auth.isUserAuthenticated()) {
           this.props.fetchUserData();
-          this.props.history.push('/dash')
+          this.props.history.push('/')
         }
         else {
           this.setState({
@@ -52,18 +54,25 @@ class LoginForm extends Component {
               errors: true
           })
         }
-      }).catch(err => {console.log(err)})
+      }).catch(err => console.log(err))
   }
 
   render() {
     return (
-      <div className="login-form">
-        <form onSubmit={ (e) => this.handleLoginSubmit(e, this.state.user) }>
+      <div className="signup-form">
+        <form onSubmit={ (e) => { this.handleSignUpSubmit(e) } }>
           <input
             type="text"
             name="username"
             placeholder="username"
             value={this.state.user.username}
+            onChange={this.handleChange}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={this.state.user.email}
             onChange={this.handleChange}
           />
           <input
@@ -73,11 +82,11 @@ class LoginForm extends Component {
             value={this.state.user.password}
             onChange={this.handleChange}
           />
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Register!"/>
         </form>
         { this.state.errors
           ? <div className="errors">
-              There was a problem logging you in.  Please try again.
+              There was a problem creating your account.  Please ensure that all forms are filled.
             </div>
           : <></>
         }
@@ -93,4 +102,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(LoginForm))
+
+
+export default withRouter(connect(null, mapDispatchToProps)(SignupForm))
