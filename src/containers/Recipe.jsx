@@ -15,8 +15,6 @@ class Recipe extends Component {
     }
   }
 
-  recipe = this.props.location.state.recipe
-
   tableToggler = formType => {
     switch(formType) {
       case 'recipe':
@@ -48,22 +46,22 @@ class Recipe extends Component {
 
   // display edit link if user owns viewed recipe
   editLink = () => {
-    return (this.props.username === this.recipe.creator_name)
+    return (this.props.username === this.props.currentRecipe.creator_name)
       ? <Link
-          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}
+          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.currentRecipe.title)}/edit`, state: {recipe: this.props.currentRecipe}}}
         > | Edit</Link>
       : <></>
   }
 
   renderTable = () => {
     if (this.state.nutritionalTableToggled) {
-      return <NutritionalTable recipe={this.recipe} />
+      return <NutritionalTable recipe={this.props.currentRecipe} />
     }
     if (this.state.ingredientsTableToggled) {
-      return <IngredientsTable recipe={this.recipe}/>
+      return <IngredientsTable recipe={this.props.currentRecipe}/>
     }
     if (this.state.servingTableToggled) {
-      return <NutritionalTable recipe={this.recipe} serving="true" />
+      return <NutritionalTable recipe={this.props.currentRecipe} serving="true" />
     }
   }
 
@@ -71,9 +69,9 @@ class Recipe extends Component {
     return (
       <>
         <div className="full-recipe-card">
-          <h1>{this.recipe.title}</h1>
-          <p>{this.recipe.description}</p>
-          <img src={this.recipe.image_url} alt={this.recipe.title} />
+          <h1>{this.props.currentRecipe.title}</h1>
+          <p>{this.props.currentRecipe.description}</p>
+          <img src={this.props.currentRecipe.image_url} alt={this.props.currentRecipe.title} />
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
@@ -88,10 +86,11 @@ class Recipe extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     username: state.user.username,
-    formatRecipeURL: state.formatRecipeURL
+    formatRecipeURL: state.formatRecipeURL,
+    currentRecipe: state.user.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
   }
 }
 
