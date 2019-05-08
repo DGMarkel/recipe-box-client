@@ -88,6 +88,10 @@ h1 {
   width: 100%;
 }
 
+.full-recipe-card h1 {
+  margin-bottom: 0;
+}
+
 .ingredients-table {
   float: right;
   width: 35%;
@@ -97,7 +101,7 @@ h1 {
   margin-bottom: 0;
 }
 
-.ingredients-table span, .ingredients-table a {
+span, .ingredients-table a {
   text-decoration: none;
   font-size: 12px;
   color: black;
