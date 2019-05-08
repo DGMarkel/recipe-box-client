@@ -83,20 +83,18 @@ class Recipes extends Component {
               placeholder="Search recipes by ingredient"
               onChange={e => {this.setState({ ...this.state, search_term: e.target.value })}}
             />
-            { this.state.recipes.length === 0
+            { this.props.recipes.length === 0
               ? <p>No matches found.</p>
               : <></>
             }
           </form>
         </div>
-        { (this.state.recipesLoaded)
-          ?
-            this.state.recipes.map( recipe =>
-              <div className="recipe-card" >
-                <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
-              </div>
-            )
-          : <p>Loading...</p>
+        {
+          this.props.recipes.map( recipe =>
+            <div className="recipe-card" >
+              <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
+            </div>
+          )
         }
       </div>
     )
