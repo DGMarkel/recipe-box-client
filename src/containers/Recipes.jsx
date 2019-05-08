@@ -53,9 +53,10 @@ class Recipes extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    recipes: state.recipes
+    username: state.user.username,
+    recipes: ownProps.user ? state.recipes.filter(recipe => recipe.creator_name === state.user.username): state.recipes
   }
 }
 
