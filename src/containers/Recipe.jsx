@@ -15,8 +15,6 @@ class Recipe extends Component {
     }
   }
 
-  recipe = this.props.location.state.recipe
-
   formToggler = formType => {
     switch(formType) {
       case 'recipe':
@@ -50,20 +48,20 @@ class Recipe extends Component {
   editLink = () => {
     return (this.props.username === this.recipe.creator_name)
       ? <Link
-          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}
+          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
         > | Edit</Link>
       : <></>
   }
 
   renderForm = () => {
     if (this.state.nutritionalTableToggled) {
-      return <NutritionalTable recipe={this.recipe} />
+      return <NutritionalTable recipe={this.props.recipe} />
     }
     if (this.state.ingredientsTableToggled) {
-      return <IngredientsTable recipe={this.recipe}/>
+      return <IngredientsTable recipe={this.props.recipe}/>
     }
     if (this.state.servingTableToggled) {
-      return <NutritionalTable recipe={this.recipe} serving="true" />
+      return <NutritionalTable recipe={this.props.recipe} serving="true" />
     }
   }
 
@@ -71,9 +69,9 @@ class Recipe extends Component {
     return (
       <>
         <div className="full-recipe-card">
-          <h1>{this.recipe.title}</h1>
-          <p>{this.recipe.description}</p>
-          <img src={this.recipe.image_url} alt={this.recipe.title} />
+          <h1>{this.props.recipe.title}</h1>
+          <p>{this.props.recipe.description}</p>
+          <img src={this.props.recipe.image_url} alt={this.recipe.title} />
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
@@ -88,10 +86,11 @@ class Recipe extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     username: state.user.username,
-    formatRecipeURL: state.formatRecipeURL
+    formatRecipeURL: state.formatRecipeURL,
+    recipe: state.user.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
   }
 }
 

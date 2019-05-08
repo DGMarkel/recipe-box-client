@@ -41,6 +41,7 @@ export default function prelimReducer(state={
 
       case 'LOAD_USER_DATA':
         if (state.user.isLoaded) {
+          console.log(action.payload.recipes)
           return {
             ...state,
               user: {
