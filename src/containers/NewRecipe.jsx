@@ -115,7 +115,10 @@ class NewRecipe extends Component {
               <h1>{this.state.errors}</h1>
             </div>
           : <div className="recipe-container">
-            <RecipePreview recipe={this.state.recipe} saveRecipe={this.props.saveRecipe} newRecipe="true" />
+            <RecipePreview
+            recipe={this.state.recipe}
+            saveRecipe={this.props.saveRecipe}
+            newRecipe="true" />
           </div>
         }
       </>

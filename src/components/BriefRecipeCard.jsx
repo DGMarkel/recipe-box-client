@@ -8,7 +8,8 @@ class BriefRecipeCard extends Component {
 
   // shortens recipe descriptions to fit recipe card
   shortDescription = description => {
-    const shortDescription = description.substr(0, 80)
+    const shortDescription = description.substr(0, 80) // creates 80 char substring of description
+    // ensures last character of substring is not a space, adds an ellipsis
     return shortDescription.substr(0, Math.min(shortDescription.length, shortDescription.lastIndexOf(" "))).concat("...")
   }
 
@@ -20,8 +21,8 @@ class BriefRecipeCard extends Component {
       }}>
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
-            <div className="nutritional-table">
-              Calories per serving: { this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories")}
+            <div className="cals-per-serving">
+              Calories per serving: { this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories")/this.props.recipe.servings}
             </div>
           </div>
         </div>
