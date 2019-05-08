@@ -70,6 +70,7 @@ export default class EditRecipeDetails extends Component {
         /><br />
         <textarea
           cols="60"
+          rows="10"
           name="description"
           value={this.state.recipe.description}
           placeholder="Brief Description"
