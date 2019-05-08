@@ -24,10 +24,10 @@ class Recipes extends Component {
   recipeDisplay = () => {
       if (this.state.search_term.length > 0) {
         const recipes = this.props.recipes.filter(recipe=>recipe.ingredients.find(ingredient =>ingredient["food_name"].includes(this.state.search_term)));
-        return recipes.map(recipe=><div className="recipe-card" ><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} /></div>)
+        return recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />)
       }
       else {
-        return this.props.recipes.map(recipe=><div className="recipe-card" ><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} /></div>)
+        return this.props.recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />)
       }
   }
 

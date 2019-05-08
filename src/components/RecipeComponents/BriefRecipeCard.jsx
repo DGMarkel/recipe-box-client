@@ -19,23 +19,25 @@ class BriefRecipeCard extends Component {
 
   render() {
     return (
-      <Link to={{
-        pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
-        state: {recipe: this.props.recipe}
-      }}>
-        <div className="recipe-header">
-          <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
-            <div className="cals-per-serving">
-              Calories/serving: { this.calsPerServing(this.props.recipe) }
+      <div className="recipe-card" >
+        <Link to={{
+          pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
+          state: {recipe: this.props.recipe}
+        }}>
+          <div className="recipe-header">
+            <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
+              <div className="cals-per-serving">
+                Calories/serving: { this.calsPerServing(this.props.recipe) }
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="container">
-          <h3 className="title">{this.props.recipe.title}</h3>
-          <p className="description">{this.shortDescription(this.props.recipe.description)}</p>
-        </div>
-      </Link>
+          <div className="container">
+            <h3 className="title">{this.props.recipe.title}</h3>
+            <p className="description">{this.shortDescription(this.props.recipe.description)}</p>
+          </div>
+        </Link>
+      </div>
     )
   }
 }
