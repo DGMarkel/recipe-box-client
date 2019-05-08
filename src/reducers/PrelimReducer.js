@@ -2,13 +2,12 @@ import Auth from '../modules/Auth'
 
 export default function prelimReducer(state={
   user: {
-    // not currently using any of this! uh oh...
     id: null,
     username: '',
-    email: '',
-    recipes: [],
+    email: '', // unnecessary?
+    recipes: [], // unnecessary?
     auth: Auth.isUserAuthenticated(),
-    isLoaded: false
+    isLoaded: false // unnecessary?
     },
   //collects ingredients added to an existing recipe
   newIngredients: [],
@@ -49,7 +48,7 @@ export default function prelimReducer(state={
                 id: action.payload.id,
                 username: action.payload.creator_name,
                 email: action.payload.email,
-                name: action.payload.name,
+                username: action.payload.username,
                 recipes: action.payload.recipes || []
               }
           }
