@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 export default class EditRecipeDetails extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       recipe: {
         id: '',
@@ -12,6 +12,18 @@ export default class EditRecipeDetails extends Component {
         servings: ''
       }
     }
+  }
+
+  handleOnChange = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      ...this.state,
+        recipe: {
+          ...this.state.recipe,
+          [name]: value
+        }
+    })
   }
 
   // updates recipe title, description, and image_url on backend
