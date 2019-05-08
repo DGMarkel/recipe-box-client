@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import IngredientsTable from '../IngredientComponents/IngredientsTable'
-import NutritionalTable from '../NutritionalTable'
+import IngredientsTable from '../Tables/IngredientsTable'
+import NutritionalTable from '../Tables/NutritionalTable'
 
 class FullRecipeCard extends Component {
   constructor(props) {
