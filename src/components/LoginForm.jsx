@@ -44,7 +44,7 @@ class LoginForm extends Component {
         Auth.authenticateToken(res.token)
         if (Auth.isUserAuthenticated()) {
           this.props.fetchUserData();
-          this.props.history.push('/')
+          this.props.history.push('/dash')
         }
         else {
           this.setState({
