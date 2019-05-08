@@ -5,8 +5,8 @@ import * as actions from '../actions/RecipeActions'
 
 import './NewRecipeForm.css'
 
-import RecipePreview from '../components/RecipePreview'
-import NewRecipeForm from '../components/NewRecipeForm'
+import RecipePreview from '../components/RecipeComponents/RecipePreview'
+import NewRecipeForm from '../components/RecipeComponents/NewRecipeForm'
 
 class NewRecipe extends Component {
   constructor() {

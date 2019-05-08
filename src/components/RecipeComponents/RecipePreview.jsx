@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import IngredientsTable from './IngredientComponents/IngredientsTable'
+import IngredientsTable from '../IngredientComponents/IngredientsTable'
 
 export default class RecipePreview extends Component {
   render() {

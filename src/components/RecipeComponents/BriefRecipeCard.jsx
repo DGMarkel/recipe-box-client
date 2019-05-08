@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import './Component.css'
+import '../Component.css'
 
 class BriefRecipeCard extends Component {
 
