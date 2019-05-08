@@ -17,7 +17,7 @@ class Recipe extends Component {
 
   recipe = this.props.location.state.recipe
 
-  formToggler = formType => {
+  tableToggler = formType => {
     switch(formType) {
       case 'recipe':
         return (
@@ -55,7 +55,7 @@ class Recipe extends Component {
       : <></>
   }
 
-  renderForm = () => {
+  renderTable = () => {
     if (this.state.nutritionalTableToggled) {
       return <NutritionalTable recipe={this.recipe} />
     }
@@ -77,11 +77,11 @@ class Recipe extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-            <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
-            <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
-            <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
+            <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
+            <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
+            <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
           { this.editLink() }
-          { this.renderForm() }
+          { this.renderTable() }
         </div>
       </>
     )
