@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Auth from '../../modules/Auth'
 
 export default class EditRecipeDetails extends Component {
   constructor() {
