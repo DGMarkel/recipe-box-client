@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import IngredientsTable from '../Tables/IngredientsTable'
-import NutritionalTable from '../Tables/NutritionalTable'
+import IngredientsTable from '../components/Tables/IngredientsTable'
+import NutritionalTable from '../components/Tables/NutritionalTable'
 
-class FullRecipeCard extends Component {
+class Recipe extends Component {
   constructor(props) {
     super(props)
     this.state={
@@ -95,4 +95,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(FullRecipeCard))
+export default withRouter(connect(mapStateToProps)(Recipe))
