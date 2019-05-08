@@ -51,7 +51,7 @@ export default class EditRecipeDetails extends Component {
 
   render() {
     return (
-      <>
+      <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
         <textarea
           cols="60"
           name="title"
@@ -79,7 +79,7 @@ export default class EditRecipeDetails extends Component {
           placeholder="Brief Description"
           onChange={event => this.props.handleOnChange(event)}
         /><br />
-      </>
+      </form>
     )
   }
 }
