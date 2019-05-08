@@ -13,6 +13,10 @@ class BriefRecipeCard extends Component {
     return shortDescription.substr(0, Math.min(shortDescription.length, shortDescription.lastIndexOf(" "))).concat("...")
   }
 
+  calsPerServing = recipe => {
+    return this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings
+  }
+
   render() {
     return (
       <Link to={{
@@ -22,7 +26,7 @@ class BriefRecipeCard extends Component {
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
             <div className="cals-per-serving">
-              Calories per serving: { this.props.sumNutritionalDataFor(this.props.recipe.ingredients, "calories")/this.props.recipe.servings}
+              Calories per serving: { this.calsPerServing(this.props.recipe) }
             </div>
           </div>
         </div>
