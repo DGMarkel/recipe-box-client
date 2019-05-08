@@ -11,6 +11,13 @@ class NutritionalTable extends Component {
   // if this.props.serving === true, calculate nutritional data for single serving
   servingTotals = this.nutritionalTotals.map(data => Math.round(data/this.props.recipe.servings))
 
+
+  // removes symbols and capitalizes first letters of each word in datapoints
+  formatDataPoint = dataPoint => {
+    const removedSymbols = dataPoint.replace(/_/, " ")
+    return removedSymbols.toLowerCase().replace(/(^| )(\w)/g, s => s.toUpperCase())
+  }
+
   render() {
     return (
       <table>
@@ -18,7 +25,7 @@ class NutritionalTable extends Component {
           { this.dataPoints.map( (dataPoint, index) => {
             return (
               <tr>
-                <th style={{textAlign: 'left'}}>{dataPoint}</th>
+                <th style={{textAlign: 'left'}}>{this.formatDataPoint(dataPoint)}</th>
                 <td style={{width: '150%', textAlign: 'right'}}>
                   { this.props.serving ? this.servingTotals[index] : this.nutritionalTotals[index] }
                 </td>
