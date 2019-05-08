@@ -26,7 +26,7 @@ class BriefRecipeCard extends Component {
         <div className="recipe-header">
           <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
             <div className="cals-per-serving">
-              Calories per serving: { this.calsPerServing(this.props.recipe) }
+              Calories/serving: { this.calsPerServing(this.props.recipe) }
             </div>
           </div>
         </div>
