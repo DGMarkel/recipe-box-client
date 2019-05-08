@@ -22,55 +22,6 @@ class Recipes extends Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.search_term === '' && this.state.search && !this.props.user) {
-  //     this.loadAllRecipes();
-  //     this.setState({
-  //       ...this.state,
-  //         search: false
-  //     })
-  //   }
-  //   if (this.state.search_term === '' && this.state.search && this.props.user) {
-  //     this.loadUserRecipes();
-  //     this.setState({
-  //       ...this.state,
-  //         search: false
-  //     })
-  //   }
-  // }
-
-  // loadUserRecipes = () => {
-  //   fetch('/profile', {
-  //     method: 'GET',
-  //     headers: {
-  //       token: Auth.getToken(),
-  //       'authorization':  `Token ${Auth.getToken()}`
-  //     }
-  //   }).then( res => res.json())
-  //   .then( res => {
-  //     this.setState({
-  //       recipes: res.recipes,
-  //       recipesLoaded: true
-  //     })
-  //   })
-  // }
-
-  // searchAllRecipes = (e) => {
-  //   e.preventDefault();
-  //   const recipes = this.props.recipes.filter(
-  //     recipe =>
-  //       recipe.ingredients.find(ingredient =>
-  //         ingredient["food_name"].includes(this.state.search_term)
-  //       )
-  //     );
-  //
-  //   this.setState({
-  //     ...this.state,
-  //       recipes: recipes,
-  //       search: true
-  //   });
-  // }
-
   recipeDisplay = () => {
       if (this.state.search) {
         const recipes = this.props.recipes.filter(
@@ -99,6 +50,7 @@ class Recipes extends Component {
   }
 
   render() {
+    console.log(this.state.search)
     return (
       <div className="recipes-list">
         <div className="search">
