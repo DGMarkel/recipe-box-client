@@ -6,9 +6,9 @@ import * as actions from '../actions/RecipeActions'
 
 import './EditRecipe.css'
 
-import EditIngredients from '../components/EditIngredients'
+import EditIngredients from '../components/IngredientComponents/EditIngredients'
 import RecipeDetails from '../components/RecipeDetails'
-import AddIngredientsForm from '../components/AddIngredientsForm'
+import AddIngredientsForm from '../components/IngredientComponents/AddIngredientsForm'
 import RecipePreview from '../components/RecipePreview'
 
 import Auth from '../modules/Auth'
