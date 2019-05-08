@@ -48,11 +48,11 @@ class Recipe extends Component {
 
   // display edit link if user owns viewed recipe
   editLink = () => {
-    return (this.props.username === this.recipe.creator_name)
-      ? <Link
-          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}
-        > | Edit</Link>
-      : <></>
+    if (this.props.username === this.recipe.creator_name) {
+      return (
+        <Link to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}> | Edit</Link>
+      )
+    }
   }
 
   renderForm = () => {
