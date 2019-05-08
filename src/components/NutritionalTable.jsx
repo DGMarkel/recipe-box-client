@@ -11,7 +11,6 @@ class NutritionalTable extends Component {
   // if this.props.serving === true, calculate nutritional data for single serving
   servingTotals = this.nutritionalTotals.map(data => Math.round(data/this.props.recipe.servings))
 
-
   // removes symbols and capitalizes first letters of each word in datapoints
   formatDataPoint = dataPoint => {
     const removedSymbols = dataPoint.replace(/_/, " ")
@@ -39,7 +38,6 @@ class NutritionalTable extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     sumNutritionalDataFor: state.sumNutritionalDataFor
   }
