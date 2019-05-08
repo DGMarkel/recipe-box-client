@@ -19,25 +19,27 @@ class Recipes extends Component {
   }
 
   componentDidMount() {
-    this.props.user ? this.loadUserRecipes() : this.loadAllRecipes()
+    if (this.props.recipes.length === 0) {
+      this.props.loadRecipes()
+    }
   }
 
-  componentDidUpdate() {
-    if (this.state.search_term === '' && this.state.search && !this.props.user) {
-      this.loadAllRecipes();
-      this.setState({
-        ...this.state,
-          search: false
-      })
-    }
-    if (this.state.search_term === '' && this.state.search && this.props.user) {
-      this.loadUserRecipes();
-      this.setState({
-        ...this.state,
-          search: false
-      })
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.search_term === '' && this.state.search && !this.props.user) {
+  //     this.loadAllRecipes();
+  //     this.setState({
+  //       ...this.state,
+  //         search: false
+  //     })
+  //   }
+  //   if (this.state.search_term === '' && this.state.search && this.props.user) {
+  //     this.loadUserRecipes();
+  //     this.setState({
+  //       ...this.state,
+  //         search: false
+  //     })
+  //   }
+  // }
 
   loadUserRecipes = () => {
     fetch('/profile', {

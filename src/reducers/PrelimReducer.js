@@ -9,7 +9,7 @@ export default function prelimReducer(state={
     auth: Auth.isUserAuthenticated(),
     isLoaded: false // unnecessary?
     },
-  recipes: []
+  recipes: [],
   //collects ingredients added to an existing recipe
   newIngredients: [],
   // adds up total nutritional data for a given dataPoint (ie, calories) and array of ingredients
