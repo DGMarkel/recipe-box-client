@@ -93,6 +93,20 @@ h1 {
   width: 35%;
 }
 
+.ingredients-table h1 {
+  margin-bottom: 0;
+}
+
+.ingredients-table a {
+  text-decoration: none;
+  font-size: 12px;
+  color: black;
+}
+
+.ingredients-table table {
+  margin-top: 10px;
+}
+
 .preview-image {
   height: 300px;
   width: auto;
