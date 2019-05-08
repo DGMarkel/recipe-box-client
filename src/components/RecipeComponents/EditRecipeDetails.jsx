@@ -28,19 +28,13 @@ export default class EditRecipeDetails extends Component {
   }
 
   // updates recipe title, description, and image_url on backend
-  updateRecipeDetails = (event, recipe) => {
-    event.preventDefault();
+  updateRecipeDetails = e => {
+    e.preventDefault();
 
     fetch('/edit-recipe', {
       method: 'PATCH',
       body: JSON.stringify({
-        recipe: {
-          id: recipe.id,
-          title: recipe.title,
-          description: recipe.description,
-          image_url: recipe.image_url,
-          servings: recipe.servings
-        }
+        recipe: this.state.recipe
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +46,7 @@ export default class EditRecipeDetails extends Component {
 
   render() {
     return (
-      <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
+      <form onSubmit={e=>this.updateRecipeDetails(e)}>
         <textarea
           cols="60"
           name="title"
