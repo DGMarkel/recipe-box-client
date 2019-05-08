@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import BriefRecipeCard from '../components/RecipeComponents/BriefRecipeCard'
 import Auth from '../modules/Auth'
@@ -109,4 +110,10 @@ class Recipes extends Component {
   }
 }
 
-export default withRouter(Recipes)
+const mapStateToProps = state => {
+  return {
+    recipes: state.recipes
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Recipes))
