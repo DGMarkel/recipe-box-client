@@ -15,8 +15,8 @@ class Recipe extends Component {
     }
   }
 
-  tableToggler = formType => {
-    switch(formType) {
+  tableToggler = tableType => {
+    switch(tableType) {
       case 'recipe':
         return (
           this.setState({
@@ -46,22 +46,22 @@ class Recipe extends Component {
 
   // display edit link if user owns viewed recipe
   editLink = () => {
-    return (this.props.username === this.props.currentRecipe.creator_name)
+    return (this.props.username === this.props.recipe.creator_name)
       ? <Link
-          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.currentRecipe.title)}/edit`, state: {recipe: this.props.currentRecipe}}}
+          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
         > | Edit</Link>
       : <></>
   }
 
   renderTable = () => {
     if (this.state.nutritionalTableToggled) {
-      return <NutritionalTable recipe={this.props.currentRecipe} />
+      return <NutritionalTable recipe={this.props.recipe} />
     }
     if (this.state.ingredientsTableToggled) {
-      return <IngredientsTable recipe={this.props.currentRecipe}/>
+      return <IngredientsTable recipe={this.props.recipe}/>
     }
     if (this.state.servingTableToggled) {
-      return <NutritionalTable recipe={this.props.currentRecipe} serving="true" />
+      return <NutritionalTable recipe={this.props.recipe} serving="true" />
     }
   }
 
@@ -69,9 +69,9 @@ class Recipe extends Component {
     return (
       <>
         <div className="full-recipe-card">
-          <h1>{this.props.currentRecipe.title}</h1>
-          <p>{this.props.currentRecipe.description}</p>
-          <img src={this.props.currentRecipe.image_url} alt={this.props.currentRecipe.title} />
+          <h1>{this.props.recipe.title}</h1>
+          <p>{this.props.recipe.description}</p>
+          <img src={this.props.recipe.image_url} alt={this.props.recipe.title} />
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
@@ -90,7 +90,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     username: state.user.username,
     formatRecipeURL: state.formatRecipeURL,
-    currentRecipe: state.user.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
+    recipe: state.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
   }
 }
 
