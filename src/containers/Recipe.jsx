@@ -58,7 +58,7 @@ class Recipe extends Component {
     }
   }
 
-  renderForm = () => {
+  renderIngredientsTables = () => {
     if (this.state.nutritionalTableToggled) {
       return <NutritionalTable recipe={this.recipe} />
     }
@@ -84,7 +84,7 @@ class Recipe extends Component {
             <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
           { this.editIngredientsLink() }
-          { this.renderForm() }
+          { this.renderIngredientsTables() }
         </div>
       </>
     )
