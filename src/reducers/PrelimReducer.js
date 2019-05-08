@@ -2,6 +2,7 @@ import Auth from '../modules/Auth'
 
 export default function prelimReducer(state={
   user: {
+    // not currently using any of this! uh oh...
     id: null,
     username: '',
     email: '',
@@ -46,7 +47,7 @@ export default function prelimReducer(state={
               user: {
                 ...state.user,
                 id: action.payload.id,
-                username: action.payload.username,
+                username: action.payload.creator_name,
                 email: action.payload.email,
                 name: action.payload.name,
                 recipes: action.payload.recipes || []

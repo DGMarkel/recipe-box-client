@@ -39,6 +39,7 @@ class NutritionalTable extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     sumNutritionalDataFor: state.sumNutritionalDataFor
   }
