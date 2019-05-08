@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import IngredientsTable from '../components/IngredientsTable'
@@ -46,6 +46,14 @@ class FullRecipeCard extends Component {
     }
   }
 
+  editLink = () => {
+    return (this.props.username === this.recipe.creator_name)
+      ? <Link
+          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.recipe.title)}/edit`, state: {recipe: this.recipe}}}          
+        > | Edit</Link>
+      : <></>
+  }
+
   renderForm = () => {
     if (this.state.nutritionalTableToggled) {
       return <NutritionalTable recipe={this.recipe} />
@@ -71,6 +79,7 @@ class FullRecipeCard extends Component {
             <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
             <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
+          { this.editLink() }
           { this.renderForm() }
         </div>
       </>
@@ -80,7 +89,8 @@ class FullRecipeCard extends Component {
 
 const mapStateToProps = state => {
   return {
-    username: state.user.username
+    username: state.user.username,
+    formatRecipeURL: state.formatRecipeURL
   }
 }
 
