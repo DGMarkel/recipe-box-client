@@ -41,7 +41,8 @@ export default class EditRecipeDetails extends Component {
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
-    }).catch(err => console.log(err))
+    }).then(this.props.editDetailsToggler())
+    .catch(err => console.log(err))
   }
 
   render() {
