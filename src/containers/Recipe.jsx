@@ -70,13 +70,19 @@ class Recipe extends Component {
     }
   }
 
+  renderDetailsOrForm = () => {
+    return (
+      this.state.editDetailsToggled
+      ? <EditRecipeDetails recipe={this.recipe} />
+      : <RecipeDetails recipe={this.recipe} />
+    )
+  }
+
   render() {
     return (
       <>
         <div className="full-recipe-card">
-          <h1>{this.recipe.title}</h1>
-          <p>{this.recipe.description}</p>
-          <img src={this.recipe.image_url} alt={this.recipe.title} />
+          { this.renderDetailsOrForm() }
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
