@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
@@ -9,31 +9,40 @@ class FullRecipeCard extends Component {
     super(props)
     this.state={
       ingredientsTableToggled: false,
-      nutritionalTableToggled: true
+      nutritionalTableToggled: true,
+      servingTableToggled: false
     }
   }
 
   recipe = this.props.location.state.recipe
 
-  formToggler = () => {
-    if (this.state.ingredientsTableToggled) {
-      this.setState({
-        ingredientsTableToggled: false,
-        nutritionalTableToggled: true
-      })
+  formToggler = formType => {
+    switch(formType) {
+      case 'recipe':
+        return (
+          this.setState({
+            ingredientsTableToggled: false,
+            nutritionalTableToggled: true,
+            servingTableToggled: false
+          })
+        )
+      case 'serving':
+        return (
+          this.setState({
+            ingredientsTableToggled: false,
+            nutritionalTableToggled: false,
+            servingTableToggled: true
+          })
+        )
+      case 'ingredient':
+        return (
+          this.setState({
+            ingredientsTableToggled: true,
+            nutritionalTableToggled: false,
+            servingTableToggled: false
+          })
+        )
     }
-    if (this.state.nutritionalTableToggled) {
-      this.setState({
-        ingredientsTableToggled: true,
-        nutritionalTableToggled: false
-      })
-    }
-  }
-
-  buttonToggler = () => {
-    return this.state.ingredientsTableToggled
-      ? <button onClick={()=>this.formToggler()}>View Nutritional Data By Recipe</button>
-      : <button onClick={()=>this.formToggler()}>View Nutritional Data By Ingredient</button>
   }
 
   renderForm = () => {
@@ -55,7 +64,9 @@ class FullRecipeCard extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-          { this.buttonToggler() }
+            <Link to={this.props.history} onClick={()=>this.formToggler('recipe')}>By Recipe</Link> |
+            <Link to={this.props.history} onClick={()=>this.formToggler('serving')}> By Serving</Link> |
+            <Link to={this.props.history} onClick={()=>this.formToggler('ingredient')}> By Ingredient</Link>
           { this.renderForm() }
         </div>
       </>
