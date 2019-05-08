@@ -6,11 +6,11 @@ export default class EditRecipeDetails extends Component {
     super()
     this.state = {
       recipe: {
-        id: '',
-        title: '',
-        image_url: '',
-        description: '',
-        servings: ''
+        id: this.props.recipe.id,
+        title: this.props.recipe.title,
+        image_url: this.props.recipe.image_url,
+        description: this.props.recipe.description,
+        servings: this.props.recipe.servings
       }
     }
   }
@@ -56,30 +56,31 @@ export default class EditRecipeDetails extends Component {
         <textarea
           cols="60"
           name="title"
-          value={this.props.recipe.title}
+          value={this.state.recipe.title}
           placeholder="Title"
-          onChange={event => this.props.handleOnChange(event)}
+          onChange={event => this.handleOnChange(event)}
           /><br />
         <textarea
           cols="60"
           name="image_url"
-          value={this.props.recipe.image_url}
+          value={this.state.recipe.image_url}
           placeholder="Image"
-          onChange={event => this.props.handleOnChange(event)}
+          onChange={event => this.handleOnChange(event)}
         /><br />
         Servings: <input
           type="number"
           name="servings"
-          value={this.props.recipe.servings}
-          onChange={event => this.props.handleOnChange(event)}
+          value={this.state.recipe.servings}
+          onChange={event => this.handleOnChange(event)}
         /><br />
         <textarea
           cols="60"
           name="description"
-          value={this.props.recipe.description}
+          value={this.state.recipe.description}
           placeholder="Brief Description"
-          onChange={event => this.props.handleOnChange(event)}
+          onChange={event => this.handleOnChange(event)}
         /><br />
+        <input type="submit" value="Update" />
       </form>
     )
   }
