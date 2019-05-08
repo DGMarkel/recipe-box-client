@@ -12,7 +12,6 @@ class Recipes extends Component {
     super()
     this.state = {
       search_term: '',
-      search: true
     }
   }
 
@@ -23,34 +22,16 @@ class Recipes extends Component {
   }
 
   recipeDisplay = () => {
-      if (this.state.search) {
-        const recipes = this.props.recipes.filter(
-          recipe =>
-            recipe.ingredients.find(ingredient =>
-              ingredient["food_name"].includes(this.state.search_term)
-            )
-          );
-        return (
-          recipes.map( recipe =>
-            <div className="recipe-card" >
-            <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
-            </div>
-          )
-        )
+      if (this.state.search_term.length > 0) {
+        const recipes = this.props.recipes.filter(recipe=>recipe.ingredients.find(ingredient =>ingredient["food_name"].includes(this.state.search_term)));
+        return recipes.map(recipe=><div className="recipe-card" ><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} /></div>)
       }
       else {
-        return (
-          this.props.recipes.map( recipe =>
-            <div className="recipe-card" >
-              <BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} />
-            </div>
-          )
-        )
+        return this.props.recipes.map(recipe=><div className="recipe-card" ><BriefRecipeCard recipe={recipe} key={recipe.food_name} user={this.props.user} /></div>)
       }
   }
 
   render() {
-    console.log(this.state.search)
     return (
       <div className="recipes-list">
         <div className="search">
