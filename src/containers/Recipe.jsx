@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import RecipeDetails from '../components/RecipeComponents/RecipeDetails'
+import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
 import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
 
@@ -12,7 +14,7 @@ class Recipe extends Component {
       ingredientsTableToggled: false,
       nutritionalTableToggled: true,
       servingTableToggled: false,
-      editDetailsToggled: false;
+      editDetailsToggled: false
     }
   }
 
