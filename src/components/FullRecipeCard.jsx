@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import IngredientsTable from '../components/IngredientsTable'
 import NutritionalTable from '../components/NutritionalTable'
@@ -77,4 +78,10 @@ class FullRecipeCard extends Component {
   }
 }
 
-export default withRouter(FullRecipeCard)
+const mapStateToProps = state => {
+  return {
+    username: state.user.username
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(FullRecipeCard))

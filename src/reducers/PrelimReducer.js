@@ -46,7 +46,6 @@ export default function prelimReducer(state={
               user: {
                 ...state.user,
                 id: action.payload.id,
-                username: action.payload.creator_name,
                 email: action.payload.email,
                 username: action.payload.username,
                 recipes: action.payload.recipes || []
