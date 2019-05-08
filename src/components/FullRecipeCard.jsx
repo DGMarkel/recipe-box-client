@@ -68,9 +68,9 @@ class FullRecipeCard extends Component {
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
-            <a href="#" onClick={()=>this.formToggler('recipe')}>By Recipe</a> |
-            <a href="#" onClick={()=>this.formToggler('serving')}> By Serving</a> |
-            <a href="#" onClick={()=>this.formToggler('ingredient')}> By Ingredient</a>
+            <span className="fake-link" onClick={()=>this.formToggler('recipe')}>By Recipe</span> |
+            <span className="fake-link" onClick={()=>this.formToggler('serving')}> By Serving</span> |
+            <span className="fake-link" onClick={()=>this.formToggler('ingredient')}> By Ingredient</span>
           { this.renderForm() }
         </div>
       </>
