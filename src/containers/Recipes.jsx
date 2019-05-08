@@ -39,21 +39,21 @@ class Recipes extends Component {
   //   }
   // }
 
-  loadUserRecipes = () => {
-    fetch('/profile', {
-      method: 'GET',
-      headers: {
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then( res => res.json())
-    .then( res => {
-      this.setState({
-        recipes: res.recipes,
-        recipesLoaded: true
-      })
-    })
-  }
+  // loadUserRecipes = () => {
+  //   fetch('/profile', {
+  //     method: 'GET',
+  //     headers: {
+  //       token: Auth.getToken(),
+  //       'authorization':  `Token ${Auth.getToken()}`
+  //     }
+  //   }).then( res => res.json())
+  //   .then( res => {
+  //     this.setState({
+  //       recipes: res.recipes,
+  //       recipesLoaded: true
+  //     })
+  //   })
+  // }
 
   searchAllRecipes = (e) => {
     e.preventDefault();
