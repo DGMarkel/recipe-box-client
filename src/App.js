@@ -4,8 +4,8 @@ import Auth from './modules/Auth'
 import routes from './routes'
 import { withRouter, Link } from 'react-router-dom'
 
-import LoginForm from './components/Forms/LoginForm'
-import SignUpForm from './components/Forms/SignUpForm'
+import LoginForm from './components/UserForms/LoginForm'
+import SignUpForm from './components/UserForms/SignUpForm'
 import Welcome from './components/Misc/Welcome'
 
 class App extends Component {
