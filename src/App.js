@@ -6,7 +6,7 @@ import { withRouter, Link } from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
-import Welcome from './components/Welcome'
+import Welcome from './components/Misc/Welcome'
 
 class App extends Component {
   constructor() {

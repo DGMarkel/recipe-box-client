@@ -7,7 +7,7 @@ import Recipes from './containers/Recipes'
 import NewRecipe from './containers/NewRecipe'
 import EditRecipe from './containers/EditRecipe'
 import FullRecipeCard from './components/RecipeComponents/FullRecipeCard'
-import GenericNotFound from './components/GenericNotFound'
+import GenericNotFound from './components/Misc/GenericNotFound'
 
 export default (
     <Switch id='routes'>
