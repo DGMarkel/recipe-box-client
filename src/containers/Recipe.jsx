@@ -93,7 +93,7 @@ class Recipe extends Component {
     return (
       <>
         <div className="full-recipe-card">
-          { this.renderDetailsOrForm() }
+          { this.renderDetailsOrForm() } 
         </div>
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
