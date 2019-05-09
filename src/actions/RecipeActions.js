@@ -14,24 +14,26 @@ export function loadRecipes() {
 // updates recipe title, description, and image_url on backend
 export function updateRecipeDetails(event, recipe) {
   event.preventDefault();
-
-  fetch('/edit-recipe', {
-    method: 'PATCH',
-    body: JSON.stringify({
-      recipe: {
-        id: recipe.id,
-        title: recipe.title,
-        description: recipe.description,
-        image_url: recipe.image_url,
-        servings: recipe.servings
+  return (dispatch) {
+    fetch('/edit-recipe', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        recipe: {
+          id: recipe.id,
+          title: recipe.title,
+          description: recipe.description,
+          image_url: recipe.image_url,
+          servings: recipe.servings
+        }
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: Auth.getToken(),
+        'authorization':  `Token ${Auth.getToken()}`
       }
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      token: Auth.getToken(),
-      'authorization':  `Token ${Auth.getToken()}`
-    }
-  }).catch(err => console.log(err))
+    }).then(dispatch({type: 'UPDATE_RECIPE_DETAILS', payload: recipe}))
+    .catch(err => console.log(err))
+  }
 }
 
 
