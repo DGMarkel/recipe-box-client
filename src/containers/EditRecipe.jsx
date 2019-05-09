@@ -35,7 +35,7 @@ class EditRecipe extends Component {
     return (
       <>
         <div className="edit-recipe-form">
-          <form onSubmit={e=>this.updateRecipeDetails(e, this.state.recipe)}>
+          <form onSubmit={e=>this.props.updateRecipeDetails(e, this.state.recipe)}>
             <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
               <input type="submit" value="Update Recipe Details" />
           </form>
