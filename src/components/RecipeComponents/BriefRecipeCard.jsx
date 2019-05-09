@@ -14,7 +14,7 @@ class BriefRecipeCard extends Component {
   }
 
   calsPerServing = recipe => {
-    return Math.round(this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings)
+    return (recipe.ingredients) ? Math.round(this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings) : <p>Unavailable</p>
   }
 
   render() {

@@ -65,10 +65,7 @@ export default function prelimReducer(state={
       case 'ADD_RECIPE':
         return {
           ...state,
-            user: {
-              ...state.user,
-              recipes: [...state.user.recipes.concat(action.payload)]
-            }
+              recipes: [...state.recipes.concat(action.payload)]
         }
 
       case 'ADD_NEW_INGREDIENTS_TO_RECIPE':

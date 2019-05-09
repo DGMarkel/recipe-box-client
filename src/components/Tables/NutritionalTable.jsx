@@ -5,7 +5,7 @@ class NutritionalTable extends Component {
 
   ingredients = this.props.recipe.ingredients
   // collect names of all relevant nutritional datapoints from first ingredient
-  dataPoints = Object.keys(this.ingredients[0]).slice(3, this.ingredients.length)
+  dataPoints = Object.keys(this.ingredients[0]).slice(3, this.ingredients[0].length)
   // tally the values for each nutritional datapoint across the entire array of ingredients
   nutritionalTotals = this.dataPoints.map(dataPoint => this.props.sumNutritionalDataFor(this.ingredients, dataPoint))
   // if this.props.serving === true, calculate nutritional data for single serving
