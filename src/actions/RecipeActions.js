@@ -117,7 +117,8 @@ export function saveRecipe(e, recipe) {
       }
     }).then(res => res.json())
     .then(res => {
-      dispatch({ type: 'ADD_RECIPE', payload: res.recipe})
+      recipe.id = res.recipe.id
+      dispatch({ type: 'ADD_RECIPE', payload: recipe})
     })
     .catch(err => console.log(err))
   }
