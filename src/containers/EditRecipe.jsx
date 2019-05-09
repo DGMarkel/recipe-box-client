@@ -83,29 +83,6 @@ class EditRecipe extends Component {
     }
   }
 
-  // updates recipe title, description, and image_url on backend
-  updateRecipeDetails = (event, recipe) => {
-    event.preventDefault();
-
-    fetch('/edit-recipe', {
-      method: 'PATCH',
-      body: JSON.stringify({
-        recipe: {
-          id: recipe.id,
-          title: recipe.title,
-          description: recipe.description,
-          image_url: recipe.image_url,
-          servings: recipe.servings
-        }
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).catch(err => console.log(err))
-  }
-
   // fetches new data for edited ingredients from 3rd party API;
   // updates local state with new ingredient data;
   // updates backend ingredients
@@ -233,6 +210,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
