@@ -18,12 +18,12 @@ class EditRecipe extends Component {
     super(props)
     this.state = {
       recipe: {
-        id: '',
-        title: '',
-        image_url: '',
-        description: '',
-        ingredients: [],
-        servings: ''
+        id: this.props.recipe.id,
+        title: this.props.recipe.title,
+        image_url: this.props.recipe.image_url,
+        description: this.props.recipe.description,
+        ingredients: this.props.recipe.ingredients,
+        servings: this.props.recipe.servings
       },
       toggleAddIngredients: false, // opens/closes new ingredients form
       rawIngredients: ''
@@ -66,10 +66,6 @@ class EditRecipe extends Component {
         </div>
       </>
     )
-  }
-
-  componentDidMount() {
-    this.fetchRecipe();
   }
 
   componentDidUpdate() {
@@ -231,7 +227,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     newIngredients: state.newIngredients,
     sumNutritionalDataFor: state.sumNutritionalDataFor,
-    recipe: state.recipes.find(recipe => recipe.id === this.props.location.state.recipe.id)
+    recipe: state.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
   }
 }
 
