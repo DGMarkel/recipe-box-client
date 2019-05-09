@@ -74,6 +74,17 @@ export default function prelimReducer(state={
           newIngredients: action.payload
         }
 
+      case 'UPDATE_RECIPE_DETAILS':
+        return {
+          ...state,
+            recipes: state.recipes.map(
+              recipe => recipe.id === action.payload.id
+                ? {...recipe, title: action.payload.title, description: action.payload.description, image_url: action.payload.image_url, servings: action.payload.servings, id: action.payload.id} 
+                : recipe
+              )
+        }
+
+
       case 'CLEAR_NEW_INGREDIENTS':
         return {
           ...state,

@@ -14,7 +14,7 @@ export function loadRecipes() {
 // updates recipe title, description, and image_url on backend
 export function updateRecipeDetails(event, recipe) {
   event.preventDefault();
-  return (dispatch) {
+  return (dispatch) => {
     fetch('/edit-recipe', {
       method: 'PATCH',
       body: JSON.stringify({
