@@ -31,6 +31,7 @@ class EditRecipe extends Component {
   }
 
   render() {
+    console.log(this.props.recipe)
     return (
       <>
         <div className="edit-recipe-form">
@@ -84,30 +85,6 @@ class EditRecipe extends Component {
       })
       this.props.clearNewIngredient()
     }
-  }
-
-  // fetches recipe based on withRouter location.state
-  fetchRecipe = () => {
-    fetch(`/recipes/${this.props.location.state.recipe.id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        token: Auth.getToken(),
-        'authorization':  `Token ${Auth.getToken()}`
-      }
-    }).then(res => res.json())
-    .then(res => {
-      this.setState({
-        recipe: {
-          id: res.id,
-          title: res.title,
-          description: res.description,
-          image_url: res.image_url,
-          ingredients: res.ingredients,
-          servings: res.servings
-        },
-      })
-    })
   }
 
   // updates recipe title, description, and image_url on backend
@@ -250,10 +227,11 @@ class EditRecipe extends Component {
 
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     newIngredients: state.newIngredients,
-    sumNutritionalDataFor: state.sumNutritionalDataFor
+    sumNutritionalDataFor: state.sumNutritionalDataFor,
+    recipe: state.recipes.find(recipe => recipe.id === this.props.location.state.recipe.id)
   }
 }
 
