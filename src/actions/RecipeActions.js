@@ -87,8 +87,9 @@ export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
             token: Auth.getToken(),
             'authorization':  `Token ${Auth.getToken()}`
           }
-        }).then(res => res.json())
-        .then(res => console.log(res))
+        })
+
+        dispatch({ type: 'UPDATE_INGREDIENT', payload: {recipeID: recipeID, ingredientIndex: ingredientIndex, updatedIngredient: updatedIngredient}})
         }).catch(err => console.log(err));
     }
   }
