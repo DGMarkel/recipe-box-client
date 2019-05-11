@@ -44,8 +44,8 @@ class EditRecipe extends Component {
             deleteIngredientLocally={this.deleteIngredientLocally}
             deleteIngredient={this.props.deleteIngredient}
             fetchRecipe={this.fetchRecipe}
-            ingredients={this.state.recipe.ingredients}
-            recipeID={this.state.recipe.id}
+            ingredients={this.props.recipe.ingredients}
+            recipeID={this.props.recipe.id}
           />
           {
             (this.state.toggleAddIngredients)
@@ -61,7 +61,7 @@ class EditRecipe extends Component {
           }
         </div>
         <div className="recipe-preview">
-          <RecipePreview recipe={this.state.recipe} sumNutritionalDataFor={this.props.sumNutritionalDataFor} />
+          <RecipePreview recipe={this.props.recipe} sumNutritionalDataFor={this.props.sumNutritionalDataFor} />
         </div>
       </>
     )
