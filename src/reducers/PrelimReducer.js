@@ -79,11 +79,20 @@ export default function prelimReducer(state={
           ...state,
             recipes: state.recipes.map(
               recipe => recipe.id === action.payload.id
-                ? {...recipe, title: action.payload.title, description: action.payload.description, image_url: action.payload.image_url, servings: action.payload.servings, id: action.payload.id} 
+                ? {...recipe, title: action.payload.title, description: action.payload.description, image_url: action.payload.image_url, servings: action.payload.servings, id: action.payload.id}
                 : recipe
               )
         }
 
+
+      case 'UPDATE_INGREDIENT':
+        return {
+          ...state,
+            recipes: [
+              ...state.recipes,
+              state.recipes.find( recipe => recipe.id === action.payload.recipeID).ingredients[action.payload.ingredientIndex] = action.payload.updatedIngredient
+            ]
+        }
 
       case 'CLEAR_NEW_INGREDIENTS':
         return {
