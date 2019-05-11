@@ -31,7 +31,6 @@ class EditRecipe extends Component {
   }
 
   render() {
-    console.log(this.props.recipe)
     return (
       <>
         <div className="edit-recipe-form">
@@ -106,20 +105,21 @@ class EditRecipe extends Component {
         }
       }).then(res => res.json())
       .then(res => {
-          let updatedIngredient = {}
-          updatedIngredient["food_name"] = res.foods[0].food_name;
-          updatedIngredient["serving_qty"] = res.foods[0].serving_qty;
-          updatedIngredient["serving_unit"] = res.foods[0].serving_unit;
-          updatedIngredient["calories"] = res.foods[0].nf_calories;
-          updatedIngredient["total_fat"] = res.foods[0].nf_total_fat;
-          updatedIngredient["saturated_fat"] = res.foods[0].nf_saturated_fat;
-          updatedIngredient["cholesterol"] = res.foods[0].nf_cholesterol;
-          updatedIngredient["sodium"] = res.foods[0].nf_sodium;
-          updatedIngredient["total_carbohydrate"] = res.foods[0].nf_total_carbohydrate;
-          updatedIngredient["dietary_fiber"] = res.foods[0].nf_dietary_fiber;
-          updatedIngredient["sugars"] = res.foods[0].nf_sugars;
-          updatedIngredient["protein"] = res.foods[0].nf_protein;
-          updatedIngredient["potassium"] = res.foods[0].nf_potassium;
+          let updatedIngredient = {
+            food_name: res.foods[0].food_name,
+            serving_qty: res.foods[0].serving_qty,
+            serving_unit: res.foods[0].serving_unit,
+            calories: res.foods[0].nf_calories,
+            total_fat: res.foods[0].nf_total_fat,
+            saturated_fat: res.foods[0].nf_saturated_fat,
+            cholesterol: res.foods[0].nf_cholesterol,
+            sodium: res.foods[0].nf_sodium,
+            total_carbohydrate: res.foods[0].nf_total_carbohydrate,
+            dietary_fiber: res.foods[0].nf_dietary_fiber,
+            sugars: res.foods[0].nf_sugars,
+            protein: res.foods[0].nf_protein,
+            potassium: res.foods[0].nf_potassium,
+          }
 
           this.setState({
             ...this.state,
