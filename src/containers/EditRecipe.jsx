@@ -147,6 +147,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
+    updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
