@@ -40,7 +40,7 @@ class EditRecipe extends Component {
           </form>
           <EditIngredients
             handleOnChange={this.handleOnChangeForIngredients}
-            updateIngredient={this.updateIngredient}
+            updateIngredient={this.props.updateIngredient}
             deleteIngredientLocally={this.deleteIngredientLocally}
             deleteIngredient={this.props.deleteIngredient}
             fetchRecipe={this.fetchRecipe}
