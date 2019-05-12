@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class AddIngredientsForm extends Component {
   render() {
     return (
-       <form onSubmit={e => this.props.fetchAndPostIngredients(e, this.props.state) }>
+       <form onSubmit={e => this.props.fetchAndPostIngredients(e, this.props.rawIngredients, this.props.recipeID) }>
         <textarea
           rows="10"
           cols="60"
