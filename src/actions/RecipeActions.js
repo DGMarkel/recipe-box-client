@@ -114,20 +114,21 @@ export function fetchAndPostIngredients(event, recipeData) {
     }).then(res => res.json())
     .then(res => {
       const ingredientList = res.foods.map( ingredient => {
-        let ingredientList = {}
-        ingredientList["food_name"] = ingredient.food_name;
-        ingredientList["serving_qty"] = ingredient.serving_qty;
-        ingredientList["serving_unit"] = ingredient.serving_unit;
-        ingredientList["calories"] = ingredient.nf_calories;
-        ingredientList["total_fat"] = ingredient.nf_total_fat;
-        ingredientList["saturated_fat"] = ingredient.nf_saturated_fat;
-        ingredientList["cholesterol"] = ingredient.nf_cholesterol;
-        ingredientList["sodium"] = ingredient.nf_sodium;
-        ingredientList["total_carbohydrate"] = ingredient.nf_total_carbohydrate;
-        ingredientList["dietary_fiber"] = ingredient.nf_dietary_fiber;
-        ingredientList["sugars"] = ingredient.nf_sugars;
-        ingredientList["protein"] = ingredient.nf_protein;
-        ingredientList["potassium"] = ingredient.nf_potassium;
+        let ingredientsList = {
+          food_name: res.foods[0].food_name,
+          serving_qty: res.foods[0].serving_qty,
+          serving_unit: res.foods[0].serving_unit,
+          calories: res.foods[0].nf_calories,
+          total_fat: res.foods[0].nf_total_fat,
+          saturated_fat: res.foods[0].nf_saturated_fat,
+          cholesterol: res.foods[0].nf_cholesterol,
+          sodium: res.foods[0].nf_sodium,
+          total_carbohydrate: res.foods[0].nf_total_carbohydrate,
+          dietary_fiber: res.foods[0].nf_dietary_fiber,
+          sugars: res.foods[0].nf_sugars,
+          protein: res.foods[0].nf_protein,
+          potassium: res.foods[0].nf_potassium,
+        }
         return ingredientList
       })
       dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: ingredientList })
