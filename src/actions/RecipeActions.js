@@ -97,7 +97,7 @@ export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
 
 
 
-export function fetchAndPostIngredients(event, rawIngredients, recipeID) {
+export function fetchAndPostIngredients(event, rawIngredients, recipe) {
   event.preventDefault()
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
@@ -135,10 +135,10 @@ export function fetchAndPostIngredients(event, rawIngredients, recipeID) {
         method: 'PATCH',
         body: JSON.stringify({
           recipe: {
-            id: recipeID,
-            title: recipeData.recipe.title,
-            description: recipeData.recipe.description,
-            image_url: recipeData.recipe.image_url,
+            id: recipe.id,
+            title: recipe.title,
+            description: recipe.description,
+            image_url: recipe.image_url,
             ingredients: ingredientList
           }
         }),
@@ -148,7 +148,7 @@ export function fetchAndPostIngredients(event, rawIngredients, recipeID) {
           'authorization':  `Token ${Auth.getToken()}`
         }
       })
-      dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: {ingredientList: ingredientList, recipeID: recipeID })
+      dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: {ingredientList: ingredientList, recipeID: recipe.id} })
     }).catch(err => console.log(err));
   }
 }

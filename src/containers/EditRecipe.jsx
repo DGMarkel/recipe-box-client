@@ -52,7 +52,7 @@ class EditRecipe extends Component {
                     fetchAndPostIngredients={this.props.fetchAndPostIngredients}
                     handleOnChange={this.handleOnChange}
                     rawIngredients={this.state.rawIngredients}
-                    recipeID={this.props.recipe.id}
+                    recipeID={this.props.recipe}
                   />
                   <input type="button" value="Close" onClick={this.toggleAddIngredientsForm} />
                 </div>
