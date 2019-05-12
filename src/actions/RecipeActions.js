@@ -178,7 +178,7 @@ export function deleteIngredient(e, recipeId, ingredient) {
         token: Auth.getToken(),
         'authorization':  `Token ${Auth.getToken()}`
       }
-    }).then(dispatch({type: 'DELETE_INGREDIENT', payload: recipeId}))
+    }).then(dispatch({type: 'DELETE_INGREDIENT', payload: {recipeId: recipeId, ingredient: ingredient}}))
   }
 }
 
