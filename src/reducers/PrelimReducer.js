@@ -10,8 +10,6 @@ export default function prelimReducer(state={
     isLoaded: false // unnecessary?
     },
   recipes: [],
-  //collects ingredients added to an existing recipe
-  newIngredients: [],
   // adds up total nutritional data for a given dataPoint (ie, calories) and array of ingredients
   sumNutritionalDataFor: (ingredients, dataPoint) => Math.round(ingredients.map(i => i[dataPoint]).reduce((a,b)=>a+b,0)),
   // replaces spaces with dashes in recipe titles
@@ -37,8 +35,6 @@ export default function prelimReducer(state={
               auth: true
             }
         }
-
-      //do I really need this case below?
 
       case 'LOAD_USER_DATA':
         if (state.user.isLoaded) {
@@ -101,12 +97,6 @@ export default function prelimReducer(state={
                 ? {...recipe, ingredients: recipe.ingredients.filter(ingredient => ingredient !== action.payload.ingredient)}
                 : recipe
               )
-        }
-
-      case 'CLEAR_NEW_INGREDIENTS':
-        return {
-          ...state,
-          newIngredients: []
         }
 
     default:
