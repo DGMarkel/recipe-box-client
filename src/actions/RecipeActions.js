@@ -99,7 +99,6 @@ export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
 
 export function fetchAndPostIngredients(event, recipeData) {
   event.preventDefault()
-
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
