@@ -41,7 +41,6 @@ class EditRecipe extends Component {
           <EditIngredients
             handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
-            deleteIngredientLocally={this.deleteIngredientLocally}
             deleteIngredient={this.props.deleteIngredient}
             ingredients={this.props.recipe.ingredients}
             recipeID={this.props.recipe.id}
@@ -79,16 +78,6 @@ class EditRecipe extends Component {
       })
       this.props.clearNewIngredient()
     }
-  }
-
-  // removes deleted ingredients from state
-  deleteIngredientLocally = ingredientIndex => {
-    this.setState({
-      recipe: {
-        ...this.state.recipe,
-        ingredients: this.state.recipe.ingredients.filter((ingredient) => ingredient !== this.state.recipe.ingredients[ingredientIndex] )
-      }
-    })
   }
 
   // opens and closes form field for new ingredients
