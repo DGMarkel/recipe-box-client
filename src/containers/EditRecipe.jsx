@@ -65,20 +65,20 @@ class EditRecipe extends Component {
     )
   }
 
-  componentDidUpdate() {
-    // when new ingredients have been saved to backend and added to global state property newIngredients,
-    // they're then added to local state.recipe.ingredients
-    if (this.props.newIngredients.length > 0) {
-      this.setState({
-        ...this.state,
-        recipe: {
-          ...this.state.recipe,
-          ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
-        }
-      })
-      this.props.clearNewIngredient()
-    }
-  }
+  // componentDidUpdate() {
+  //   // when new ingredients have been saved to backend and added to global state property newIngredients,
+  //   // they're then added to local state.recipe.ingredients
+  //   if (this.props.newIngredients.length > 0) {
+  //     this.setState({
+  //       ...this.state,
+  //       recipe: {
+  //         ...this.state.recipe,
+  //         ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
+  //       }
+  //     })
+  //     this.props.clearNewIngredient()
+  //   }
+  // }
 
   // opens and closes form field for new ingredients
   toggleAddIngredientsForm = () => {
