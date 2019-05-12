@@ -131,8 +131,25 @@ export function fetchAndPostIngredients(event, recipeData) {
         }
         return ingredientList
       })
+
+      fetch('/edit-recipe', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          recipe: {
+            id: recipeData.recipe.id,
+            title: recipeData.recipe.title,
+            description: recipeData.recipe.description,
+            image_url: recipeData.recipe.image_url,
+            ingredients: ingredientList
+          }
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          token: Auth.getToken(),
+          'authorization':  `Token ${Auth.getToken()}`
+        }
+      })
       dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: ingredientList })
-      postIngredients(ingredientList, recipeData)
     }).catch(err => console.log(err));
   }
 }
@@ -141,26 +158,6 @@ export function clearNewIngredient() {
   return (dispatch) => {
     dispatch({ type: 'CLEAR_NEW_INGREDIENTS' })
   }
-}
-
-function postIngredients(ingredientsList, recipeData) {
-  fetch('/edit-recipe', {
-    method: 'PATCH',
-    body: JSON.stringify({
-      recipe: {
-        id: recipeData.recipe.id,
-        title: recipeData.recipe.title,
-        description: recipeData.recipe.description,
-        image_url: recipeData.recipe.image_url,
-        ingredients: ingredientsList
-      }
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      token: Auth.getToken(),
-      'authorization':  `Token ${Auth.getToken()}`
-    }
-  })
 }
 
 export function deleteIngredient(e, recipeId, ingredient) {
