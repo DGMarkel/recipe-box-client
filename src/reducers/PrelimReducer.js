@@ -84,16 +84,6 @@ export default function prelimReducer(state={
               )
         }
 
-
-      // case 'UPDATE_INGREDIENT':
-      //   return {
-      //     ...state,
-      //       recipes: [
-      //         ...state.recipes,
-      //         state.recipes.find( recipe => recipe.id === action.payload.recipeID).ingredients[action.payload.ingredientIndex] = action.payload.updatedIngredient
-      //       ]
-      //   }
-
       case 'UPDATE_INGREDIENT':
         const recipeIndex = state.recipes.indexOf(state.recipes.find( recipe => recipe.id === action.payload.recipeID))
         state.recipes[recipeIndex].ingredients[action.payload.ingredientIndex] = action.payload.updatedIngredient
