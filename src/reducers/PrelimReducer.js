@@ -65,6 +65,7 @@ export default function prelimReducer(state={
         }
 
       case 'ADD_NEW_INGREDIENTS_TO_RECIPE':
+      debugger
         return {
           ...state,
             recipes: state.recipes.map(

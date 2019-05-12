@@ -93,6 +93,8 @@ class EditRecipe extends Component {
     });
   }
 
+}
+
 const mapStateToProps = (state, ownProps) => {
   return {
     sumNutritionalDataFor: state.sumNutritionalDataFor,
