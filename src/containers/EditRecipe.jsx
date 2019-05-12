@@ -66,21 +66,6 @@ class EditRecipe extends Component {
     )
   }
 
-  // componentDidUpdate() {
-  //   // when new ingredients have been saved to backend and added to global state property newIngredients,
-  //   // they're then added to local state.recipe.ingredients
-  //   if (this.props.newIngredients.length > 0) {
-  //     this.setState({
-  //       ...this.state,
-  //       recipe: {
-  //         ...this.state.recipe,
-  //         ingredients: this.state.recipe.ingredients.concat(this.props.newIngredients)
-  //       }
-  //     })
-  //     this.props.clearNewIngredient()
-  //   }
-  // }
-
   // opens and closes form field for new ingredients
   toggleAddIngredientsForm = () => {
     this.setState({
@@ -127,7 +112,6 @@ class EditRecipe extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    newIngredients: state.newIngredients,
     sumNutritionalDataFor: state.sumNutritionalDataFor,
     recipe: state.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
   }
@@ -137,7 +121,6 @@ const mapDispatchToProps = dispatch => {
   return {
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
-    clearNewIngredient: bindActionCreators(actions.clearNewIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
     deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
