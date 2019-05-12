@@ -26,7 +26,7 @@ class EditRecipe extends Component {
         servings: this.props.recipe.servings
       },
       toggleAddIngredients: false, // opens/closes new ingredients form
-      rawIngredients: ''
+      rawIngredients: '',
     }
   }
 

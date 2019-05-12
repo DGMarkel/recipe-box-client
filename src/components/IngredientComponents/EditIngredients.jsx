@@ -1,6 +1,27 @@
 import React, { Component } from 'react'
 
 export default class EditIngredients extends Component {
+  constructor() {
+    super()
+    this.state={
+      serving_data: {
+        serving_unit: '',
+        serving_qty: ''
+      }
+    }
+  }
+
+  handleOnChange = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      ...this.state,
+        serving_data: {
+          ...this.state.serving_data,
+          [name]: value
+        }
+    })
+  }
 
   render() {
     return (
@@ -15,17 +36,19 @@ export default class EditIngredients extends Component {
                 <input
                   type="text"
                   name="serving_qty"
-                  value={ingredient.serving_qty}
-                  onChange={e=>this.props.handleOnChange(e, index)}
+                  value={this.state.serving_data.serving_qty}
+                  placeholder={ingredient.serving_qty}
+                  onChange={e=>this.handleOnChange(e, index)}
                 />
               Serving Unit:
                 <input
                   type="text"
                   name="serving_unit"
-                  value={ingredient.serving_unit}
-                  onChange={e=>this.props.handleOnChange(e, index)}
+                  value={this.state.serving_data.serving_unit}
+                  placeholder={ingredient.serving_unit}
+                  onChange={e=>this.handleOnChange(e, index)}
                 /><br />
-                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient, index) }/>
+                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient.food_name, this.state.serving_data, index) }/>
                 <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.props.deleteIngredient(e, this.props.recipeID, ingredient) }/>
               </div>
             )

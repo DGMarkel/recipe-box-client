@@ -86,8 +86,20 @@ export default function prelimReducer(state={
         }
 
       case 'UPDATE_INGREDIENT':
-        let recipeIndex = state.recipes.indexOf(state.recipes.find( recipe => recipe.id === action.payload.recipeID))
-        state.recipes[recipeIndex].ingredients[action.payload.ingredientIndex] = action.payload.updatedIngredient
+        // let recipeIndex = state.recipes.indexOf(state.recipes.find( recipe => recipe.id === action.payload.recipeID))
+        // state.recipes[recipeIndex].ingredients[action.payload.ingredientIndex] = action.payload.updatedIngredient
+
+        //THIS WORKS BETTER THAN ABOVE, but with more errors -- can only update ingredients once for some reason
+        return {
+          ...state,
+            recipes: state.recipes.map(recipe =>
+              recipe.id === action.payload.recipeID
+                ? {...recipe, ingredients: recipe.ingredients.map((ingredient, index) =>
+                    index === action.payload.ingredientIndex ? action.payload.updatedIngredient : ingredient
+                )}
+                : recipe
+            )
+        }
 
       case 'DELETE_INGREDIENT':
         return {

@@ -40,10 +40,10 @@ export function updateRecipeDetails(event, recipe) {
 // updates local state with new ingredient data;
 // updates backend ingredients
 
-export function updateIngredient(event, recipeID, ingredient, ingredientIndex) {
+export function updateIngredient(event, recipeID, foodName, servingData, ingredientIndex) {
   event.preventDefault();
-  if (ingredient.food_name === ingredient.serving_unit) delete ingredient.serving_unit;
-  const ingredientString = `${ingredient.serving_qty} ${ingredient.serving_unit || ''} ${ingredient.food_name}`
+  if (foodName === servingData.serving_unit) delete servingData.serving_unit;
+  const ingredientString = `${servingData.serving_qty} ${servingData.serving_unit || ''} ${foodName}`
 
   return (dispatch) => {
     fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
