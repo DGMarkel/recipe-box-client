@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
 
 export default class EditIngredients extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
-      serving_data: {
-        serving_unit: '',
-        serving_qty: ''
-      }
+      ingredients: props.ingredients
     }
   }
 
-  handleOnChange = e => {
+  handleOnChange = (e, ingredientIndex) => {
+    console.log(this.state.ingredients[ingredientIndex])
     const name = e.target.name
     const value = e.target.value
     this.setState({
       ...this.state,
-        serving_data: {
-          ...this.state.serving_data,
-          [name]: value
-        }
+        ingredients: this.state.ingredients.map((ingredient, index) => index === ingredientIndex ? {...ingredient, [name]: value} : ingredient)
     })
   }
 
@@ -36,19 +31,17 @@ export default class EditIngredients extends Component {
                 <input
                   type="text"
                   name="serving_qty"
-                  value={this.state.serving_data.serving_qty}
-                  placeholder={ingredient.serving_qty}
+                  value={this.state.ingredients[index].serving_qty}
                   onChange={e=>this.handleOnChange(e, index)}
                 />
               Serving Unit:
                 <input
                   type="text"
                   name="serving_unit"
-                  value={this.state.serving_data.serving_unit}
-                  placeholder={ingredient.serving_unit}
+                  value={this.state.ingredients[index].serving_unit}
                   onChange={e=>this.handleOnChange(e, index)}
                 /><br />
-                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient.food_name, this.state.serving_data, index) }/>
+                <input type="submit" value={`Update ${ingredient.food_name}`} onClick={e => this.props.updateIngredient(e, this.props.recipeID, ingredient.food_name, this.state.ingredients[index], index) }/>
                 <input type="submit" value={`Delete ${ingredient.food_name}`} onClick={e => this.props.deleteIngredient(e, this.props.recipeID, ingredient) }/>
               </div>
             )
