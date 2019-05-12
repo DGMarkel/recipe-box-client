@@ -39,7 +39,6 @@ class EditRecipe extends Component {
               <input type="submit" value="Update Recipe Details" />
           </form>
           <EditIngredients
-            handleOnChange={this.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
             deleteIngredient={this.props.deleteIngredient}
             ingredients={this.props.recipe.ingredients}
@@ -93,22 +92,6 @@ class EditRecipe extends Component {
       }
     });
   }
-
-  //displays changes to ingredients in ingredients table
-  handleOnChangeForIngredients = (event, index) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    const updatedIngredients = this.state.recipe.ingredients
-    updatedIngredients[index][name] = value
-    this.setState({
-      recipe: {
-        ...this.state.recipe,
-        ingredients: updatedIngredients
-      }
-    })
-  }
-
-}
 
 const mapStateToProps = (state, ownProps) => {
   return {
