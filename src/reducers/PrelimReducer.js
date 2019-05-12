@@ -69,10 +69,14 @@ export default function prelimReducer(state={
         }
 
       case 'ADD_NEW_INGREDIENTS_TO_RECIPE':
-      debugger
         return {
           ...state,
-          newIngredients: action.payload
+            recipes: state.recipes.map(
+              recipe => recipe.id === action.payload.recipeID
+                ? {...recipe, ingredients: recipe.ingredients.concat(action.payload.ingredientsList)}
+                : recipe
+            )
+
         }
 
       case 'UPDATE_RECIPE_DETAILS':

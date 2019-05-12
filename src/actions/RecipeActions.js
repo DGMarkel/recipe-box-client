@@ -112,8 +112,8 @@ export function fetchAndPostIngredients(event, rawIngredients, recipe) {
     }
     }).then(res => res.json())
     .then(res => {
-      const ingredientList = res.foods.map( ingredient => {
-        let ingredientsList = {
+      const ingredientsList = res.foods.map( ingredient => {
+        let newIngredient = {
           food_name: res.foods[0].food_name,
           serving_qty: res.foods[0].serving_qty,
           serving_unit: res.foods[0].serving_unit,
@@ -128,7 +128,7 @@ export function fetchAndPostIngredients(event, rawIngredients, recipe) {
           protein: res.foods[0].nf_protein,
           potassium: res.foods[0].nf_potassium,
         }
-        return ingredientList
+        return newIngredient
       })
 
       fetch('/edit-recipe', {
@@ -139,7 +139,7 @@ export function fetchAndPostIngredients(event, rawIngredients, recipe) {
             title: recipe.title,
             description: recipe.description,
             image_url: recipe.image_url,
-            ingredients: ingredientList
+            ingredients: ingredientsList
           }
         }),
         headers: {
@@ -148,7 +148,7 @@ export function fetchAndPostIngredients(event, rawIngredients, recipe) {
           'authorization':  `Token ${Auth.getToken()}`
         }
       })
-      dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: {ingredientList: ingredientList, recipeID: recipe.id} })
+      dispatch({ type:'ADD_NEW_INGREDIENTS_TO_RECIPE', payload: {ingredientsList: ingredientsList, recipeID: recipe.id} })
     }).catch(err => console.log(err));
   }
 }
