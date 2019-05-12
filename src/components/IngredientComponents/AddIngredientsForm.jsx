@@ -8,7 +8,7 @@ export default class AddIngredientsForm extends Component {
           rows="10"
           cols="60"
           name="rawIngredients"
-          value={this.props.state.rawIngredients}
+          value={this.props.rawIngredients}
           placeholder="Ingredient"
           onChange={e => this.props.handleOnChange(e)}
           /><br />
