@@ -80,7 +80,7 @@ class Recipe extends Component {
       <>
         { this.state.editRecipeDetails
            ? <EditRecipeDetails recipe={this.props.recipe} />
-           : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editToggler={this.state.editToggler}/>
+           : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editToggler={this.editToggler}/>
         }
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
