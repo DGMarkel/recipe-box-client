@@ -84,7 +84,13 @@ class Recipe extends Component {
       <>
         <div className="full-recipe-card">
           { this.state.editRecipeDetails
-             ? <EditRecipeDetails recipe={this.props.recipe} editToggler={this.editToggler} editRecipeDetails={this.state.editRecipeDetails} handleOnChangeForRecipeDetails={this.props.handleOnChangeForRecipeDetails}/>
+             ? <EditRecipeDetails
+                  recipe={this.props.recipe}
+                  editToggler={this.editToggler}
+                  editRecipeDetails={this.state.editRecipeDetails}
+                  handleOnChangeForRecipeDetails={this.props.handleOnChangeForRecipeDetails}
+                  updateRecipeDetails={this.props.updateRecipeDetails}
+                />
              : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editToggler={this.editToggler}/>
           }
         </div>
@@ -111,7 +117,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleOnChangeForRecipeDetails: bindActionCreators(actions.handleOnChangeForRecipeDetails, dispatch)
+    handleOnChangeForRecipeDetails: bindActionCreators(actions.handleOnChangeForRecipeDetails, dispatch),
+    updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
   }
 }
 
