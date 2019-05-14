@@ -11,7 +11,8 @@ class Recipe extends Component {
     this.state={
       ingredientsTableToggled: false,
       nutritionalTableToggled: true,
-      servingTableToggled: false
+      servingTableToggled: false,
+      editRecipeDetails: false
     }
   }
 
