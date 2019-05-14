@@ -52,14 +52,14 @@ class Recipe extends Component {
     })
   }
 
-  // // display edit link if user owns viewed recipe
-  // editLink = () => {
-  //   return (this.props.username === this.props.recipe.creator_name)
-  //     ? <Link
-  //         to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
-  //       > | Edit</Link>
-  //     : <></>
-  // }
+  // display edit link if user owns viewed recipe
+  editRecipeLink = () => {
+    return (this.props.username === this.props.recipe.creator_name)
+      ? <Link
+          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
+        > | Edit</Link>
+      : <></>
+  }
 
   renderTable = () => {
     if (this.state.nutritionalTableToggled) {
@@ -86,7 +86,7 @@ class Recipe extends Component {
             <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
             <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
-          { this.editLink() }
+          { this.editRecipeLink() }
           { this.renderTable() }
         </div>
       </>
