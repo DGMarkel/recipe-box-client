@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as actions from '../actions/RecipeActions'
 
 import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
@@ -102,6 +105,12 @@ const mapStateToProps = (state, ownProps) => {
     username: state.user.username,
     formatRecipeURL: state.formatRecipeURL,
     recipe: state.recipes.find(recipe => recipe.id === ownProps.location.state.recipe.id)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleOnChangeForRecipeDetails: bindActionCreators(actions.handleOnChangeForRecipeDetails, dispatch)
   }
 }
 
