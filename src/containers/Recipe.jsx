@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
+import EditRecipeDetails from '../components/EditRecipeDetails'
 
 class Recipe extends Component {
   constructor(props) {
