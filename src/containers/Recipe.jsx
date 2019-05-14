@@ -79,6 +79,7 @@ class Recipe extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <div className="full-recipe-card">
@@ -114,4 +115,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Recipe))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Recipe))

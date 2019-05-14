@@ -25,13 +25,15 @@ export function handleOnChangeForIngredients(e, ingredientIndex, recipeID) {
   }
 }
 
-export function handleOnChangeForRecipeDetails(event) {
+export function handleOnChangeForRecipeDetails(event, recipeID) {
   const name = event.target.name;
   const value = event.target.value;
-  return (dispatch) => ({
-    type: 'HANDLE_ONCHANGE_FOR_RECIPE_DETAILS',
-    payload: { name: name, value: value }
-  })
+  return (dispatch) => {
+    dispatch({
+      type: 'HANDLE_ONCHANGE_FOR_RECIPE_DETAILS',
+      payload: { name: name, value: value, recipeID: recipeID }
+    })
+  }
 }
 
 // updates recipe title, description, and image_url on backend
