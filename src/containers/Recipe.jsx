@@ -45,14 +45,21 @@ class Recipe extends Component {
     }
   }
 
-  // display edit link if user owns viewed recipe
-  editLink = () => {
-    return (this.props.username === this.props.recipe.creator_name)
-      ? <Link
-          to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
-        > | Edit</Link>
-      : <></>
+  editToggler = () => {
+    this.setState({
+      ...this.state,
+        editRecipeDetails: this.state.editRecipeDetails ? false : true
+    })
   }
+
+  // // display edit link if user owns viewed recipe
+  // editLink = () => {
+  //   return (this.props.username === this.props.recipe.creator_name)
+  //     ? <Link
+  //         to={{pathname: `/recipes/${this.props.formatRecipeURL(this.props.recipe.title)}/edit`, state: {recipe: this.props.recipe}}}
+  //       > | Edit</Link>
+  //     : <></>
+  // }
 
   renderTable = () => {
     if (this.state.nutritionalTableToggled) {
