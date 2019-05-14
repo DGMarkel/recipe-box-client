@@ -78,7 +78,10 @@ class Recipe extends Component {
   render() {
     return (
       <>
-
+        { this.state.editRecipeDetails
+           ? <EditRecipeDetails recipe={this.props.recipe} />
+           : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editToggler={this.state.editToggler}/>
+        }
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
             <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
