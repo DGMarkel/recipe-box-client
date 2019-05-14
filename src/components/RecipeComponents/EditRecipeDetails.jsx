@@ -31,6 +31,7 @@ export default class EditRecipeDetails extends Component {
           placeholder="Brief Description"
           onChange={event => this.props.handleOnChange(event)}
         /><br />
+        <span className="fake-link" onClick={()=>this.props.editToggler()}>Close</span>
       </>
     )
   }
