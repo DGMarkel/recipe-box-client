@@ -9,7 +9,6 @@ export default class EditIngredients extends Component {
   }
 
   handleOnChange = (e, ingredientIndex) => {
-    console.log(this.state.ingredients[ingredientIndex])
     const name = e.target.name
     const value = e.target.value
     this.setState({
@@ -19,6 +18,7 @@ export default class EditIngredients extends Component {
   }
 
   render() {
+    console.log(this.state.ingredients)
     return (
       <div className="ingredients-list">
         {
