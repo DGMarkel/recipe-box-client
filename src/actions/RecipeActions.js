@@ -26,6 +26,7 @@ export function handleOnChangeForIngredients(e, ingredientIndex, recipeID) {
 }
 
 export function handleOnChangeForRecipeDetails(event, recipeID) {
+  event.preventDefault();
   const name = event.target.name;
   const value = event.target.value;
   return (dispatch) => {

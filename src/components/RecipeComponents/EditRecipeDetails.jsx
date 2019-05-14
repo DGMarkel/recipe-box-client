@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class EditRecipeDetails extends Component {
   render() {
     return (
-      <form onSubmit={e=>this.props.updateRecipeDetails(e, this.state.recipe)}>
+      <form onSubmit={e=>this.props.updateRecipeDetails(e, this.props.recipe)}>
         <textarea
           cols="60"
           name="title"
