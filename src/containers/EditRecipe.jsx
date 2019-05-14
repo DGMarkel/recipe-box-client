@@ -7,7 +7,7 @@ import * as actions from '../actions/RecipeActions'
 import './EditRecipe.css'
 
 import EditIngredients from '../components/IngredientComponents/EditIngredients'
-import RecipeDetails from '../components/RecipeComponents/RecipeDetails'
+import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
 import AddIngredientsForm from '../components/IngredientComponents/AddIngredientsForm'
 import RecipePreview from '../components/RecipeComponents/RecipePreview'
 
@@ -35,7 +35,7 @@ class EditRecipe extends Component {
       <>
         <div className="edit-recipe-form">
           <form onSubmit={e=>this.props.updateRecipeDetails(e, this.state.recipe)}>
-            <RecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
+            <EditRecipeDetails recipe={this.state.recipe} handleOnChange={this.handleOnChangeForRecipeDetails} />
               <input type="submit" value="Update Recipe Details" />
           </form>
           <EditIngredients
