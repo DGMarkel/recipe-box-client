@@ -65,7 +65,6 @@ export default function prelimReducer(state={
         }
 
       case 'ADD_NEW_INGREDIENTS_TO_RECIPE':
-      debugger
         return {
           ...state,
             recipes: state.recipes.map(
@@ -84,6 +83,24 @@ export default function prelimReducer(state={
                 ? {...recipe, title: action.payload.title, description: action.payload.description, image_url: action.payload.image_url, servings: action.payload.servings, id: action.payload.id}
                 : recipe
               )
+        }
+
+      case 'HANDLE_ONCHANGE_FOR_INGREDIENTS':
+        return {
+          ...state,
+            recipes: state.recipes.map(recipe =>
+              recipe.id === action.payload.recipeID
+                ? {
+                    ...recipe,
+                      ingredients:
+                        recipe.ingredients.map((ingredient, index) =>
+                          index === action.payload.ingredientIndex
+                            ? {...ingredient, [action.payload.name]: action.payload.value}
+                            : ingredient
+                      )
+                  }
+                : recipe
+            )
         }
 
       case 'UPDATE_INGREDIENT':

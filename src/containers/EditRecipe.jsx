@@ -39,6 +39,7 @@ class EditRecipe extends Component {
               <input type="submit" value="Update Recipe Details" />
           </form>
           <EditIngredients
+            handleOnChangeForIngredients={this.props.handleOnChangeForIngredients}
             updateIngredient={this.props.updateIngredient}
             deleteIngredient={this.props.deleteIngredient}
             ingredients={this.props.recipe.ingredients}
@@ -104,6 +105,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    handleOnChangeForIngredients: bindActionCreators(actions.handleOnChangeForIngredients, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
     updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
     fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
