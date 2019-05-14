@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
-import EditRecipeDetails from '../components/EditRecipeDetails'
+import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
+import RecipeDetails from '../components/RecipeComponents/RecipeDetails'
 
 class Recipe extends Component {
   constructor(props) {
@@ -77,11 +78,7 @@ class Recipe extends Component {
   render() {
     return (
       <>
-        <div className="full-recipe-card">
-          <h1>{this.props.recipe.title}</h1>
-          <p>{this.props.recipe.description}</p>
-          <img src={this.props.recipe.image_url} alt={this.props.recipe.title} />
-        </div>
+
         <div className="ingredients-table">
           <h1>Nutritional Data</h1>
             <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
