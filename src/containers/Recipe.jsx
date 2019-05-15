@@ -51,7 +51,7 @@ class Recipe extends Component {
     }
   }
 
-  editToggler = () => {
+  editDetailsToggler = () => {
     this.setState({
       ...this.state,
         editRecipeDetails: this.state.editRecipeDetails ? false : true
@@ -87,12 +87,12 @@ class Recipe extends Component {
           { this.state.editRecipeDetails
              ? <EditRecipeDetails
                   recipe={this.props.recipe}
-                  editToggler={this.editToggler}
+                  editDetailsToggler={this.editDetailsToggler}
                   editRecipeDetails={this.state.editRecipeDetails}
                   handleOnChangeForRecipeDetails={this.props.handleOnChangeForRecipeDetails}
                   updateRecipeDetails={this.props.updateRecipeDetails}
                 />
-             : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editToggler={this.editToggler}/>
+             : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editDetailsToggler={this.editDetailsToggler}/>
           }
         </div>
         <div className="ingredients-table">

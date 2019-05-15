@@ -5,7 +5,7 @@ export default class EditRecipeDetails extends Component {
     return (
       <>
       <h1>{this.props.recipe.title}</h1>
-      <span className="fake-link" onClick={()=>this.props.editToggler()}>Close Edit Form</span>
+      <span className="fake-link" onClick={()=>this.props.editDetailsToggler()}>Close Edit Form</span>
       <form onSubmit={e=>this.props.updateRecipeDetails(e, this.props.recipe)}>
         <textarea
           cols="60"

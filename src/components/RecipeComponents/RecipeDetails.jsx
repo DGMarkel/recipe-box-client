@@ -7,7 +7,7 @@ export default class RecipeDetails extends Component {
       <>
         <h1>{this.props.recipe.title}</h1>
         { this.props.username === this.props.recipe.creator_name
-          ? <span className="fake-link" onClick={()=>this.props.editToggler()}>Edit Recipe Details</span>
+          ? <span className="fake-link" onClick={()=>this.props.editDetailsToggler()}>Edit Recipe Details</span>
           : <></>
         }
         <p>{this.props.recipe.description}</p>
