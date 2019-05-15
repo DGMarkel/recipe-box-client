@@ -10,8 +10,8 @@ export default class IngredientsTable extends Component {
             <th>Ingredient</th>
             <th>Quantity</th>
             <th>Serving Unit</th>
-            <th>Calories(kCal)</th>
-            <th>Carbohydrates(g)</th>
+            <th>Calories</th>
+            <th>Carbs(g)</th>
             <th>Protein(g)</th>
             <th>Sugars(g)</th>
           </tr>

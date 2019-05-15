@@ -80,7 +80,7 @@ h1 {
 }
 
 .full-recipe-card {
-  width: 60%;
+  width: 55%;
   float: left;
 }
 
@@ -89,8 +89,9 @@ h1 {
 }
 
 .ingredients-table {
-  float: right;
-  width: 35%;
+  float: left;
+  margin-left: 20px;
+  width: 40%;
 }
 
 .ingredients-table h1, .full-recipe-card h1 {
@@ -134,4 +135,8 @@ table {
 
 tr:nth-child(2n+0) {
   background-color: lightblue;
+}
+
+td input {
+  width: 50px;
 }
