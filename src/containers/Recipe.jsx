@@ -7,9 +7,10 @@ import * as actions from '../actions/RecipeActions'
 
 import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
-import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
 import RecipeDetails from '../components/RecipeComponents/RecipeDetails'
+import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
 import EditIngredients from '../components/Tables/EditIngredients'
+import AddIngredientsForm from '../components/IngredientComponents/AddIngredientsForm'
 
 class Recipe extends Component {
   constructor(props) {
@@ -72,6 +73,12 @@ class Recipe extends Component {
     })
   }
 
+  addIngredientsToggler = () => {
+    this.setState({
+      addIngredientsToggled: (this.state.addIngredientsToggled) ? false : true
+    })
+  }
+
   renderTable = () => {
     if (this.state.nutritionalTableToggled) {
       return <NutritionalTable recipe={this.props.recipe} />
@@ -84,13 +91,23 @@ class Recipe extends Component {
     }
     if (this.state.editIngredientsToggled) {
       return (
-        <EditIngredients
-          handleOnChangeForIngredients={this.props.handleOnChangeForIngredients}
-          updateIngredient={this.props.updateIngredient}
-          deleteIngredient={this.props.deleteIngredient}
-          ingredients={this.props.recipe.ingredients}
-          recipeID={this.props.recipe.id}
-        />
+        <>
+          <EditIngredients
+            handleOnChangeForIngredients={this.props.handleOnChangeForIngredients}
+            updateIngredient={this.props.updateIngredient}
+            deleteIngredient={this.props.deleteIngredient}
+            ingredients={this.props.recipe.ingredients}
+            recipeID={this.props.recipe.id}
+          />
+          { this.state.addIngredientsToggled
+            ? <AddIngredientsForm
+                addIngredientsToggler={this.addIngredientsToggler}
+                fetchAndPostIngredients={this.props.fetchAndPostIngredients}
+                recipe={this.props.recipe}
+              />
+            : <span className="fake-link" onClick={()=>this.addIngredientsToggler()}>Add Ingredients</span>
+          }
+        </>
       )
     }
   }
