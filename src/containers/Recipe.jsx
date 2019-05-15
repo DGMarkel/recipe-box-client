@@ -9,6 +9,7 @@ import IngredientsTable from '../components/Tables/IngredientsTable'
 import NutritionalTable from '../components/Tables/NutritionalTable'
 import EditRecipeDetails from '../components/RecipeComponents/EditRecipeDetails'
 import RecipeDetails from '../components/RecipeComponents/RecipeDetails'
+import EditIngredients from '../components/Tables/EditIngredients'
 
 class Recipe extends Component {
   constructor(props) {
@@ -95,14 +96,17 @@ class Recipe extends Component {
              : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editDetailsToggler={this.editDetailsToggler}/>
           }
         </div>
-        <div className="ingredients-table">
-          <h1>Nutritional Data</h1>
-            <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
-            <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
-            <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
-          { this.editRecipeLink() }
-          { this.renderTable() }
-        </div>
+        { this.state.editIngredients
+          ? <EditIngredients />
+          : <div className="ingredients-table">
+              <h1>Nutritional Data</h1>
+                <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
+                <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
+                <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
+              { this.editRecipeLink() }
+              { this.renderTable() }
+            </div>
+        }
       </>
     )
   }
