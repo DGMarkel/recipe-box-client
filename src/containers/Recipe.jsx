@@ -17,7 +17,8 @@ class Recipe extends Component {
       ingredientsTableToggled: false,
       nutritionalTableToggled: true,
       servingTableToggled: false,
-      editRecipeDetails: false
+      editRecipeDetails: false,
+      editIngredients: false
     }
   }
 
