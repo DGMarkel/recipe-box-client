@@ -82,7 +82,15 @@ class Recipe extends Component {
       return <NutritionalTable recipe={this.props.recipe} serving="true" />
     }
     if (this.state.editIngredientsToggled) {
-      return <EditIngredients recipe={this.props.recipe}/>
+      return (
+        <EditIngredients
+          handleOnChangeForIngredients={this.props.handleOnChangeForIngredients}
+          updateIngredient={this.props.updateIngredient}
+          deleteIngredient={this.props.deleteIngredient}
+          ingredients={this.props.recipe.ingredients}
+          recipeID={this.props.recipe.id}        
+        />
+      )
     }
   }
 
