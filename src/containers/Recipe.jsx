@@ -129,6 +129,10 @@ const mapDispatchToProps = dispatch => {
   return {
     handleOnChangeForRecipeDetails: bindActionCreators(actions.handleOnChangeForRecipeDetails, dispatch),
     updateRecipeDetails: bindActionCreators(actions.updateRecipeDetails, dispatch),
+    handleOnChangeForIngredients: bindActionCreators(actions.handleOnChangeForIngredients, dispatch),
+    updateIngredient: bindActionCreators(actions.updateIngredient, dispatch),
+    fetchAndPostIngredients: bindActionCreators(actions.fetchAndPostIngredients, dispatch),
+    deleteIngredient: bindActionCreators(actions.deleteIngredient, dispatch)
   }
 }
 
