@@ -19,7 +19,7 @@ class Recipe extends Component {
       nutritionalTableToggled: true,
       servingTableToggled: false,
       editRecipeDetails: false,
-      editIngredients: false
+      editIngredientsToggled: false
     }
   }
 
@@ -62,7 +62,7 @@ class Recipe extends Component {
   editIngredientsToggler = () => {
     this.setState({
       ...this.state,
-        editIngredients: this.state.editIngredients ? false : true
+        editIngredientsToggled: this.state.editIngredientsToggled ? false : true
     })
   }
 
@@ -75,6 +75,9 @@ class Recipe extends Component {
     }
     if (this.state.servingTableToggled) {
       return <NutritionalTable recipe={this.props.recipe} serving="true" />
+    }
+    if (this.state.editIngredientsToggled) {
+      return <EditIngredients />
     }
   }
 
@@ -94,20 +97,17 @@ class Recipe extends Component {
              : <RecipeDetails recipe={this.props.recipe} username={this.props.username} editDetailsToggler={this.editDetailsToggler}/>
           }
         </div>
-        { this.state.editIngredients
-          ? <EditIngredients />
-          : <div className="ingredients-table">
-              <h1>Nutritional Data</h1>
-                <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
-                <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
-                <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
-              { this.props.username === this.props.recipe.creator_name
-                ? <span className="fake-link" onClick={()=>this.editIngredientsToggler()}> | Edit</span>
-                : <></>
-              }
-              { this.renderTable() }
-            </div>
-        }
+        <div className="ingredients-table">
+          <h1>Nutritional Data</h1>
+            <span className="fake-link" onClick={()=>this.tableToggler('recipe')}>By Recipe</span> |
+            <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
+            <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
+            { this.props.username === this.props.recipe.creator_name
+              ? <span className="fake-link" onClick={()=>this.editIngredientsToggler()}> | Edit</span>
+              : <></>
+            }
+            { this.renderTable() }
+          </div>
       </>
     )
   }
