@@ -18,8 +18,22 @@ export default class IngredientsTable extends Component {
           {this.props.ingredients.map((ingredient, index) => {
             return <tr key={index}>
               <td>{ingredient.food_name}</td>
-              <td><input type="number" value={ingredient.serving_qty} /></td>
-              <td><input type="text" value={ingredient.serving_unit} /></td>
+              <td>
+                <input
+                  type="text"
+                  name="serving_qty"
+                  value={ingredient.serving_qty}
+                  onChange={e=>this.props.handleOnChangeForIngredients(e, index, this.props.recipeID)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="serving_unit"
+                  value={ingredient.serving_unit}
+                  onChange={e=>this.props.handleOnChangeForIngredients(e, index, this.props.recipeID)}
+                />
+              </td>
               <td>{Math.floor(ingredient.calories)}</td>
               <td>{ingredient.total_carbohydrate}</td>
               <td>{ingredient.protein}</td>
