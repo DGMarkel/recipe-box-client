@@ -105,7 +105,7 @@ class Recipe extends Component {
                 fetchAndPostIngredients={this.props.fetchAndPostIngredients}
                 recipe={this.props.recipe}
               />
-            : <span className="fake-link" onClick={()=>this.addIngredientsToggler()}>Add Ingredients</span>
+            : <button onClick={()=>this.addIngredientsToggler()}>Add Ingredients</button>
           }
         </>
       )

@@ -26,6 +26,7 @@ export default class AddIngredientsForm extends Component {
           onChange={e => this.handleOnChange(e)}
           /><br />
         <input type="submit" value="Save Ingredients" />
+        <button onClick={()=>this.props.addIngredientsToggler()}>Hide Form</button>
       </form>
     )
   }
