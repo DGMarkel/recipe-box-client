@@ -18,8 +18,9 @@ class Recipe extends Component {
       ingredientsTableToggled: false,
       nutritionalTableToggled: true,
       servingTableToggled: false,
+      editIngredientsToggled: false,
+      addIngredientsToggled: false,
       editRecipeDetails: false,
-      editIngredientsToggled: false
     }
   }
 
@@ -88,7 +89,7 @@ class Recipe extends Component {
           updateIngredient={this.props.updateIngredient}
           deleteIngredient={this.props.deleteIngredient}
           ingredients={this.props.recipe.ingredients}
-          recipeID={this.props.recipe.id}        
+          recipeID={this.props.recipe.id}
         />
       )
     }
