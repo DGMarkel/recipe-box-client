@@ -59,6 +59,13 @@ class Recipe extends Component {
     })
   }
 
+  editIngredientsToggler = () => {
+    this.setState({
+      ...this.state,
+        editIngredients: this.state.editIngredients ? false : true
+    })
+  }
+
   // display edit link if user owns viewed recipe
   editRecipeLink = () => {
     return (this.props.username === this.props.recipe.creator_name)
