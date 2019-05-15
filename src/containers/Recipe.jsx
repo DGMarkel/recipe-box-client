@@ -30,7 +30,8 @@ class Recipe extends Component {
           this.setState({
             ingredientsTableToggled: false,
             nutritionalTableToggled: true,
-            servingTableToggled: false
+            servingTableToggled: false,
+            editIngredientsToggled: false
           })
         )
       case 'serving':
@@ -38,7 +39,8 @@ class Recipe extends Component {
           this.setState({
             ingredientsTableToggled: false,
             nutritionalTableToggled: false,
-            servingTableToggled: true
+            servingTableToggled: true,
+            editIngredientsToggled: false
           })
         )
       case 'ingredient':
@@ -46,7 +48,17 @@ class Recipe extends Component {
           this.setState({
             ingredientsTableToggled: true,
             nutritionalTableToggled: false,
-            servingTableToggled: false
+            servingTableToggled: false,
+            editIngredientsToggled: false
+          })
+        )
+      case 'edit':
+        return (
+          this.setState({
+            ingredientsTableToggled: false,
+            nutritionalTableToggled: false,
+            servingTableToggled: false,
+            editIngredientsToggled: true
           })
         )
     }
@@ -56,13 +68,6 @@ class Recipe extends Component {
     this.setState({
       ...this.state,
         editRecipeDetails: this.state.editRecipeDetails ? false : true
-    })
-  }
-
-  editIngredientsToggler = () => {
-    this.setState({
-      ...this.state,
-        editIngredientsToggled: this.state.editIngredientsToggled ? false : true
     })
   }
 
@@ -77,12 +82,11 @@ class Recipe extends Component {
       return <NutritionalTable recipe={this.props.recipe} serving="true" />
     }
     if (this.state.editIngredientsToggled) {
-      return <EditIngredients />
+      return <EditIngredients recipe={this.props.recipe}/>
     }
   }
 
   render() {
-    console.log(this.props)
     return (
       <>
         <div className="full-recipe-card">
@@ -103,7 +107,7 @@ class Recipe extends Component {
             <span className="fake-link" onClick={()=>this.tableToggler('serving')}> By Serving</span> |
             <span className="fake-link" onClick={()=>this.tableToggler('ingredient')}> By Ingredient</span>
             { this.props.username === this.props.recipe.creator_name
-              ? <span className="fake-link" onClick={()=>this.editIngredientsToggler()}> | Edit</span>
+              ? <span className="fake-link" onClick={()=>this.tableToggler('edit')}> | Edit</span>
               : <></>
             }
             { this.renderTable() }
