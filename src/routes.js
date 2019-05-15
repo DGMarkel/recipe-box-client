@@ -5,7 +5,6 @@ import Auth from './modules/Auth'
 import Dashboard from './containers/Dashboard'
 import Recipes from './containers/Recipes'
 import NewRecipe from './containers/NewRecipe'
-import EditRecipe from './containers/EditRecipe'
 import Recipe from './containers/Recipe'
 import GenericNotFound from './components/Misc/GenericNotFound'
 
@@ -19,7 +18,6 @@ export default (
       <Route exact path='/my-recipes' component={ () =>  Auth.isUserAuthenticated() ? <Recipes user="true"/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/new' component={ () =>  Auth.isUserAuthenticated() ? <NewRecipe/> : <Redirect to="/login"/> }/>
       <Route exact path='/recipes/:recipeName' component={ () => <Recipe/> }/>
-      <Route exact path='/recipes/:recipeName/edit' component={ () => Auth.isUserAuthenticated() ? <EditRecipe/> : <Redirect to="/login"/> }/>
       <Route path='*' component={() => <GenericNotFound />} />
     </Switch>
 )
