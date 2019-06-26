@@ -12,6 +12,7 @@ class Recipes extends Component {
     super()
     this.state = {
       search_term: '',
+      // alphabetize: false
     }
   }
 
@@ -23,13 +24,30 @@ class Recipes extends Component {
 
   recipeDisplay = () => {
       if (this.state.search_term.length > 0) {
+
         const recipes = this.props.recipes.filter(recipe=>recipe.ingredients.find(ingredient =>ingredient["food_name"].includes(this.state.search_term)));
         return recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
       }
-      else {
-        return this.props.recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
-      }
+      // if (this.props.recipes && this.state.alphabetize) {
+      //   const alphabetizedRecipes = [...this.props.recipes].sort(this.compare);
+      //   return alphabetizedRecipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
+      // }
+      return this.props.recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
   }
+
+  // compare = (a, b) => {
+  //   // Use toUpperCase() to ignore character casing
+  //   const recipeA = a.title.toUpperCase();
+  //   const recipeB = b.title.toUpperCase();
+  //
+  //   let comparison = 0;
+  //   if (recipeA > recipeB) {
+  //     comparison = 1;
+  //   } else if (recipeA < recipeB) {
+  //     comparison = -1;
+  //   }
+  //   return comparison;
+  // }
 
   render() {
     return (
