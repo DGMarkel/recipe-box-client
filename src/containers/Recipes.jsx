@@ -26,13 +26,13 @@ class Recipes extends Component {
       if (this.state.search_term.length > 0) {
 
         const recipes = this.props.recipes.filter(recipe=>recipe.ingredients.find(ingredient =>ingredient["food_name"].includes(this.state.search_term)));
-        return recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
+        return recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.id} />)
       }
       // if (this.props.recipes && this.state.alphabetize) {
       //   const alphabetizedRecipes = [...this.props.recipes].sort(this.compare);
-      //   return alphabetizedRecipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
+      //   return alphabetizedRecipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.id} />)
       // }
-      return this.props.recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.food_name} />)
+      return this.props.recipes.map(recipe=><BriefRecipeCard recipe={recipe} key={recipe.id} />)
   }
 
   // compare = (a, b) => {

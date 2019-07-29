@@ -19,7 +19,7 @@ class BriefRecipeCard extends Component {
 
   render() {
     return (
-      <div className="recipe-card" >
+      <div className="recipe-card">
         <Link to={{
           pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
           state: {recipe: this.props.recipe}
