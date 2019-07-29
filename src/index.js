@@ -8,12 +8,22 @@ import PrelimReducer from './reducers/PrelimReducer'
 import './index.css';
 import App from './App';
 
-const store = createStore(PrelimReducer,
+import { loadState, saveState } from './modules/LocalStorage'
+
+const persistedState = loadState()
+
+const store = createStore(
+  PrelimReducer,
+  persistedState,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
+
+store.subscribe(()=>{
+  saveState(store.getState())
+})
 
 ReactDOM.render(
   <Provider store={store}>
