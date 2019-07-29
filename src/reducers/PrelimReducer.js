@@ -50,6 +50,7 @@ export default function prelimReducer(state={
           }
         }else {
           console.log("Still Loading")
+          break
         }
 
       case 'LOAD_RECIPES':
