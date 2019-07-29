@@ -5,7 +5,7 @@ import { bindActionCreators} from 'redux'
 import * as actions from '../actions/RecipeActions'
 
 import BriefRecipeCard from '../components/RecipeComponents/BriefRecipeCard'
-import Auth from '../modules/Auth'
+
 
 class Recipes extends Component {
   constructor() {

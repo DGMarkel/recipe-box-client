@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -63,6 +63,8 @@ class Recipe extends Component {
             editIngredientsToggled: true
           })
         )
+      default:
+        console.log("No changes made to state")
     }
   }
 
