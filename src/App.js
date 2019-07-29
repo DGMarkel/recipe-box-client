@@ -55,7 +55,7 @@ class App extends Component {
   renderPrivateNavBar = () => {
     return (
         <div className="nav-bar">
-          <Link to="/dash">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/my-recipes">My Recipes</Link>
           <Link to="/recipes/new">Add a Recipe</Link>
           <a href="/logout" onClick={e => this.handleLogout(e)}>Logout</a>
