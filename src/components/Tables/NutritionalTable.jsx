@@ -23,7 +23,7 @@ class NutritionalTable extends Component {
         <tbody>
           { this.dataPoints.map( (dataPoint, index) => {
             return (
-              <tr>
+              <tr key={dataPoint}>
                 <th style={{textAlign: 'left'}}>{this.formatDataPoint(dataPoint)}</th>
                 <td style={{width: '150%', textAlign: 'right'}}>
                   { this.props.serving ? this.servingTotals[index] : this.nutritionalTotals[index] }
