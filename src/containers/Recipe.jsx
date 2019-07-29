@@ -148,7 +148,6 @@ class Recipe extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     username: state.user.username,
-    formatRecipeURL: state.formatRecipeURL,
     // below compares lowercased recipe title from state to current, reformatted slug
     recipe: state.recipes.find(recipe => recipe.title.toLowerCase() === ownProps.location.pathname.split("/")[2].split("-").join(" "))
   }

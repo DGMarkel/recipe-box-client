@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { sumNutritionalDataFor } from '../../modules/Helpers'
+
 
 class NutritionalTable extends Component {
 
@@ -7,7 +8,7 @@ class NutritionalTable extends Component {
   // collect names of all relevant nutritional datapoints from first ingredient
   dataPoints = Object.keys(this.ingredients[0]).slice(3, this.ingredients[0].length)
   // tally the values for each nutritional datapoint across the entire array of ingredients
-  nutritionalTotals = this.dataPoints.map(dataPoint => this.props.sumNutritionalDataFor(this.ingredients, dataPoint))
+  nutritionalTotals = this.dataPoints.map(dataPoint => sumNutritionalDataFor(this.ingredients, dataPoint))
   // if this.props.serving === true, calculate nutritional data for single serving
   servingTotals = this.nutritionalTotals.map(data => Math.round(data/this.props.recipe.servings))
 
@@ -37,10 +38,4 @@ class NutritionalTable extends Component {
     }
 }
 
-const mapStateToProps = state => {
-  return {
-    sumNutritionalDataFor: state.sumNutritionalDataFor
-  }
-}
-
-export default connect(mapStateToProps)(NutritionalTable)
+export default NutritionalTable

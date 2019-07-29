@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { formatRecipeURL, sumNutritionalDataFor } from '../../modules/Helpers'
 
 import '../Component.css'
 
@@ -14,14 +14,14 @@ class BriefRecipeCard extends Component {
   }
 
   calsPerServing = recipe => {
-    return (recipe.ingredients && recipe.servings > 0) ? Math.round(this.props.sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings) : <p>Unavailable</p>
+    return (recipe.ingredients && recipe.servings > 0) ? Math.round(sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings) : <p>Unavailable</p>
   }
 
   render() {
     return (
       <div className="recipe-card">
         <Link to={{
-          pathname: `recipes/${this.props.formatRecipeURL(this.props.recipe.title)}`,
+          pathname: `recipes/${formatRecipeURL(this.props.recipe.title)}`,
           state: {recipe: this.props.recipe}
         }}>
           <div className="recipe-header">
@@ -42,11 +42,4 @@ class BriefRecipeCard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    formatRecipeURL: state.formatRecipeURL,
-    sumNutritionalDataFor: state.sumNutritionalDataFor
-  }
-}
-
-export default withRouter(connect(mapStateToProps)(BriefRecipeCard))
+export default withRouter(BriefRecipeCard)
