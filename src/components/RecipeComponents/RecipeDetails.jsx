@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class RecipeDetails extends Component {
 
   displayImage = () => {
-    return this.props.recipe.image_url ? 'this.props.recipe.image_url})' : 'https://wallpaperaccess.com/full/512858.jpg'
+    return this.props.recipe.image_url ? this.props.recipe.image_url : 'https://wallpaperaccess.com/full/512858.jpg'
   }
 
   render() {
