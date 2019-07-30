@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 export default class RecipeDetails extends Component {
 
+  displayImage = () => {
+    return this.props.recipe.image_url ? 'this.props.recipe.image_url})' : 'https://wallpaperaccess.com/full/512858.jpg'
+  }
+
   render() {
     return (
       <>
@@ -11,7 +15,7 @@ export default class RecipeDetails extends Component {
           : <></>
         }
         <p>{this.props.recipe.description}</p>
-        <img src={this.props.recipe.image_url} alt={this.props.recipe.title} />
+        <img src={this.displayImage()} />
       </>
     )
   }

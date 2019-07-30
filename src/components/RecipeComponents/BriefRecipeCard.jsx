@@ -17,6 +17,10 @@ class BriefRecipeCard extends Component {
     return (recipe.ingredients && recipe.servings > 0) ? Math.round(sumNutritionalDataFor(recipe.ingredients, "calories")/recipe.servings) : <p>Unavailable</p>
   }
 
+  displayImage = () => {
+    return this.props.recipe.image_url ? `url(${this.props.recipe.image_url})` : `url("https://wallpaperaccess.com/full/512858.jpg")`
+  }
+
   render() {
     return (
       <div className="recipe-card">
@@ -25,7 +29,7 @@ class BriefRecipeCard extends Component {
           state: {recipe: this.props.recipe}
         }}>
           <div className="recipe-header">
-            <div className="recipe-card-image" style={{background: `url(${this.props.recipe.image_url})`, backgroundSize: '150%'}}>
+            <div className="recipe-card-image" style={{background: this.displayImage(), backgroundSize: '150%'}}>
               <div className="cals-per-serving">
                 Calories/serving: { this.calsPerServing(this.props.recipe) }
               </div>
