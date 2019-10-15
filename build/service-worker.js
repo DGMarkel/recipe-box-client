@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/DGMarkel/recipe-box-client/precache-manifest.1a18b853becd5a39eac5d2da46a85e2f.js"
+  "/recipe-box-client/precache-manifest.debc0f749d357950039a7e07aa5207af.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/DGMarkel/recipe-box-client/index.html", {
+workbox.routing.registerNavigationRoute("/recipe-box-client/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

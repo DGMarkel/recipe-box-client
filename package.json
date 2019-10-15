@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://dgmarkel.github.io/recipe-box-client",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "immer": "^3.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -15,6 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
