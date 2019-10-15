@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dgmarkel.github.io/recipe-box-client",
   "dependencies": {
     "immer": "^3.1.1",
     "react": "^16.8.4",
