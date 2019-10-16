@@ -32,7 +32,7 @@ class SignupForm extends Component {
 
   handleSignUpSubmit = (e) => {
     e.preventDefault();
-    return fetch('/users', {
+    return fetch('https://my-recipe-box-project.herokuapp.com/users', {
       method: 'POST',
       body: JSON.stringify({
         user: this.state.user
