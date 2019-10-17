@@ -1,13 +1,13 @@
 {
   "main.css": "/recipe-box-client/static/css/main.0775805d.chunk.css",
-  "main.js": "/recipe-box-client/static/js/main.987e9e8e.chunk.js",
-  "main.js.map": "/recipe-box-client/static/js/main.987e9e8e.chunk.js.map",
+  "main.js": "/recipe-box-client/static/js/main.6409adfb.chunk.js",
+  "main.js.map": "/recipe-box-client/static/js/main.6409adfb.chunk.js.map",
   "runtime~main.js": "/recipe-box-client/static/js/runtime~main.bc8e9303.js",
   "runtime~main.js.map": "/recipe-box-client/static/js/runtime~main.bc8e9303.js.map",
-  "static/js/2.4b65d270.chunk.js": "/recipe-box-client/static/js/2.4b65d270.chunk.js",
-  "static/js/2.4b65d270.chunk.js.map": "/recipe-box-client/static/js/2.4b65d270.chunk.js.map",
+  "static/js/2.dd711d12.chunk.js": "/recipe-box-client/static/js/2.dd711d12.chunk.js",
+  "static/js/2.dd711d12.chunk.js.map": "/recipe-box-client/static/js/2.dd711d12.chunk.js.map",
   "index.html": "/recipe-box-client/index.html",
-  "precache-manifest.debc0f749d357950039a7e07aa5207af.js": "/recipe-box-client/precache-manifest.debc0f749d357950039a7e07aa5207af.js",
+  "precache-manifest.3d00212303d124f52e1d8273f03a2cdf.js": "/recipe-box-client/precache-manifest.3d00212303d124f52e1d8273f03a2cdf.js",
   "service-worker.js": "/recipe-box-client/service-worker.js",
   "static/css/main.0775805d.chunk.css.map": "/recipe-box-client/static/css/main.0775805d.chunk.css.map"
 }
