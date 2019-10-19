@@ -32,7 +32,7 @@ class LoginForm extends Component {
 
   handleLoginSubmit = (e, data) => {
     e.preventDefault();
-    return fetch('/login', {
+    return fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/login', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
