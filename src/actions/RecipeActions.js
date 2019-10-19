@@ -2,7 +2,7 @@ import Auth from '../modules/Auth'
 
 export function loadRecipes() {
   return (dispatch) => {
-  fetch('/recipes')
+  fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/recipes')
     .then(res => res.json())
     .then(resJSON => {
       dispatch({type:'LOAD_RECIPES', payload: resJSON})
@@ -41,7 +41,7 @@ export function handleOnChangeForRecipeDetails(event, recipeID) {
 export function updateRecipeDetails(event, recipe) {
   event.preventDefault();
   return (dispatch) => {
-    fetch('/edit-recipe', {
+    fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/edit-recipe', {
       method: 'PATCH',
       body: JSON.stringify({
         recipe: {
@@ -100,7 +100,7 @@ export function updateIngredient(event, recipeID, foodName, ingredient, ingredie
           potassium: res.foods[0].nf_potassium,
         }
 
-        fetch('/edit-ingredient', {
+        fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/edit-ingredient', {
           method: 'PATCH',
           body: JSON.stringify({
             ingredient: {
@@ -153,7 +153,7 @@ export function fetchAndPostIngredients(event, rawIngredients, recipe) {
         }
       })
 
-      fetch('/edit-recipe', {
+      fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/edit-recipe', {
         method: 'PATCH',
         body: JSON.stringify({
           recipe: {
@@ -184,7 +184,7 @@ export function clearNewIngredient() {
 export function deleteIngredient(e, recipeId, ingredient) {
   e.preventDefault();
   return (dispatch) => {
-    fetch('/delete', {
+    fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/delete', {
       method: 'DELETE',
       body: JSON.stringify({
         ingredient: {
@@ -204,7 +204,7 @@ export function deleteIngredient(e, recipeId, ingredient) {
 export function saveRecipe(e, recipe) {
   e.preventDefault();
   return (dispatch) => {
-    fetch('/recipes', {
+    fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/recipes', {
       method: 'POST',
       body: JSON.stringify({
         recipe: {

@@ -3,7 +3,7 @@ import Auth from '../modules/Auth'
 export function fetchUserData() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_USER_DATA'})
-    fetch('https://my-recipe-box-project.herokuapp.com/profile', {
+    fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/profile', {
       method: 'GET',
       headers: {
         token: Auth.getToken(),
@@ -18,7 +18,7 @@ export function fetchUserData() {
 
 export function logoutUser() {
   return (dispatch) => {
-    fetch('https://my-recipe-box-project.herokuapp.com/logout', {
+    fetch('https://cors-anywhere.herokuapp.com/https://my-recipe-box-project.herokuapp.com/logout', {
       method: 'DELETE',
       headers: {
         token: Auth.getToken(),
