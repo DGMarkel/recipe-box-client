@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d7cf7ce418dfaa95bd09",
+    "revision": "d7428b4884a6ec65be69",
     "url": "/recipe-box-client/static/css/main.0775805d.chunk.css"
   },
   {
-    "revision": "d7cf7ce418dfaa95bd09",
-    "url": "/recipe-box-client/static/js/main.fbc19a22.chunk.js"
+    "revision": "d7428b4884a6ec65be69",
+    "url": "/recipe-box-client/static/js/main.7bd5db5d.chunk.js"
   },
   {
     "revision": "4ee946311d84e3f9c3eb",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/recipe-box-client/static/js/2.dd711d12.chunk.js"
   },
   {
-    "revision": "58cc6f57f714a49e70443682ec4ae850",
+    "revision": "92e17e084239ab0af1cf7dedb9f3b27f",
     "url": "/recipe-box-client/index.html"
   }
 ];
