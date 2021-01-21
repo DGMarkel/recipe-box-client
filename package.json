@@ -5,7 +5,7 @@
   "homepage": "https://dgmarkel.github.io/recipe-box-client",
   "dependencies": {
     "gh-pages": "^2.1.1",
-    "immer": "^3.1.1",
+    "immer": "^8.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
